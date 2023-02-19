@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
+    <link rel="stylesheet" href="/css/company/posts/style.css">
+    <title>Jobs</title>
+</head>
+<body>
+   <div class="container">
+      <ul class="menu">
+         <% if(data) { %>
+            <% for(var i=0;i < data.post.length;i++) { %>
+               <li>
+                  <h1><%= data.post[i].vancancy %></h1>
+                  <h2 class="company-name">
+                     <%= data.post[i].company_name %>
+                      <i class="ph-circle-wavy-check-fill"></i>
+                  </h2>
+                 <ul class="jobInfo">
+                    <span class="salary"><%= data.post[i].salary %></span>
+                    <span>Location: <%= data.post[i].location %></span>
+                    <span>Published in: <strong class="date"><%= data.post[i].created_at %></strong></span>
+                 </ul>
+                 <div class="text">
+                   <%= data.post[i].information %>
+                 </div>
+                  <div class="settings">
+                     <a href="/post/update/<%= data.post[i].id %>/<%= data.id %>"><button>Edit</button></a>
+                     <a href="/post/delete/<%= data.post[i].id %>/<%= data.id %>"><button>Delete</button></a>
+                  </div>
+               </li>
+            <% } %>
+         <% } %>
+        </ul>
+    </div>
+   
+   <script src="/js/post/jobs/main.js"></script>
+</body>
+</html>

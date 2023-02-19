@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/phosphor-icons"></script>
+  <link rel="stylesheet" href="/css/company/home/style.css">
+  <title>Jobs</title>
+</head>
+<body>
+   <% if(data) { %>
+     <header>
+       <div class="container">
+         <a href="./profile/index.html" class="company-name"><%= data.company %></a>
+         <nav class="nav">
+           <ul>
+             <a href="/jobs">jobs</a>
+             <a href="/post/create/<%= data.id %>">new post</a>
+             <a href="/dashboard">voltar</a>
+           </ul>
+         </nav>
+   
+         <div class="menu">
+           <i class="ph-list-fill"></i>
+         </div>
+       </div>
+     </header>
+     <main>
+       <div class="container">
+         <div class="pubble">
+           <div class="pubble-blur">
+             <div class="status">
+               <div>
+                 <h2>status of your posts</h2>
+               </div>
+               <ul>
+                 <li>
+                   <a href="./jobscreated/index.html">
+                     <div class="circle">
+                       <i class="ph-buildings"></i>
+                       <div class="company-info">
+                         company
+                       </div>
+                     </div>
+                   </a>
+                 </li>
+                 <li>
+                   <a href="/company/posts/<%= data.id %>">
+                     <div class="circle">
+                       <i class="ph-note-light"></i>
+                       <div class="company-info">
+                         posts: <span><%= data.post.length %></span>
+                       </div>
+                     </div>
+                   </a>
+                 </li>
+                 <li>
+                   <a href="#">
+                     <div class="circle">
+                       <i class="ph-thumbs-up-light"></i>
+                       <div class="company-info">
+                         likes: <span><%= data.post.like %></span>
+                       </div>
+                     </div>
+                   </a>
+                 </li>
+               </ul>
+             </div>
+             <div class="illustration-img">
+               <img src="../../assets/jobs/Attribution modeling.svg" alt="" width="100%">
+             </div>
+           </div>
+         </div>
+       </div>
+     </main>
+     <footer>
+       <div class="container">
+         <p>
+           &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+         </p>
+       </div>
+     </footer>
+   <% } %>
+
+  <script src="/js/menu/main.js"></script>
+</body>
+</html>

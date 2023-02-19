@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/phosphor-icons"></script>
+  <link rel="stylesheet" href="/css/post/update/style.css">
+  <title>Jobs</title>
+</head>
+<body>
+  <div class="container">
+    <div class="logoname">
+      <h2>Job</h2>
+    </div>
+    <% if(data) { %>
+       <form action="/post/update/<%= data.id %>/<%= companyId %>" method="POST">
+         <div class="input">
+           <i class="ph-buildings-fill"></i>
+           <input type="text" name="companyName" id="" placeholder="Company" value="<%= data.company_name %>" autocomplete="off" required>
+         </div>
+         <div class="input">
+           <i class="ph-cardholder-fill"></i>
+           <input type="text" name="vancancy" id="" placeholder="vancancy" value="<%= data.vancancy %>" autocomplete="off" required>
+         </div>
+         <div class="input">
+           <i class="ph-map-trifold-fill"></i>
+           <input type="text" name="location" id="" placeholder="Location" value="<%= data.location %>" autocomplete="off" required>
+         </div>
+         <div class="input">
+           <i class="ph-currency-dollar-fill"></i>
+           <input type="number" name="salary" placeholder="Salary" value="<%= data.salary %>" required>
+         </div>
+         <textarea name="information" id="" cols="30" rows="10" placeholder="more information here!"><%= data.information %></textarea>
+   
+         <button>send</button>
+       </form>
+    <% } %>
+  </div>
+</body>
+</html>

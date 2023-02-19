@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/phosphor-icons"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
+  <link rel="stylesheet" href="/css/post/jobs/style.css">
+  <title>Jobs</title>
+</head>
+<body>
+  <div class="container">
+      <ul class="menu">
+         <% if(user) { %>
+            <% data.forEach((post) => { %>
+               <% post.like.forEach((value) => { %>
+                  <li>
+                    <h1><%= post.vancancy %></h1>
+                    <h2 class="company-name">
+                      <%= post.company_name %>
+                      <i class="ph-circle-wavy-check-fill"></i>
+                    </h2>
+                    <ul class="jobInfo">
+                      <span class="salary"><%= post.salary %></span>
+                      <span>Location: <%= post.location %></span>
+                      <span>Published in: <strong class="date"><%= post.created_at %></strong></span>
+                    </ul>
+                    <div class="text">
+                      <%= post.information %>
+                    </div>
+                    <div class="functions">
+                        <div class="like">
+                           <a href="/liked/<%= user.id %>/<%= post.id %>">
+                              <% if(value.liked) { %>
+                                 <button class="heart-button"><i class="ph-thumbs-up-fill"></i></button>
+                             <% } else { %>
+                                 <button class="heart-button"><i class="ph-thumbs-up"></i></button>
+                             <% } %>
+                           </a>
+                           <span><%= post.likes %></span>
+                         </div>
+                        <div class="accept">
+                           <button class="want">I want</button>
+                        </div>
+                    </div>
+                  </li>
+               <% }) %>
+            <% }) %>
+         <% } else { %>
+            <% data.forEach((post) => { %>
+                <li>
+                 <h1><%= post.vancancy %></h1>
+                 <h2 class="company-name">
+                   <%= post.company_name %>
+                   <i class="ph-circle-wavy-check-fill"></i>
+                 </h2>
+                 <ul class="jobInfo">
+                   <span class="salary"><%= post.salary %></span>
+                   <span>Location: <%= post.location %></span>
+                   <span>Published in: <strong class="date"><%= post.created_at %></strong></span>
+                 </ul>
+                 <div class="text">
+                   <%= post.information %>
+                 </div>
+                 <div class="functions">
+                    <div class="like">
+                       <a href="/login">
+                           <button class="heart-button"><i class="ph-thumbs-up"></i></button>
+                        </a>
+                        <span><%= post.likes %></span>
+                     </div>
+                     <div class="accept">
+                        <button class="want">I want</button>
+                     </div>
+                 </div>
+               </li>
+            <% }) %>
+         <% } %>
+      </ul>
+  </div>
+  
+  <script src="/js/post/jobs/main.js"></script>
+</body>
+</html>
