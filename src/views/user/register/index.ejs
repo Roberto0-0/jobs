@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/phosphor-icons"></script>
+  <link rel="stylesheet" href="/css/user/register/style.css">
+  <title>Jobs</title>
+</head>
+<body>
+  <div class="container">
+    <div class="register">
+      <h2>Register</h2>
+    </div>
+    <form action="/user/register" method="POST">
+      <div class="input">
+        <i class="ph-user-fill"></i>
+        <input type="text" name="name" placeholder="Name" autocomplete="off" required>
+      </div>
+      <div class="input">
+        <i class="ph-envelope-simple-fill"></i>
+        <input type="email" name="email" placeholder="E-mail" autocomplete="off" required>
+      </div>
+      <div class="input">
+        <i class="ph-lock-simple-fill"></i>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <i class="ph-lightbulb" id="eye-button"></i>
+      </div>
+      <div class="input">
+        <i class="ph-lock-simple-fill"></i>
+        <input type="password" name="confirmPassword" id="confirm-password" placeholder="Confirm password" autocomplete="off" required>
+        <i class="ph-lightbulb" id="eye-confirm-button"></i>
+      </div>
+
+      <button>register</button>
+    </form>
+
+    <div class="company">
+      <p>
+        register as an employer <a href="../company/index.html">click here!</a>
+      </p>
+    </div>
+  </div>
+  <script src="/js/user/register/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/phosphor-icons"></script>
+  <link rel="stylesheet" href="/css/user/dashboard/style.css">
+  <title>Jobs</title>
+</head>
+<body>
+  <header>
+     <% if(user) { %>
+       <div class="container">
+         <a href="./profile/index.html" class="username">Hello, <%= user.name %></a>
+         <nav class="nav">
+           <ul>
+             <a href="/jobs">jobs</a>
+             <% if(user.company.length > 0) { %>
+                <% user.company.forEach((company) => { %>
+                   <a href="/company/<%= user.id %>/<%= company.id %>"/>your company</a>
+                <% }) %>
+             <% } else { %>
+                <a href="/company/registration/<%= user.id %>">create a company</a>
+             <% } %>
+             <a href="./profile/index.html">profile</a>
+             <a href="/logout">logout</a>
+           </ul>
+         </nav>
+   
+         <div class="menu">
+           <i class="ph-list-fill"></i>
+         </div>
+       </div>
+     </header>
+     <main>
+       <div class="container">
+         <div class="pubble">
+           <div class="pubble-blur">
+           <div class="phrases">
+               <h2>Welcome 😎</h2>
+               <h3>Find your dream job now!</h3>
+               <a href="/jobs" class="jobs" style="margin-bottom: 20px;">jobs</a>
+           </div>
+             <div class="illustration-img">
+               <img src="../assets/jobs/undraw_done_re_oak4.svg" alt="" width="100%">
+             </div>
+           </div>
+         </div>
+       </div>
+     </main>
+     <footer>
+       <div class="container">
+         <p>
+           &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+         </p>
+       </div>
+     </footer>
+    <% } %>
+  <script src="/js/menu/main.js"></script>
+</body>
+</html>

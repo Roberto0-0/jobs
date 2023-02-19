@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/phosphor-icons"></script>
+  <link rel="stylesheet" href="/css/company/create/style.css">
+  <title>Jobs</title>
+</head>
+<body>
+  <div class="container">
+    <div class="company-register">
+      <h2>Company</h2>
+    </div>
+    <% if(UserId) { %>
+       <form action="/company/registration/<%= UserId %>" method="POST">
+         <div class="input">
+           <i class="ph-user-fill"></i>
+           <input type="text" name="employer" placeholder="Employer" autocomplete="off" required>
+         </div>
+         <div class="input">
+           <i class="ph-buildings-fill"></i>
+           <input type="text" name="companyName" placeholder="Company" autocomplete="off" required>
+         </div>
+         <div class="input">
+           <i class="ph-envelope-simple-fill"></i>
+           <input type="email" name="email" class="email-input" placeholder="E-mail" autocomplete="off" required>
+         </div>
+         <button>register</button>
+       </form>
+    <% } %>
+   </div>
+    <script src="/js/company/main.js"></script>
+  </body>
+</html>
