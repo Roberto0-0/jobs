@@ -20,6 +20,10 @@ body, html {
     background-position: center;
 
     font-family: sans-serif;
+
+    width: 100%;
+    height: 100%;
+
 }
 
 header  {
@@ -113,12 +117,6 @@ header .container .menu {
 /* ---- main styles ---- */
 
 main {
-    /* background-image: url('/img/background07.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center; */
-
-    /* position: relative; */
     margin: auto;
 
     width: auto;
