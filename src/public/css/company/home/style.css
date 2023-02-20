@@ -22,6 +22,7 @@ body, html {
     background-position: center;
     
     font-family: Sans-Serif;
+    font-size: 100%;
 }
 
 header {
@@ -110,12 +111,6 @@ header .container nav ul a {
 }
 
 main {
-    /* background-image: url('/img/background07.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center; */
-
-    /* position: relative; */
     margin: auto;
 
     width: auto;
@@ -129,7 +124,7 @@ main .container {
     display: flex;
     flex-direction: column;
 
-    margin: 0 auto;
+    margin: auto;
 
     width: 90%;
     max-width: 1279px;
@@ -143,37 +138,24 @@ main .container .pubble {
     flex-direction: row;
 
     margin: 100px auto;
-    padding: 5px 5px;
+    padding: 10px;
 
     width: 90%;
     /* max-width: 1000px; */
     min-width: 300px;
     height: 60%;
-    max-height: 420px;
-
-    border-radius: 20px;
-    /*box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;*/
 }
 
-main .container .pubble .pubble-blur {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
+main .container .pubble .status {
     padding: 10px;
+    
+    width: 50%;
+    /* max-width: 400p x; */
+    /* height: 200px; */
+    
+  }
 
-    width: 100%;
-    height: 100%;
-
-    /*background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); 
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.18);*/
-}
-
-main .container .pubble .pubble-blur .status h2 {
+main .container .pubble .status h2 {
     margin-bottom: 1em;
     height: auto;
     
@@ -185,17 +167,7 @@ main .container .pubble .pubble-blur .status h2 {
     
 }
 
-main .container .pubble .pubble-blur .status {
-  margin-bottom: 1em;
-  padding: 10px;
-  
-  width: 100%;
-  max-width: 400px;
-  height: 200px;
-  
-}
-
-main .container .pubble .pubble-blur .status ul {
+main .container .pubble .status ul {
     display: flex;
     flex-direction: row;
     /* justify-content: center; */
@@ -215,25 +187,25 @@ main .container .pubble .pubble-blur .status ul {
 }
 
 
-main .container .pubble .pubble-blur .status ul::-webkit-scrollbar {
+main .container .pubble .status ul::-webkit-scrollbar {
   width: 0px;
 }
 
-main .container .pubble .pubble-blur .status ul::-webkit-scrollbar-track {
+main .container .pubble .status ul::-webkit-scrollbar-track {
   background: transparent;
 }
 
 
-main .container .pubble .pubble-blur .status ul::-webkit-scrollbar-thumb {
+main .container .pubble .status ul::-webkit-scrollbar-thumb {
   background: transparent;
   border: none;
 }
 
-main .container .pubble .pubble-blur .status ul li a {
+main .container .pubble .status ul li a {
   text-decoration: none;
 }
 
-main .container .pubble .pubble-blur .status ul li .circle {
+main .container .pubble .status ul li .circle {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -247,12 +219,12 @@ main .container .pubble .pubble-blur .status ul li .circle {
   border: 2px solid var(--white);
 }
 
-main .container .pubble .pubble-blur .status ul li .circle i {
+main .container .pubble .status ul li .circle i {
   font-size: 1.8em;
   color: var(--white);
 }
 
-main .container .pubble .pubble-blur .status ul li .company-info {
+main .container .pubble .status ul li .company-info {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -266,12 +238,12 @@ main .container .pubble .pubble-blur .status ul li .company-info {
   color: var(--white);
 }
 
-main .container .pubble .pubble-blur .status ul li .company-info span {
+main .container .pubble .status ul li .company-info span {
   font-size: 1em;
   font-weight: bold;
 }
 
-main .container .pubble .pubble-blur .illustration-img {
+main .container .pubble .illustration-img {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -279,8 +251,14 @@ main .container .pubble .pubble-blur .illustration-img {
 
     margin: auto;
 
-    width: 40%;
-    height: auto;
+    width: 50%;
+    height: 100%;
+}
+
+main .container .pubble .illustration-img img {
+    margin-bottom: auto;
+
+    width: 70%;
 }
 
 footer {
@@ -320,7 +298,7 @@ header .container .menu {
     display: none;
 }
 
-@media(max-width: 425px) {
+@media(max-width: 600px) {
     header .container .username {
         display: flex;
         flex-direction: column;
@@ -416,13 +394,14 @@ header .container .menu {
         padding: 5px;
     }
 
-    main .container .pubble .pubble-blur {
-        flex-direction: column;
+    main .container .pubble .status {
+        margin-bottom: 10px;
 
-        padding: 10px;
+        width: 100%;
+        height: auto;
     }
 
-    main .container .pubble .pubble-blur .status ul {
+    main .container .pubble .status ul {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -433,15 +412,15 @@ header .container .menu {
         height: auto;
     }
 
-    main .container .pubble .pubble-blur .status ul li:first-child {
+    main .container .pubble .status ul li:first-child {
         padding-left: 10px;
     }
 
-    main .container .pubble .pubble-blur .status ul li:last-child {
+    main .container .pubble .status ul li:last-child {
         padding-right: 10px;
     }
 
-    main .container .pubble .pubble-blur .status h2 {
+    main .container .pubble .status h2 {
         text-align: center;
         font-family: 'Roboto', sans-serif;
         font-size: 1.5em;
@@ -449,11 +428,16 @@ header .container .menu {
 
     }
 
-    main .container .pubble .pubble-blur .illustration-img {
-        width: 90%;
+    main .container .pubble .illustration-img {
+        width: 100%;
         height: auto;
 
         /* background-color: blue; */
+    }
+
+    main .container .pubble .illustration-img img {
+        width: 100%;
+        height: 100%;
     }
 
     footer .container p {
