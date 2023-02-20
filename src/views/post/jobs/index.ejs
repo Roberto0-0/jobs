@@ -15,38 +15,32 @@
       <ul class="menu">
          <% if(user) { %>
             <% data.forEach((post) => { %>
-               <% post.like.forEach((value) => { %>
-                  <li>
-                    <h1><%= post.vancancy %></h1>
-                    <h2 class="company-name">
-                      <%= post.company_name %>
-                      <i class="ph-circle-wavy-check-fill"></i>
-                    </h2>
-                    <ul class="jobInfo">
-                      <span class="salary"><%= post.salary %></span>
-                      <span>Location: <%= post.location %></span>
-                      <span>Published in: <strong class="date"><%= post.created_at %></strong></span>
-                    </ul>
-                    <div class="text">
-                      <%= post.information %>
-                    </div>
-                    <div class="functions">
+               <li>
+                  <h1><%= post.vancancy %></h1>
+                  <h2 class="company-name">
+                     <%= post.company_name %>
+                     <i class="ph-circle-wavy-check-fill"></i>
+                  </h2>
+                  <ul class="jobInfo">
+                     <span class="salary"><%= post.salary %></span>
+                     <span>Location: <%= post.location %></span>
+                     <span>Published in: <strong class="date"><%= post.created_at %></strong></span>
+                  </ul>
+                  <div class="text">
+                     <%= post.information %>
+                  </div>
+                  <div class="functions">
                         <div class="like">
                            <a href="/liked/<%= user.id %>/<%= post.id %>">
-                              <% if(value.liked) { %>
-                                 <button class="heart-button"><i class="ph-thumbs-up-fill"></i></button>
-                             <% } else { %>
-                                 <button class="heart-button"><i class="ph-thumbs-up"></i></button>
-                             <% } %>
+                              <button class="heart-button"><i class="ph-thumbs-up"></i></button>
                            </a>
                            <span><%= post.likes %></span>
-                         </div>
+                        </div>
                         <div class="accept">
                            <button class="want">I want</button>
                         </div>
-                    </div>
-                  </li>
-               <% }) %>
+                  </div>
+               </li>
             <% }) %>
          <% } else { %>
             <% data.forEach((post) => { %>
