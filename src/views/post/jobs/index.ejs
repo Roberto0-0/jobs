@@ -11,27 +11,76 @@
   <title>Jobs</title>
 </head>
 <body>
-  <div class="container">
-      <ul class="menu">
-         <% if(user) { %>
-            <% data.forEach((post) => { %>
-               <li>
-                  <h1><%= post.vancancy %></h1>
-                  <h2 class="company-name">
-                     <%= post.company_name %>
-                     <i class="ph-circle-wavy-check-fill"></i>
-                  </h2>
-                  <ul class="jobInfo">
-                     <span class="salary"><%= post.salary %></span>
-                     <span>Location: <%= post.location %></span>
-                     <span>Published in: <strong class="date"><%= post.created_at %></strong></span>
-                  </ul>
-                  <div class="text">
-                     <%= post.information %>
-                  </div>
-                  <div class="functions">
-                        <div class="like">
-                           <a href="/liked/<%= user.id %>/<%= post.id %>">
+   <header>
+      <div class="container">
+        <a href="" class="logo">Jobs</a>
+        <nav class="nav">
+          <ul>
+            <% if(user) { %>
+               <a href="/dashboard">Back</a>
+            <% } else { %>
+               <a href="/">Back</a>
+            <% } %>
+          </ul>
+        </nav>
+  
+        <div class="menu">
+          <i class="ph-list-fill"></i>
+        </div>
+      </div>
+   </header>
+
+   <main>
+      <div class="container">
+         <ul class="jobs-menu">
+            <% if(user) { %>
+               <% data.forEach((post) => { %>
+                  <li>
+                     <h1><%= post.vancancy %></h1>
+                     <h2 class="company-name">
+                        <%= post.company_name %>
+                        <i class="ph-circle-wavy-check-fill"></i>
+                     </h2>
+                     <ul class="jobInfo">
+                        <span class="salary"><%= post.salary %></span>
+                        <span>Location: <%= post.location %></span>
+                        <span>Published in: <strong class="date"><%= post.created_at %></strong></span>
+                     </ul>
+                     <div class="text">
+                        <%= post.information %>
+                     </div>
+                     <div class="functions">
+                           <div class="like">
+                              <a href="/liked/<%= user.id %>/<%= post.id %>">
+                                 <button class="heart-button"><i class="ph-thumbs-up"></i></button>
+                              </a>
+                              <span><%= post.likes %></span>
+                           </div>
+                           <div class="accept">
+                              <button class="want">I want</button>
+                           </div>
+                     </div>
+                  </li>
+               <% }) %>
+            <% } else { %>
+               <% data.forEach((post) => { %>
+                   <li>
+                    <h1><%= post.vancancy %></h1>
+                    <h2 class="company-name">
+                      <%= post.company_name %>
+                      <i class="ph-circle-wavy-check-fill"></i>
+                    </h2>
+                    <ul class="jobInfo">
+                      <span class="salary"><%= post.salary %></span>
+                      <span>Location: <%= post.location %></span>
+                      <span>Published in: <strong class="date"><%= post.created_at %></strong></span>
+                    </ul>
+                    <div class="text">
+                      <%= post.information %>
+                    </div>
+                    <div class="functions">
+                       <div class="like">
+                          <a href="/login">
                               <button class="heart-button"><i class="ph-thumbs-up"></i></button>
                            </a>
                            <span><%= post.likes %></span>
@@ -39,42 +88,21 @@
                         <div class="accept">
                            <button class="want">I want</button>
                         </div>
-                  </div>
-               </li>
-            <% }) %>
-         <% } else { %>
-            <% data.forEach((post) => { %>
-                <li>
-                 <h1><%= post.vancancy %></h1>
-                 <h2 class="company-name">
-                   <%= post.company_name %>
-                   <i class="ph-circle-wavy-check-fill"></i>
-                 </h2>
-                 <ul class="jobInfo">
-                   <span class="salary"><%= post.salary %></span>
-                   <span>Location: <%= post.location %></span>
-                   <span>Published in: <strong class="date"><%= post.created_at %></strong></span>
-                 </ul>
-                 <div class="text">
-                   <%= post.information %>
-                 </div>
-                 <div class="functions">
-                    <div class="like">
-                       <a href="/login">
-                           <button class="heart-button"><i class="ph-thumbs-up"></i></button>
-                        </a>
-                        <span><%= post.likes %></span>
-                     </div>
-                     <div class="accept">
-                        <button class="want">I want</button>
-                     </div>
-                 </div>
-               </li>
-            <% }) %>
-         <% } %>
-      </ul>
-  </div>
-  
+                    </div>
+                  </li>
+               <% }) %>
+            <% } %>
+         </ul>
+     </div>  
+   </main>
+   <footer>
+      <div class="container">
+        <p>
+          &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+        </p>
+      </div>
+    </footer>
   <script src="/js/post/jobs/main.js"></script>
+  <script src="/js/menu/main.js"></script>
 </body>
 </html>
