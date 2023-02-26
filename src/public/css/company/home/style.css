@@ -152,7 +152,6 @@ main .container .pubble .status {
     width: 50%;
     /* max-width: 400p x; */
     /* height: 200px; */
-    
   }
 
 main .container .pubble .status h2 {
@@ -162,7 +161,7 @@ main .container .pubble .status h2 {
     /* border-bottom: 1px solid var(--secondary); */
 
     font-family: 'Roboto', sans-serif;
-    font-size: 2em;
+    font-size: 2.5em;
     color: #fff;
     
 }
@@ -181,7 +180,7 @@ main .container .pubble .status ul {
     overflow-x: scroll;
     border-radius: 10px;
     /* border: 2px solid rgba(255, 255, 255, 0.18); */
-    background: linear-gradient(135deg, rgba(0, 123, 254, 0.1), rgba(255, 255, 255, 0));
+    /* background: linear-gradient(135deg, rgba(0, 123, 254, 0.1), rgba(255, 255, 255, 0)); */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
@@ -253,12 +252,13 @@ main .container .pubble .illustration-img {
 
     width: 50%;
     height: 100%;
+
 }
 
 main .container .pubble .illustration-img img {
     margin-bottom: auto;
 
-    width: 70%;
+    width: 90%;
 }
 
 footer {
