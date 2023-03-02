@@ -16,7 +16,10 @@
         <a href="./profile/index.html" class="username">Hello, <%= user.name %></a>
         <nav class="nav">
           <ul>
-            <a href="/jobs">jobs</a>
+            <li>
+              <i class="ph-briefcase-fill"></i>
+              <a href="/jobs">jobs</a>
+            </li>
             <div class="menu-dropdown">
               <button>more</button>
               <ul class="submenu">
@@ -27,10 +30,31 @@
                 <% } else { %>
                   <a href="/company/registration/<%= user.id %>">company</a>
                 <% } %>
-                <a href="./profile/index.html">profile</a>
+                <a href="./#">profile</a>
               </ul>
             </div>
-            <a href="/logout">logout</a>
+            <div class="mobile-option">
+              <% if(user.company.length > 0) { %>
+                <% user.company.forEach((company) => { %>
+                  <li>
+                    <i class="ph-buildings-fill"></i>
+                    <a href="/company/<%= user.id %>/<%= company.id %>"/>company</a>
+                  </li>
+                <% }) %>
+              <% } else { %>
+                <li>
+                  <a href="/company/registration/<%= user.id %>">company</a>
+                </li>
+              <% } %>
+              <li>
+                <i class="ph-user-circle-gear-fill"></i>
+                <a href="./#">profile</a>
+              </li>
+            </div>
+            <li>
+              <i class="ph-sign-out-fill"></i>
+              <a href="/logout">logout</a>
+            </li>
           </ul>
         </nav>
         <div class="menu">

@@ -15,30 +15,18 @@
 
 body, html {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
 
-    /* -webkit-tap-highlight-color: transparent;
-    background: var(--background);
-    background-image: url("/assets/fundo2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center; */
     background: linear-gradient(to bottom, #028fff, #78c3ee);
     
     font-family: Sans-Serif;
 }
 
 header {
-     /* position: fixed; */
-
-     width: 100%;
+    width: 100%;
     height: 70px;
 
     background-color: transparent;
-    /* background-image: linear-gradient(to left, var(--secondary), var(--primary)); */
-   /*box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;*/
-
-    /* background: rgba(20, 124, 183, 0.5); */
 }
 
 header .container {
@@ -70,7 +58,6 @@ header .container .username {
     text-decoration: none;
     border-left: 5px solid var(--white);
     text-decoration: none;
-    /* background: blue; */
 
     font-family: 'Roboto', cursive;
     font-size: 1.3em;
@@ -88,7 +75,6 @@ header .container nav ul {
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* gap: 1em; */
 
     width: 100%;
     height: 100%;
@@ -97,15 +83,18 @@ header .container nav ul {
 
 }
 
-header .container nav ul a {
+header .container nav ul li {
     padding: 7px 15px;
 
     width: auto;
     height: auto;
+}
 
-    /* border: 1px solid #B8C61B; */
-    /* border-bottom: 2px solid var(--white); */
-    /* border-radius: 5px; */
+header .container nav ul li i {
+    display: none;
+}
+
+header .container nav ul li a {
     text-decoration: none;
 
     font-family: 'Roboto', sans-serif;
@@ -125,8 +114,7 @@ header .container nav ul .menu-dropdown button {
 
     outline: transparent;
     border: none;
-    /* border-bottom: 2px solid var(--white); */
-    /* border-radius: 5px; */
+
     background: none;
     text-decoration: none;
     cursor: pointer;
@@ -150,7 +138,10 @@ header .container nav ul .menu-dropdown .submenu {
     height: auto;
 
     border-radius: 5px;
-    background: #272525;
+    border: 1px solid #dbd9d980;
+    background: linear-gradient(to top, #028fff, #78c3ee);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     transition: 3s;
 }
 
@@ -165,14 +156,23 @@ header .container nav ul .menu-dropdown .submenu a {
     width: 100%;
     height: 100%;
    
+    text-decoration: none;
+
     font-size: 0.8em;
+    color: var(--white);
 }
 
 header .container nav ul .menu-dropdown:hover .submenu {
     display: flex;
 }
 
+header .container nav ul .mobile-option {
+    display: none;
+}
+
 main {
+    flex-grow: 1;    
+
     height: calc(100vh - 70px);
 }
 
@@ -186,7 +186,6 @@ main .container {
     max-width: 1279px;
     min-width: 300px;
     height: 100%;
-    /* max-height: 700px; */
 }
 
 main .container .pubble {
@@ -197,12 +196,8 @@ main .container .pubble {
     padding: 10px;
 
     width: 90%;
-    /* max-width: 1000px; */
     min-width: 300px;
     height: 100%;
-    /* max-height: 420px; */
-
-    /*box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;*/
 }
 
 main .container .pubble .phrases {
@@ -234,7 +229,6 @@ main .container .pubble .phrases .jobs {
     height: auto;
 
     border-bottom: 2px solid var(--white);
-    /* border-radius: 5px; */
     text-decoration: none;
 
     font-family: 'Roboto', sans-serif;
@@ -323,11 +317,8 @@ header .container .menu {
         background: linear-gradient(135deg, rgba(0, 123, 254, 0.1), rgba(255, 255, 255, 0));
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-
         transition: .6s;
-
         visibility: hidden;
-
         z-index: 1000;
     }
 
@@ -342,11 +333,8 @@ header .container .menu {
         top: 15px;
         right: 15px;
 
-
         width: 40px;
         height: 40px;
-
-        /* background-color: red; */
     }
     
     header .container .menu i {
@@ -367,19 +355,60 @@ header .container .menu {
         display: flex;
         flex-direction: column;
 
-        /* margin: 100px auto; */
         padding: 20px 0px;
 
         width: 100%;
         height: auto;
-
-        /* background: red; */
     }
 
-    header .container nav.active ul a {
+    header .container nav.active ul li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.3em;
+
+        padding: 7px 0px;
+
         width: 90%;
 
+        border-bottom: 1px solid #cccccc;
+
         font-size: 1.2em;
+    }
+
+    header .container nav.active ul li i {
+        display: flex;
+
+        font-size: 1.3em;
+        color: var(--white);
+    }
+
+    header .container nav.active ul .menu-dropdown {
+        display: none;
+    }
+
+    header .container nav.active ul .mobile-option {
+        display: flex;
+        flex-direction: column;
+
+        margin: auto;
+
+        width: 100%;
+    }
+
+    header .container nav.active ul .mobile-option li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.3em;
+
+        margin: auto;
+
+        padding: 7px 0px;
+
+        width: 90%;
+
+        border-bottom: 1px solid #cccccc;
     }
 
     main .container .pubble {
@@ -388,7 +417,7 @@ header .container .menu {
         align-items: center;
 
 
-        margin: 70px auto;
+        margin: 20px auto;
         padding: 5px;
     }
 

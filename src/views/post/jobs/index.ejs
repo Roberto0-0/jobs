@@ -17,9 +17,15 @@
         <nav class="nav">
           <ul>
             <% if(user) { %>
-               <a href="/dashboard">Back</a>
+               <li>
+                  <i class="ph-arrow-circle-left-fill"></i>
+                  <a href="/dashboard">back</a>
+               </li>
             <% } else { %>
-               <a href="/">Back</a>
+               <li>
+                  <i class="ph-arrow-circle-left-fill"></i>
+                  <a href="/">back</a>
+               </li>
             <% } %>
           </ul>
         </nav>
