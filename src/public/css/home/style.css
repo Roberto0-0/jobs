@@ -16,7 +16,7 @@ body, html {
     width: 100%;
     min-height: 100vh;
     
-    background: linear-gradient(to bottom, #028fff, #78c3ee);
+    background: linear-gradient(to bottom, #0197ff, #78c3ee);
 
     font-family: 'Roboto', sans-serif;
 }
@@ -134,8 +134,6 @@ main .container {
     min-width: 300px;
     height: 100%;
     max-height: 700px;
-
-    /* background-color: red; */
 }
 
 main .container .pubble {
@@ -146,26 +144,15 @@ main .container .pubble {
     padding: 10px;
 
     width: 90%;
-    /* max-width: 1000px;
-    min-width: 300px;
-    height: 100%;
-
-    /*background-image: linear-gradient(to top left, var(--secondary), var(--primary));*/
-    /*box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;*/
 }
 
 main .container .pubble .phrases {
-    /* margin-bottom: 30px; */
-
     width: 50%;
-
-    /* background-color: red; */
 }
 
 main .container .pubble .phrases h2 {
     font-size: 2.8em;
     color: #fff;
-
 }
 
 main .container .pubble .phrases h3 {
@@ -173,7 +160,6 @@ main .container .pubble .phrases h3 {
     
     font-size: 1.5em;
     color: #fff;
-
 }
 
 main .container .pubble .phrases .jobs {
@@ -199,8 +185,6 @@ main .container .pubble .illustration-img {
 
     width: 50%;
     height: 100%;
-
-    /* background-color: blue; */
 }
 
 main .container .pubble .illustration-img img {
