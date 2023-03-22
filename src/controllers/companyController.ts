@@ -2,11 +2,9 @@ import { Request, Response } from "express"
 import { Create } from "../services/Company/create"
 import { ReadAll } from "../services/Company/readAll"
 import { Read } from "../services/Company/read"
-//import { UserRead } from "../services/User/read"
+import { LikeRead } from "../services/Like/read"
 import { Update } from "../services/Company/update"
 import { Delete } from "../services/Company/delete"
-import _ from "lodash"
-import { CompanySchema } from "../schemas/companySchema"
 
 export class CompanyController {
   async createIndex(req: Request, res: Response) {
@@ -26,37 +24,18 @@ export class CompanyController {
      const { employer, companyName, email } = req.body
      
     try {
-      const {error, value} = CompanySchema.validate({
-         id,
-         employer,
-         companyName,
-         email
-      })
-
-      if(error) {
-        return res.status(422).json({
-          status: 'error',
-          message: 'Invalid request data. Please review request and try again.',
-          error: {
-            details: _.map(error.details, ({message, type}) => ({
-                message: message.replace(/['"]/g, ''),
-                type
-            }))
-          }
-        })
-      }
       const service = new Create()
-      const result = await service.execute(value)
+      const result = await service.execute({
+        id,
+        employer,
+        companyName,
+        email
+      })
       
       if(result instanceof Error) {
         return res.status(400).send({ message: result.message })
       }
       
-      /*return res.status(201).json({
-        status: 'success',
-        messag: 'Company created successfully!',
-        data: value
-      })*/
       res.redirect("/dashboard")
     } catch (error) {
       console.error(error)
@@ -78,8 +57,15 @@ export class CompanyController {
         return res.status(400).send({ message: result.message })
       }
 
+      var sum = 0
+      for(var posts of result.post) {
+        sum += posts.likes
+      }
+
       return res.render("company/home/index.ejs", {
-         data: result
+         data: result,
+         userId: user_id,
+         likes: sum
       })
     } catch (error) {
       console.error(error)
@@ -87,13 +73,14 @@ export class CompanyController {
     }
   }
   
-  /*async posts(req: Request, res: Response) {
-    const { id } = req.params
+  async posts(req: Request, res: Response) {
+    const { user_id, company_id } = req.params
 
     try {
       const service = new Read()
       const result = await service.execute({
-         id
+         user_id,
+         company_id
       })
 
       if (result instanceof Error) {
@@ -107,7 +94,27 @@ export class CompanyController {
       console.error(error)
       res.status(500).send({ message: "Internal server error!" })
     }
-  }*/
+  }
+  
+  async likes(req: Request, res: Response) {
+        const { company_id } = req.params
+      
+        try {
+          const service = new LikeRead()
+          const result = await service.execute(company_id)
+    
+          if (result instanceof Error) {
+            return res.status(400).send({ message: result.message })
+          }
+    
+          return res.render("company/likes/index.ejs", {
+             data: result
+          })
+        } catch (error) {
+          console.error(error)
+          res.status(500).send({ message: "Internal server error!" })
+        }
+    }
 
   async readAll(req: Request, res: Response) {
     try {

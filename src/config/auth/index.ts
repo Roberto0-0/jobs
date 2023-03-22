@@ -10,7 +10,7 @@ export default function(value: any): void {
   });
 
   passport.deserializeUser((user: any, done) => {
-    UserRepository.findOne({ 
+    UserRepository.findOne({
        where: { id: user.id },
        relations: {
           company: true,
@@ -30,10 +30,10 @@ export default function(value: any): void {
       passwordField: "password" 
     }, (email, password, done) => {
       UserRepository.findOne({ where: { email: email } }).then((user) => {
-        if (!user) { return done(null, false) }
+        if (!user) { return done(null, false, { message: "E-mail/password invalid" }) }
         bcrypt.compare(password, user.password, (err, isMatch) => {
           if(err) { return done(null, err) }
-          if(!isMatch) { return done(null, false) }
+          if(!isMatch) { return done(null, false, { message: "E-mail/password invalid" }) }
           return done(null, user);
         })
       }).catch((err) => {

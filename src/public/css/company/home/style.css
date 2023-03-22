@@ -53,7 +53,7 @@ header .container .company-name {
     justify-content: center;
     align-items: center;
 
-    padding: 0px 15px;
+    padding: 0px 10px;
 
     width: auto;
     height: 70%;
@@ -63,6 +63,7 @@ header .container .company-name {
     text-decoration: none;
 
     font-size: 1.3em;
+    font-weight: bold;
     color: var(--white);
 }
 
@@ -146,7 +147,7 @@ main .container .pubble .status h2 {
     margin-bottom: 0.5em;
     height: auto;
 
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Varela Round', sans-serif;
     font-size: 2.5em;
     color: #fff;
 }
@@ -314,10 +315,9 @@ header .container .menu {
         width: 0;
         height: calc(100vh - 70px);
         
-        background: linear-gradient(135deg, rgba(0, 123, 254, 0.1), rgba(255, 255, 255, 0));
+        background: linear-gradient(135deg, rgba(1, 151, 255, 0.1), rgba(255, 255, 255, 0));
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        transition: .6s;
         visibility: hidden;
         z-index: 1000;
     }
@@ -347,7 +347,6 @@ header .container .menu {
         
         width: 100vw;
 
-        transition: .6s;
         visibility: visible;
     }
 
@@ -366,22 +365,26 @@ header .container .menu {
         flex-direction: row;
         align-items: center;
         gap: 0.3em;
+        
+        padding: 0px 0px;
 
-        padding: 7px 0px;
+        width: 95%;
 
-        width: 90%;
-
-        border-bottom: 1px solid #cccccc;
+        border-bottom: 2px solid var(--white);
     }
 
     header .container nav.active ul li i {
-        display: block;
+        display: flex;
 
-        font-size: 1.3em;
+        font-size: 1.5em;
         color: var(--white);
     }
 
     header .container nav.active ul li a {
+        padding: 11px 0px;
+        
+        width: 100%;
+        
         font-size: 1.2em;
         font-weight: bold;
         color: var(--white);
@@ -413,27 +416,32 @@ header .container .menu {
     }
 
     main .container .pubble .status h2 {
+        text-align: center;
         font-size: 1.5em;
         color: #fff;
     }
 
     main .container .pubble .status ul li {
-        margin-right: auto;
-
-        width: 50%;
+        width: 90%;
     }
 
     main .container .pubble .status ul li a {
-        justify-content: space-between;
-        gap: 0;
-    }
-
-    main .container .pubble .status ul li div:last-child {
-        padding: 0px 1.5em;
+        gap: 4em;
     }
 
     main .container .pubble .status ul li a .illustration {
         width: 40%;
+    }
+    
+    main .container .pubble .status ul li a .info .value {
+        font-size: 1.3em;
+        font-weight: bold;
+        color: #000;
+    }
+  
+    main .container .pubble .status ul li a .info p {
+        font-size: 0.8em;
+        color: #808080;
     }
 
     main .container .pubble .illustration-img {

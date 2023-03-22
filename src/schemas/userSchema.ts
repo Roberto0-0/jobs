@@ -1,8 +1,23 @@
-import Joi from "joi";
+import { z } from "zod";
 
-export const UserSchema = Joi.object({
-  name: Joi.string().min(3).max(30).required(),
-  email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com'] } }).required(),
-  password: Joi.string().min(5).max(16).pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
-  confirmPassword: Joi.ref('password')
+export const userSchema = z.object({
+  name: z.string({
+    required_error: "Name is required"
+  }).min(3, "Very short name"),
+  email: z.string({
+    required_error: "Email is required"
+  }).email(),
+  password: z.string({
+    required_error: "Password is required"
+  }).min(7, "Password at least 8 characters"),
+  confirmPassword: z.string({
+    required_error: "Confirma password is required"
+  })
+}).superRefine(({ confirmPassword, password }, ctx) => {
+  if(confirmPassword != password) {
+    ctx.addIssue({
+      code:"custom",
+      message: "The passwords did not match"
+    })
+  }
 })

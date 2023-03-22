@@ -33,6 +33,8 @@ export class App {
     this.app.use(passport.session())
     this.app.use(flash())
     this.app.use((req: Request, res: Response, next: NextFunction) => {
+      res.locals.success_message = req.flash("success_message")
+      res.locals.error_message = req.flash("error_message")
       res.locals.error = req.flash("error")
       res.locals.user = req.user || null
       next()

@@ -10,6 +10,9 @@
   <title>Jobs</title>
 </head>
 <body>
+    <% for(var i=0;i < error_message.length;i++) { %>
+        <div class="error_message"><%= error_message[i] %></div>
+    <% } %>
   <div class="container">
     <div class="register">
       <h2>Register</h2>
@@ -17,11 +20,11 @@
     <form action="/user/register" method="POST">
       <div class="input">
         <i class="ph-user-fill"></i>
-        <input type="text" name="name" placeholder="Name" autocomplete="off" required>
+        <input type="text" name="name" placeholder="Username" autocomplete="off" required>
       </div>
       <div class="input">
         <i class="ph-envelope-simple-fill"></i>
-        <input type="email" name="email" placeholder="Example@gmail.com" autocomplete="off" required>
+        <input type="email" name="email" placeholder="you@example.com" autocomplete="off" required>
       </div>
       <div class="input">
         <i class="ph-lock-simple-fill"></i>
@@ -30,7 +33,7 @@
       </div>
       <div class="input">
         <i class="ph-lock-simple-fill"></i>
-        <input type="password" name="confirmPassword" id="confirm-password" placeholder="Confirm password" autocomplete="off" required>
+        <input type="password" name="confirmPassword" id="confirm-password" placeholder="Repeat password" autocomplete="off" required>
         <i class="ph-lightbulb" id="eye-confirm-button"></i>
       </div>
 

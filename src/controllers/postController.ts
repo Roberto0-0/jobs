@@ -4,8 +4,6 @@ import { ReadAll } from "../services/Post/readAll"
 import { Read } from "../services/Post/read"
 import { Update } from "../services/Post/update"
 import { Delete } from "../services/Post/delete"
-import { PostSchema } from "../schemas/postSchema"
-import _ from "lodash"
 
 export class PostController {
   async createIndex(req: Request, res: Response) {
@@ -25,7 +23,8 @@ export class PostController {
     const { companyName, vancancy, location, salary, information } = req.body
 
     try {
-      const { error, value } = PostSchema.validate({
+      const service = new Create()
+      const result = await service.execute({
         company_id,
         companyName,
         vancancy,
@@ -34,31 +33,10 @@ export class PostController {
         information
       })
 
-      if(error) {
-        return res.status(422).json({
-          status: 'error',
-          message: 'Invalid request data. Please review request and try again.',
-          error: {
-            details: _.map(error.details, ({message, type}) => ({
-                message: message.replace(/['"]/g, ''),
-                type
-            }))
-          }
-        })
-      }
-
-      const service = new Create()
-      const result = await service.execute(value)
-
       if (result instanceof Error) {
         return res.status(400).send({ message: result.message })
       }
 
-      /*return res.status(201).json({
-        status: 'success',
-        message: 'Post created successfully!',
-        data: value
-      })*/
       res.redirect("/dashboard")
     } catch (error) {
       console.error(error)
@@ -104,7 +82,7 @@ export class PostController {
     }
   }
   
-  async updateIndex(req: Request, res: Request) {
+  async updateIndex(req: Request, res: Response) {
      const { post_id, company_id } = req.params
      
      try {

@@ -1,46 +1,44 @@
 import { Request, Response } from "express"
-import { UserSchema } from "../schemas/userSchema"
 import { Create } from "../services/User/create"
 import { Delete } from "../services/User/delete"
-import { Read } from "../services/User/read"
+import { UserRead } from "../services/User/read"
 import { ReadAll } from "../services/User/readAll"
 import { Update } from "../services/User/update"
-import _ from "lodash"
+import { userSchema } from "../schemas/userSchema"
 
-export class UserController {
-   
+var newErros: string[] = []
+
+export class UserController { 
   createIndex(req: Request, res: Response) {
      res.render("user/register/index.ejs")
   }
+
   async create(req: Request, res: Response) {
     try {
-      const {error, value} = UserSchema.validate(req.body)
+      const validation = userSchema.safeParse(req.body)
 
-      if(error) {
-        return res.status(422).json({
-          status: 'error',
-          message: 'Invalid request data. Please review request and try again.',
-          error: {
-            details: _.map(error.details, ({message, type}) => ({
-                message: message.replace(/['"]/g, ''),
-                type
-            }))
-          }
+      if(validation.success) {
+        const service = new Create()
+        const result = await service.execute(validation.data)
+
+        if(result instanceof Error) {
+            newErros.push(result.message)
+            req.flash("error_message", result.message)
+            return res.redirect("/register")
+        }
+
+        return res.redirect("/login")
+      } else {
+        const err = validation.error.errors
+
+        err.map((values) => {
+            newErros.push(values.message)
         })
       }
-      const service = new Create()
-      const result = await service.execute(value)
-      
-      if(result instanceof Error) {
-        return res.status(400).send({ message: result.message })
-      }
-      
-      /*return res.status(201).json({
-        status: 'success',
-        messag: 'Account created successfully!',
-        data: value
-      })*/
-      res.redirect("/login")
+
+      req.flash("error_message", newErros)
+      res.redirect("/register")
+      newErros = []
     } catch(err) {
       console.error(err)
       return res.status(500).send({ message: "Internal server error!"})
@@ -51,7 +49,7 @@ export class UserController {
     const { id } = req.params
 
     try {
-      const serivce = new Read()
+      const serivce = new UserRead()
       const result = await serivce.execute(id)
 
       if(result instanceof Error) {
