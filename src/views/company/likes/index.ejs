@@ -39,32 +39,7 @@
        <div class="container">
           <ul class="jobs-menu">
              <% if(data) { %>
-                <% for(var i=0;i < data.post.length;i++) { %>
-                   <li>
-                      <h1><%= data.post[i].vancancy %></h1>
-                      <h2 class="company-name">
-                         <%= data.post[i].company_name %>
-                          <i class="ph-circle-wavy-check-fill"></i>
-                      </h2>
-                     <ul class="jobInfo">
-                        <li>Salary: <span class="salary"><%= data.post[i].salary %></span></li>
-                        <li>Location: <span><%= data.post[i].location %></span></li>
-                        <li>Published: <span class="date"><strong><%= data.post[i].created_at %></strong></span></li>
-                        <li>Vacancy: <span>1</span></li>
-                     </ul>
-                     <div class="text">
-                       <%= data.post[i].information %>
-                     </div>
-                      <div class="settings">
-                        <a href="/post/update/<%= data.post[i].id %>/<%= data.id %>">
-                            <button><i class="ph-fill ph-pencil"></i></button>
-                        </a>
-                        <a href="/post/delete/<%= data.post[i].id %>/<%= data.id %>">
-                            <button><i class="ph-fill ph-trash"></i></button>
-                        </a>
-                      </div>
-                   </li>
-                <% } %>
+                 <h2><%= data %></h2>
              <% } %>
             </ul>
         </div>

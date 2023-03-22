@@ -48,9 +48,10 @@
                         <i class="ph-circle-wavy-check-fill"></i>
                      </h2>
                      <ul class="jobInfo">
-                        <span class="salary"><%= post.salary %></span>
-                        <span>Location: <%= post.location %></span>
-                        <span>Published in: <strong class="date"><%= post.created_at %></strong></span>
+                        <li>Salary: <span class="salary"><%= post.salary %></span></li>
+                        <li>Location: <span><%= post.location %></span></li>
+                        <li>Published: <span class="date"><strong><%= post.created_at %></strong></span></li>
+                        <li>Vacancy: <span>3</span></li>
                      </ul>
                      <div class="text">
                         <%= post.information %>
@@ -77,9 +78,10 @@
                       <i class="ph-circle-wavy-check-fill"></i>
                     </h2>
                     <ul class="jobInfo">
-                      <span class="salary"><%= post.salary %></span>
-                      <span>Location: <%= post.location %></span>
-                      <span>Published in: <strong class="date"><%= post.created_at %></strong></span>
+                        <li>Salary: <span class="salary"><%= post.salary %></span></li>
+                        <li>Location: <span><%= post.location %></span></li>
+                        <li>Published: <span class="date"><strong><%= post.created_at %></strong></span></li>
+                        <li>Vacancy: <span>1</span></li>
                     </ul>
                     <div class="text">
                       <%= post.information %>

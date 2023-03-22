@@ -14,39 +14,143 @@
 }
 
 body, html {
-    background-color: var(--background);
+    width: 100%;
+    min-height: 100vh;
+
+    background: linear-gradient(to bottom, #0197ff, #78c3ee);
     
     font-family: Sans-Serif;
 }
 
-.container {
-    margin: 50px auto;
-    padding: 10px 20px;
+header  {
+    width: 100%;
+    height: 70px;
 
-    width: 50%;
-    max-width: 1000px;
-    min-width: 300px;
-    height: auto;
-
-    /* border: 1px solid var(--border); */
-    /* border-radius: 10px; */
     background-color: transparent;
 }
 
-.container .menu {
+header .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    align-items: center;
+    margin: 0 auto;
+
+    width: 90%;
+    max-width: 1279px;
+    min-width: 300px;
+    height: 100%;
+}
+
+header .container .logo {
+    padding: 0px 15px;
+
+    width: auto;
+    height: 70%;
+
+    border-left: 5px solid var(--white);
+    text-decoration: none;
+
+    font-family: 'Chango', cursive;
+    font-size: 2.5em;
+    color: var(--white);
+    
+}
+
+header .container nav {
+    display: block;
+    padding: 0px 10px;
+
+    width: auto;
+    height: 80%;
+}
+ 
+header .container nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+
+    width: 100%;
+    height: 100%;
+
+    list-style: none;
+}
+
+header .container nav ul li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+    
+    padding: 7px 15px;
+
+    width: auto;
+    height: auto;
+}
+
+header .container nav ul li i {
+    font-size: 1.2em;
+    color: var(--white);
+}
+
+header .container nav ul a {
+    width: 100%;
+    height: 100%;
+    
+    text-decoration: none;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2em;
+    color: var(--white);
+}
+
+header .container nav ul .login-button {
+    border: 1px solid var(--white);
+    border-radius: 10px;
+}
+
+header .container .menu {
+    display: none;
+}
+
+main {
+    flex-grow: 1;
+
+    margin: auto;
+
+    width: 100%;
+    height: 100vh;
+}
+
+main .container {
+    display: flex;
+    flex-direction: column;
+
+    margin: 50px auto;
+
+    width: 90%;
+    max-width: 1279px;
+    min-width: 300px;
+    height: 100%;
+}
+
+main .container .jobs-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5em;
 
     width: 100%;
-    height: auto;
 }
 
-.container .menu li {
+main .container .jobs-menu li {
     padding: 10px;
 
-    width: 100%;
+    width: 50%;
+    max-width: 500px;
+    min-width: 300px;
     height: auto;
     
     border: 1px solid var(--border);
@@ -55,16 +159,14 @@ body, html {
     list-style: none;
 }
 
-.container .menu li h1 {
-    margin-bottom: 0.1em;
-
+main .container .jobs-menu li h1 {
     font-family: 'Roboto', sans-serif;
     font-size: 2em; 
     font-weight: 400;
     color: var(--primary);
 }
 
-.container .menu li .company-name {
+main .container .jobs-menu li .company-name {
    display: flex;
    flex-direction: row;
    align-items: center;
@@ -73,15 +175,16 @@ body, html {
     margin-bottom: 1em;
 
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 400;
+    font-weight: bold;
     font-size: 1.2em;
+    color: #535252;
 }
 
-.container .menu li .company-name i {
+main .container .jobs-menu li .company-name i {
    color: var(--primary);
 }
 
-.container .menu li .jobInfo {
+main .container .jobs-menu li .jobInfo {
     display: flex;
     flex-direction: column;
     gap: 0.1em;
@@ -91,35 +194,38 @@ body, html {
     width: auto;
     height: auto;
 
-    /* background-color: red; */
-
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
 }
 
-.container .menu li .text {
+main .container .jobs-menu li .jobInfo li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+    
+    padding: 0;
+    
+    border: none;
+    background: none;
+}
+
+main .container .jobs-menu li .jobInfo li span {
+    font-weight: 600;
+    color: #535252;
+}
+
+main .container .jobs-menu li .text {
     margin-bottom: 0.8em;
 
+    text-align: justify;
+    word-break: break-all;
     line-height: 1.5em;
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
 }
 
-.container .menu li button {
-    padding: 10px 15px;
-
-    outline: transparent;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: var(--primary);
-
-    font-family: 'Roboto', sans-serif;
-    font-size: 1em;
-    color: var(--white);
-}
-
-.container .menu li .settings {
+main .container .jobs-menu li .settings {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -130,12 +236,20 @@ body, html {
 
     width: 100%;
     height: auto;
-
-   border-top: 1px solid var(--border);
+    
+    border-top: 1px solid var(--border);
     /* background: red; */
 }
 
-.container .menu li .settings button {
+main .container .jobs-menu li .settings a {
+    text-decoration: none;
+}
+
+main .container .jobs-menu li .settings a button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     padding: 10px 15px;
 
     outline: transparent;
@@ -144,19 +258,136 @@ body, html {
     cursor: pointer;
     background-color: var(--primary);
 
-    font-family: 'Roboto', sans-serif;
-    font-size: 1em;
+    font-size: 1.5em;
     color: var(--white);
 }
 
-@media(max-width: 425px) {
-    .container {
+
+footer {
+    width: 100%;
+    height: 50px;
+
+    background: var(--footer);
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto;
+
+    width: 90%;
+    max-width: 1279px;
+    min-width: 300px;
+    height: 100%;
+
+    font-family: 'Roboto', sans-serif;
+}
+
+footer .container p {
+    text-align: center;
+    font-size: 1em;
+    color: #fff;
+}
+
+footer .container p a {
+    color: #fff;
+}
+
+@media(max-width: 600px) {
+    header .container .logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 1.5em;
+    }
+
+    header .container nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+
+        width: 0;
+        height: calc(100vh - 70px);
+        
+        background: linear-gradient(135deg, rgba(1, 151, 255, 0.1), rgba(255, 255, 255, 0));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        visibility: hidden;
+    }
+
+    header .container nav ul {
+        display: none;
+    }
+
+    header .container .menu {
+        display: block;
+
+        position: absolute;
+        top: 15px;
+        right: 15px;
+
+        width: 40px;
+        height: 40px;
+    }
+    
+    header .container .menu i {
+      font-size: 2.5em;
+      color: var(--white);
+    }
+
+    header .container nav.active {
+        display: block;
+        
+        width: 100vw;
+
+        visibility: visible;
+    }
+
+    header .container nav.active ul {
+        display: flex;
+        flex-direction: column;
+
+        padding: 20px 0px;
+
+        width: 100%;
+        height: auto;
+    }
+
+    header .container nav.active ul li  {
+
+        width: 90%;
+
+        border-bottom: 2px solid var(--white);
+
+        font-size: 1.2em;
+        font-weight: bold;
+        color: var(--white);
+    }
+    
+    header .container nav.active ul li {
+        padding: 10px 0px;
+    }
+
+    header .container nav.active ul .login-button {
+        border: none;
+    }
+
+    main .container {
         width: 350px;
+    }
+
+    footer .container p {
+        font-size: 0.7em;
     }
 }
 
 @media(max-width: 320px) {
-    .container {
+    main .container {
         width: 290px;
     }
 }

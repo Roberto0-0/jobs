@@ -58,7 +58,9 @@ export class Post {
   })
   company: Company
 
-  @OneToMany(() => Like, (like) => like.post)
+  @OneToMany(() => Like, (like) => like.post, {
+      cascade: true,
+  })
   like: Like[]
 
   @CreateDateColumn()

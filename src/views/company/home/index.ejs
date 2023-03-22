@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/phosphor-icons"></script>
   <link rel="stylesheet" href="/css/company/home/style.css">
   <title>Jobs</title>
@@ -16,18 +17,18 @@
         <a href="./profile/index.html" class="company-name"><%= data.company %></a>
         <nav class="nav">
           <ul>
-          <li>
-            <i class="ph-briefcase-fill"></i>
-            <a href="/jobs">Jobs</a>
-          </li>
-          <li>
-            <i class="ph-note-fill"></i>
-            <a href="/post/create/<%= data.id %>">new post</a>
-          </li>
-          <li>
-            <i class="ph-arrow-circle-left-fill"></i>
-            <a href="/dashboard">back</a>
-          </li>
+              <li>
+                <i class="ph-briefcase-fill"></i>
+                <a href="/jobs">jobs</a>
+              </li>
+              <li>
+                <i class="ph-note-fill"></i>
+                <a href="/post/create/<%= data.id %>">new post</a>
+              </li>
+              <li>
+                <i class="ph-arrow-circle-left-fill"></i>
+                <a href="/dashboard">back</a>
+              </li>
           </ul>
         </nav>
    
@@ -41,11 +42,11 @@
         <div class="pubble">
           <div class="status">
             <div>
-              <h2>status of your posts</h2>
+              <h2>status of your posts 🗒</h2>
             </div>
             <ul>
               <li>
-                <a href="/company/posts/<%= data.id %>">
+                <a href="/company/posts/<%= userId %>/<%= data.id %>">
                   <div class="illustration">
                     <i class="ph-note-fill"></i>
                   </div>
@@ -56,12 +57,12 @@
                 </a>
               </li>
               <li>
-                <a href="/company/posts/<%= data.id %>">
+                <a href="/company/likes/<%= data.id %>">
                   <div class="illustration">
                     <i class="ph-thumbs-up-fill"></i>
                   </div>
                   <div class="info">
-                    <span class="value"><%= data.post.length %></span>
+                    <span class="value"><%= likes %></span>
                     <p>Likes</p>
                   </div>        
                 </a>

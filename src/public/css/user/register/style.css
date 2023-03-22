@@ -11,6 +11,10 @@
     --footer: #343434;
     --border: #a6a6a6;
     --white: #ffff;
+    --background-message-success: #76e7a5;
+    --background-message-error: #e77676;
+    --text-message-success: #02703d;
+    --text-message-error: #700202;
 }
 
 body, html {
@@ -31,7 +35,7 @@ img {
 }
 
 .container {
-    position: absolute;
+    position: relative;
     top: 45%;
     left: 50%;
 
@@ -150,6 +154,30 @@ img {
     text-align: center;
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
+}
+
+.error_message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  position: relative;
+  
+  margin: 20px auto;
+  
+  width: 85vw;
+  max-width: 400px;
+  min-width: 260px;
+  height: 50px;
+  
+  border-radius: 5px;
+  background: var(--background-message-error);
+
+  font-size: 1.3em;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  color: var(--text-message-error);
 }
 
 @media(max-width: 600px) {

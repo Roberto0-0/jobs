@@ -10,7 +10,7 @@ export class Read {
     })
 
     if (!post) {
-      return new Error("Posr not fould!")
+      return new Error("Post not fould!")
     }
 
     return post
