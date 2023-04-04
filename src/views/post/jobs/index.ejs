@@ -41,7 +41,7 @@
          <ul class="jobs-menu">
             <% if(user) { %>
                <% data.forEach((post) => { %>
-                  <li>
+                  <li class="li">
                      <h1><%= post.vancancy %></h1>
                      <h2 class="company-name">
                         <%= post.company_name %>
@@ -53,8 +53,11 @@
                         <li>Published: <span class="date"><strong><%= post.created_at %></strong></span></li>
                         <li>Vacancy: <span>3</span></li>
                      </ul>
-                     <div class="text">
-                        <%= post.information %>
+                     <div class="text-box">
+                        <div class="text">
+                           <%= post.information %>
+                        </div>
+                        <button class="btn-seeMore">...see more</button>
                      </div>
                      <div class="functions">
                            <div class="like">
@@ -71,7 +74,7 @@
                <% }) %>
             <% } else { %>
                <% data.forEach((post) => { %>
-                   <li>
+                   <li class="li">
                     <h1><%= post.vancancy %></h1>
                     <h2 class="company-name">
                       <%= post.company_name %>
@@ -83,9 +86,12 @@
                         <li>Published: <span class="date"><strong><%= post.created_at %></strong></span></li>
                         <li>Vacancy: <span>1</span></li>
                     </ul>
-                    <div class="text">
-                      <%= post.information %>
-                    </div>
+                    <div class="text-box">
+                     <div class="text">
+                        <%= post.information %>
+                     </div>
+                     <button class="btn-seeMore">...see more</button>
+                  </div>
                     <div class="functions">
                        <div class="like">
                           <a href="/login">

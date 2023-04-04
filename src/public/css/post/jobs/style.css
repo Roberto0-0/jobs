@@ -121,7 +121,7 @@ main {
     margin: auto;
 
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
 main .container {
@@ -215,14 +215,37 @@ main .container .jobs-menu li .jobInfo li span {
     color: #535252;
 }
 
-main .container .jobs-menu li .text {
+main .container .jobs-menu li .text-box {
+    display: flex;
+    flex-direction: column;
+}
+
+main .container .jobs-menu li .text-box .text {
     margin-bottom: 0.8em;
+
+    height: 100px;
+
+    overflow: hidden;
 
     text-align: justify;
     word-break: break-all;
     line-height: 1.5em;
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
+}
+
+main .container .jobs-menu li .text-box .btn-seeMore {
+    margin-left: auto;
+
+    padding: 10px 20px;
+
+    outline: transparent;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    font-size: 1em;
+    color: #535252;
 }
 
 main .container .jobs-menu li .want {
