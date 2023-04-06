@@ -3,10 +3,41 @@ const salary = document.getElementsByClassName("salary")
 const li = document.querySelectorAll(".li")
 const text = document.querySelectorAll(".text")
 const btnseeMore = document.querySelectorAll(".btn-seeMore")
+const notfound = document.querySelector(".notfound")
 
 var clicked = false
+var count = []
+
+function getItems() {
+  let inputItems = document.querySelector("#searchItems").value
+  inputItems = inputItems.toLowerCase()
+  let vancancy = document.querySelectorAll(".vancancy")
+
+  for(let i=0;i < vancancy.length;i++) {
+    if(!vancancy[i].innerHTML.toLowerCase().includes(inputItems)) {
+      li[i].style.display = "none"
+    } else {
+      li[i].style.display = "block"
+    }
+
+    if(li[i].style.display == "none") {
+      count.push(1)
+    }
+    if(li[i].style.display == "block") {
+      count = []
+    }
+
+    if(count.length >= li.length) {
+      notfound.style.display = "block"
+      notfound.innerHTML = `No result for "${inputItems}"`
+    } else if(count.length < li.length) {
+      notfound.style.display = "none"
+    }
+  }
+}
 
 const main = () => {
+
   for(let j=0;j < li.length;j++) {
     if(text[j].textContent.length > 250) {
       btnseeMore[j].style.display = "block"

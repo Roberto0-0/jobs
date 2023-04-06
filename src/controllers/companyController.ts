@@ -87,6 +87,7 @@ export class CompanyController {
         return res.status(400).send({ message: result.message })
       }
 
+
       return res.render("company/posts/index.ejs", {
          data: result
       })
