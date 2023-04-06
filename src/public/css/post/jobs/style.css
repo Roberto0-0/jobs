@@ -13,9 +13,17 @@
     --white: #fff;
 }
 
-body, html {
+html {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+
     width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
 
     background: linear-gradient(to bottom, #0197ff, #78c3ee);
     
@@ -57,6 +65,50 @@ header .container .logo {
     color: var(--white);
     
 }
+
+header .container .search-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 5px;
+
+    width: 300px;
+    height: 40px;
+
+    border-radius: 5px;
+    background: var(--white);
+}
+
+header .container .search-area input {
+    outline: transparent;
+    border: none;
+    background: none;
+
+    width: 90%;
+
+    font-size: 0.8em;
+}
+
+header .container .search-area button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    outline: transparent;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    width: 20px;
+    height: 100%;
+}
+
+header .container .search-area button i {
+    font-size: 1.5em;
+}
+
 
 header .container nav {
     display: block;
@@ -134,6 +186,25 @@ main .container {
     max-width: 1279px;
     min-width: 300px;
     height: 100%;
+}
+
+main .container .notfound {
+    display: none;
+
+    margin: auto;
+    padding: 10px;
+
+    width: auto;
+    max-width: 400px;
+    height: auto;
+
+    border-radius: 10px;
+    background: var(--white);
+
+    text-align: center;
+    word-break: break-all;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.5em;
 }
 
 main .container .jobs-menu {
@@ -365,6 +436,22 @@ footer .container p a {
         justify-content: center;
 
         font-size: 1.5em;
+    }
+
+    header .container .search-area {
+        margin: auto;
+        margin-left: 15px;
+
+        width: 150px;
+        height: 30px;
+    }
+
+    header .container .search-area input {
+        font-size: 0.7em;
+    }
+
+    header .container .search-area button i {
+        font-size: 1em;
     }
 
     header .container nav {
