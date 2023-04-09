@@ -13,27 +13,29 @@
     <div class="logoname">
       <h2>Job</h2>
     </div>
-    <form action="/post/create/<%= data %>" method="POST">
-      <div class="input">
-        <i class="ph-buildings-fill"></i>
-        <input type="text" name="companyName" id="" placeholder="Company" autocomplete="off" required>
-      </div>
-      <div class="input">
-        <i class="ph-cardholder-fill"></i>
-        <input type="text" name="vancancy" id="" placeholder="vancancy" autocomplete="off" required>
-      </div>
-      <div class="input">
-        <i class="ph-map-trifold-fill"></i>
-        <input type="text" name="location" id="" placeholder="Location" autocomplete="off" required>
-      </div>
-      <div class="input">
-        <i class="ph-currency-dollar-fill"></i>
-        <input type="number" name="salary" placeholder="Salary" required>
-      </div>
-      <textarea name="information" id="" cols="30" rows="10" placeholder="more information here!"></textarea>
-
-      <button>send</button>
-    </form>
+    <% if(user) { %>
+      <form action="/post/create/<%= user.id %>/<%= data %>" method="POST">
+        <div class="input">
+          <i class="ph-buildings-fill"></i>
+          <input type="text" name="companyName" id="" placeholder="Company" autocomplete="off" required>
+        </div>
+        <div class="input">
+          <i class="ph-cardholder-fill"></i>
+          <input type="text" name="vancancy" id="" placeholder="vancancy" autocomplete="off" required>
+        </div>
+        <div class="input">
+          <i class="ph-map-trifold-fill"></i>
+          <input type="text" name="location" id="" placeholder="Location" autocomplete="off" required>
+        </div>
+        <div class="input">
+          <i class="ph-currency-dollar-fill"></i>
+          <input type="number" name="salary" placeholder="Salary" required>
+        </div>
+        <textarea name="information" id="" cols="30" rows="10" placeholder="more information here!"></textarea>
+  
+        <button>send</button>
+      </form>
+    <% } %>
   </div>
 </body>
 </html>

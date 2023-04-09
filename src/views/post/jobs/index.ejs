@@ -62,7 +62,9 @@
                         <li>Vacancy: <span>3</span></li>
                      </ul>
                      <div class="text-box">
-                        <h2 class="description">Description</h2>
+                        <% if(post.information) { %>
+                           <h2 class="description">Description</h2>
+                        <% } %>
                         <div class="text">
                            <%= post.information %>
                         </div>

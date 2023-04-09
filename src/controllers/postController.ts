@@ -19,7 +19,7 @@ export class PostController {
      }
   }
   async create(req: Request, res: Response) {
-    const { company_id } = req.params
+    const { user_id, company_id } = req.params
     const { companyName, vancancy, location, salary, information } = req.body
 
     try {
@@ -37,7 +37,8 @@ export class PostController {
         return res.status(400).send({ message: result.message })
       }
 
-      res.redirect("/dashboard")
+      req.flash("success_message", "your post has been created!")
+      res.redirect("/company/" + user_id + "/" + company_id)
     } catch (error) {
       console.error(error)
       return res.status(500).send({ message: "Internal server error!" })
@@ -129,7 +130,7 @@ export class PostController {
   }
 
   async delete(req: Request, res: Response) {
-    const { post_id, company_id } = req.params
+    const { post_id, company_id, user_id } = req.params
 
     try {
       const service = new Delete()
@@ -142,8 +143,8 @@ export class PostController {
         return res.status(400).send({ message: result.message })
       }
 
-      //return res.status(200).send({ message: "Post deleted successfully!" })
-      res.redirect("/dashboard")
+      req.flash("success_message", "your post has been deleted")
+      res.redirect("/company/posts/" + user_id + "/" + company_id)
     } catch (error) {
       console.error(error)
       return res.status(500).send({ message: "Internal server error!" })
