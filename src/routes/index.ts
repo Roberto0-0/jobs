@@ -36,12 +36,12 @@ export class Routes {
 
   post() {
     this.router.get("/post/create/:company_id", new PostController().createIndex)
-    this.router.post("/post/create/:company_id", new PostController().create)
+    this.router.post("/post/create/:user_id/:company_id", new PostController().create)
     this.router.get("/jobs", new PostController().readAll)
     this.router.get("/post/show/:id", new PostController().read)
     this.router.get("/post/update/:post_id/:company_id", new PostController().updateIndex)
     this.router.post("/post/update/:post_id/:company_id", new PostController().update)
-    this.router.get("/post/delete/:post_id/:company_id", new PostController().delete)
+    this.router.get("/post/delete/:post_id/:company_id/:user_id", new PostController().delete)
   }
 
   company() {
