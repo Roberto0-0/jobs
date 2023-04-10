@@ -40,7 +40,7 @@ export class Routes {
     this.router.get("/jobs", new PostController().readAll)
     this.router.get("/post/show/:id", new PostController().read)
     this.router.get("/post/update/:post_id/:company_id", new PostController().updateIndex)
-    this.router.post("/post/update/:post_id/:company_id", new PostController().update)
+    this.router.post("/post/update/:post_id/:company_id/:user_id", new PostController().update)
     this.router.get("/post/delete/:post_id/:company_id/:user_id", new PostController().delete)
   }
 

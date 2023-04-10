@@ -59,11 +59,11 @@ export class Update {
       )
     } else {
       const company_name_check = await CompanyRepository.findOne({
-        where: { company: company_name }
+        where: { id: company_id, company: company_name }
       })
 
-      if (company_name_check) {
-        return new Error("Company name already exist!")
+      if (!company_name_check) {
+        return new Error("Invalid company name!")
       }
 
       posts = {
