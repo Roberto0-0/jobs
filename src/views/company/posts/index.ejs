@@ -17,10 +17,12 @@
         <nav class="nav">
           <ul>
             <% if(user) { %>
-               <li>
-                  <i class="ph-arrow-circle-left-fill"></i>
-                  <a href="/dashboard">back</a>
-               </li>
+                <% if(data) { %>
+                   <li>
+                      <i class="ph-arrow-circle-left-fill"></i>
+                      <a href="/company/<%= user.id %>/<%= data.id %>">back</a>
+                   </li>
+                <% } %>
             <% } else { %>
                <li>
                   <i class="ph-arrow-circle-left-fill"></i>

@@ -19,6 +19,8 @@
 
 body, html {
     -webkit-tap-highlight-color: transparent;
+    display: flex;
+    flex-direction: column;
 
     width: 100%;
     min-height: 100vh;
@@ -109,7 +111,7 @@ header .container nav ul li i {
 }
 
 main {
-    flex-grow: 1;
+    flex: 1;
 
     margin: auto;
 

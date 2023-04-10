@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/phosphor-icons"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
   <link rel="stylesheet" href="/css/post/jobs/style.css">
   <title>Jobs</title>
@@ -16,29 +16,29 @@
       <div class="container">
         <a href="" class="logo">Jobs</a>
         <div class="search-area">
-         <input type="text" id="searchItems" onkeyup="getItems()" placeholder="find your jobs now!" >
          <button type="button">
-            <i class="ph ph-magnifying-glass"></i>
+            <i class="ph-bold ph-magnifying-glass"></i>
          </button>
+         <input type="text" id="searchItems" onkeyup="getItems()" placeholder="search" >
         </div>
         <nav class="nav">
           <ul>
             <% if(user) { %>
                <li>
-                  <i class="ph-arrow-circle-left-fill"></i>
+                  <i class="ph-fill ph-arrow-circle-left"></i>
                   <a href="/dashboard">back</a>
                </li>
             <% } else { %>
                <li>
-                  <i class="ph-arrow-circle-left-fill"></i>
-                  <a href="/">back</a>
+                   <i class="ph-fill ph-arrow-circle-left"></i>
+                   <a href="/">back</a>
                </li>
             <% } %>
           </ul>
         </nav>
   
         <div class="menu">
-          <i class="ph-list-fill"></i>
+          <i class="ph ph-list"></i>
         </div>
       </div>
    </header>
@@ -73,7 +73,7 @@
                      <div class="functions">
                            <div class="like">
                               <a href="/liked/<%= user.id %>/<%= post.id %>">
-                                 <button class="heart-button"><i class="ph-thumbs-up"></i></button>
+                                 <button class="heart-button"><i class="ph ph-thumbs-up"></i></button>
                               </a>
                               <span><%= post.likes %></span>
                            </div>
@@ -107,7 +107,7 @@
                     <div class="functions">
                        <div class="like">
                           <a href="/login">
-                              <button class="heart-button"><i class="ph-thumbs-up"></i></button>
+                              <button class="heart-button"><i class="ph ph-thumbs-up"></i></button>
                            </a>
                            <span><%= post.likes %></span>
                         </div>

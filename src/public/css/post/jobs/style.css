@@ -13,17 +13,13 @@
     --white: #fff;
 }
 
-html {
-    height: 100%;
-    min-height: 100%;
-}
 
 body {
     display: flex;
     flex-direction: column;
 
     width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
 
     background: linear-gradient(to bottom, #0197ff, #78c3ee);
     
@@ -71,13 +67,14 @@ header .container .search-area {
     flex-direction: row;
     align-items: center;
 
-    padding: 5px;
+    padding: 5px 0px;
 
     width: 300px;
     height: 40px;
 
     border-radius: 5px;
     background: var(--white);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 header .container .search-area input {
@@ -90,23 +87,30 @@ header .container .search-area input {
     font-size: 0.8em;
 }
 
+header .container .search-area input::placeholder {
+    font-weight: 400;
+}
+
 header .container .search-area button {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    padding: 5px;
 
     outline: transparent;
     border: none;
+    border-right: 1px solid var(--border);
     background: none;
     cursor: pointer;
 
-    width: 20px;
     height: 100%;
 }
 
 header .container .search-area button i {
     font-size: 1.5em;
+    color: #535252;
 }
 
 
@@ -168,7 +172,7 @@ header .container .menu {
 }
 
 main {
-    flex-grow: 1;
+    flex: 1;
 
     margin: auto;
 
@@ -456,11 +460,11 @@ footer .container p a {
     header .container .search-area input {
         padding-left: 5px;
         
-        font-size: 0.8em;
+        font-size: 0.9em;
     }
 
     header .container .search-area button i {
-        font-size: 1.3em;
+        font-size: 1.5em;
     }
 
     header .container nav {
