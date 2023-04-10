@@ -66,6 +66,7 @@ header .container .search-area {
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 0.3em;
 
     padding: 5px 0px;
 
@@ -84,7 +85,7 @@ header .container .search-area input {
 
     width: 90%;
 
-    font-size: 0.8em;
+    font-size: 1em;
 }
 
 header .container .search-area input::placeholder {

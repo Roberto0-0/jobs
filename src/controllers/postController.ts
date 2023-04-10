@@ -4,6 +4,9 @@ import { ReadAll } from "../services/Post/readAll"
 import { Read } from "../services/Post/read"
 import { Update } from "../services/Post/update"
 import { Delete } from "../services/Post/delete"
+import { postSchema, updatePostSchema } from "../schemas/postSchema"
+
+var newErrors: string[] = []
 
 export class PostController {
   async createIndex(req: Request, res: Response) {
@@ -20,25 +23,41 @@ export class PostController {
   }
   async create(req: Request, res: Response) {
     const { user_id, company_id } = req.params
-    const { companyName, vancancy, location, salary, information } = req.body
+    const { companyName, vancancy, salary, location, information } = req.body
 
     try {
-      const service = new Create()
-      const result = await service.execute({
+      const validation = postSchema.safeParse({
         company_id,
         companyName,
         vancancy,
         location,
-        salary,
+        salary: Math.abs(salary),
         information
       })
 
-      if (result instanceof Error) {
-        return res.status(400).send({ message: result.message })
+      if(validation.success) {
+        const service = new Create()
+        const result = await service.execute(validation.data)
+
+        if (result instanceof Error) {
+          newErrors.push(result.message)
+          req.flash("error_message", newErrors)
+          return res.redirect("/company/" + user_id + "/" + company_id)
+        }
+
+        req.flash("success_message", "post was created!")
+        return res.redirect("/company/" + user_id + "/" + company_id)
+      } else {
+        const err = validation.error.errors
+
+        err.map((values) => {
+          newErrors.push(values.message)
+        })
       }
 
-      req.flash("success_message", "your post has been created!")
-      res.redirect("/company/" + user_id + "/" + company_id)
+      req.flash("error_message", newErrors)
+      res.redirect("/post/create/" + company_id)
+      newErrors = []
     } catch (error) {
       console.error(error)
       return res.status(500).send({ message: "Internal server error!" })
@@ -103,26 +122,44 @@ export class PostController {
   }
 
   async update(req: Request, res: Response) {
-    const { post_id, company_id } = req.params
+    const { post_id, company_id, user_id } = req.params
     const { company_name, vancancy, location, salary, information } = req.body
 
     try {
-      const service = new Update()
-      const result = await service.execute({
+      const validation = updatePostSchema.safeParse({
         post_id,
         company_id,
         company_name,
         vancancy,
         location,
-        salary,
+        salary: Math.abs(salary),
         information
       })
 
-      if (result instanceof Error) {
-        return res.status(400).send({ message: result.message })
+      if(validation.success) {
+        const service = new Update()
+        const result = await service.execute(validation.data)
+
+        if (result instanceof Error) {
+          newErrors.push(result.message)
+          req.flash("error_message", newErrors)
+          res.redirect("/company/" + user_id + "/" + company_id)
+          return newErrors = []
+        }
+
+        req.flash("success_message", "post was updated!")
+        return res.redirect("/company/posts/" + user_id + "/" + company_id)
+      } else {
+        const err = validation.error.errors
+
+        err.map((values) => {
+          newErrors.push(values.message)
+        })
       }
 
-      return res.redirect("/dashboard")
+      req.flash("error_message", newErrors)
+      res.redirect("/post/create/" + company_id)
+      newErrors = []
     } catch (error) {
       console.error(error)
       return res.status(500).send({ message: "Internal server error!" })
@@ -143,7 +180,7 @@ export class PostController {
         return res.status(400).send({ message: result.message })
       }
 
-      req.flash("success_message", "your post has been deleted")
+      req.flash("success_message", "post was deleted")
       res.redirect("/company/posts/" + user_id + "/" + company_id)
     } catch (error) {
       console.error(error)

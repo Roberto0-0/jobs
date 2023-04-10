@@ -9,33 +9,40 @@
   <title>Jobs</title>
 </head>
 <body>
+  <% for(var i=0;i < error_message.length;i++) { %>
+    <div class="error_message"><%= error_message[i] %></div>
+  <% } %>
   <div class="container">
     <div class="logoname">
       <h2>Job</h2>
     </div>
-    <% if(data) { %>
-       <form action="/post/update/<%= data.id %>/<%= companyId %>" method="POST">
-         <div class="input">
-           <i class="ph-buildings-fill"></i>
-           <input type="text" name="companyName" id="" placeholder="Company" value="<%= data.company_name %>" autocomplete="off" required>
-         </div>
-         <div class="input">
-           <i class="ph-cardholder-fill"></i>
-           <input type="text" name="vancancy" id="" placeholder="vancancy" value="<%= data.vancancy %>" autocomplete="off" required>
-         </div>
-         <div class="input">
-           <i class="ph-map-trifold-fill"></i>
-           <input type="text" name="location" id="" placeholder="Location" value="<%= data.location %>" autocomplete="off" required>
-         </div>
-         <div class="input">
-           <i class="ph-currency-dollar-fill"></i>
-           <input type="number" name="salary" placeholder="Salary" value="<%= data.salary %>" required>
-         </div>
-         <textarea name="information" id="" cols="30" rows="10" placeholder="more information here!"><%= data.information %></textarea>
-   
-         <button>send</button>
-       </form>
+    <% if(user) { %>
+      <% if(data) { %>
+        <form action="/post/update/<%= data.id %>/<%= companyId %>/<%= user.id %>" method="POST">
+          <div class="input">
+            <i class="ph-buildings-fill"></i>
+            <input type="text" name="company_name" id="" placeholder="Company" value="<%= data.company_name %>" autocomplete="off" required>
+          </div>
+          <div class="input">
+            <i class="ph-cardholder-fill"></i>
+            <input type="text" name="vancancy" id="" placeholder="vancancy" value="<%= data.vancancy %>" autocomplete="off" required>
+          </div>
+          <div class="input">
+            <i class="ph-map-trifold-fill"></i>
+            <input type="text" name="location" id="" placeholder="Location" value="<%= data.location %>" autocomplete="off" required>
+          </div>
+          <div class="input">
+            <i class="ph-currency-dollar-fill"></i>
+            <input type="number" name="salary" placeholder="Salary" value="<%= data.salary %>" required>
+          </div>
+          <textarea name="information" id="" cols="30" rows="10" placeholder="more information here!"><%= data.information %></textarea>
+    
+          <button>send</button>
+        </form>
+     <% } %>
     <% } %>
   </div>
+
+  <script src="/js/post/update/main.js"></script>
 </body>
 </html>
