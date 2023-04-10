@@ -13,6 +13,9 @@
 }
 
 body, html {
+    display: flex;
+    flex-direction: column;
+    
     width: 100%;
     min-height: 100vh;
     
@@ -93,7 +96,7 @@ header .container nav ul li a {
 
     font-size: 1.1em;
     font-weight: 400;
-    color: #cccccc;
+    color: #D8D9D9;
 }
 
 header .container nav ul li:first-child a {
@@ -101,7 +104,7 @@ header .container nav ul li:first-child a {
 }
 
 header .container nav ul .login-button {
-    border: 1px solid #cccccc;
+    border: 1px solid #D8D9D9;
     border-radius: 10px;
 }
 
@@ -112,7 +115,7 @@ header .container .menu {
 /* ---- main styles ---- */
 
 main {
-    flex-grow: 1;
+    flex: 1;
 
     margin: auto;
 
