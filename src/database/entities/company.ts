@@ -29,6 +29,12 @@ export class Company {
   })
   company: string
 
+  @Column({
+    type: "varchar",
+    nullable: false
+  })
+  location: string
+
   @ManyToOne(() => User, (user) => user.company)
   user: User
 

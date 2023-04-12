@@ -8,6 +8,7 @@ interface Attributes {
   vancancy?: string;
   location?: string;
   salary?: number;
+  vacancies?: number;
   information?: string;
 }
 
@@ -16,6 +17,7 @@ interface IPost {
   vancancy?: string;
   location?: string;
   salary?: number;
+  vacancies?: number;
   information?: string;
 }
 
@@ -29,6 +31,7 @@ export class Update {
     vancancy,
     location,
     salary,
+    vacancies,
     information
   }: Attributes) {
 
@@ -50,6 +53,7 @@ export class Update {
         vancancy,
         location,
         salary,
+        vacancies,
         information
       }
 
@@ -71,6 +75,7 @@ export class Update {
         vancancy,
         location,
         salary,
+        vacancies,
         information
       }
 

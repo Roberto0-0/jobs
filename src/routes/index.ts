@@ -23,6 +23,7 @@ export class Routes {
 
   home() {
     this.router.get("/", new HomeController().index)
+    this.router.get("/about", new HomeController().about)
   }
 
   user() {
@@ -35,7 +36,7 @@ export class Routes {
   }
 
   post() {
-    this.router.get("/post/create/:company_id", new PostController().createIndex)
+    this.router.get("/post/create/:user_id/:company_id", new PostController().createIndex)
     this.router.post("/post/create/:user_id/:company_id", new PostController().create)
     this.router.get("/jobs", new PostController().readAll)
     this.router.get("/post/show/:id", new PostController().read)

@@ -9,8 +9,6 @@ export class LikeRead {
             where: { id: company_id }
         })
         
-        console.log(company)
-        
         /*const like = await LikeRepository.findOne({
             where: { postId: post_id }
         })

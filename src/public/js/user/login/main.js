@@ -1,6 +1,6 @@
 const password = document.querySelector("#password")
 const btn = document.querySelector("#eye-button")
-const error_message = document.querySelector(".error_message")
+const error_message = document.querySelectorAll(".error_message")
 
 const main = () => {
     btn.onclick = () => {

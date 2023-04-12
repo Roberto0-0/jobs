@@ -21,7 +21,12 @@
         <form action="/post/update/<%= data.id %>/<%= companyId %>/<%= user.id %>" method="POST">
           <div class="input">
             <i class="ph-buildings-fill"></i>
-            <input type="text" name="company_name" id="" placeholder="Company" value="<%= data.company_name %>" autocomplete="off" required>
+            <select name="companyName" class="select">
+              <option disabled>Company</option>
+              <% if(data.company_name) { %>
+                <option value="<%= data.company_name %>" selected ><%= data.company_name %></option>
+              <% } %>
+            </select>
           </div>
           <div class="input">
             <i class="ph-cardholder-fill"></i>
@@ -29,11 +34,20 @@
           </div>
           <div class="input">
             <i class="ph-map-trifold-fill"></i>
-            <input type="text" name="location" id="" placeholder="Location" value="<%= data.location %>" autocomplete="off" required>
+            <select name="location" class="select">
+              <option selected disabled>Location</option>
+              <% if(data.location) { %>
+                <option value="<%= data.location %>"><%= data.location %></option>
+              <% } %>
+            </select>
           </div>
           <div class="input">
             <i class="ph-currency-dollar-fill"></i>
             <input type="number" name="salary" placeholder="Salary" value="<%= data.salary %>" required>
+          </div>
+          <div class="input">
+            <i class="ph-fill ph-user-circle-plus"></i>
+            <input type="number" name="vacancies" placeholder="Vacancies" value="<%= data.vacancies %>"  required>
           </div>
           <textarea name="information" id="" cols="30" rows="10" placeholder="more information here!"><%= data.information %></textarea>
     

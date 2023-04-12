@@ -11,97 +11,98 @@
   <title>Jobs</title>
 </head>
 <body>
-  <% if(data) { %>
-    <header>
-      <div class="container">
-        <a href="./profile/index.html" class="company-name"><%= data.company %></a>
-        <nav class="nav">
-          <ul>
-              <li>
-                <i class="ph-briefcase-fill"></i>
-                <a href="/jobs">jobs</a>
-              </li>
-              <li>
-                <i class="ph-note-fill"></i>
-                <a href="/post/create/<%= data.id %>">new post</a>
-              </li>
-              <li>
-                <i class="ph-arrow-circle-left-fill"></i>
-                <a href="/dashboard">back</a>
-              </li>
-          </ul>
-        </nav>
-   
-        <div class="menu">
-          <i class="ph-list-fill"></i>
-        </div>
-      </div>
-    </header>
-    <% if(success_message.length > 0) { %>
-      <div class="success_message"><%= success_message %></div>
-    <% } %>
-    <% for(var i=0;i < error_message.length;i++) { %>
-      <div class="error_message"><%= error_message[i] %></div>
-    <% } %>
-    <main>
-      <div class="container">
-        <div class="pubble">
-          <div class="status">
-            <div>
-              <h2>status of your posts 🗒</h2>
-            </div>
+  <% if(user) { %>
+    <% if(data) { %>
+      <header>
+        <div class="container">
+          <a href="./profile/index.html" class="company-name"><%= data.company %></a>
+          <nav class="nav">
             <ul>
-              <li>
-                  <% if(data.post.length > 0) { %>
-                    <a href="/company/posts/<%= userId %>/<%= data.id %>">
-                      <div class="illustration">
-                        <i class="ph-note-fill"></i>
-                      </div>
-                      <div class="info">
-                        <span class="value"><%= data.post.length %></span>
-                        <p>Posts</p>
-                      </div>        
-                    </a>
-                  <% } else { %>
-                    <a href="/post/create/<%= data.id %>">
-                      <div class="illustration">
-                        <i class="ph-note-fill"></i>
-                      </div>
-                      <div class="info">
-                        <span class="value"><%= data.post.length %></span>
-                        <p>Posts</p>
-                      </div>        
-                    </a>
-                  <% } %>
-              </li>
-              <li>
-                <a href="/company/likes/<%= data.id %>">
-                  <div class="illustration">
-                    <i class="ph-thumbs-up-fill"></i>
-                  </div>
-                  <div class="info">
-                    <span class="value"><%= likes %></span>
-                    <p>Likes</p>
-                  </div>        
-                </a>
-              </li>
+                <li>
+                  <i class="ph-briefcase-fill"></i>
+                  <a href="/jobs">jobs</a>
+                </li>
+                <li>
+                  <i class="ph-note-fill"></i>
+                  <a href="/post/create/<%= user.id %>/<%= data.id %>">new post</a>
+                </li>
+                <li>
+                  <i class="ph-arrow-circle-left-fill"></i>
+                  <a href="/dashboard">back</a>
+                </li>
             </ul>
-          </div>
-          <div class="illustration-img">
-            <img src="../../assets/jobs/Attribution modeling.svg" alt="" width="100%">
+          </nav>
+     
+          <div class="menu">
+            <i class="ph-list-fill"></i>
           </div>
         </div>
-      </div>
-    </main>
-     <footer>
-       <div class="container">
-         <p>
-           &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
-         </p>
-       </div>
-     </footer>
-   <% } %>
-
+      </header>
+      <% if(success_message.length > 0) { %>
+        <div class="success_message"><%= success_message %></div>
+      <% } %>
+      <% for(var i=0;i < error_message.length;i++) { %>
+        <div class="error_message"><%= error_message[i] %></div>
+      <% } %>
+      <main>
+        <div class="container">
+          <div class="pubble">
+            <div class="status">
+              <div>
+                <h2>status of your posts 🗒</h2>
+              </div>
+              <ul>
+                <li>
+                    <% if(data.post.length > 0) { %>
+                      <a href="/company/posts/<%= userId %>/<%= data.id %>">
+                        <div class="illustration">
+                          <i class="ph-note-fill"></i>
+                        </div>
+                        <div class="info">
+                          <span class="value"><%= data.post.length %></span>
+                          <p>Posts</p>
+                        </div>        
+                      </a>
+                    <% } else { %>
+                      <a href="/post/create/<%= user.id %>/<%= data.id %>">
+                        <div class="illustration">
+                          <i class="ph-note-fill"></i>
+                        </div>
+                        <div class="info">
+                          <span class="value"><%= data.post.length %></span>
+                          <p>Posts</p>
+                        </div>        
+                      </a>
+                    <% } %>
+                </li>
+                <li>
+                  <a href="/company/likes/<%= data.id %>">
+                    <div class="illustration">
+                      <i class="ph-thumbs-up-fill"></i>
+                    </div>
+                    <div class="info">
+                      <span class="value"><%= likes %></span>
+                      <p>Likes</p>
+                    </div>        
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="illustration-img">
+              <img src="../../assets/jobs/Attribution modeling.svg" alt="" width="100%">
+            </div>
+          </div>
+        </div>
+      </main>
+       <footer>
+         <div class="container">
+           <p>
+             &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+           </p>
+         </div>
+       </footer>
+     <% } %>
+  <% } %>
   <script src="/js/menu/main.js"></script>
   <script src="/js/company/home/main.js"></script>
 </body>
