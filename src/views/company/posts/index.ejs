@@ -56,7 +56,7 @@
                           <li>Salary: <span class="salary"><%= data.post[i].salary %></span></li>
                           <li>Location: <span><%= data.post[i].location %></span></li>
                           <li>Published: <span class="date"><strong><%= data.post[i].created_at %></strong></span></li>
-                          <li>Vacancy: <span>1</span></li>
+                          <li>Vacancy: <span><%= data.post[i].vacancies %></span></li>
                        </ul>
                        <div class="text-box">
                            <% if(data.post[i].information) { %>

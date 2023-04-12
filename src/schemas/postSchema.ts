@@ -14,6 +14,9 @@ export const postSchema = z.object({
     salary: z.number({
         required_error: "salary is required!"
     }).min(1000, "Invalid salary!"),
+    vacancies: z.number({
+        required_error: "vacancies is required!"
+    }).min(1, "Invalid value!"),
     information: z.string()
 })
 
@@ -32,5 +35,8 @@ export const updatePostSchema = z.object({
     salary: z.number({
         required_error: "salary is required!"
     }).min(1000, "Invalid salary!"),
+    vacancies: z.number({
+        required_error: "vacancies is required!"
+    }).min(1, "Invalid value!"),
     information: z.string()
 })

@@ -5,11 +5,12 @@ interface Attributes {
   id: string;
   employer: string;
   companyName: string;
+  location: string;
   email: string;
 }
 
 export class Create {
-  async execute({ id, employer, companyName, email }: Attributes) {
+  async execute({ id, employer, companyName, location, email }: Attributes) {
     const user = await UserRepository.findOneBy({ id: id })
 
     if(!user) {
@@ -31,6 +32,7 @@ export class Create {
     const newCompany = CompanyRepository.create({
       employer,
       company: companyName,
+      location,
       user
     })
 

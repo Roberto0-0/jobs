@@ -6,7 +6,7 @@ interface Attributes {
    company_id: string;
 }
 
-export class Read {
+export class CompanyRead {
   async execute({ user_id, company_id }: Attributes) {
      const user = await UserRepository.findOneBy({ id: user_id })
      

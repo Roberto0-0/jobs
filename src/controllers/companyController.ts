@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { Create } from "../services/Company/create"
 import { ReadAll } from "../services/Company/readAll"
-import { Read } from "../services/Company/read"
+import { CompanyRead } from "../services/Company/read"
 import { LikeRead } from "../services/Like/read"
 import { Update } from "../services/Company/update"
 import { Delete } from "../services/Company/delete"
@@ -21,7 +21,7 @@ export class CompanyController {
   }
   async create(req: Request, res: Response) {
      const { id } = req.params
-     const { employer, companyName, email } = req.body
+     const { employer, companyName, location,  email } = req.body
      
     try {
       const service = new Create()
@@ -29,6 +29,7 @@ export class CompanyController {
         id,
         employer,
         companyName,
+        location,
         email
       })
       
@@ -47,7 +48,7 @@ export class CompanyController {
     const { user_id, company_id } = req.params
     
     try {
-      const service = new Read()
+      const service = new CompanyRead()
       const result = await service.execute({
          user_id,
          company_id
@@ -77,7 +78,7 @@ export class CompanyController {
     const { user_id, company_id } = req.params
 
     try {
-      const service = new Read()
+      const service = new CompanyRead()
       const result = await service.execute({
          user_id,
          company_id

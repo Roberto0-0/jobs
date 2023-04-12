@@ -4,17 +4,29 @@ import { ReadAll } from "../services/Post/readAll"
 import { Read } from "../services/Post/read"
 import { Update } from "../services/Post/update"
 import { Delete } from "../services/Post/delete"
+import { CompanyRead } from "../services/Company/read"
 import { postSchema, updatePostSchema } from "../schemas/postSchema"
 
 var newErrors: string[] = []
 
 export class PostController {
   async createIndex(req: Request, res: Response) {
-     const { company_id } = req.params
+     const { user_id, company_id } = req.params
      
      try {
+        const service = new CompanyRead()
+        const result = await service.execute({
+          user_id,
+          company_id
+        })
+
+        if(result instanceof Error) {
+          return res.status(400).send({ message: result.message })
+        }
+
         res.render("post/create/index.ejs", {
-           data: company_id
+           data: company_id,
+           company: result
         })
      } catch(error) {
         console.error(error)
@@ -23,7 +35,7 @@ export class PostController {
   }
   async create(req: Request, res: Response) {
     const { user_id, company_id } = req.params
-    const { companyName, vancancy, salary, location, information } = req.body
+    const { companyName, vancancy, salary, vacancies, location, information } = req.body
 
     try {
       const validation = postSchema.safeParse({
@@ -32,6 +44,7 @@ export class PostController {
         vancancy,
         location,
         salary: Math.abs(salary),
+        vacancies: Math.abs(vacancies),
         information
       })
 
@@ -56,7 +69,7 @@ export class PostController {
       }
 
       req.flash("error_message", newErrors)
-      res.redirect("/post/create/" + company_id)
+      res.redirect("/post/create/" + user_id + "/" + company_id)
       newErrors = []
     } catch (error) {
       console.error(error)
@@ -123,16 +136,17 @@ export class PostController {
 
   async update(req: Request, res: Response) {
     const { post_id, company_id, user_id } = req.params
-    const { company_name, vancancy, location, salary, information } = req.body
+    const { companyName, vancancy, location, salary, vacancies, information } = req.body
 
     try {
       const validation = updatePostSchema.safeParse({
         post_id,
         company_id,
-        company_name,
+        company_name: companyName,
         vancancy,
         location,
         salary: Math.abs(salary),
+        vacancies: Math.abs(vacancies),
         information
       })
 
@@ -158,7 +172,7 @@ export class PostController {
       }
 
       req.flash("error_message", newErrors)
-      res.redirect("/post/create/" + company_id)
+      res.redirect("/post/create/" + user_id + "/" + company_id)
       newErrors = []
     } catch (error) {
       console.error(error)

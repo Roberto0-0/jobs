@@ -7,11 +7,12 @@ export interface Attributes {
   vancancy: string;
   location: string;
   salary: number;
+  vacancies: number;
   information?: string;
 }
 
 export class Create {
-  async execute({ company_id, companyName, vancancy, location, salary, information }: Attributes) {
+  async execute({ company_id, companyName, vancancy, location, salary, vacancies, information }: Attributes) {
     const company = await CompanyRepository.findOneBy({ id: company_id })
 
     if (!company) {
@@ -23,6 +24,7 @@ export class Create {
       vancancy,
       location,
       salary,
+      vacancies,
       information,
       company
     })

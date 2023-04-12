@@ -40,6 +40,12 @@ export class Post {
   salary: number
 
   @Column({
+    type: "int",
+    nullable: false
+  })
+  vacancies: number
+
+  @Column({
     type: "text",
     nullable: true
   })
