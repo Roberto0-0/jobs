@@ -113,11 +113,6 @@ header .container nav ul a {
     color: var(--white);
 }
 
-header .container nav ul .login-button {
-    border: 1px solid var(--white);
-    border-radius: 10px;
-}
-
 header .container .menu {
     display: none;
 }
@@ -135,7 +130,7 @@ main .container {
     display: flex;
     flex-direction: column;
 
-    margin: 50px auto;
+    margin: 60px auto;
 
     width: 90%;
     max-width: 1279px;
@@ -337,8 +332,12 @@ footer .container p a {
     justify-content: center;
     align-items: center;
     
-    position: relative;
-    
+    position: absolute;
+    top: 75px;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
     margin: 20px auto;
     
     width: 85vw;
@@ -357,9 +356,10 @@ footer .container p a {
 }
 
 @keyframes message_down {
-    from { margin: 0 auto };
-    to { margin: 40px auto }
+    from { left: 0%; }
+    to { left: 50%; }
 }
+
 
 @media(max-width: 600px) {
     header .container .logo {

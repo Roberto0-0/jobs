@@ -50,7 +50,6 @@ header .container {
     max-width: 1279px;
     min-width: 300px;
     height: 100%;
-
 }
 
 header .container .company-name {
@@ -128,15 +127,14 @@ main .container {
     width: 90%;
     max-width: 1279px;
     min-width: 300px;
-    height: 100%;
+    height: auto;
 }
 
 main .container .pubble {
     display: flex;
     flex-direction: row;
 
-    margin: 100px auto;
-    padding: 10px;
+    margin: calc(100px - 50px) auto;
 
     width: 90%;
     min-width: 300px;
@@ -302,10 +300,12 @@ header .container .menu {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    position: relative;
-    
-    margin: 20px auto;
+
+    position: absolute;
+    top: 95px;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
     
     width: 85vw;
     max-width: 400px;
@@ -328,9 +328,11 @@ header .container .menu {
     justify-content: center;
     align-items: center;
 
-    position: relative;
+    position: absolute;
+    top: 95px;
+    left: 50%;
 
-    margin: 20px auto;
+    transform: translate(-50%, -50%);
 
     width: 85vw;
     max-width: 400px;
@@ -348,8 +350,8 @@ header .container .menu {
 }
 
 @keyframes message_down {
-    from { margin: 0 auto };
-    to { margin: 40px auto }
+    from { left: 0%; }
+    to { left: 50%; }
 }
 
 @media(max-width: 600px) {
@@ -456,7 +458,7 @@ header .container .menu {
         flex-direction: column;
         align-items: center;
 
-        margin: 30px auto;
+        margin: calc(100px - 50px) auto;
         padding: 5px;
     }
 

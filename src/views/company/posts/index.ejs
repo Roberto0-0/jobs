@@ -11,7 +11,7 @@
     <title>Jobs</title>
 </head>
 <body>
-     <header>
+   <header>
       <div class="container">
         <a href="" class="logo">Jobs</a>
         <nav class="nav">
@@ -37,12 +37,15 @@
         </div>
       </div>
    </header>
-   <% if(success_message.length > 0) { %>
-      <div class="success_message"><%= success_message %></div>
-  <% } %>
    <main>
-       <div class="container">
-          <ul class="jobs-menu">
+      <% if(success_message.length > 0) { %>
+         <div class="success_message"><%= success_message %></div>
+      <% } %>
+      <% for(var i=0;i < error_message.length;i++) { %>
+         <div class="error_message"><%= error_message[i] %></div>
+      <% } %>
+      <div class="container">
+         <ul class="jobs-menu">
             <% if(user) { %>
                <% if(data) { %>
                   <% for(var i=0;i < data.post.length;i++) { %>
@@ -50,15 +53,15 @@
                         <h1><%= data.post[i].vancancy %></h1>
                         <h2 class="company-name">
                            <%= data.post[i].company_name %>
-                            <i class="ph-circle-wavy-check-fill"></i>
+                           <i class="ph-circle-wavy-check-fill"></i>
                         </h2>
-                       <ul class="jobInfo">
-                          <li>Salary: <span class="salary"><%= data.post[i].salary %></span></li>
-                          <li>Location: <span><%= data.post[i].location %></span></li>
-                          <li>Published: <span class="date"><strong><%= data.post[i].created_at %></strong></span></li>
-                          <li>Vacancy: <span><%= data.post[i].vacancies %></span></li>
-                       </ul>
-                       <div class="text-box">
+                     <ul class="jobInfo">
+                        <li>Salary: <span class="salary"><%= data.post[i].salary %></span></li>
+                        <li>Location: <span><%= data.post[i].location %></span></li>
+                        <li>Published: <span class="date"><strong><%= data.post[i].created_at %></strong></span></li>
+                        <li>Vacancy: <span><%= data.post[i].vacancies %></span></li>
+                     </ul>
+                     <div class="text-box">
                            <% if(data.post[i].information) { %>
                               <h2 class="description">Description</h2>
                            <% } %>
@@ -68,20 +71,20 @@
                            <button class="btn-seeMore">...see more</button>
                         </div>
                         <div class="settings">
-                          <a href="/post/update/<%= data.post[i].id %>/<%= data.id %>">
+                        <a href="/post/update/<%= data.post[i].id %>/<%= data.id %>">
                               <button><i class="ph-fill ph-pencil"></i></button>
-                          </a>
-                          <a href="/post/delete/<%= data.post[i].id %>/<%= data.id %>/<%= user.id %>">
+                        </a>
+                        <a href="/post/delete/<%= data.post[i].id %>/<%= data.id %>/<%= user.id %>">
                               <button><i class="ph-fill ph-trash"></i></button>
-                          </a>
+                        </a>
                         </div>
                      </li>
                   <% } %>
                <% } %>
             <% } %>
             </ul>
-        </div>
-    </main>
+      </div>
+   </main>
     <footer>
       <div class="container">
         <p>

@@ -5,58 +5,97 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://unpkg.com/phosphor-icons"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
   <link rel="stylesheet" href="/css/post/create/style.css">
   <title>Jobs</title>
 </head>
 <body>
+  <header>
+    <div class="container">
+      <a href="" class="logo">Jobs</a>
+      <nav class="nav">
+        <ul>
+          <% if(user) { %>
+              <% if(company) { %>
+                 <li>
+                    <i class="ph-arrow-circle-left-fill"></i>
+                    <a href="/company/<%= user.id %>/<%= company.id %>">back</a>
+                 </li>
+              <% } %>
+          <% } else { %>
+             <li>
+                <i class="ph-arrow-circle-left-fill"></i>
+                <a href="/">back</a>
+             </li>
+          <% } %>
+        </ul>
+      </nav>
+
+      <div class="menu">
+        <i class="ph-list-fill"></i>
+      </div>
+    </div>
+  </header>
   <% for(var i=0;i < error_message.length;i++) { %>
     <div class="error_message"><%= error_message[i] %></div>
   <% } %>
-  <div class="container">
-    <div class="logoname">
-      <h2>Job</h2>
+  <main>
+    <div class="container">
+      <div class="post-create-container">
+        <div class="logoname">
+          <h2>Job</h2>
+        </div>
+        <% if(user) { %>
+          <% if(company) { %>
+            <form action="/post/create/<%= user.id %>/<%= data %>" method="POST">
+              <div class="input">
+                <i class="ph-buildings-fill"></i>
+                <select name="companyName" class="select">
+                  <option selected disabled>Company</option>
+                  <% if(company.company) { %>
+                    <option value="<%= company.company %>"><%= company.company %></option>
+                  <% } %>
+                </select>
+              </div>
+              <div class="input">
+                <i class="ph-cardholder-fill"></i>
+                <input type="text" name="vancancy" id="" placeholder="vancancy" autocomplete="off" required>
+              </div>
+              <div class="input">
+                <i class="ph-map-trifold-fill"></i>
+                <select name="location" class="select">
+                  <option selected disabled>Location</option>
+                  <% if(company.location) { %>
+                    <option value="<%= company.location %>"><%= company.location %></option>
+                  <% } %>
+                </select>
+              </div>
+              <div class="input">
+                <i class="ph-currency-dollar-fill"></i>
+                <input type="number" name="salary" placeholder="Salary" required>
+              </div>
+              <div class="input">
+                <i class="ph-fill ph-user-circle-plus"></i>
+                <input type="number" name="vacancies" placeholder="Vacancies" required>
+              </div>
+              <textarea name="information" id="" cols="30" rows="10" placeholder="more information here!"></textarea>
+        
+              <button>send</button>
+            </form>
+          <% } %>
+        <% } %>
+      </div>
     </div>
-    <% if(user) { %>
-      <% if(company) { %>
-        <form action="/post/create/<%= user.id %>/<%= data %>" method="POST">
-          <div class="input">
-            <i class="ph-buildings-fill"></i>
-            <select name="companyName" class="select">
-              <option selected disabled>Company</option>
-              <% if(company.company) { %>
-                <option value="<%= company.company %>"><%= company.company %></option>
-              <% } %>
-            </select>
-          </div>
-          <div class="input">
-            <i class="ph-cardholder-fill"></i>
-            <input type="text" name="vancancy" id="" placeholder="vancancy" autocomplete="off" required>
-          </div>
-          <div class="input">
-            <i class="ph-map-trifold-fill"></i>
-            <select name="location" class="select">
-              <option selected disabled>Location</option>
-              <% if(company.location) { %>
-                <option value="<%= company.location %>"><%= company.location %></option>
-              <% } %>
-            </select>
-          </div>
-          <div class="input">
-            <i class="ph-currency-dollar-fill"></i>
-            <input type="number" name="salary" placeholder="Salary" required>
-          </div>
-          <div class="input">
-            <i class="ph-fill ph-user-circle-plus"></i>
-            <input type="number" name="vacancies" placeholder="Vacancies" required>
-          </div>
-          <textarea name="information" id="" cols="30" rows="10" placeholder="more information here!"></textarea>
-    
-          <button>send</button>
-        </form>
-      <% } %>
-    <% } %>
-  </div>
-
+  </main>
+  <footer>
+    <div class="container">
+      <p>
+        &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+      </p>
+    </div>
+  </footer>
   <script src="/js/post/create/main.js"></script>
+  <script src="/js/menu/main.js"></script>
 </body>
 </html>
