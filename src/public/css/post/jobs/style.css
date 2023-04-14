@@ -204,7 +204,7 @@ main .container .notfound {
     height: auto;
 
     border-radius: 10px;
-    background: var(--white);
+    background: transparent;
 
     text-align: center;
     word-break: break-all;

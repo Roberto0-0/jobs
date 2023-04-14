@@ -14,39 +14,8 @@ export class LikeRead {
                 post: true
             }
         })
-        
-        
-        const posts = new Promise((resolve, reject) => {
-            company.map((companyValues) => {
-                companyValues.post.map( async (postValues) => {
-                    const post = await PostRepository.findOne({
-                        where: { id: postValues.id },
-                        relations: {
-                            like: true
-                        }
-                    })
-                    
-                    if(post.like) {
-                        post.like.map( async (likeValues) => {
-                            if(likeValues) {
-                                const user = await UserRepository.findOneBy({ id: likeValues.user_id })
-                                
-                                if(!user) {
-                                    return new Error("User not found!")
-                                }
-                                
-                                resolve(user)
-                            }
-                        })
-                    }
-                })
-            })
-        })
-        
-        
-        return posts.then((data) => {
-            return data
-        })
+
+        return company
     }
     
 }

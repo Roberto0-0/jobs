@@ -38,13 +38,15 @@
           </div>
         </div>
       </header>
-      <% if(success_message.length > 0) { %>
-        <div class="success_message"><%= success_message %></div>
-      <% } %>
-      <% for(var i=0;i < error_message.length;i++) { %>
-        <div class="error_message"><%= error_message[i] %></div>
-      <% } %>
+      </div>
       <main>
+        <div class="message-area">
+          <% if(success_message.length > 0) { %>
+            <div class="success_message"><%= success_message %></div>
+          <% } %>
+          <% for(var i=0;i < error_message.length;i++) { %>
+            <div class="error_message"><%= error_message[i] %></div>
+          <% } %>
         <div class="container">
           <div class="pubble">
             <div class="status">
