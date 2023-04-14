@@ -36,22 +36,22 @@ export class Routes {
   }
 
   post() {
-    this.router.get("/post/create/:user_id/:company_id", new PostController().createIndex)
+    this.router.get("/post/create/:user_id/:company_id", isAuth, new PostController().createIndex)
     this.router.post("/post/create/:user_id/:company_id", new PostController().create)
     this.router.get("/jobs", new PostController().readAll)
-    this.router.get("/post/show/:id", new PostController().read)
-    this.router.get("/post/update/:post_id/:company_id", new PostController().updateIndex)
+    this.router.get("/post/show/:id", isAuth, new PostController().read)
+    this.router.get("/post/update/:post_id/:company_id", isAuth, new PostController().updateIndex)
     this.router.post("/post/update/:post_id/:company_id/:user_id", new PostController().update)
     this.router.get("/post/delete/:post_id/:company_id/:user_id", new PostController().delete)
   }
 
   company() {
-    this.router.get("/company/registration/:id", new CompanyController().createIndex)
+    this.router.get("/company/registration/:id", isAuth, new CompanyController().createIndex)
     this.router.post("/company/registration/:id", new CompanyController().create)
-    this.router.get("/company/showAll", new CompanyController().readAll)
-    this.router.get("/company/posts/:user_id/:company_id", new CompanyController().posts)
+    this.router.get("/company/showAll", isAuth, new CompanyController().readAll)
+    this.router.get("/company/posts/:user_id/:company_id", isAuth, new CompanyController().posts)
     this.router.get("/company/likes/:company_id", new CompanyController().likes)
-    this.router.get("/company/:user_id/:company_id", new CompanyController().read)
+    this.router.get("/company/:user_id/:company_id", isAuth, new CompanyController().read)
     this.router.put("/company/update/:id", new CompanyController().update)
     this.router.delete("/company/delete/:id", new CompanyController().delete)
   }
