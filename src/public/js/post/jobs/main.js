@@ -5,10 +5,12 @@ const text = document.querySelectorAll(".text")
 const btnseeMore = document.querySelectorAll(".btn-seeMore")
 const notfound = document.querySelector(".notfound")
 const success_message = document.querySelector(".success_message")
-
+const like_value = document.querySelectorAll(".like-value")
+const like_button = document.querySelectorAll(".like-button")
 
 var clicked = false
 var count = []
+
 
 function getItems() {
   let inputItems = document.querySelector("#searchItems").value
@@ -31,7 +33,7 @@ function getItems() {
 
     if(count.length >= li.length) {
       notfound.style.display = "block"
-      notfound.innerHTML = `No result for "${inputItems}"`
+      notfound.innerHTML = `No result for "${inputItems}" :-(`
     } else if(count.length < li.length) {
       notfound.style.display = "none"
     }
@@ -72,6 +74,19 @@ const main = () => {
   for(var i=0; i < salary.length;i++) {
     salary[i].innerHTML = `${Number(salary[i].textContent).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`
   }
+  
+  for(let i=0;i < li.length;i++) {
+    like_button[i].onclick = () => {
+        var xml = new XMLHttpRequest()
+
+        xml.open("GET", `http://localhost:3333/liked/${like_button[i].name}`)
+        xml.onload = () => {
+            const data = JSON.parse(xml.response)
+            like_value[i].innerHTML = data.likes
+        }
+        xml.send()
+        }
+    }
 }
 
 main()

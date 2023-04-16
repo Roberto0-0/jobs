@@ -5,7 +5,8 @@ export class Read {
     const post = await PostRepository.findOne({
       where: { id: id },
       relations: {
-        company: true
+        company: true,
+        like: true
       }
     })
 

@@ -15,6 +15,7 @@
 
 
 body {
+    -webkit-tap-highlight-color: transparent;
     display: flex;
     flex-direction: column;
 
@@ -66,7 +67,7 @@ header .container .search-area {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.3em;
+    gap: 0.2em;
 
     padding: 5px 0px;
 
@@ -82,8 +83,11 @@ header .container .search-area input {
     outline: transparent;
     border: none;
     background: none;
+    
+    padding-right: 0.3em;
 
     width: 90%;
+    height: 100%;
 
     font-size: 1em;
 }
@@ -210,6 +214,8 @@ main .container .notfound {
     word-break: break-all;
     font-family: 'Varela Round', sans-serif;
     font-size: 1.5em;
+    font-weight: bold;
+    color: var(--white);
 }
 
 main .container .jobs-menu {
@@ -284,11 +290,13 @@ main .container .jobs-menu li .jobInfo li {
     
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
+    font-weight: 600;
+    color: #535252;
 }
 
 main .container .jobs-menu li .jobInfo li span {
-    font-weight: 600;
-    color: #535252;
+    font-weight: 400;
+    color: #000;
 }
 
 main .container .jobs-menu li .text-box {
@@ -369,23 +377,10 @@ main .container .jobs-menu li .functions .like {
 }
 
 main .container .jobs-menu li .functions .like a {
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   
-   text-decoration: none;
-   color: #000;
+    text-decoration: none;
 }
 
-main .container .jobs-menu li .functions .like a {
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   
-   color: #000;
-}
-
-main .container .jobs-menu li .functions .like a .heart-button {
+main .container .jobs-menu li .functions .like .like-button {
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -400,10 +395,14 @@ main .container .jobs-menu li .functions .like a .heart-button {
    cursor: pointer;
 }
 
-main .container .jobs-menu li .functions .like a .heart-button i {
-  font-size: 1.5em;
+main .container .jobs-menu li .functions .like .like-button i {
+  font-size: 1.6em;
   color: #000;
 }
+
+/*main .container .jobs-menu li .functions .like .like-button .ph-fill .ph-thumbs-up {
+    color: var(--primary);
+}*/
 
 footer {
     margin-top: auto;
