@@ -210,11 +210,16 @@ main .container .jobs-menu li .jobInfo li {
     
     border: none;
     background: none;
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    font-weight: 600;
+    color: #535252;
 }
 
 main .container .jobs-menu li .jobInfo li span {
-    font-weight: 600;
-    color: #535252;
+    font-weight: 400;
+    color: #000;
 }
 
 main .container .jobs-menu li .text-box {

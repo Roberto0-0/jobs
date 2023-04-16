@@ -35,9 +35,9 @@
           <div class="input">
             <i class="ph-map-trifold-fill"></i>
             <select name="location" class="select">
-              <option selected disabled>Location</option>
+              <option disabled>Location</option>
               <% if(data.location) { %>
-                <option value="<%= data.location %>"><%= data.location %></option>
+                <option value="<%= data.location %>" selected><%= data.location %></option>
               <% } %>
             </select>
           </div>
