@@ -3,7 +3,7 @@ import { Create } from "../services/User/create"
 import { Delete } from "../services/User/delete"
 import { UserRead } from "../services/User/read"
 import { ReadAll } from "../services/User/readAll"
-import { Update } from "../services/User/update"
+import { UserUpdate } from "../services/User/update"
 import { userSchema } from "../schemas/userSchema"
 
 var newErros: string[] = []
@@ -78,7 +78,7 @@ export class UserController {
     const { name, email, password } = req.body
 
     try {
-      const service = new Update()
+      const service = new UserUpdate()
       const result = await service.execute({
         id,
         name,
@@ -92,6 +92,61 @@ export class UserController {
 
       return res.status(200).send({ message: "Account updated successfully!" })
     } catch (error) {
+      console.error(error)
+      return res.status(500).send({ message: "Internal server error!" })
+    }
+  }
+
+  async profile(req: Request, res: Response) {
+    try {
+      res.render("user/profile/home/index.ejs")
+    } catch(error) {
+      console.error(error)
+      return res.status(500).send({ message: "Internal server error!" })
+    }
+  }
+
+  async accountInformation(req: Request, res: Response) {
+    try {
+      res.render("user/profile/accountInfo/index.ejs")
+    } catch(error) {
+      console.error(error)
+      return res.status(500).send({ message: "Internal server error!" })
+    }
+  }
+
+  async changePasswordIndex(req: Request, res: Response) {
+    try {
+      res.render("user/profile/changePassword/index.ejs")
+    } catch (error) {
+      console.error(error)
+      return res.status(500).send({ message: "Internal server error!" })
+    }
+  }
+
+  async changePassword(req: Request, res: Response) {
+    const { id } = req.params
+    const { currentPassword, newPassword, repeatNewPassword } = req.body
+
+    try {
+      const service = new UserUpdate()
+      const result = await service.changePassword({
+        id,
+        currentPassword,
+        newPassword,
+        repeatNewPassword
+      })
+
+      if(result instanceof Error) { 
+        newErros.push(result.message)
+        req.flash("error_message", newErros)
+        res.redirect("/profile/settings/password")
+        return newErros = []
+       }
+
+      req.flash("success_message", "Successfully updated password!")
+      res.redirect("/profile/settings/password")
+    } catch(error) {
       console.error(error)
       return res.status(500).send({ message: "Internal server error!" })
     }

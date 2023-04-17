@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/user/profile/accountInfo/style.css">
+    <title>Jobs</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="" class="logo">Jobs</a>
+            <nav class="nav">
+              <ul>
+                <% if(user) { %>
+                   <li>
+                        <i class="ph-fill ph-arrow-circle-left"></i>
+                        <a href="/profile">back</a>
+                   </li>
+                <% } else { %>
+                   <li>
+                        <i class="ph-fill ph-arrow-circle-left"></i>
+                        <a href="/">back</a>
+                   </li>
+                <% } %>
+              </ul>
+            </nav>
+      
+            <div class="menu">
+                <i class="ph-fill ph-list"></i>
+            </div>
+          </div>
+    </header>
+    <main>
+        <div class="container">
+            <% if(user) { %>
+                <ul>
+                    <li>
+                        Username
+                        <span class="username"><%= user.name %></span>
+                    </li>
+                    <li>
+                        Email
+                        <span class="username"><%= user.email %></span>
+                    </li>
+                    <% if(user.company.length > 0) { %>
+                        <% user.company.forEach((value) => { %>
+                            <li>
+                                Company
+                                <span class="username"><%= value.company %></span>
+                            </li>
+                        <% }) %>
+                    <% } %>
+                </ul>
+            <% } %>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>
+              &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+            </p>
+          </div>
+    </footer>
+    <script src="/js/menu/main.js"></script>
+</body>
+</html>
