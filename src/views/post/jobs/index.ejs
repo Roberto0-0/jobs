@@ -17,7 +17,7 @@
         <a href="" class="logo">Jobs</a>
         <div class="search-area">
          <button type="button">
-            <i class="ph-fill ph-magnifying-glass"></i>
+            <i class="ph ph-magnifying-glass"></i>
          </button>
          <input type="text" id="searchItems" onkeyup="getItems()" placeholder="find your job!" >
         </div>
@@ -56,10 +56,22 @@
                         <i class="ph-fill ph-seal-check"></i>
                      </h2>
                      <ul class="jobInfo">
-                        <li>Salary: <span class="salary"><%= post.salary %></span></li>
-                        <li>Location: <span><%= post.location %></span></li>
-                        <li>Published: <span class="date"><strong><%= post.created_at %></strong></span></li>
-                        <li>Vacancy: <span><%= post.vacancies %></span></li>
+                        <li>
+                            <div class="info"><i class="ph-fill ph-currency-dollar"></i>Salary:</div>
+                            <span class="salary"><%= post.salary %></span>
+                        </li>
+                        <li>
+                            <div class="info"><i class="ph-fill ph-map-pin"></i>Location:</div>
+                            <span><%= post.location %></span>
+                        </li>
+                        <li>
+                            <div class="info"><i class="ph-fill ph-calendar"></i>Published:</div>
+                            <span class="date"><strong><%= post.created_at %></strong></span>
+                        </li>
+                        <li>
+                            <div class="info"><i class="ph-fill ph-user-plus"></i>Vacancy:</div>
+                            <span><%= post.vacancies %></span>
+                        </li>
                      </ul>
                      <div class="text-box">
                         <% if(post.information) { %>
@@ -72,7 +84,7 @@
                      </div>
                      <div class="functions">
                            <div class="like">
-                              <button class="like-button" name="<%= user.id %>/<%= post.id %>"><i class="ph ph-thumbs-up"></i></button>
+                              <button class="like-button" name="<%= user.id %>/<%= post.id %>"><i class="ph ph-arrow-fat-line-up"></i></button>
                               <span class="like-value" ><%= post.likes %></span>
                            </div>
                            <div class="accept">
@@ -90,22 +102,36 @@
                       <i class="ph-fill ph-seal-check"></i>
                     </h2>
                     <ul class="jobInfo">
-                        <li>Salary: <span class="salary"><%= post.salary %></span></li>
-                        <li>Location: <span><%= post.location %></span></li>
-                        <li>Published: <span class="date"><strong><%= post.created_at %></strong></span></li>
-                        <li>Vacancy: <span><%= post.vacancies %></span></li>
+                        <li>
+                            <div class="info"><i class="ph-fill ph-currency-dollar"></i>Salary:</div>
+                            <span class="salary"><%= post.salary %></span>
+                        </li>
+                        <li>
+                            <div class="info"><i class="ph-fill ph-map-pin"></i>Location:</div>
+                            <span><%= post.location %></span>
+                        </li>
+                        <li>
+                            <div class="info"><i class="ph-fill ph-calendar"></i>Published:</div>
+                            <span class="date"><strong><%= post.created_at %></strong></span>
+                        </li>
+                        <li>
+                            <div class="info"><i class="ph-fill ph-user-plus"></i>Vacancy:</div>
+                            <span><%= post.vacancies %></span>
+                        </li>
                     </ul>
                     <div class="text-box">
-                     <h2 class="description">Description</h2>
-                     <div class="text">
-                        <%= post.information %>
-                     </div>
-                     <button class="btn-seeMore">...see more</button>
-                  </div>
+                        <% if(post.information) { %>
+                            <h2 class="description">Description</h2>
+                        <% } %>
+                        <div class="text">
+                            <%= post.information %>
+                        </div>
+                        <button class="btn-seeMore">...see more</button>
+                    </div>
                     <div class="functions">
                        <div class="like">
                           <a href="/login">
-                              <button class="like-button"><i class="ph ph-thumbs-up"></i></button>
+                              <button class="like-button"><i class="ph ph-arrow-fat-line-up"></i></button>
                            </a>
                            <span><%= post.likes %></span>
                         </div>
