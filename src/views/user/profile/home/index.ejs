@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/user/profile/home/style.css">
+    <title>Jobs</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="" class="logo">Jobs</a>
+            <nav class="nav">
+              <ul>
+                <% if(user) { %>
+                   <li>
+                        <i class="ph-fill ph-arrow-circle-left"></i>
+                        <a href="/dashboard">back</a>
+                   </li>
+                <% } else { %>
+                   <li>
+                        <i class="ph-fill ph-arrow-circle-left"></i>
+                        <a href="/">back</a>
+                   </li>
+                <% } %>
+              </ul>
+            </nav>
+      
+            <div class="menu">
+                <i class="ph-fill ph-list"></i>
+            </div>
+          </div>
+    </header>
+    <main>
+        <div class="container">
+            <% if(user) { %>
+                <div class="boxProfile">
+                    <div class="userInfo">
+                        <span class="picture"><i class="ph-fill ph-user-circle-gear"></i></span>
+                        <span class="username"><%= user.name %></span>
+                    </div>
+                    <div class="editButton"><button>Edit profile</button></div>
+                </div>
+                <div class="moreInfo">
+                    <a href="/profile/account">
+                        <div class="accountInfo">
+                            <i class="ph-fill ph-user"></i>
+                            Account information
+                        </div>
+                    </a>
+                    <a href="/profile/settings/password">
+                        <div class="changePassword">
+                            <i class="ph-fill ph-key"></i>
+                            Change your password
+                        </div>
+                    </a>
+                </div>
+            <% } %>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>
+              &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+            </p>
+          </div>
+    </footer>
+    <script src="/js/menu/main.js"></script>
+</body>
+</html>

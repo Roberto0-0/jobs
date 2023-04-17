@@ -33,6 +33,10 @@ export class Routes {
     this.router.get("/user/showAll", new UserController().readAll)
     this.router.put("/user/update/:id", new UserController().update)
     this.router.delete("/user/delete/:id", new UserController().delete)
+    this.router.get("/profile", isAuth, new UserController().profile)
+    this.router.get("/profile/account", isAuth, new UserController().accountInformation)
+    this.router.get("/profile/settings/password", isAuth, new UserController().changePasswordIndex)
+    this.router.post("/profile/settings/password/:id", new UserController().changePassword)
   }
 
   post() {
