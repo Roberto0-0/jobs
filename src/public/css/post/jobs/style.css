@@ -230,9 +230,8 @@ main .container .jobs-menu {
 main .container .jobs-menu li {
     padding: 10px 10px 0px 10px;
 
-    width: 50%;
+    width: 90vw;
     max-width: 500px;
-    min-width: 300px;
     height: auto;
     
     border: 1px solid var(--border);
@@ -269,9 +268,9 @@ main .container .jobs-menu li .company-name i {
 main .container .jobs-menu li .jobInfo {
     display: flex;
     flex-direction: column;
-    gap: 0.1em;
+    gap: 0.2em;
 
-    margin-bottom: 0.8em;
+    margin-bottom: 1em;
 
     width: auto;
     height: auto;
@@ -287,6 +286,13 @@ main .container .jobs-menu li .jobInfo li {
     
     border: none;
     background: none;
+}
+
+main .container .jobs-menu li .jobInfo li .info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.2em;
     
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
@@ -294,7 +300,13 @@ main .container .jobs-menu li .jobInfo li {
     color: #535252;
 }
 
+main .container .jobs-menu li .jobInfo li .info i {
+    font-size: 1.2em;
+}
+
 main .container .jobs-menu li .jobInfo li span {
+    background: #f2f2f2;
+    
     font-weight: 400;
     color: #000;
 }
@@ -396,7 +408,7 @@ main .container .jobs-menu li .functions .like .like-button {
 }
 
 main .container .jobs-menu li .functions .like .like-button i {
-  font-size: 1.6em;
+  font-size: 1.9em;
   color: #000;
 }
 
@@ -538,16 +550,12 @@ footer .container p a {
         border: none;
     }
 
-    main .container {
-        width: 350px;
-    }
-
     footer .container p {
         font-size: 0.7em;
     }
 }
 
-@media(max-width: 390px) {
+@media(max-width: 360px) {
     header .container .logo {
         display: flex;
         flex-direction: column;
@@ -563,9 +571,5 @@ footer .container p a {
 
         width: 180px;
         height: 35px;
-    }
-
-    main .container {
-        width: 290px;
     }
 }
