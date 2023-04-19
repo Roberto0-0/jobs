@@ -4,12 +4,21 @@
     box-sizing: border-box;
 }
 
+
 :root {
-    --primary: #147CB7;
-    --secondary: #B8C61B;
-    --background: #E7E7E7;
-    --footer: #343434;
-    --white: #fff;
+    --global-color: #147CB7;
+    --global-hover-color: #178bcf;
+    --global-header-footer: #161B22;
+
+    --light-primary-background: #fff;
+    --light-secondary-background: #F6F8FA;
+    --light-text: #413f3f;
+    --light-border: #30363D;
+    
+    --dark-primary-background: #0D1117;
+    --dark-secondary-background: #010409;
+    --dark-text: #CAD1D9;
+    --dark-border: #D0D7DE;
 }
 
 body, html {
@@ -19,45 +28,55 @@ body, html {
     width: 100%;
     min-height: 100vh;
     
-    background: linear-gradient(to bottom, #0197ff, #78c3ee);
+    background: var(--light-primary-background);
 
     font-family: 'Roboto', sans-serif;
+    color: var(--light-text);
+}
+
+a {
+    color: var(--light-text);
 }
 
 header  {
     width: 100%;
     height: 70px;
 
-    background-color: transparent;
+    background: var(--global-header-footer);
 }
 
 header .container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    
     align-items: center;
+    
     margin: 0 auto;
+    padding: 5px 0px;
 
-    width: 90%;
+    width: 95vw;
     max-width: 1279px;
-    min-width: 300px;
     height: 100%;
 
 }
 
 header .container .logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     padding: 0px 15px;
 
     width: auto;
     height: 70%;
 
-    border-left: 5px solid var(--white);
+    border-left: 3px solid var(--dark-border);
     text-decoration: none;
 
     font-family: 'Chango', cursive;
-    font-size: 2.5em;
-    color: var(--white);
+    font-size: 2em;
+    color: var(--dark-text);
 }
 
 header .container nav {
@@ -96,106 +115,90 @@ header .container nav ul li a {
 
     font-size: 1.1em;
     font-weight: 400;
-    color: #D8D9D9;
-}
-
-header .container nav ul li:first-child a {
-    color: var(--white);
+    color: var(--dark-text);
 }
 
 header .container nav ul .login-button {
-    border: 1px solid #D8D9D9;
-    border-radius: 10px;
+    border-radius: 5px;
+    background: var(--global-color);
+
+    color: var(--dark-text);
+}
+
+header .container nav ul .login-button:hover {
+    background: var(--global-hover-color);
 }
 
 header .container .menu {
     display: none;
 }
 
-/* ---- main styles ---- */
-
 main {
     flex: 1;
 
-    margin: auto;
+    margin: 20px auto;
 
-    width: auto;
-    /* min-width: 1350px; */
+    width: 100%;
     height: calc(100vh - 70px);
-
-    /* background: blue; */
 }
 
 main .container {
     display: flex;
-    flex-direction: column;
-
-    margin: 0 auto;
-
-    width: 90%;
-    max-width: 1279px;
-    min-width: 300px;
-    height: 100%;
-    max-height: 700px;
-}
-
-main .container .pubble {
-    display: flex;
     flex-direction: row;
+    gap: 1em;
 
-    margin: 100px auto;
-    padding: 10px;
+    margin: auto;
 
-    width: 90%;
+    width: 95vw;
+    max-width: 1279px;
+    height: 100%;
 }
 
-main .container .pubble .phrases {
+main .container .firstBlock {
+    padding: 30px;
+
     width: 50%;
 }
 
-main .container .pubble .phrases h2 {
-    font-family: 'Varela Round', sans-serif;
-    font-size: 2.8em;
-    color: #fff;
+main .container .secondBlock {
+    width: 50%;
 }
 
-main .container .pubble .phrases h3 {
+main .container .firstBlock h2 {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 2.8em;
+}
+
+main .container .firstBlock h3 {
     margin-bottom: 1.5em;
     
     font-family: 'Varela Round', sans-serif;
     font-size: 1.5em;
-    color: #fff;
 }
 
-main .container .pubble .phrases .jobs {
+main .container .firstBlock .jobs {
     padding: 5px 10px;
 
     width: auto;
     height: auto;
 
-    border-bottom: 2px solid var(--white);
+    border-bottom: 2px solid var(--light-border);
     text-decoration: none;
 
     font-family: 'Varela Round', sans-serif;
     font-size: 1.2em;
-    color: #fff;
 }
 
-main .container .pubble .illustration-img {
+main .container .secondBlock {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    margin: auto;
-
     width: 50%;
-    height: 100%;
 }
 
-main .container .pubble .illustration-img img {
-    margin-bottom: auto;
-
+main .container .secondBlock img {
     width: 70%;
 }
 
@@ -203,7 +206,7 @@ footer {
     width: 100%;
     height: 50px;
 
-    background: var(--footer);
+    background: var(--global-header-footer);
 }
 
 footer .container {
@@ -220,16 +223,16 @@ footer .container {
     height: 100%;
 
     font-family: 'Roboto', sans-serif;
+    color: var(--dark-text);
 }
 
 footer .container p {
     text-align: center;
     font-size: 1em;
-    color: #fff;
 }
 
-footer .container p a {
-    color: #fff;
+footer .container a {
+    color: var(--dark-text);
 }
 
 @media (max-width: 600px) {
@@ -250,10 +253,10 @@ footer .container p a {
         width: 0;
         height: calc(100vh - 70px);
         
-        background: linear-gradient(135deg, rgba(1, 151, 255, 0.1), rgba(255, 255, 255, 0));
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
         visibility: hidden;
+        border-left: 1px solid var(--light-border);
+        background: var(--light-primary-background);
+        transition: 0.3s;
     }
 
     header .container nav ul {
@@ -273,14 +276,15 @@ footer .container p a {
     
     header .container .menu i {
       font-size: 2.5em;
-      color: var(--white);
+      color: var(--dark-text);
     }
 
     header .container nav.active {
         display: block;
         
-        width: 100vw;
+        width: 60vw;
 
+        transition: 0.3s;
         visibility: visible;
     }
 
@@ -304,7 +308,11 @@ footer .container p a {
 
         width: 95%;
 
-        border-bottom: 2px solid var(--white);
+        border-bottom: 1px solid var(--light-border);
+    }
+
+    header .container .nav.active ul li:last-child {
+        border-bottom: 1px solid var(--light-border);
     }
     
     header .container nav.active ul li i {
@@ -326,56 +334,45 @@ footer .container p a {
 
     header .container nav.active ul .login-button {
         border: none;
-        border-bottom: 2px solid var(--white);
+        border-bottom: 2px solid var(--light-border);
         border-radius: 0;
+        background: transparent;
+        color: var(--light-text);
     }
 
-    main .container .pubble {
-        display: flex;
+    main .container {
         flex-direction: column;
-        align-items: center;
-
-
-        margin: 30px auto;
-        padding: 5px;
     }
 
-    main .container .pubble .phrases {
-        margin-bottom: 2.5em;
-        
+    main .container .firstBlock {
+        padding: 0px 10px;
+
         width: 100%;
-        height: auto;
     }
 
-    main .container .pubble .phrases h2 {
-        font-size: 2.4em;
-        color: #fff;
-
+    main .container .firstBlock h2 {
+        font-size: 2.3em;
     }
 
-    main .container .pubble .phrases h3 {
-        font-size: 1.2em;
-        color: #fff;
+    main .container .firstBlock h3 {
+        font-size: 1.3em;
     }
 
-    main .container .pubble .phrases .jobs {
-        padding: 5px 10px;
-        
+    main .container .firstBlock .jobs {
         font-size: 1em;
-        color: #fff;
     }
 
-    main .container .pubble .illustration-img {
+    main .container .secondBlock {
         width: 100%;
         height: 100%;
     }
 
-    main .container .pubble .illustration-img img {
+    main .container .secondBlock img {
         width: 100%;
         height: 100%;
     }
 
     footer .container p {
-        font-size: 0.7em;
+        font-size: 0.9em;
     }
 }
