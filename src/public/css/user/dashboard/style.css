@@ -51,7 +51,7 @@ header .container {
 
     margin: 0 auto;
 
-    width: 90vw;
+    width: 95vw;
     max-width: 1279px;
     height: 100%;
 
@@ -232,7 +232,7 @@ main .container .firstBlock .jobs {
     width: auto;
     height: auto;
 
-    border-bottom: 2px solid var(--light-border);
+    border-bottom: 1px solid var(--light-text);
     text-decoration: none;
 
     font-family: 'Varela Round', sans-serif;
@@ -301,7 +301,7 @@ header .container .menu {
         right: 0;
 
         width: 0;
-        height: calc(100% - 63px);
+        height: calc(100% - 64px);
         
         visibility: hidden;
         border-left: 1px solid var(--light-border);
@@ -357,7 +357,7 @@ header .container .menu {
 
         width: 95%;
 
-        border-bottom: 2px solid var(--light-border);
+        border-bottom: 1px solid var(--light-border);
     }
     
     header .container nav.active ul li a {
@@ -399,7 +399,7 @@ header .container .menu {
 
         width: 95%;
 
-        border-bottom: 2px solid var(--light-border);
+        border-bottom: 1px solid var(--light-border);
     }
 
     main .container {
