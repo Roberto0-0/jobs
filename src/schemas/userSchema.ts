@@ -11,7 +11,7 @@ export const userSchema = z.object({
     required_error: "Password is required"
   }).min(7, "Password at least 8 characters"),
   confirmPassword: z.string({
-    required_error: "Confirma password is required"
+    required_error: "Confirm password is required"
   })
 }).superRefine(({ confirmPassword, password }, ctx) => {
   if(confirmPassword != password) {
