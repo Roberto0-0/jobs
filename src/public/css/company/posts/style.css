@@ -5,16 +5,21 @@
 }
 
 :root {
-    --primary: #147CB7;
-    --secondary:#B8C61B;
-    --background: #E7E7E7;
-    --footer: #343434;
-    --border: #a6a6a6;
-    --white: #fff;
-    --background-message-success: #76e7a5;
-    --background-message-error: #e77676;
-    --text-message-success: #02703d;
-    --text-message-error: #700202;
+    --global-color: #147CB7;
+    --global-hover-color: #178bcf;
+    --global-header-footer: #161B22;
+    --global-white: #fff;
+    --global-black: #000;
+
+    --light-primary-background: #fff;
+    --light-secondary-background: #F6F8FA;
+    --light-text: #413f3f;
+    --light-border: #30363D;
+    
+    --dark-primary-background: #0D1117;
+    --dark-secondary-background: #010409;
+    --dark-text: #CAD1D9;
+    --dark-border: #D0D7DE;
 }
 
 body, html {
@@ -23,17 +28,18 @@ body, html {
     
     width: 100%;
     min-height: 100vh;
-
-    background: linear-gradient(to bottom, #0197ff, #78c3ee);
     
-    font-family: Sans-Serif;
+    background: var(--light-primary-background);
+
+    font-family: 'Roboto', sans-serif;
+    color: var(--light-text);
 }
 
 header  {
     width: 100%;
     height: 70px;
 
-    background-color: transparent;
+    background: var(--global-header-footer);
 }
 
 header .container {
@@ -44,24 +50,28 @@ header .container {
     align-items: center;
     margin: 0 auto;
 
-    width: 90%;
+    width: 95vw;
     max-width: 1279px;
-    min-width: 300px;
     height: 100%;
 }
 
 header .container .logo {
-    padding: 0px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0px 10px;
 
     width: auto;
     height: 70%;
 
-    border-left: 5px solid var(--white);
+    border-left: 3px solid var(--global-white);
     text-decoration: none;
 
     font-family: 'Chango', cursive;
     font-size: 2.5em;
-    color: var(--white);
+    color: var(--global-white);
     
 }
 
@@ -98,8 +108,9 @@ header .container nav ul li {
 }
 
 header .container nav ul li i {
+    display: none;
+
     font-size: 1.2em;
-    color: var(--white);
 }
 
 header .container nav ul a {
@@ -110,31 +121,32 @@ header .container nav ul a {
 
     font-family: 'Roboto', sans-serif;
     font-size: 1.2em;
-    color: var(--white);
+    color: var(--dark-text);
 }
 
 header .container .menu {
     display: none;
+
+    color: var(--dark-text);
 }
 
 main {
     flex: 1;
 
-    margin: auto;
+    margin: 20px auto;
 
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 70px);
 }
 
 main .container {
     display: flex;
     flex-direction: column;
 
-    margin: 60px auto;
+    margin: auto;
 
-    width: 90%;
+    width: 95vw;
     max-width: 1279px;
-    min-width: 300px;
     height: 100%;
 }
 
@@ -148,115 +160,47 @@ main .container .jobs-menu {
 }
 
 main .container .jobs-menu li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
     padding: 10px;
 
     width: 90vw;
     max-width: 500px;
     height: auto;
     
-    border: 1px solid var(--border);
+    border: 1px solid var(--dark-border);
     border-radius: 10px;
-    background-color: var(--white);
+    background-color: var(--light-secondary-background);
     list-style: none;
 }
 
-main .container .jobs-menu li h1 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 2em; 
-    font-weight: 400;
-    color: var(--primary);
+main .container .jobs-menu li .postInfo {
+    width: 70%;
 }
 
-main .container .jobs-menu li .company-name {
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   gap: 0.2em;
+main .container .jobs-menu li .postInfo h1 {
+    font-size: 2em; 
+    font-weight: 400;
+    color: var(--global-color);
+}
+
+main .container .jobs-menu li .postInfo .company-name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.2em;
    
     margin-bottom: 1em;
 
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bold;
     font-size: 1.2em;
-    color: #535252;
 }
 
-main .container .jobs-menu li .company-name i {
-   color: var(--primary);
-}
-
-main .container .jobs-menu li .jobInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1em;
-
-    margin-bottom: 0.8em;
-
-    width: auto;
-    height: auto;
-
-    font-family: 'Roboto', sans-serif;
-    font-size: 1em;
-}
-
-main .container .jobs-menu li .jobInfo li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5em;
-    
-    padding: 0;
-    
-    border: none;
-    background: none;
-    
-    font-family: 'Roboto', sans-serif;
-    font-size: 1em;
-    font-weight: 600;
-    color: #535252;
-}
-
-main .container .jobs-menu li .jobInfo li span {
-    font-weight: 400;
-    color: #000;
-}
-
-main .container .jobs-menu li .text-box {
-    display: flex;
-    flex-direction: column;
-    
-    margin-bottom: 0.8em;
-}
-
-main .container .jobs-menu li .text-box .description {
-    font-size: 0.9em;
-    color: #535252;
-}
-
-main .container .jobs-menu li .text-box .text {
-    margin-bottom: 0.3em;
-
-    height: 100px;
-
-    overflow: hidden;
-
-    text-align: justify;
-    word-break: break-all;
-    line-height: 1.5em;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1em;
-}
-
-main .container .jobs-menu li .text-box .btn-seeMore {
-    margin-left: auto;
-
-    outline: transparent;
-    border: none;
-    background: none;
-    cursor: pointer;
-
-    font-size: 1em;
-    color: #535252;
+main .container .jobs-menu li .postInfo .company-name i {
+   color: var(--global-color);
 }
 
 main .container .jobs-menu li .settings {
@@ -265,35 +209,45 @@ main .container .jobs-menu li .settings {
     justify-content: center;
     align-items: center;
     gap: 0.8em;
-    
-    padding-top: 10px;
 
-    width: 100%;
-    height: auto;
-    
-    border-top: 1px solid var(--border);
-    /* background: red; */
+    width: 50%;
+    height: 100%;
 }
 
 main .container .jobs-menu li .settings a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     text-decoration: none;
 }
 
-main .container .jobs-menu li .settings a button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    padding: 10px 15px;
+main .container .jobs-menu li .settings .update {
+    background: #65cc90;
 
-    outline: transparent;
-    border: none;
+    padding: 10px;
+
+    width: 50%;
+    height: 100%;
+
     border-radius: 5px;
-    cursor: pointer;
-    background-color: var(--primary);
+}
 
+main .container .jobs-menu li .settings .delete {
+    background: #cf6a6a;
+
+    padding: 10px;
+
+    width: 50%;
+    height: 100%;
+
+    border-radius: 5px;
+}
+
+main .container .jobs-menu li .settings a i {
     font-size: 1.5em;
-    color: var(--white);
+    color: var(--global-white);
 }
 
 
@@ -301,7 +255,7 @@ footer {
     width: 100%;
     height: 50px;
 
-    background: var(--footer);
+    background: var(--global-header-footer);
 }
 
 footer .container {
@@ -312,22 +266,19 @@ footer .container {
 
     margin: 0 auto;
 
-    width: 90%;
+    width: 95vw;
     max-width: 1279px;
-    min-width: 300px;
     height: 100%;
-
-    font-family: 'Roboto', sans-serif;
 }
 
 footer .container p {
     text-align: center;
     font-size: 1em;
-    color: #fff;
+    color: var(--dark-text);
 }
 
 footer .container p a {
-    color: #fff;
+    color: var(--dark-text);
 }
 
 .success_message {
@@ -367,11 +318,6 @@ footer .container p a {
 
 @media(max-width: 600px) {
     header .container .logo {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
         font-size: 1.5em;
     }
 
@@ -381,12 +327,11 @@ footer .container p a {
         right: 0;
 
         width: 0;
-        height: calc(100vh - 70px);
-        
-        background: linear-gradient(135deg, rgba(1, 151, 255, 0.1), rgba(255, 255, 255, 0));
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        height: calc(100% - 70px);
+
         visibility: hidden;
+        border-left: 1px solid var(--dark-border);
+        background: var(--light-primary-background);
     }
 
     header .container nav ul {
@@ -398,7 +343,7 @@ footer .container p a {
 
         position: absolute;
         top: 15px;
-        right: 15px;
+        right: 10px;
 
         width: 40px;
         height: 40px;
@@ -406,14 +351,15 @@ footer .container p a {
     
     header .container .menu i {
       font-size: 2.5em;
-      color: var(--white);
+      color: var(--global-white);
     }
 
     header .container nav.active {
         display: block;
         
-        width: 100vw;
+        width: 60vw;
 
+        transition: 0.4s;
         visibility: visible;
     }
 
@@ -428,35 +374,27 @@ footer .container p a {
     }
 
     header .container nav.active ul li  {
-
         width: 90%;
 
-        border-bottom: 2px solid var(--white);
+        border-bottom: 1px solid var(--dark-border);
 
         font-size: 1.2em;
         font-weight: bold;
-        color: var(--white);
     }
     
     header .container nav.active ul li {
         padding: 10px 0px;
     }
 
-    header .container nav.active ul .login-button {
-        border: none;
+    header .container .nav.active ul li a {
+        color: var(--light-text);
     }
 
-    main .container {
-        width: 350px;
+    header .container .nav.active ul li i {
+        display: block;
     }
 
     footer .container p {
-        font-size: 0.7em;
-    }
-}
-
-@media(max-width: 320px) {
-    main .container {
-        width: 290px;
+        font-size: 0.9em;
     }
 }

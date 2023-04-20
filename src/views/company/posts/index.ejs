@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/phosphor-icons"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
     <link rel="stylesheet" href="/css/company/posts/style.css">
     <title>Jobs</title>
@@ -19,13 +19,13 @@
             <% if(user) { %>
                 <% if(data) { %>
                    <li>
-                      <i class="ph-arrow-circle-left-fill"></i>
+                     <i class="ph-fill ph-arrow-bend-up-left"></i>
                       <a href="/company/<%= user.id %>/<%= data.id %>">back</a>
                    </li>
                 <% } %>
             <% } else { %>
                <li>
-                  <i class="ph-arrow-circle-left-fill"></i>
+                  <i class="ph-fill ph-arrow-bend-up-left"></i>
                   <a href="/">back</a>
                </li>
             <% } %>
@@ -33,7 +33,7 @@
         </nav>
   
         <div class="menu">
-          <i class="ph-list-fill"></i>
+         <i class="ph ph-list"></i>
         </div>
       </div>
    </header>
@@ -50,33 +50,20 @@
                <% if(data) { %>
                   <% for(var i=0;i < data.post.length;i++) { %>
                      <li class="li">
-                        <h1><%= data.post[i].vancancy %></h1>
-                        <h2 class="company-name">
-                           <%= data.post[i].company_name %>
-                           <i class="ph-circle-wavy-check-fill"></i>
-                        </h2>
-                     <ul class="jobInfo">
-                        <li>Salary: <span class="salary"><%= data.post[i].salary %></span></li>
-                        <li>Location: <span><%= data.post[i].location %></span></li>
-                        <li>Published: <span class="date"><strong><%= data.post[i].created_at %></strong></span></li>
-                        <li>Vacancy: <span><%= data.post[i].vacancies %></span></li>
-                     </ul>
-                     <div class="text-box">
-                           <% if(data.post[i].information) { %>
-                              <h2 class="description">Description</h2>
-                           <% } %>
-                           <div class="text">
-                              <%= data.post[i].information %>
-                           </div>
-                           <button class="btn-seeMore">...see more</button>
+                        <div class="postInfo">
+                           <h1><%= data.post[i].vancancy %></h1>
+                           <h2 class="company-name">
+                              <%= data.post[i].company_name %>
+                              <i class="ph-fill ph-seal-check"></i>
+                           </h2>
                         </div>
                         <div class="settings">
-                        <a href="/post/update/<%= data.post[i].id %>/<%= data.id %>">
-                              <button><i class="ph-fill ph-pencil"></i></button>
-                        </a>
-                        <a href="/post/delete/<%= data.post[i].id %>/<%= data.id %>/<%= user.id %>">
-                              <button><i class="ph-fill ph-trash"></i></button>
-                        </a>
+                           <a href="/post/update/<%= data.post[i].id %>/<%= data.id %>" class="update">
+                              <i class="ph ph-pencil"></i>
+                           </a>
+                           <a href="/post/delete/<%= data.post[i].id %>/<%= data.id %>/<%= user.id %>" class="delete">
+                              <i class="ph ph-trash"></i>
+                           </a>
                         </div>
                      </li>
                   <% } %>
