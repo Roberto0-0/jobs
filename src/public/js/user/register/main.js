@@ -1,7 +1,5 @@
-const password = document.querySelector("#password")
-const confirm_password = document.querySelector("#confirm-password")
-const btn = document.querySelector("#eye-button")
-const confirm_btn = document.querySelector("#eye-confirm-button")
+const password = document.querySelectorAll(".password")
+const eyeButton = document.querySelectorAll(".ph-eye")
 const error_message = document.querySelectorAll(".error_message")
 
 const main = () => {
@@ -10,29 +8,19 @@ const main = () => {
             error_message[i].style.display = "none"
         }
     }, 5000)
-    
-    btn.onclick = () => {
-        if(password.type == "password") {
-            password.type = "text"
-            btn.classList = "ph-lightbulb-fill"
-        } else {
-            if(password.type == "text") {
-                password.type = "password"
-                btn.classList = "ph-lightbulb"
+
+    for (let i = 0; i < password.length; i++) {
+        eyeButton[i].onclick = () => {
+            if(password[i].type == "password") {
+                password[i].type = "text"
+                eyeButton[i].classList = "ph-eye-closed"
+            } else {
+                if(password[i].type == "text") {
+                    password[i].type = "password"
+                    eyeButton[i].classList = "ph ph-eye ph"
+                }
             }
-        }
-    }
-    
-    confirm_btn.onclick = () => {
-        if(confirm_password.type == "password") {
-            confirm_password.type = "text"
-            confirm_btn.classList = "ph-lightbulb-fill"
-        } else {
-            if(confirm_password.type == "text") {
-                confirm_password.type = "password"
-                confirm_btn.classList = "ph-lightbulb"
-            }
-        }
+        }   
     }
 }
 
