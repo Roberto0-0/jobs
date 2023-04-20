@@ -15,7 +15,7 @@
     <% if(data) { %>
       <header>
         <div class="container">
-          <a href="#" class="company-name"><span><%= data.company %></span></a>
+          <a href="#" class="company-name"><span><%= data.company %></span><i class="ph-fill ph-seal-check"></i></a>
           <nav class="nav">
             <ul>
                 <li>
@@ -27,7 +27,7 @@
                   <a href="/post/create/<%= user.id %>/<%= data.id %>">post</a>
                 </li>
                 <li>
-                  <i class="ph-fill ph-caret-left"></i>
+                  <i class="ph-fill ph-arrow-bend-up-left"></i>
                   <a href="/dashboard">back</a>
                 </li>
             </ul>
@@ -48,8 +48,8 @@
           <% } %>
         <div class="container">
           <div class="firstBlock">
-            <div>
-              <h2>post information</h2>
+            <div class="postInfo">
+              <h2>information</h2>
             </div>
             <ul>
               <li>
@@ -83,6 +83,17 @@
                   <div class="info">
                     <span class="value"><%= likes %></span>
                     <p>Push</p>
+                  </div>        
+                </a>
+              </li>
+              <li>
+                <a href="/company/likes/<%= data.id %>">
+                  <div class="illustration">
+                    <i class="ph-fill ph-read-cv-logo"></i>
+                  </div>
+                  <div class="info">
+                    <span class="value"><%= likes %></span>
+                    <p>Resumes</p>
                   </div>        
                 </a>
               </li>
