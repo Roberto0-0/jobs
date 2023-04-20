@@ -5,33 +5,42 @@
 }
 
 :root {
-    --primary: #147CB7;
-    --secondary:#B8C61B;
-    --background: #E7E7E7;
-    --footer: #343434;
-    --border: #a6a6a6;
-    --white: #fff;
+    --global-color: #147CB7;
+    --global-hover-color: #178bcf;
+    --global-header-footer: #161B22;
+    --global-white: #fff;
+    --global-black: #000;
+
+    --light-primary-background: #fff;
+    --light-secondary-background: #F6F8FA;
+    --light-text: #413f3f;
+    --light-border: #30363D;
+    
+    --dark-primary-background: #0D1117;
+    --dark-secondary-background: #010409;
+    --dark-text: #CAD1D9;
+    --dark-border: #D0D7DE;
 }
 
 
-body {
-    -webkit-tap-highlight-color: transparent;
+body, html {
     display: flex;
     flex-direction: column;
-
+    
     width: 100%;
     min-height: 100vh;
-
-    background: linear-gradient(to bottom, #0197ff, #78c3ee);
     
-    font-family: Sans-Serif;
+    background: var(--light-primary-background);
+
+    font-family: 'Roboto', sans-serif;
+    color: var(--light-text);
 }
 
 header  {
     width: 100%;
     height: 70px;
 
-    background-color: transparent;
+    background: var(--global-header-footer);
 }
 
 header .container {
@@ -42,24 +51,28 @@ header .container {
     align-items: center;
     margin: 0 auto;
 
-    width: 90%;
+    width: 95vw;
     max-width: 1279px;
-    min-width: 300px;
     height: 100%;
 }
 
 header .container .logo {
-    padding: 0px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0px 10px;
 
     width: auto;
     height: 70%;
 
-    border-left: 5px solid var(--white);
+    border-left: 3px solid var(--global-white);
     text-decoration: none;
 
     font-family: 'Chango', cursive;
     font-size: 2.5em;
-    color: var(--white);
+    color: var(--global-white);
     
 }
 
@@ -75,7 +88,7 @@ header .container .search-area {
     height: 40px;
 
     border-radius: 5px;
-    background: var(--white);
+    background: var(--light-secondary-background);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
@@ -106,7 +119,7 @@ header .container .search-area button {
 
     outline: transparent;
     border: none;
-    border-right: 1px solid var(--border);
+    border-right: 1px solid var(--dark-border);
     background: none;
     cursor: pointer;
 
@@ -152,8 +165,9 @@ header .container nav ul li {
 }
 
 header .container nav ul li i {
+    display: none;
+
     font-size: 1.2em;
-    color: var(--white);
 }
 
 header .container nav ul a {
@@ -164,7 +178,7 @@ header .container nav ul a {
 
     font-family: 'Roboto', sans-serif;
     font-size: 1.2em;
-    color: var(--white);
+    color: var(--global-white);
 }
 
 header .container nav ul .login-button {
@@ -179,43 +193,39 @@ header .container .menu {
 main {
     flex: 1;
 
-    margin: auto;
+    margin: 20px auto;
 
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 70px);
 }
 
 main .container {
     display: flex;
     flex-direction: column;
 
-    margin: 50px auto;
+    margin: auto;
 
-    width: 90%;
+    width: 95vw;
     max-width: 1279px;
-    min-width: 300px;
     height: 100%;
 }
 
 main .container .notfound {
     display: none;
 
-    margin: auto;
+    margin: 0 auto;
     padding: 10px;
 
-    width: auto;
+    width: 95vw;
     max-width: 400px;
-    height: auto;
 
     border-radius: 10px;
     background: transparent;
 
     text-align: center;
     word-break: break-all;
-    font-family: 'Varela Round', sans-serif;
     font-size: 1.5em;
     font-weight: bold;
-    color: var(--white);
 }
 
 main .container .jobs-menu {
@@ -232,11 +242,10 @@ main .container .jobs-menu li {
 
     width: 90vw;
     max-width: 500px;
-    height: auto;
     
-    border: 1px solid var(--border);
+    border: 1px solid var(--dark-border);
     border-radius: 10px;
-    background-color: var(--white);
+    background: var(--light-secondary-background);
     list-style: none;
 }
 
@@ -244,7 +253,7 @@ main .container .jobs-menu li h1 {
     font-family: 'Roboto', sans-serif;
     font-size: 2em; 
     font-weight: 400;
-    color: var(--primary);
+    color: var(--global-color);
 }
 
 main .container .jobs-menu li .company-name {
@@ -258,11 +267,10 @@ main .container .jobs-menu li .company-name {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bold;
     font-size: 1.2em;
-    color: #535252;
 }
 
 main .container .jobs-menu li .company-name i {
-   color: var(--primary);
+   color: var(--global-color);
 }
 
 main .container .jobs-menu li .jobInfo {
@@ -297,7 +305,6 @@ main .container .jobs-menu li .jobInfo li .info {
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
     font-weight: 600;
-    color: #535252;
 }
 
 main .container .jobs-menu li .jobInfo li .info i {
@@ -305,10 +312,9 @@ main .container .jobs-menu li .jobInfo li .info i {
 }
 
 main .container .jobs-menu li .jobInfo li span {
-    background: #f2f2f2;
+    background: #e6e6e6;
     
     font-weight: 400;
-    color: #000;
 }
 
 main .container .jobs-menu li .text-box {
@@ -356,11 +362,11 @@ main .container .jobs-menu li .want {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: var(--primary);
+    background: var(--global-color);
 
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
-    color: var(--white);
+    color: var(--global-white);
 }
 
 main .container .jobs-menu li .functions {
@@ -372,9 +378,8 @@ main .container .jobs-menu li .functions {
   padding: 10px 0px;
   
   width: 100%;
-  height: auto;
   
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--dark-border);
 }
 
 main .container .jobs-menu li .functions .like {
@@ -384,8 +389,6 @@ main .container .jobs-menu li .functions .like {
   gap: 0.4em;
   
   width: 50%;
-  height: auto;
-
 }
 
 main .container .jobs-menu li .functions .like a {
@@ -409,20 +412,14 @@ main .container .jobs-menu li .functions .like .like-button {
 
 main .container .jobs-menu li .functions .like .like-button i {
   font-size: 1.9em;
-  color: #000;
+  color: var(--light-text);
 }
 
-/*main .container .jobs-menu li .functions .like .like-button .ph-fill .ph-thumbs-up {
-    color: var(--primary);
-}*/
-
 footer {
-    margin-top: auto;
-    
     width: 100%;
     height: 50px;
 
-    background: var(--footer);
+    background: var(--global-header-footer);
 }
 
 footer .container {
@@ -433,31 +430,25 @@ footer .container {
 
     margin: 0 auto;
 
-    width: 90%;
+    width: 95vw;
     max-width: 1279px;
-    min-width: 300px;
     height: 100%;
 
     font-family: 'Roboto', sans-serif;
+    color: var(--dark-text);
 }
 
 footer .container p {
     text-align: center;
     font-size: 1em;
-    color: #fff;
 }
 
-footer .container p a {
-    color: #fff;
+footer .container a {
+    color: var(--dark-text);
 }
 
 @media(max-width: 600px) {
     header .container .logo {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
         font-size: 1.5em;
     }
 
@@ -465,7 +456,7 @@ footer .container p a {
         margin: auto;
         margin-left: 15px;
 
-        width: 200px;
+        width: 190px;
         height: 35px;
     }
 
@@ -485,12 +476,11 @@ footer .container p a {
         right: 0;
 
         width: 0;
-        height: calc(100vh - 70px);
+        height: calc(100% - 64px);
         
-        background: linear-gradient(135deg, rgba(1, 151, 255, 0.1), rgba(255, 255, 255, 0));
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
         visibility: hidden;
+        border-left: 1px solid var(--dark-border);
+        background: var(--light-primary-background);
     }
 
     header .container nav ul {
@@ -502,7 +492,7 @@ footer .container p a {
 
         position: absolute;
         top: 15px;
-        right: 15px;
+        right: 10px;
 
         width: 40px;
         height: 40px;
@@ -510,14 +500,15 @@ footer .container p a {
     
     header .container .menu i {
       font-size: 2.5em;
-      color: var(--white);
+      color: var(--global-white);
     }
 
     header .container nav.active {
         display: block;
         
-        width: 100vw;
+        width: 60vw;
 
+        transition: 0.4s;
         visibility: visible;
     }
 
@@ -532,10 +523,9 @@ footer .container p a {
     }
 
     header .container nav.active ul li  {
-
         width: 90%;
 
-        border-bottom: 2px solid var(--white);
+        border-bottom: 1px solid var(--dark-border);
 
         font-size: 1.2em;
         font-weight: bold;
@@ -546,22 +536,26 @@ footer .container p a {
         padding: 10px 0px;
     }
 
+    header .container nav.active ul li i {
+        display: block;
+    }
+
+    header .container nav.active ul li a {
+        font-size: 1.2em;
+        color: var(--light-text);
+    }
+
     header .container nav.active ul .login-button {
         border: none;
     }
 
     footer .container p {
-        font-size: 0.7em;
+        font-size: 0.9em;
     }
 }
 
 @media(max-width: 360px) {
     header .container .logo {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
         font-size: 1.1em;
     }
 
