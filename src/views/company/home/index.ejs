@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/phosphor-icons"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="/css/company/home/style.css">
   <title>Jobs</title>
 </head>
@@ -15,26 +15,25 @@
     <% if(data) { %>
       <header>
         <div class="container">
-          <a href="./profile/index.html" class="company-name"><%= data.company %></a>
+          <a href="#" class="company-name"><span><%= data.company %></span></a>
           <nav class="nav">
             <ul>
                 <li>
-                  <i class="ph-briefcase-fill"></i>
+                  <i class="ph-fill ph-briefcase"></i>
                   <a href="/jobs">jobs</a>
                 </li>
                 <li>
-                  <i class="ph-note-fill"></i>
+                  <i class="ph-fill ph-note"></i>
                   <a href="/post/create/<%= user.id %>/<%= data.id %>">post</a>
                 </li>
                 <li>
-                  <i class="ph-arrow-circle-left-fill"></i>
+                  <i class="ph-fill ph-caret-left"></i>
                   <a href="/dashboard">back</a>
                 </li>
             </ul>
           </nav>
-     
           <div class="menu">
-            <i class="ph-list-fill"></i>
+            <i class="ph-bold ph-list"></i>
           </div>
         </div>
       </header>
@@ -48,51 +47,49 @@
             <div class="error_message"><%= error_message[i] %></div>
           <% } %>
         <div class="container">
-          <div class="pubble">
-            <div class="status">
-              <div>
-                <h2>status of your posts 🗒</h2>
-              </div>
-              <ul>
-                <li>
-                    <% if(data.post.length > 0) { %>
-                      <a href="/company/posts/<%= userId %>/<%= data.id %>">
-                        <div class="illustration">
-                          <i class="ph-note-fill"></i>
-                        </div>
-                        <div class="info">
-                          <span class="value"><%= data.post.length %></span>
-                          <p>Posts</p>
-                        </div>        
-                      </a>
-                    <% } else { %>
-                      <a href="/post/create/<%= user.id %>/<%= data.id %>">
-                        <div class="illustration">
-                          <i class="ph-note-fill"></i>
-                        </div>
-                        <div class="info">
-                          <span class="value"><%= data.post.length %></span>
-                          <p>Posts</p>
-                        </div>        
-                      </a>
-                    <% } %>
-                </li>
-                <li>
-                  <a href="/company/likes/<%= data.id %>">
-                    <div class="illustration">
-                      <i class="ph-thumbs-up-fill"></i>
-                    </div>
-                    <div class="info">
-                      <span class="value"><%= likes %></span>
-                      <p>Likes</p>
-                    </div>        
-                  </a>
-                </li>
-              </ul>
+          <div class="firstBlock">
+            <div>
+              <h2>post information</h2>
             </div>
-            <div class="illustration-img">
-              <img src="../../assets/jobs/Attribution modeling.svg" alt="" width="100%">
-            </div>
+            <ul>
+              <li>
+                  <% if(data.post.length > 0) { %>
+                    <a href="/company/posts/<%= userId %>/<%= data.id %>">
+                      <div class="illustration">
+                        <i class="ph-fill ph-note-blank"></i>
+                      </div>
+                      <div class="info">
+                        <span class="value"><%= data.post.length %></span>
+                        <p>Posts</p>
+                      </div>        
+                    </a>
+                  <% } else { %>
+                    <a href="/post/create/<%= user.id %>/<%= data.id %>">
+                      <div class="illustration">
+                        <i class="ph-note-fill"></i>
+                      </div>
+                      <div class="info">
+                        <span class="value"><%= data.post.length %></span>
+                        <p>Posts</p>
+                      </div>        
+                    </a>
+                  <% } %>
+              </li>
+              <li>
+                <a href="/company/likes/<%= data.id %>">
+                  <div class="illustration">
+                    <i class="ph-fill ph-arrow-fat-lines-up"></i>
+                  </div>
+                  <div class="info">
+                    <span class="value"><%= likes %></span>
+                    <p>Push</p>
+                  </div>        
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="secondBlock">
+            <img src="../../assets/jobs/Attribution modeling.svg" alt="" width="100%">
           </div>
         </div>
       </main>

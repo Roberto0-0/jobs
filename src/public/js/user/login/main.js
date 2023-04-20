@@ -1,16 +1,16 @@
 const password = document.querySelector("#password")
-const btn = document.querySelector("#eye-button")
+const eyeButton = document.querySelector("#eye-button")
 const error_message = document.querySelectorAll(".error_message")
 
 const main = () => {
-    btn.onclick = () => {
+    eyeButton.onclick = () => {
         if(password.type == "password") {
             password.type = "text"
-            btn.classList = "ph-lightbulb-fill"
+            eyeButton.classList = "ph ph-eye-closed"
         } else {
             if(password.type == "text") {
                 password.type = "password"
-                btn.classList = "ph-lightbulb"
+                eyeButton.classList = "ph ph-eye"
             }
         }
     }
