@@ -19,14 +19,14 @@
             <% if(user) { %>
                 <% if(data) { %>
                    <li>
-                     <i class="ph-fill ph-arrow-bend-up-left"></i>
-                      <a href="/company/<%= user.id %>/<%= data.id %>">back</a>
+                      <i class="ph-fill ph-key-return"></i>
+                      <a href="/company/<%= user.id %>/<%= data.id %>">company</a>
                    </li>
                 <% } %>
             <% } else { %>
                <li>
-                  <i class="ph-fill ph-arrow-bend-up-left"></i>
-                  <a href="/">back</a>
+                  <i class="ph-fill ph-key-return"></i>
+                  <a href="/">home</a>
                </li>
             <% } %>
           </ul>

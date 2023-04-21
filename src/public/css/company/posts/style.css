@@ -164,11 +164,9 @@ main .container .jobs-menu li {
     flex-direction: row;
     align-items: center;
 
-    padding: 10px;
-
     width: 90vw;
     max-width: 500px;
-    height: auto;
+    height: 80px;
     
     border: 1px solid var(--dark-border);
     border-radius: 10px;
@@ -177,11 +175,13 @@ main .container .jobs-menu li {
 }
 
 main .container .jobs-menu li .postInfo {
-    width: 70%;
+    padding: 10px;
+    
+    width: 60%;
 }
 
 main .container .jobs-menu li .postInfo h1 {
-    font-size: 2em; 
+    font-size: 1.5em; 
     font-weight: 400;
     color: var(--global-color);
 }
@@ -191,12 +191,10 @@ main .container .jobs-menu li .postInfo .company-name {
     flex-direction: row;
     align-items: center;
     gap: 0.2em;
-   
-    margin-bottom: 1em;
 
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 main .container .jobs-menu li .postInfo .company-name i {
@@ -208,9 +206,8 @@ main .container .jobs-menu li .settings {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 0.8em;
 
-    width: 50%;
+    width: 40%;
     height: 100%;
 }
 
@@ -230,8 +227,6 @@ main .container .jobs-menu li .settings .update {
 
     width: 50%;
     height: 100%;
-
-    border-radius: 5px;
 }
 
 main .container .jobs-menu li .settings .delete {
@@ -242,7 +237,7 @@ main .container .jobs-menu li .settings .delete {
     width: 50%;
     height: 100%;
 
-    border-radius: 5px;
+    border-radius: 0px 5px 5px 0px;
 }
 
 main .container .jobs-menu li .settings a i {
@@ -330,7 +325,7 @@ footer .container p a {
         height: calc(100% - 70px);
 
         visibility: hidden;
-        border-left: 1px solid var(--dark-border);
+        border-left: 1px solid var(--light-border);
         background: var(--light-primary-background);
     }
 
@@ -374,24 +369,24 @@ footer .container p a {
     }
 
     header .container nav.active ul li  {
-        width: 90%;
+        padding: 0px;
+        
+        width: 95%;
 
-        border-bottom: 1px solid var(--dark-border);
-
-        font-size: 1.2em;
-        font-weight: bold;
+        border-bottom: 1px solid var(--light-border);
     }
     
-    header .container nav.active ul li {
-        padding: 10px 0px;
-    }
-
     header .container .nav.active ul li a {
+        padding: 11px 0px;
+        
+        font-weight: bold;
         color: var(--light-text);
     }
 
     header .container .nav.active ul li i {
         display: block;
+        
+        font-size: 1.5em;
     }
 
     footer .container p {

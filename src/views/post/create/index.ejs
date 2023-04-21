@@ -18,14 +18,14 @@
           <% if(user) { %>
               <% if(company) { %>
                  <li>
-                  <i class="ph ph-arrow-bend-up-left"></i>
-                    <a href="/company/<%= user.id %>/<%= company.id %>">back</a>
+                    <i class="ph-fill ph-key-return"></i>
+                    <a href="/company/<%= user.id %>/<%= company.id %>">company</a>
                  </li>
               <% } %>
           <% } else { %>
              <li>
-              <i class="ph ph-arrow-bend-up-left"></i>
-                <a href="/">back</a>
+                 <i class="ph-fill ph-key-return"></i>
+                 <a href="/">home</a>
              </li>
           <% } %>
         </ul>
@@ -41,9 +41,6 @@
   <% } %>
   <main>
     <div class="container">
-        <div class="logoname">
-          <h2>Job</h2>
-        </div>
         <% if(user) { %>
           <% if(company) { %>
             <form action="/post/create/<%= user.id %>/<%= data %>" method="POST">
@@ -88,7 +85,7 @@
                 </div>      
               </div>
               <div class="input">
-                <label for="information">Information</label>
+                <label for="information">Description</label>
                 <textarea name="information" id="information" cols="30" rows="10" placeholder="more information here!"></textarea>
               </div>
               <button>create post</button>

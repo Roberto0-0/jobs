@@ -143,8 +143,6 @@ main .container {
 
     width: 95vw;
     max-width: 400px;
-    height: auto;
-
 }
 
 main .container .register {
@@ -189,7 +187,7 @@ main .container form .input input {
     width: 100%;
     height: 40px;
 
-    border: 1px solid var(--light-border);
+    border: 1px solid var(--dark-border);
     border-radius: 5px;
     background-color: var(--light-secondary-background);
 
@@ -209,7 +207,7 @@ main .container form .input .subInput {
     width: 100%;
     height: 100%;
 
-    border: 1px solid var(--light-border);
+    border: 1px solid var(--dark-border);
     border-radius: 5px;
     background-color: var(--light-secondary-background);
 }
@@ -299,28 +297,24 @@ footer .container a {
     color: var(--dark-text);
 }
 
-.error_message {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  
-  position: relative;
-  
-  margin: 20px auto;
-  
-  width: 85vw;
-  max-width: 400px;
-  min-width: 260px;
-  height: 50px;
-  
-  border-radius: 5px;
-  background: var(--background-message-error);
+main .container form .input .error_message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+    
+    width: 100%;
+    
+}
 
-  font-size: 1.3em;
-  font-family: 'Manrope', sans-serif;
-  font-weight: 300;
-  color: var(--text-message-error);
+main .container form .input .error_message i {
+    color: #c60909;
+}
+
+main .container form .input .error_message .message {
+    font-weight: 600;
+    font-size: 0.9em;
+    color: #c60909;
 }
 
 @media(max-width: 600px) {
@@ -358,7 +352,7 @@ footer .container a {
     
     header .container .menu i {
       font-size: 2.5em;
-      color: var(--dark-text);
+      color: var(--global-white);
     }
 
     header .container nav.active {
