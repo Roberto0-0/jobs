@@ -4,59 +4,98 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://unpkg.com/phosphor-icons"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="/css/post/update/style.css">
   <title>Jobs</title>
 </head>
 <body>
-  <% for(var i=0;i < error_message.length;i++) { %>
-    <div class="error_message"><%= error_message[i] %></div>
-  <% } %>
-  <div class="container">
-    <div class="logoname">
-      <h2>Job</h2>
-    </div>
-    <% if(user) { %>
-      <% if(data) { %>
-        <form action="/post/update/<%= data.id %>/<%= companyId %>/<%= user.id %>" method="POST">
-          <div class="input">
-            <i class="ph-buildings-fill"></i>
-            <select name="companyName" class="select">
-              <option disabled>Company</option>
-              <% if(data.company_name) { %>
-                <option value="<%= data.company_name %>" selected ><%= data.company_name %></option>
-              <% } %>
-            </select>
-          </div>
-          <div class="input">
-            <i class="ph-cardholder-fill"></i>
-            <input type="text" name="vancancy" id="" placeholder="vancancy" value="<%= data.vancancy %>" autocomplete="off" required>
-          </div>
-          <div class="input">
-            <i class="ph-map-trifold-fill"></i>
-            <select name="location" class="select">
-              <option disabled>Location</option>
-              <% if(data.location) { %>
-                <option value="<%= data.location %>" selected><%= data.location %></option>
-              <% } %>
-            </select>
-          </div>
-          <div class="input">
-            <i class="ph-currency-dollar-fill"></i>
-            <input type="number" name="salary" placeholder="Salary" value="<%= data.salary %>" required>
-          </div>
-          <div class="input">
-            <i class="ph-fill ph-user-circle-plus"></i>
-            <input type="number" name="vacancies" placeholder="Vacancies" value="<%= data.vacancies %>"  required>
-          </div>
-          <textarea name="information" id="" cols="30" rows="10" placeholder="more information here!"><%= data.information %></textarea>
-    
-          <button>send</button>
-        </form>
-     <% } %>
-    <% } %>
-  </div>
+  <header>
+    <div class="container">
+      <a href="/" class="logo">Jobs</a>
+      <nav class="nav">
+        <ul>
+          <% if(user) { %>
+                <li>
+                  <i class="ph-fill ph-key-return"></i>
+                  <a href="/company/posts/<%= user.id %>/<%= companyId %>">post</a>
+                </li>
+          <% } else { %>
+             <li>
+                 <i class="ph-fill ph-key-return"></i>
+                 <a href="/">home</a>
+             </li>
+          <% } %>
+        </ul>
+      </nav>
 
+      <div class="menu">
+        <i class="ph-bold ph-list"></i>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+        <% if(user) { %>
+          <% if(data) { %>
+            <form action="/post/update/<%= data.id %>/<%= companyId %>/<%= user.id %>" method="POST">
+              <div class="inputContainer">
+                <div class="firstBlock">
+                  <div class="input">
+                    <label for="companyName">Company name</label>
+                    <div class="subInput">
+                      <select name="companyName" id="companyName" class="select">
+                        <option selected disabled></option>
+                        <% if(data.company_name) { %>
+                          <option value="<%= data.company_name %>" selected><%= data.company_name %></option>
+                        <% } %>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="input">
+                    <label for="vancancy">Vancancy</label>
+                    <input type="text" name="vancancy" id="vancancy" value="<%= data.vancancy %>" autocomplete="off" required>
+                  </div>
+                  <div class="input">
+                    <label for="location">Location</label>
+                    <div class="subInput">
+                      <select name="location" id="location" class="select">
+                        <% if(data.location) { %>
+                          <option value="<%= data.location %>" selected><%= data.location %></option>
+                        <% } %>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="secondBlock">
+                  <div class="input">
+                    <label for="salary">Salary</label>
+                    <input type="number" name="salary" id="salary" value="<%= data.salary %>" required>
+                  </div>
+                  <div class="input">
+                    <label for="vacancies">Vacancies</label>
+                    <input type="number" name="vacancies" id="vacancies" value="<%= data.vacancies %>" required>
+                  </div>
+                </div>      
+              </div>
+              <div class="input">
+                <label for="information">Description</label>
+                <textarea name="information" id="information" cols="30" rows="10" placeholder="more information here!"><%= data.information %></textarea>
+              </div>
+              <button>update</button>
+            </form>
+          <% } %>
+        <% } %>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>
+        &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+      </p>
+    </div>
+  </footer>
   <script src="/js/post/update/main.js"></script>
+  <script src="/js/menu/main.js"></script>
 </body>
 </html>

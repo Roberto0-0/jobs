@@ -49,7 +49,7 @@
                   <div class="input">
                     <label for="companyName">Company name</label>
                     <div class="subInput">
-                      <select name="companyName" id="companyName" class="select">
+                      <select name="companyName" id="companyName" class="select" required>
                         <option selected disabled></option>
                         <% if(company.company) { %>
                           <option value="<%= company.company %>"><%= company.company %></option>
@@ -64,7 +64,7 @@
                   <div class="input">
                     <label for="location">Location</label>
                     <div class="subInput">
-                      <select name="location" id="location" class="select">
+                      <select name="location" id="location" class="select" required>
                         <option selected disabled></option>
                         <% if(company.location) { %>
                           <option value="<%= company.location %>"><%= company.location %></option>

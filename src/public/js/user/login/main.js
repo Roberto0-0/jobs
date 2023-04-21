@@ -15,13 +15,11 @@ const main = () => {
         }
     }
     
-    if(error_message.length > 0) {
-        setTimeout(() => {
-            for(var i=0;i < error_message.length;i++) {
-                error_message[i].style.display = "none"
-            }
-        }, 5000)
-    }
+    setTimeout(() => {
+        for(var i=0;i < error_message.length;i++) {
+            error_message[i].style.display = "none"
+        }
+    }, 5000)
 }
 
 main()

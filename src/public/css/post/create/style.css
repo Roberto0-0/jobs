@@ -425,4 +425,8 @@ footer .container p a {
     main .container form .inputContainer .secondBlock {
         width: 100%;
     }
+
+    footer .container p {
+        font-size: 0.9em;
+    }
 }

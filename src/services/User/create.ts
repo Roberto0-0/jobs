@@ -16,15 +16,15 @@ export class Create {
     })
     
     if(user) {
-      return new Error("User already exist!")
+      return new Error("Email already registered.")
     }
 
     if(!EmailValidation(email)) {
-      return new Error("E-mail invalid!")
+      return new Error("Invalid email.")
     }
     
     if(password !== confirmPassword) {
-      return new Error("Differents password!")
+      return new Error("Differents password.")
     }
     
     const newPassword = await CreatePasswordHash(password)

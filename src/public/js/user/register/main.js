@@ -2,8 +2,6 @@ const password = document.querySelectorAll(".password")
 const eyeButton = document.querySelectorAll(".ph-eye")
 const error_message = document.querySelectorAll(".error_message")
 
-console.log(eyeButton)
-
 const main = () => {
     for (let i = 0; i < password.length; i++) {
         eyeButton[i].onclick = () => {
@@ -18,12 +16,12 @@ const main = () => {
             }
         }   
     }
-    
+
     setTimeout(() => {
         for(let i=0;i < error_message.length;i++) {
             error_message[i].style.display = "none"
         }
-    }, 5000)
+    }, 5000);
 }
 
 main()

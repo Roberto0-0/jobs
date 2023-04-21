@@ -35,6 +35,14 @@
         <div class="input">
           <label for="email">Email</label>
           <input type="email" name="email" class="email-input" autocomplete="off" required>
+          <% if(error.length > 0) { %>
+              <% if(error == "Check your email or password.") { %>
+                  <div class="error_message">
+                      <i class="ph-fill ph-warning"></i>
+                      <span class="message"><%= error %></span>
+                  </div>
+              <% } %>
+           <% } %>
         </div>
         <div class="input">
           <label for="password">Password</label>
