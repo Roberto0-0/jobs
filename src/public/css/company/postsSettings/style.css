@@ -177,8 +177,9 @@ main .container .jobs-menu li {
 
 main .container .jobs-menu li .postInfo {
     padding: 10px;
-    
+
     width: 60%;
+    height: 100%;
 }
 
 main .container .jobs-menu li .postInfo a {

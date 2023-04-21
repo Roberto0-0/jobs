@@ -17,20 +17,20 @@
               <ul>
                 <% if(user) { %>
                    <li>
-                        <i class="ph-fill ph-arrow-circle-left"></i>
-                        <a href="/dashboard">back</a>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/dashboard">dashboard</a>
                    </li>
                 <% } else { %>
                    <li>
-                        <i class="ph-fill ph-arrow-circle-left"></i>
-                        <a href="/">back</a>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/">home</a>
                    </li>
                 <% } %>
               </ul>
             </nav>
       
             <div class="menu">
-                <i class="ph-fill ph-list"></i>
+                <i class="ph-bold ph-list"></i>
             </div>
           </div>
     </header>
@@ -39,23 +39,23 @@
             <% if(user) { %>
                 <div class="boxProfile">
                     <div class="userInfo">
-                        <span class="picture"><i class="ph-fill ph-user-circle-gear"></i></span>
                         <span class="username"><%= user.name %></span>
                     </div>
-                    <div class="editButton"><button>Edit profile</button></div>
                 </div>
                 <div class="moreInfo">
                     <a href="/profile/account">
                         <div class="accountInfo">
-                            <i class="ph-fill ph-user"></i>
-                            Account information
+                            <i class="ph-light ph-user-circle-plus"></i>
+                            Profile details
                         </div>
+                        <i class="ph ph-caret-right"></i>
                     </a>
                     <a href="/profile/settings/password">
                         <div class="changePassword">
-                            <i class="ph-fill ph-key"></i>
+                            <i class="ph-light ph-keyhole"></i>
                             Change your password
                         </div>
+                        <i class="ph ph-caret-right"></i>
                     </a>
                 </div>
             <% } %>

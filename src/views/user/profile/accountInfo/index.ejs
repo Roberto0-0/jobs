@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="/css/user/profile/accountInfo/style.css">
     <title>Jobs</title>
@@ -12,18 +13,18 @@
 <body>
     <header>
         <div class="container">
-            <a href="" class="logo">Jobs</a>
+            <a href="/" class="logo">Jobs</a>
             <nav class="nav">
               <ul>
                 <% if(user) { %>
                    <li>
-                        <i class="ph-fill ph-arrow-circle-left"></i>
-                        <a href="/profile">back</a>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/profile">profile</a>
                    </li>
                 <% } else { %>
                    <li>
-                        <i class="ph-fill ph-arrow-circle-left"></i>
-                        <a href="/">back</a>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/">home</a>
                    </li>
                 <% } %>
               </ul>
@@ -39,21 +40,37 @@
             <% if(user) { %>
                 <ul>
                     <li>
-                        Username
-                        <span class="username"><%= user.name %></span>
+                        <label for="username">Username</label>
+                        <div class="subContainer">
+                            <i class="ph ph-user"></i>
+                            <span class="username"><%= user.name %></span>
+                        </div>
                     </li>
                     <li>
-                        Email
-                        <span class="username"><%= user.email %></span>
+                        <label for="creationdate">Creation date</label>
+                        <div class="subContainer">
+                            <i class="ph ph-calendar"></i>
+                            <span class="date"><%= user.created_at %></span>
+                        </div>
                     </li>
-                    <% if(user.company.length > 0) { %>
-                        <% user.company.forEach((value) => { %>
-                            <li>
-                                Company
-                                <span class="username"><%= value.company %></span>
-                            </li>
-                        <% }) %>
-                    <% } %>
+                    <li>
+                        <label for="email">Email</label>
+                        <div class="subContainer">
+                            <i class="ph ph-envelope-simple"></i>
+                            <span class="username"><%= user.email %></span>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="company">Company</label>
+                        <% if(user.company.length > 0) { %>
+                            <% user.company.forEach((value) => { %>
+                                <div class="subContainer">
+                                    <i class="ph ph-buildings"></i>
+                                    <span class="username"><%= value.company %></span>
+                                </div>
+                            <% }) %>
+                        <% } %>
+                    </li>
                 </ul>
             <% } %>
         </div>
@@ -66,5 +83,6 @@
           </div>
     </footer>
     <script src="/js/menu/main.js"></script>
+    <script src="/js/user/profile/accountDetails/main.js"></script>
 </body>
 </html>
