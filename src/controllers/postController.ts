@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { Create } from "../services/Post/create"
 import { ReadAll } from "../services/Post/readAll"
-import { Read } from "../services/Post/read"
+import { PostRead } from "../services/Post/read"
 import { Update } from "../services/Post/update"
 import { Delete } from "../services/Post/delete"
 import { CompanyRead } from "../services/Company/read"
@@ -81,7 +81,7 @@ export class PostController {
     const { id } = req.params
 
     try {
-      const service = new Read()
+      const service = new PostRead()
       const result = await service.execute(id)
 
       if (result instanceof Error) {
@@ -119,7 +119,7 @@ export class PostController {
      const { post_id, company_id } = req.params
      
      try {
-        const service = new Read()
+        const service = new PostRead()
         const result = await service.execute(post_id)
         
         if(result instanceof Error) { return res.status(404).send({ message: result.message }) }

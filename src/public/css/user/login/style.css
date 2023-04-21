@@ -413,7 +413,6 @@ main .container form .input .error_message .message {
         display: flex;
 
         font-size: 1.5em;
-        color: var(--white);
     }
 
     header .container nav.active ul li a {
@@ -423,7 +422,7 @@ main .container form .input .error_message .message {
         
         font-size: 1.2em;
         font-weight: bold;
-        color: var(--white);
+        color: var(--light-text);
     }
 
     footer .container p {
