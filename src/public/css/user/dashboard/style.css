@@ -232,11 +232,11 @@ main .container .firstBlock .jobs {
     width: auto;
     height: auto;
 
-    border-bottom: 1px solid var(--light-text);
+    border-bottom: 2px solid var(--light-text);
     text-decoration: none;
 
     font-family: 'Varela Round', sans-serif;
-    font-size: 1.2em;
+    font-size: 1.3em;
     color: var(--light-text);
 }
 
@@ -325,7 +325,7 @@ header .container .menu {
     
     header .container .menu i {
       font-size: 2.5em;
-      color: var(--dark-text);
+      color: var(--global-white);
     }
 
     header .container nav.active {
@@ -421,7 +421,7 @@ header .container .menu {
     }
 
     main .container .firstBlock .jobs {
-        font-size: 1em;
+        font-size: 1.1em;
     }
 
     main .container .secondBlock {

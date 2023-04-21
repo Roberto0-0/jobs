@@ -5,19 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/phosphor-icons"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="/css/user/register/style.css">
   <title>Jobs</title>
 </head>
 <body>
   <header>
     <div class="container">
-      <a href="" class="logo">Jobs</a>
+      <a href="/" class="logo">Jobs</a>
       <nav class="nav">
         <ul>
           <li>
-            <i class="ph-fill ph-caret-left"></i>
-            <a href="/">back</a>
+            <i class="ph-fill ph-sign-in"></i>
+            <a href="/login">login</a>
           </li>
         </ul>
       </nav>
@@ -34,7 +34,17 @@
       <form action="/user/register" method="POST">
         <div class="input">
           <label for="username">Username</label>
-          <input type="text" name="username" autocomplete="off" required>
+          <input type="text" name="name" autocomplete="off" required>
+          <% if(error_message.length > 0) { %>
+            <% for(let i=0;i < error_message.length;i++) { %>
+                <% if(error_message[i] == "Name is required" || error_message[i] == "Very short name") { %>
+                    <div class="error_message">
+                        <i class="ph-fill ph-warning"></i>
+                        <span class="message"><%= error_message[i] %></span>
+                    </div>
+                <% } %>
+            <% } %>
+           <% } %>
         </div>
         <div class="input">
           <label for="email">Email</label>
@@ -46,6 +56,16 @@
             <input type="password" name="password" class="password" required>
             <i class="ph ph-eye"></i>
           </div>
+          <% if(error_message.length > 0) { %>
+            <% for(let i=0;i < error_message.length;i++) { %>
+                <% if(error_message[i] == "Password at least 8 characters") { %>
+                    <div class="error_message">
+                        <i class="ph-fill ph-warning"></i>
+                        <span class="message"><%= error_message[i] %></span>
+                    </div>
+                <% } %>
+            <% } %>
+           <% } %>
         </div>
         <div class="input">
           <label for="confirm-password">Repeat password</label>
@@ -53,6 +73,16 @@
             <input type="password" name="confirmPassword" class="password" autocomplete="off" required>
             <i class="ph ph-eye"></i>
           </div>
+          <% if(error_message.length > 0) { %>
+            <% for(let i=0;i < error_message.length;i++) { %>
+                <% if(error_message[i] == "The passwords did not match") { %>
+                    <div class="error_message">
+                        <i class="ph-fill ph-warning"></i>
+                        <span class="message"><%= error_message[i] %></span>
+                    </div>
+                <% } %>
+            <% } %>
+           <% } %>
         </div>
         <button>create registration</button>
       </form>

@@ -166,8 +166,6 @@ header .container nav ul li {
 
 header .container nav ul li i {
     display: none;
-
-    font-size: 1.2em;
 }
 
 header .container nav ul a {
@@ -479,7 +477,7 @@ footer .container a {
         height: calc(100% - 64px);
         
         visibility: hidden;
-        border-left: 1px solid var(--dark-border);
+        border-left: 1px solid var(--light-border);
         background: var(--light-primary-background);
     }
 
@@ -523,25 +521,23 @@ footer .container a {
     }
 
     header .container nav.active ul li  {
-        width: 90%;
+        padding: 0px;
+        
+        width: 95%;
 
-        border-bottom: 1px solid var(--dark-border);
-
-        font-size: 1.2em;
-        font-weight: bold;
-        color: var(--white);
-    }
-    
-    header .container nav.active ul li {
-        padding: 10px 0px;
+        border-bottom: 1px solid var(--light-border);
     }
 
     header .container nav.active ul li i {
         display: block;
+        
+        font-size: 1.5em;
     }
 
     header .container nav.active ul li a {
-        font-size: 1.2em;
+        padding: 11px 0px;
+        
+        font-weight: bold;
         color: var(--light-text);
     }
 

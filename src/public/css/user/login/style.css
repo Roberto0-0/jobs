@@ -189,7 +189,7 @@ main .container form .input input {
     width: 100%;
     height: 40px;
 
-    border: 1px solid var(--light-border);
+    border: 1px solid var(--dark-border);
     border-radius: 5px;
     background-color: var(--light-secondary-background);
 
@@ -209,7 +209,7 @@ main .container form .input .subInput {
     width: 100%;
     height: 100%;
 
-    border: 1px solid var(--light-border);
+    border: 1px solid var(--dark-border);
     border-radius: 5px;
     background-color: var(--light-secondary-background);
 }
@@ -361,7 +361,7 @@ footer .container a {
     
     header .container .menu i {
       font-size: 2.5em;
-      color: var(--dark-text);
+      color: var(--global-white);
     }
 
     header .container nav.active {
