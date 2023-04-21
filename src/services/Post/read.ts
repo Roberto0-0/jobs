@@ -1,6 +1,6 @@
 import { PostRepository } from "../../repositories/PostRepository";
 
-export class Read {
+export class PostRead {
   async execute(id: string) {
     const post = await PostRepository.findOne({
       where: { id: id },

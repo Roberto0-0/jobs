@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
-    <link rel="stylesheet" href="/css/company/posts/style.css">
+    <link rel="stylesheet" href="/css/company/postsSettings/style.css">
     <title>Jobs</title>
 </head>
 <body>
@@ -51,11 +51,13 @@
                   <% for(var i=0;i < data.post.length;i++) { %>
                      <li class="li">
                         <div class="postInfo">
-                           <h1><%= data.post[i].vancancy %></h1>
-                           <h2 class="company-name">
-                              <%= data.post[i].company_name %>
-                              <i class="ph-fill ph-seal-check"></i>
-                           </h2>
+                           <a href="/company/post/<%= data.post[i].id %>">
+                              <h1><%= data.post[i].vancancy %></h1>
+                              <h2 class="company-name">
+                                 <%= data.post[i].company_name %>
+                                 <i class="ph-fill ph-seal-check"></i>
+                              </h2>
+                           </a>
                         </div>
                         <div class="settings">
                            <a href="/post/update/<%= data.post[i].id %>/<%= data.id %>" class="update">
@@ -80,7 +82,7 @@
       </div>
     </footer>
    
-   <script src="/js/company/posts/main.js"></script>
+   <script src="/js/company/postsSettings/main.js"></script>
    <script src="/js/menu/main.js"></script>
 </body>
 </html>

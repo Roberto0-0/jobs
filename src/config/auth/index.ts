@@ -30,10 +30,10 @@ export default function(value: any): void {
       passwordField: "password" 
     }, (email, password, done) => {
       UserRepository.findOne({ where: { email: email } }).then((user) => {
-        if (!user) { return done(null, false, { message: "E-mail/password invalid" }) }
+        if (!user) { return done(null, false, { message: "Check your email or password." }) }
         bcrypt.compare(password, user.password, (err, isMatch) => {
           if(err) { return done(null, err) }
-          if(!isMatch) { return done(null, false, { message: "E-mail/password invalid" }) }
+          if(!isMatch) { return done(null, false, { message: "Check your email or password." }) }
           return done(null, user);
         })
       }).catch((err) => {

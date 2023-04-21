@@ -5,37 +5,73 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/phosphor-icons"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="/css/company/create/style.css">
   <title>Jobs</title>
 </head>
 <body>
-  <div class="container">
-    <div class="company-register">
-      <h2>Company</h2>
+  <header>
+    <div class="container">
+      <a href="/" class="logo">Jobs</a>
+      <nav class="nav">
+        <ul>
+          <li>
+            <i class="ph-fill ph-key-return"></i>
+            <a href="/dashboard">dashboard</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="menu">
+        <i class="ph-bold ph-list"></i>
+      </div>
     </div>
-    <% if(UserId) { %>
-       <form action="/company/registration/<%= UserId %>" method="POST">
-         <div class="input">
-           <i class="ph-user-fill"></i>
-           <input type="text" name="employer" placeholder="Employer" autocomplete="off" required>
-         </div>
-         <div class="input">
-           <i class="ph-buildings-fill"></i>
-           <input type="text" name="companyName" placeholder="Company" autocomplete="off" required>
-         </div>
-         <div class="input">
-          <i class="ph-map-trifold-fill"></i>
-          <input type="text" name="location" placeholder="Location" autocomplete="off" required>
-        </div>
-         <div class="input">
-           <i class="ph-envelope-simple-fill"></i>
-           <input type="email" name="email" class="email-input" placeholder="E-mail" autocomplete="off" required>
-         </div>
-         <button>register</button>
-       </form>
-    <% } %>
-   </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="company-register">
+        <h2>Company</h2>
+      </div>
+      <% if(user) { %>
+        <form action="/company/registration/<%= user.id %>" method="POST">
+          <div class="inputContainer">
+            <div class="firstBlock">
+              <div class="input">
+                <label for="employer">Employer</label>
+                <input type="text" name="employer" autocomplete="off" required>
+              </div>
+              <div class="input">
+                <label for="companyname">Company</label>
+                <input type="text" name="companyName" autocomplete="off" required>
+              </div>
+            </div>
+            <div class="secondBlock">
+              <div class="input">
+                <label for="location">Location</label>
+                <input type="text" name="location" autocomplete="off" required>
+              </div>
+              <div class="input">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="email-input" autocomplete="off" required>
+              </div>
+            </div>
+          </div> 
+          <div class="input">
+            <label for="information">About your company</label>
+            <textarea name="information" id="information" cols="30" rows="10"></textarea>
+          </div>
+          <button>create company</button>
+        </form>
+      <% } %> 
+    </div>
+  </main>
+   <footer>
+    <div class="container">
+      <p>
+        &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+      </p>
+    </div>
+  </footer>
     <script src="/js/company/main.js"></script>
+    <script src="/js/menu/main.js"></script>
   </body>
 </html>

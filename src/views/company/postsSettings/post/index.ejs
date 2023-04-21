@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
+  <link rel="stylesheet" href="/css/company/postsSettings/post/style.css">
+  <title>Jobs</title>
+</head>
+<body>
+   <header>
+      <div class="container">
+        <a href="/" class="logo">Jobs</a>
+        <nav class="nav">
+          <ul>
+            <% if(user) { %>
+               <li>
+                  <i class="ph-fill ph-key-return"></i>
+                  <a href="/dashboard">dashboard</a>
+               </li>
+            <% } else { %>
+               <li>
+                  <i class="ph-fill ph-key-return"></i>
+                  <a href="/">home</a>
+               </li>
+            <% } %>
+          </ul>
+        </nav>
+  
+        <div class="menu">
+          <i class="ph ph-list"></i>
+        </div>
+      </div>
+   </header>
+   <main>
+      <div class="container">
+         <div class="notfound"></div>
+         <ul class="jobs-menu">
+            <% if(data) { %>
+                <li class="li">
+                    <h1 class="vancancy" ><%= data.vancancy %></h1>
+                    <h2 class="company-name">
+                    <%= data.company_name %>
+                    <i class="ph-fill ph-seal-check"></i>
+                    </h2>
+                    <ul class="jobInfo">
+                        <li>
+                            <div class="info"><i class="ph-fill ph-currency-dollar"></i>Salary:</div>
+                            <span class="salary"><%= data.salary %></span>
+                        </li>
+                        <li>
+                            <div class="info"><i class="ph-fill ph-map-pin"></i>Location:</div>
+                            <span><%= data.location %></span>
+                        </li>
+                        <li>
+                            <div class="info"><i class="ph-fill ph-calendar"></i>Published:</div>
+                            <span class="date"><strong><%= data.created_at %></strong></span>
+                        </li>
+                        <li>
+                            <div class="info"><i class="ph-fill ph-user-plus"></i>Vacancy:</div>
+                            <span><%= data.vacancies %></span>
+                        </li>
+                    </ul>
+                    <div class="text-box">
+                    <% if(data.information) { %>
+                        <h2 class="description">Description</h2>
+                    <% } %>
+                    <div class="text">
+                        <%= data.information %>
+                    </div>
+                    <button class="btn-seeMore">...see more</button>
+                    </div>
+                    <div class="functions">
+                        <div class="like">
+                            <button class="like-button"><i class="ph ph-arrow-fat-line-up"></i></button>
+                            <span class="like-value" ><%= data.likes %></span>
+                        </div>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+     </div>  
+   </main>
+   <footer>
+      <div class="container">
+        <p>
+          &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+        </p>
+      </div>
+    </footer>
+  <script src="/js/company/postsSettings/post/main.js"></script>
+  <script src="/js/menu/main.js"></script>
+</body>
+</html>

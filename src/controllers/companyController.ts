@@ -5,6 +5,7 @@ import { CompanyRead } from "../services/Company/read"
 import { LikeRead } from "../services/Like/read"
 import { Update } from "../services/Company/update"
 import { Delete } from "../services/Company/delete"
+import { PostRead } from "../services/Post/read"
 
 export class CompanyController {
   async createIndex(req: Request, res: Response) {
@@ -74,7 +75,7 @@ export class CompanyController {
     }
   }
   
-  async posts(req: Request, res: Response) {
+  async postsSettings(req: Request, res: Response) {
     const { user_id, company_id } = req.params
 
     try {
@@ -89,7 +90,7 @@ export class CompanyController {
       }
 
 
-      return res.render("company/posts/index.ejs", {
+      return res.render("company/postsSettings/index.ejs", {
          data: result
       })
     } catch (error) {
@@ -97,6 +98,24 @@ export class CompanyController {
       res.status(500).send({ message: "Internal server error!" })
     }
   }
+
+  async post(req: Request, res: Response) {
+    const { post_id } = req.params
+
+    try {
+      const service = new PostRead()
+      const result = await service.execute(post_id)
+
+      if(result instanceof Error) { return res.status(400).send({ message: result.message }) }
+
+      res.render("company/postsSettings/post/index.ejs", {
+        data: result
+      })
+    } catch (error) {
+      console.error(error)
+      return res.status(500).send({ message: "Internal server error!" })
+    }
+  } 
   
   async likes(req: Request, res: Response) {
         const { company_id } = req.params
