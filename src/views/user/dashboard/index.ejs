@@ -14,7 +14,7 @@
   <header>
     <% if(user) { %>
       <div class="container">
-        <a href="./profile/index.html" class="username">Hello, <span><%= user.name %></span>👋</a>
+        <a href="/profile" class="username">Hello, <span><%= user.name %></span>👋</a>
         <nav class="nav">
           <ul>
             <li>
@@ -29,7 +29,7 @@
                     <a href="/company/<%= user.id %>/<%= company.id %>"/>company</a>
                   <% }) %>
                 <% } else { %>
-                  <a href="/company/registration/<%= user.id %>">company</a>
+                  <a href="/company/registration">company</a>
                 <% } %>
                 <a href="/profile">profile</a>
               </ul>
@@ -45,7 +45,7 @@
               <% } else { %>
                 <li>
                   <i class="ph-buildings-fill"></i>
-                  <a href="/company/registration/<%= user.id %>">company</a>
+                  <a href="/company/registration">company</a>
                 </li>
               <% } %>
               <li>
@@ -65,6 +65,9 @@
       </div>
       </header>
       <main>
+        <% if(success_message.length > 0) { %>
+            <div class="notification"><span class="message"><%= success_message %></span><i class="ph-bold ph-checks"></i></div>
+        <% } %>
         <div class="container">
           <div class="firstBlock">
             <h2>Welcome 💼</h2>
@@ -85,5 +88,6 @@
       </footer>
     <% } %>
   <script src="/js/menu/main.js"></script>
+  <script src="/js/user/dashboard/main.js"></script>
 </body>
 </html>

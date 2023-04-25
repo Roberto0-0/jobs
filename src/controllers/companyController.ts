@@ -6,39 +6,56 @@ import { LikeRead } from "../services/Like/read"
 import { Update } from "../services/Company/update"
 import { Delete } from "../services/Company/delete"
 import { PostRead } from "../services/Post/read"
+import { companySchema } from "../schemas/companySchema"
+
+var newErrors: string[] = []
 
 export class CompanyController {
   async createIndex(req: Request, res: Response) {
-     const { id } = req.params
-     
      try {
-        res.render("company/create/index.ejs", {
-           UserId: id
-        })
+        res.render("company/create/index.ejs")
      } catch(error) {
         console.error(error)
         return res.status(500).send({ message: "Internal server error!"})
      }
   }
   async create(req: Request, res: Response) {
-     const { id } = req.params
-     const { employer, companyName, location,  email } = req.body
+     const { user_id } = req.params
+     const { employer, companyName, location, email, aboutCompany } = req.body
      
     try {
-      const service = new Create()
-      const result = await service.execute({
-        id,
-        employer,
-        companyName,
-        location,
-        email
-      })
+        const validation = companySchema.safeParse({
+            user_id,
+            employer,
+            companyName,
+            location,
+            email,
+            aboutCompany
+        })
+        
+        if(validation.success) {
+            const service = new Create()
+            const result = await service.execute(validation.data)
       
-      if(result instanceof Error) {
-        return res.status(400).send({ message: result.message })
-      }
+            if(result instanceof Error) {
+                newErrors.push(result.message)
+                req.flash("error_message", result.message)
+                return res.redirect("/company/registration")
+            }
       
-      res.redirect("/dashboard")
+            req.flash("success_message", result.success_message)
+            res.redirect("/dashboard")
+        } else {
+            const err = validation.error.errors
+
+            err.map((values) => {
+                newErrors.push(values.message)
+            })
+
+            req.flash("error_message", newErrors)
+            res.redirect("/company/registration")
+            newErrors = []
+        }
     } catch (error) {
       console.error(error)
       return res.status(500).send({ message: "Internal server error!" })

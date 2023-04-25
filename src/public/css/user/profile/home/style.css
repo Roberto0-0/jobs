@@ -23,6 +23,7 @@
 }
 
 body, html {
+    -webkit-tap-highlight-color: transparent;
     display: flex;
     flex-direction: column;
     
@@ -158,29 +159,12 @@ main .container .boxProfile {
     background: transparent;
 }
 
-main .container .boxProfile .userInfo {
-    display: flex;
-    flex-direction: row;
-    gap: 0.3em;
-
-    margin: auto;
-
-    width: 100%;
-    height: auto;
-}
-
-main .container .boxProfile .userInfo .username {
-    font-size: 1.4em;
-    font-weight: 400;
-}
-
-
 main .container .moreInfo {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.3em;
+    gap: 0.5em;
 
     margin: auto;
 
@@ -194,13 +178,13 @@ main .container .moreInfo a {
 
     text-decoration: none;
     width: 100%;
-    height: 45px;
+    height: 60px;
 
     border: 1px solid var(--dark-border);
     border-radius: 5px;
     background: var(--light-secondary-background);
 
-    font-size: 0.9em;
+    font-size: 1em;
     color: var(--light-text);
 }
 
@@ -216,7 +200,7 @@ main .container .moreInfo a div {
 }
 
 main .container .moreInfo a div i {
-    font-size: 1.5em;
+    font-size: 1.6em;
 }
 
 footer {
@@ -335,15 +319,6 @@ footer .container a {
     
         font-weight: bold;
         color: var(--light-text);
-    }
-
-    main .container .boxProfile .userInfo .picture {
-        width: 70px;
-        height: 70px;
-    }
-
-    main .container .boxProfile .userInfo .picture i {
-        font-size: 5.5em;
     }
 
     footer .container p {

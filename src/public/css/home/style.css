@@ -23,6 +23,7 @@
 }
 
 body, html {
+    -webkit-tap-highlight-color: transparent;
     display: flex;
     flex-direction: column;
     
@@ -159,22 +160,27 @@ main .container .firstBlock {
     padding: 30px;
 
     width: 50%;
+    
+    font-family: 'Varela Round', sans-serif;
 }
 
 main .container .secondBlock {
     width: 50%;
 }
 
-main .container .firstBlock h2 {
-    font-family: 'Varela Round', sans-serif;
-    font-size: 2.8em;
+main .container .firstBlock h1 {
+    font-size: 2.5em;
 }
 
-main .container .firstBlock h3 {
-    margin-bottom: 1.5em;
-    
-    font-family: 'Varela Round', sans-serif;
-    font-size: 1.5em;
+main .container .firstBlock h2 {
+    margin-bottom: 1em;
+
+    font-weight: 500;
+    font-size: 2em;
+}
+
+main .container .firstBlock span {
+    font-weight: 600;
 }
 
 main .container .firstBlock .jobs {
@@ -186,7 +192,7 @@ main .container .firstBlock .jobs {
     border-bottom: 2px solid var(--light-border);
     text-decoration: none;
 
-    font-family: 'Varela Round', sans-serif;
+    font-weight: 500;
     font-size: 1.2em;
 }
 
@@ -345,11 +351,7 @@ footer .container a {
     }
 
     main .container .firstBlock h2 {
-        font-size: 2.3em;
-    }
-
-    main .container .firstBlock h3 {
-        font-size: 1.3em;
+        font-size: 1.5em;
     }
 
     main .container .firstBlock .jobs {

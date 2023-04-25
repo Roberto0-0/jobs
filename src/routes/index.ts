@@ -50,8 +50,8 @@ export class Routes {
   }
 
   company() {
-    this.router.get("/company/registration/:id", isAuth, new CompanyController().createIndex)
-    this.router.post("/company/registration/:id", new CompanyController().create)
+    this.router.get("/company/registration", isAuth, new CompanyController().createIndex)
+    this.router.post("/company/registration/:user_id", new CompanyController().create)
     this.router.get("/company/showAll", isAuth, new CompanyController().readAll)
     this.router.get("/company/posts/:user_id/:company_id", isAuth, new CompanyController().postsSettings)
     this.router.get("/company/post/:post_id", isAuth, new CompanyController().post)

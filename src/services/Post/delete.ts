@@ -21,6 +21,8 @@ export class Delete {
     }
 
     await PostRepository.delete(post.id)
+    
+    return { success_message: `"${post.vancancy}" post has been deleted.` }
   }
 }
 

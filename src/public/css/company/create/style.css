@@ -134,26 +134,24 @@ main .container {
     flex-direction: column;
 
     margin: auto;
-    padding: 10px;
+    padding: 0px 10px;
 
     width: 95vw;
     max-width: 600px;
-    height: auto;
-
 }
 
-main .container .company-register {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+main .container .info {
     margin-bottom: 1.5em;
-    padding: 10px;
     
-    width: 130px;
+    font-size: 1.1em;
+}
 
-    border-bottom: 2px solid var(--light-border);
+main .container .info h2 {
+    font-weight: 400;
+}
+
+main .container .info span {
+    font-weight: bold;
 }
 
 main .container form {
@@ -163,7 +161,6 @@ main .container form {
     gap: 1em;
 
     width: 100%;
-    height: auto;
 }
 
 main .container form .inputContainer {
@@ -259,6 +256,26 @@ main .container form button {
 
 main .container form button:hover {
     background: var(--global-hover-color);
+}
+
+main .container form .input .error_message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+    
+    width: 100%;
+}
+
+main .container form .input .error_message i {
+    font-size: 0.9em;
+    color: #c60909;
+}
+
+main .container form .input .error_message .message {
+    font-weight: 600;
+    font-size: 0.8em;
+    color: #c60909;
 }
 
 footer {

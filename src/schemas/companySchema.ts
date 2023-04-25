@@ -1,8 +1,22 @@
-import Joi from "joi";
+import { z } from "zod";
 
-export const CompanySchema = Joi.object({
-  id: Joi.string().required(),
-  employer: Joi.string().min(3).max(30).required(),
-  companyName: Joi.string().min(3).max(20).required(),
-  email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com'] } }).required()
+export const companySchema = z.object({
+    user_id: z.string({
+        required_error: "User id is required."
+    }),
+    employer: z.string({
+        required_error: "Employer is required."
+    }).min(3, "Employer name is too short."),
+    companyName: z.string({
+        required_error: "companyName is required."
+    }).min(3, "Company name is too short."),
+    location: z.string({
+        required_error: "location is required."
+    }).min(5, "Invalid location."),
+    email: z.string({
+        required_error: "Email is required."
+    }).email(),
+    aboutCompany: z.string({
+        required_error: "This field is required."
+    })
 })

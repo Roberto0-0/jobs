@@ -23,6 +23,7 @@
 }
 
 body, html {
+    -webkit-tap-highlight-color: transparent;
     display: flex;
     flex-direction: column;
     
@@ -149,8 +150,6 @@ main .container ul {
     display: flex;
     flex-direction: column;
     gap: 1em;
-
-    padding: 10px;
 
     width: 100%;
     height: auto;

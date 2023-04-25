@@ -16,7 +16,7 @@ export class Create {
     const company = await CompanyRepository.findOneBy({ id: company_id })
 
     if (!company) {
-      return new Error("Company not fould!")
+      return new Error("Company not found!")
     }
 
     const newPost = PostRepository.create({
@@ -30,5 +30,7 @@ export class Create {
     })
 
     await PostRepository.save(newPost)
+    
+    return { success_message: `"${newPost.vancancy}" post was created. ` }
   }
 }

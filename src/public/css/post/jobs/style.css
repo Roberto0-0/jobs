@@ -24,6 +24,7 @@
 
 
 body, html {
+    -webkit-tap-highlight-color: transparent;
     display: flex;
     flex-direction: column;
     
@@ -238,7 +239,7 @@ main .container .jobs-menu {
 main .container .jobs-menu li {
     padding: 10px 10px 0px 10px;
 
-    width: 90vw;
+    width: 100%;
     max-width: 500px;
     
     border: 1px solid var(--dark-border);
@@ -274,7 +275,7 @@ main .container .jobs-menu li .company-name i {
 main .container .jobs-menu li .jobInfo {
     display: flex;
     flex-direction: column;
-    gap: 0.2em;
+    gap: 0.3em;
 
     margin-bottom: 1em;
 
