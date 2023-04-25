@@ -21,7 +21,6 @@ export class Company {
   })
   employer: string
 
-
   @Column({
     type: "varchar",
     nullable: false,
@@ -34,6 +33,12 @@ export class Company {
     nullable: false
   })
   location: string
+  
+  @Column({
+    type: "varchar",
+    nullable: false
+  })
+  aboutCompany: string
 
   @ManyToOne(() => User, (user) => user.company)
   user: User

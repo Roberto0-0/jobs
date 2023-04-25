@@ -3,18 +3,14 @@ const salary = document.getElementsByClassName("salary")
 const li = document.querySelectorAll(".li")
 const text = document.querySelectorAll(".text")
 const btnseeMore = document.querySelectorAll(".btn-seeMore")
-const success_message = document.querySelectorAll(".success_message")
+const notification = document.querySelector('.notification')
 
 var clicked = false
 
 const main = () => {
-  if(success_message) {
     setTimeout(() => {
-      for(let i=0;i < li.length;i++) {
-        success_message[i].style.display = "none"
-      }
-    }, 5000)
-  }
+        notification.style.display = "none"
+    }, 3000)
 
   for(let j=0;j < li.length;j++) {
     if(text[j].textContent.length > 250) {

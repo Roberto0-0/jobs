@@ -1,9 +1,7 @@
 const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 
 export const EmailValidation = (email: string) => {
-  if(!regex.test(email)) {
-    return false
-  }
-
+  if(!regex.test(email)) { return false }
+  
   return true
 }

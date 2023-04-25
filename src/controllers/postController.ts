@@ -58,7 +58,7 @@ export class PostController {
           return res.redirect("/company/" + user_id + "/" + company_id)
         }
 
-        req.flash("success_message", "post was created!")
+        req.flash("success_message", result.success_message)
         return res.redirect("/company/" + user_id + "/" + company_id)
       } else {
         const err = validation.error.errors
@@ -161,7 +161,7 @@ export class PostController {
           return newErrors = []
         }
 
-        req.flash("success_message", "post was updated!")
+        req.flash("success_message", result.success_message)
         return res.redirect("/company/posts/" + user_id + "/" + company_id)
       } else {
         const err = validation.error.errors
@@ -194,7 +194,7 @@ export class PostController {
         return res.status(400).send({ message: result.message })
       }
 
-      req.flash("success_message", "post was deleted")
+      req.flash("success_message", result.success_message)
       res.redirect("/company/posts/" + user_id + "/" + company_id)
     } catch (error) {
       console.error(error)

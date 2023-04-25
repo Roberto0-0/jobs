@@ -6,7 +6,7 @@ import { ReadAll } from "../services/User/readAll"
 import { UserUpdate } from "../services/User/update"
 import { userSchema } from "../schemas/userSchema"
 
-var newErros: string[] = []
+var newErrors: string[] = []
 
 export class UserController { 
   createIndex(req: Request, res: Response) {
@@ -22,7 +22,7 @@ export class UserController {
         const result = await service.execute(validation.data)
 
         if(result instanceof Error) {
-            newErros.push(result.message)
+            newErrors.push(result.message)
             req.flash("error_message", result.message)
             return res.redirect("/register")
         }
@@ -32,13 +32,13 @@ export class UserController {
         const err = validation.error.errors
 
         err.map((values) => {
-            newErros.push(values.message)
+            newErrors.push(values.message)
         })
       }
 
-      req.flash("error_message", newErros)
+      req.flash("error_message", newErrors)
       res.redirect("/register")
-      newErros = []
+      newErrors = []
     } catch(err) {
       console.error(err)
       return res.status(500).send({ message: "Internal server error!"})
@@ -138,10 +138,10 @@ export class UserController {
       })
 
       if(result instanceof Error) { 
-        newErros.push(result.message)
-        req.flash("error_message", newErros)
+        newErrors.push(result.message)
+        req.flash("error_message", newErrors)
         res.redirect("/profile/settings/password")
-        return newErros = []
+        return newErrors = []
        }
 
       req.flash("success_message", "Successfully updated password!")
@@ -165,7 +165,8 @@ export class UserController {
 
       return res.status(200).send({ message: "Account deleted successfully!" })
     } catch (error) {
-      
+      console.error(error)
+      return res.status(500).send({ message: "Internal server error." })
     }
   }
 }

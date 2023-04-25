@@ -39,17 +39,13 @@
       </header>
       </div>
       <main>
-        <div class="message-area">
-          <% if(success_message.length > 0) { %>
-            <div class="success_message"><%= success_message %></div>
-          <% } %>
-          <% for(var i=0;i < error_message.length;i++) { %>
-            <div class="error_message"><%= error_message[i] %></div>
-          <% } %>
+        <% if(success_message.length > 0) { %>
+          <div class="notification"><span class="message"><%= success_message %></span><i class="ph-bold ph-checks"></i></div>
+        <% } %>
         <div class="container">
           <div class="firstBlock">
             <div class="postInfo">
-              <h2>information</h2>
+              <h2>Posts information</h2>
             </div>
             <ul>
               <li>
@@ -100,7 +96,7 @@
             </ul>
           </div>
           <div class="secondBlock">
-            <img src="../../assets/jobs/Attribution modeling.svg" alt="" width="100%">
+            <img src="../../assets/jobs/undraw_financial_data_re_p0fl.svg" alt="">
           </div>
         </div>
       </main>

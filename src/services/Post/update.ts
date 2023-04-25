@@ -34,55 +34,23 @@ export class Update {
     vacancies,
     information
   }: Attributes) {
-
-    console.log(company_name)
     const post = await PostRepository.findOneBy(({ id: post_id }))
     const company = await CompanyRepository.findOneBy({ id: company_id })
 
-    if (!post) {
-      return new Error("Post not fould!")
-    }
-
-    if (!company) {
-      return new Error("Company not fould!")
-    }
-
-    if (company_name == null || company_name == undefined) {
-      posts = {
+    if (!post) { return new Error("Post not found!") }
+    if (!company) { return new Error("Company not found!") }
+    
+    posts = {
         company_name,
         vancancy,
         location,
         salary,
         vacancies,
         information
-      }
+     }
 
-      await PostRepository.update(
-        post_id,
-        posts
-      )
-    } else {
-      const company_name_check = await CompanyRepository.findOne({
-        where: { id: company_id, company: company_name }
-      })
-
-      if (!company_name_check) {
-        return new Error("Invalid company name!")
-      }
-
-      posts = {
-        company_name,
-        vancancy,
-        location,
-        salary,
-        vacancies,
-        information
-      }
-
-      await PostRepository.update(
-        post_id,
-        posts
-      )
-    }
+    await PostRepository.update(post_id, posts)
+    
+    return { success_message: `"${posts.vancancy}" post has been updated.` }
   }
 }

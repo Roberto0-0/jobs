@@ -24,6 +24,7 @@
 
 
 body, html {
+    -webkit-tap-highlight-color: transparent;
     display: flex;
     flex-direction: column;
     
@@ -92,7 +93,6 @@ header .container nav ul {
     height: 100%;
 
     list-style: none;
-
 }
 
 header .container nav ul li {
@@ -113,6 +113,10 @@ header .container nav ul li i {
     display: none;
 }
 
+header .container .menu {
+    display: none;
+}
+
 main {
     flex: 1;
 
@@ -120,6 +124,42 @@ main {
 
     width: auto;
     height: calc(100vh - 70px);
+}
+
+main .notification {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.3em;
+    
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    
+    transform: translate(-50%, -50%);
+    
+    padding: 15px;
+    
+    width: 95vw;
+    max-width: 600px;
+    
+    animation: down 0.4s;
+    border-radius: 5px;
+    background: rgb(45, 164, 78);
+    
+    font-weight: 600;
+    font-size: 1em;
+    color: var(--global-white);
+}
+
+main .notification i {
+    font-size: 1.3em;
+}
+
+@keyframes down {
+    from { top: 0px; }
+    to { top: 100px; }
 }
 
 main .container {
@@ -142,13 +182,12 @@ main .container .firstBlock {
 }
 
 main .container .firstBlock .postInfo {
-    margin-bottom: 0.5em;
-    
-    width: 50%;
+    margin-bottom: 1em;
+    padding: 5px 10px;
 }
 
 main .container .firstBlock .postInfo h2 {
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 main .container .firstBlock ul {
@@ -163,7 +202,6 @@ main .container .firstBlock ul {
     list-style: none;
 }
 
-
 main .container .firstBlock ul::-webkit-scrollbar {
     width: 0px;
 }
@@ -171,7 +209,6 @@ main .container .firstBlock ul::-webkit-scrollbar {
 main .container .firstBlock ul::-webkit-scrollbar-track {
     background: transparent;
 }
-
 
 main .container .firstBlock ul::-webkit-scrollbar-thumb {
     background: transparent;
@@ -241,11 +278,10 @@ main .container .secondBlock {
     align-items: center;
 
     width: 50%;
-
 }
 
 main .container .secondBlock img {
-    width: 80%;
+    width: 70%;
 }
 
 footer {
@@ -278,69 +314,6 @@ footer .container p {
 
 footer .container p a {
     color: var(--dark-text);
-}
-
-header .container .menu {
-    display: none;
-}
-
-.success_message {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    position: absolute;
-    top: 95px;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-    
-    width: 85vw;
-    max-width: 400px;
-    min-width: 260px;
-    height: 50px;
-    
-    border-radius: 5px;
-    background: var(--background-message-success);
-    animation: message_down 0.6s;
-  
-    font-size: 1.3em;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 300;
-    color: var(--text-message-success);
-}
-
-.error_message {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    position: absolute;
-    top: 95px;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-
-    width: 85vw;
-    max-width: 400px;
-    min-width: 260px;
-    height: 50px;
-
-    border-radius: 5px;
-    background: var(--background-message-error);
-    animation: message_down 0.6s;
-
-    font-size: 1.3em;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 300;
-    color: var(--text-message-error);
-}
-
-@keyframes message_down {
-    from { left: 0%; }
-    to { left: 50%; }
 }
 
 @media(max-width: 600px) {
@@ -445,11 +418,6 @@ header .container .menu {
 
     main .container .firstBlock ul li {
         width: 100%;
-    }
-    
-
-    main .container .firstBlock .postInfo h2 {
-        font-size: 1.5em;
     }
 
     main .container .firstBlock ul li a .illustration {

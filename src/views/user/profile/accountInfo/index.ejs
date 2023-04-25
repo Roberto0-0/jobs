@@ -31,7 +31,7 @@
             </nav>
       
             <div class="menu">
-                <i class="ph-fill ph-list"></i>
+                <i class="ph-bold ph-list"></i>
             </div>
           </div>
     </header>
@@ -61,9 +61,9 @@
                         </div>
                     </li>
                     <li>
-                        <label for="company">Company</label>
                         <% if(user.company.length > 0) { %>
                             <% user.company.forEach((value) => { %>
+                                <label for="company">Company</label>
                                 <div class="subContainer">
                                     <i class="ph ph-buildings"></i>
                                     <span class="username"><%= value.company %></span>

@@ -2,23 +2,24 @@ import { CompanyRepository } from "../../repositories/CompanyRepository";
 import { UserRepository } from "../../repositories/UserRepository";
 
 interface Attributes {
-  id: string;
+  user_id: string;
   employer: string;
   companyName: string;
   location: string;
   email: string;
+  aboutCompany: string;
 }
 
 export class Create {
-  async execute({ id, employer, companyName, location, email }: Attributes) {
-    const user = await UserRepository.findOneBy({ id: id })
+  async execute({ user_id, employer, companyName, location, email, aboutCompany }: Attributes) {
+    const user = await UserRepository.findOneBy({ id: user_id })
 
     if(!user) {
-      return new Error("User not fould!")
+      return new Error("User not found.")
     }
     
     if(user.email != email) {
-       return new Error("E-mail not fould")
+       return new Error("Invalid email.")
     }
 
     const company = await CompanyRepository.findOne({
@@ -26,16 +27,19 @@ export class Create {
     })
 
     if (company) {
-      return new Error("Company name already exist!")
+      return new Error("Company name has already been registered.")
     }
 
     const newCompany = CompanyRepository.create({
       employer,
       company: companyName,
       location,
+      aboutCompany,
       user
     })
 
     await CompanyRepository.save(newCompany)
+    
+    return { success_message: `"${newCompany.company}" company was registered` }
   }
 }

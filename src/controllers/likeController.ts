@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import { Like } from "../services/Like/index"
-import { Read ,} from "../services/Post/read"
+import { PostRead ,} from "../services/Post/read"
 
 export class LikeController {
   async liked(req: Request, res: Response) {
@@ -17,7 +17,7 @@ export class LikeController {
         return res.status(400).send({ message: result.message })
       }
       
-      const postService = new Read()
+      const postService = new PostRead()
       const postResult = await postService.execute(result)
       
       if(postResult instanceof Error) {
