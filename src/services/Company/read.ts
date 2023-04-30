@@ -9,11 +9,6 @@ interface Attributes {
 export class CompanyRead {
   async execute({ user_id, company_id }: Attributes) {
      const user = await UserRepository.findOneBy({ id: user_id })
-     
-     if(!user) {
-        return new Error("User not fould!")
-     }
-     
      const company = await CompanyRepository.findOne({
         where: { id: company_id },
         relations: {
@@ -21,8 +16,12 @@ export class CompanyRead {
         }
      })
      
+     if(!user) {
+        return new Error("User not found.")
+     }
+     
      if(!company) {
-        return new Error("Company not fould!")
+        return new Error("Company not found.")
      }
 
     return company

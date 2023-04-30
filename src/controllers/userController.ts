@@ -1,8 +1,8 @@
 import { Request, Response } from "express"
-import { Create } from "../services/User/create"
-import { Delete } from "../services/User/delete"
+import { UserCreate } from "../services/User/create"
+import { UserDelete } from "../services/User/delete"
 import { UserRead } from "../services/User/read"
-import { ReadAll } from "../services/User/readAll"
+import { UserReadAll } from "../services/User/readAll"
 import { UserUpdate } from "../services/User/update"
 import { userSchema } from "../schemas/userSchema"
 
@@ -15,11 +15,11 @@ export class UserController {
 
   async create(req: Request, res: Response) {
     try {
-      const validation = userSchema.safeParse(req.body)
+      const validationResult = userSchema.safeParse(req.body)
 
-      if(validation.success) {
+      if(validationResult.success) {
         const service = new Create()
-        const result = await service.execute(validation.data)
+        const result = await service.execute(validationResult.data)
 
         if(result instanceof Error) {
             newErrors.push(result.message)
@@ -28,17 +28,18 @@ export class UserController {
         }
 
         return res.redirect("/login")
-      } else {
-        const err = validation.error.errors
-
-        err.map((values) => {
-            newErrors.push(values.message)
-        })
       }
-
+      
+      const err = validationResult.error.errors
+      
+      err.map((values) => {
+        newErrors.push(values.message)
+      })
+    
       req.flash("error_message", newErrors)
       res.redirect("/register")
       newErrors = []
+      
     } catch(err) {
       console.error(err)
       return res.status(500).send({ message: "Internal server error!"})
@@ -64,7 +65,7 @@ export class UserController {
 
   async readAll(req: Request, res: Response) {
     try {
-      const serivce = new ReadAll()
+      const serivce = new UserReadAll()
       const result = await serivce.execute()
 
       return res.status(200).send(result)
@@ -90,19 +91,37 @@ export class UserController {
         return res.status(400).send({ message: result.message })
       }
 
-      return res.status(200).send({ message: "Account updated successfully!" })
+      return res.status(200).send({ message: "Account updated successfully." })
     } catch (error) {
       console.error(error)
-      return res.status(500).send({ message: "Internal server error!" })
+      return res.status(500).send({ message: "Internal server error." })
     }
   }
 
-  async profile(req: Request, res: Response) {
+  async delete(req: Request, res: Response) {
+    const { id } = req.params
+
+    try {
+      const sercive = new UserDelete()
+      const result = await sercive.execute(id)
+
+      if(result instanceof Error) {
+        return res.status(400).send({ messsage: result.message })
+      }
+
+      return res.status(200).send({ message: "Account deleted successfully." })
+    } catch (error) {
+      console.error(error)
+      return res.status(500).send({ message: "Internal server error." })
+    }
+  }
+  
+  async userProfile(req: Request, res: Response) {
     try {
       res.render("user/profile/home/index.ejs")
     } catch(error) {
       console.error(error)
-      return res.status(500).send({ message: "Internal server error!" })
+      return res.status(500).send({ message: "Internal server error." })
     }
   }
 
@@ -111,7 +130,7 @@ export class UserController {
       res.render("user/profile/accountInfo/index.ejs")
     } catch(error) {
       console.error(error)
-      return res.status(500).send({ message: "Internal server error!" })
+      return res.status(500).send({ message: "Internal server error." })
     }
   }
 
@@ -120,7 +139,7 @@ export class UserController {
       res.render("user/profile/changePassword/index.ejs")
     } catch (error) {
       console.error(error)
-      return res.status(500).send({ message: "Internal server error!" })
+      return res.status(500).send({ message: "Internal server error." })
     }
   }
 
@@ -144,27 +163,9 @@ export class UserController {
         return newErrors = []
        }
 
-      req.flash("success_message", "Successfully updated password!")
+      req.flash("success_message", "Successfully updated password.")
       res.redirect("/profile/settings/password")
     } catch(error) {
-      console.error(error)
-      return res.status(500).send({ message: "Internal server error!" })
-    }
-  }
-
-  async delete(req: Request, res: Response) {
-    const { id } = req.params
-
-    try {
-      const sercive = new Delete()
-      const result = await sercive.execute(id)
-
-      if(result instanceof Error) {
-        return res.status(400).send({ messsage: result.message })
-      }
-
-      return res.status(200).send({ message: "Account deleted successfully!" })
-    } catch (error) {
       console.error(error)
       return res.status(500).send({ message: "Internal server error." })
     }

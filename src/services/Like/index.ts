@@ -10,23 +10,21 @@ interface Attributes {
 export class Like {
   async execute({ user_id, post_id }: Attributes) {
     const user = await UserRepository.findOneBy({ id: user_id })
-
-    if (!user) {
-      return new Error("User not found!")
-    }
-    
     const post = await PostRepository.findOneBy({ id: post_id })
-    
-    if (!post) {
-        return new Error("Post not found!")
-    }
-    
     const like = await LikeRepository.findOne({
       where: {
         user_id: user_id,
         post_id: post_id
       }
     })
+
+    if (!user) {
+      return new Error("User not found!")
+    }
+    
+    if (!post) {
+        return new Error("Post not found!")
+    }
     
     var newLikes = post.likes
     if (!like) {

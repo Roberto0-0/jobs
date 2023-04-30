@@ -10,10 +10,7 @@ export class PostRead {
       }
     })
 
-    if (!post) {
-      return new Error("Post not fould!")
-    }
-
+    if (!post) { return new Error("Post not found.") }
     return post
   }
 } 

@@ -15,12 +15,12 @@ interface ICompany {
 
 let companies: ICompany = {}
 
-export class Update {
+export class CompanyUpdate {
   async execute({ company_id, company_name, employer, email }: Attributes) {
     const company = await CompanyRepository.findOneBy({ id: company_id })
 
     if (!company) {
-      return new Error("Company not fould!")
+      return new Error("Company not found!")
     }
 
     if (company_name) {
@@ -29,7 +29,7 @@ export class Update {
       })
 
       if (company_name_check) {
-        return new Error("Company name already exist!")
+        return new Error("Company name already exist.")
       }
 
       if (email) {
@@ -38,7 +38,7 @@ export class Update {
         })
 
         if (company_email_check) {
-          return new Error("Email already exist!")
+          return new Error("Email already exist.")
         }
 
         companies = {

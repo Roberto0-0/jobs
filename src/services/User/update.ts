@@ -28,10 +28,10 @@ export class UserUpdate {
        const user = await UserRepository.findOneBy({ id: id })
 
         if(!user) {
-            return new Error("User not fould!")
+            return new Error("User not found.")
         }
         if(!ComparePasswordHash(password, user.password)) {
-            return new Error("Invalid password")
+            return new Error("Invalid password.")
         }
 
         if(email) {
@@ -40,7 +40,7 @@ export class UserUpdate {
             })
     
             if(emails) {
-                return new Error("Email already exist!")
+                return new Error("Email already exist.")
             }
             newUser = {
                 name,

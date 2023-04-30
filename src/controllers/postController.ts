@@ -1,9 +1,9 @@
 import { Request, Response } from "express"
-import { Create } from "../services/Post/create"
-import { ReadAll } from "../services/Post/readAll"
+import { PostCreate } from "../services/Post/create"
+import { PostReadAll } from "../services/Post/readAll"
 import { PostRead } from "../services/Post/read"
-import { Update } from "../services/Post/update"
-import { Delete } from "../services/Post/delete"
+import { PostUpdate } from "../services/Post/update"
+import { PostDelete } from "../services/Post/delete"
 import { CompanyRead } from "../services/Company/read"
 import { postSchema, updatePostSchema } from "../schemas/postSchema"
 
@@ -33,12 +33,13 @@ export class PostController {
         return res.status(500).send({ message: "Internal server error" })
      }
   }
+  
   async create(req: Request, res: Response) {
     const { user_id, company_id } = req.params
     const { companyName, vancancy, salary, vacancies, location, information } = req.body
 
     try {
-      const validation = postSchema.safeParse({
+      const validationResult = postSchema.safeParse({
         company_id,
         companyName,
         vancancy,
@@ -48,9 +49,9 @@ export class PostController {
         information
       })
 
-      if(validation.success) {
-        const service = new Create()
-        const result = await service.execute(validation.data)
+      if(validationResult.success) {
+        const service = new PostCreate()
+        const result = await service.execute(validationResult.data)
 
         if (result instanceof Error) {
           newErrors.push(result.message)
@@ -60,17 +61,17 @@ export class PostController {
 
         req.flash("success_message", result.success_message)
         return res.redirect("/company/" + user_id + "/" + company_id)
-      } else {
-        const err = validation.error.errors
-
-        err.map((values) => {
-          newErrors.push(values.message)
-        })
       }
+      
+      const err = validationResult.error.errors
+      err.map((values) => {
+          newErrors.push(values.message)
+      })
 
       req.flash("error_message", newErrors)
       res.redirect("/post/create/" + user_id + "/" + company_id)
       newErrors = []
+      
     } catch (error) {
       console.error(error)
       return res.status(500).send({ message: "Internal server error!" })
@@ -98,16 +99,19 @@ export class PostController {
   }
 
   async readAll(req: Request, res: Response) {
+    const { option } = req.query
+      
     try {
-      const service = new ReadAll()
-      const result = await service.execute()
+      const service = new PostReadAll()
+      const result = await service.execute(option)
 
       if (result instanceof Error) {
         return res.status(400).send({ message: result.message })
       }
       
       return res.render("post/jobs/index.ejs", {
-         data: result
+         data: result,
+         lastOption: option
       })
     } catch (error) {
       console.error(error)
@@ -151,7 +155,7 @@ export class PostController {
       })
 
       if(validation.success) {
-        const service = new Update()
+        const service = new PostUpdate()
         const result = await service.execute(validation.data)
 
         if (result instanceof Error) {
@@ -184,7 +188,7 @@ export class PostController {
     const { post_id, company_id, user_id } = req.params
 
     try {
-      const service = new Delete()
+      const service = new PostDelete()
       const result = await service.execute({
         post_id,
         company_id

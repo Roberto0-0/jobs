@@ -23,7 +23,7 @@ interface IPost {
 
 let posts: IPost = {}
 
-export class Update {
+export class PostUpdate {
   async execute({
     post_id,
     company_id,
@@ -37,8 +37,8 @@ export class Update {
     const post = await PostRepository.findOneBy(({ id: post_id }))
     const company = await CompanyRepository.findOneBy({ id: company_id })
 
-    if (!post) { return new Error("Post not found!") }
-    if (!company) { return new Error("Company not found!") }
+    if (!post) { return new Error("Post not found.") }
+    if (!company) { return new Error("Company not found.") }
     
     posts = {
         company_name,
@@ -47,10 +47,9 @@ export class Update {
         salary,
         vacancies,
         information
-     }
-
-    await PostRepository.update(post_id, posts)
+    }
     
+    await PostRepository.update(post_id, posts)
     return { success_message: `"${posts.vancancy}" post has been updated.` }
   }
 }

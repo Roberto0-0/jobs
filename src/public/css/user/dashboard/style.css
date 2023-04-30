@@ -288,7 +288,7 @@ main .container .secondBlock {
 }
 
 main .container .secondBlock img {
-    width: 70%;
+    width: 100%;
 }
 
 footer {
@@ -444,6 +444,7 @@ header .container .menu {
     }
 
     main .container .firstBlock {
+        margin-bottom: 2em;
         padding: 0px 10px;
 
         width: 100%;
