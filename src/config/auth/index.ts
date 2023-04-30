@@ -4,7 +4,6 @@ import { UserRepository } from "../../repositories/UserRepository";
 import bcrypt from "bcryptjs"
 
 export default function(value: any): void {
-   
   passport.serializeUser((user, done) => {
     return done(null, user);
   });

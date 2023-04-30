@@ -11,13 +11,11 @@ export interface Attributes {
   information?: string;
 }
 
-export class Create {
+export class PostCreate {
   async execute({ company_id, companyName, vancancy, location, salary, vacancies, information }: Attributes) {
     const company = await CompanyRepository.findOneBy({ id: company_id })
 
-    if (!company) {
-      return new Error("Company not found!")
-    }
+    if (!company) { return new Error("Company not found.") }
 
     const newPost = PostRepository.create({
       company_name: companyName,
@@ -28,9 +26,8 @@ export class Create {
       information,
       company
     })
-
-    await PostRepository.save(newPost)
     
-    return { success_message: `"${newPost.vancancy}" post was created. ` }
+    await PostRepository.save(newPost)
+    return { success_message: `"${newPost.vancancy}" post was created.` }
   }
 }

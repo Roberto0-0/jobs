@@ -45,6 +45,26 @@
    <main>
       <div class="container">
          <div class="notfound"></div>
+         <div class="userInfo">
+             <div class="countPosts">
+                 <span><%= data.length %></span> job openings
+             </div>
+             <div class="userSelect">
+                 <form action="/jobs" method="GET">
+                     <div class="box">
+                         <div class="input">
+                            <input type="radio" id="relevant" name="option" value="relevant" checked="">
+                            <label for="relevant">Relevant</label>
+                         </div>
+                         <div class="input">
+                             <input type="radio" id="recent" name="option" value="recent">
+                            <label for="recent">Recent</label>
+                         </div>
+                     </div>
+                     <button>confirm</button>
+                 </form>
+             </div>
+         </div>
          <ul class="jobs-menu">
             <% if(user) { %>
                <% data.forEach((post) => { %>

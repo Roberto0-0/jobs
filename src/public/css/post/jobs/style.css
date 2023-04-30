@@ -201,6 +201,7 @@ main {
 main .container {
     display: flex;
     flex-direction: column;
+    gap: 1em;
 
     margin: auto;
 
@@ -225,6 +226,73 @@ main .container .notfound {
     word-break: break-all;
     font-size: 1.5em;
     font-weight: bold;
+}
+
+main .container .userInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    
+    margin-bottom: 2em;
+    margin: auto;
+    padding: 10px;
+    
+    width: 100%;
+    max-width: 500px;
+}
+
+main .container .userInfo .countPosts {
+    width: 50%;
+    
+    font-size: 1.3em;
+}
+
+main .container .userInfo .countPosts span {
+    font-weight: 600;
+}
+
+main .container .userInfo .userSelect {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    
+    width: 50%;
+}
+
+main .container .userInfo .userSelect form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    
+    width: 100%;
+}
+
+main .container .userInfo .userSelect form .box {
+    display: flex;
+    flex-direction: row;
+}
+
+main .container .userInfo .userSelect form .box .input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2em;
+    
+    width: 90%;
+}
+
+main .container .userInfo .userSelect form button {
+    height: 40px;
+    
+    outline: transparent;
+    border: 1px solid var(--light-border);
+    border-radius: 5px;
+    background: var(--light-secondary-background);
+    
+    font-size: 1em;
 }
 
 main .container .jobs-menu {

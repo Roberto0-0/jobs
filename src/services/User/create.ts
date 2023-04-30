@@ -9,7 +9,7 @@ interface Attributes {
   confirmPassword: string;
 }
 
-export class Create {
+export class UserCreate {
   async execute({ name, email, password, confirmPassword }: Attributes) {
     const user = await UserRepository.findOne({
       where: { email: email }

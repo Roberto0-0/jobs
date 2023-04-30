@@ -11,7 +11,7 @@ export class UserRead {
     })
 
     if (!user) {
-      return new Error("User not fould!")
+      return new Error("User not found.")
     }
 
     return user

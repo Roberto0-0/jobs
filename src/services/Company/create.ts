@@ -10,9 +10,12 @@ interface Attributes {
   aboutCompany: string;
 }
 
-export class Create {
+export class CompanyCreate {
   async execute({ user_id, employer, companyName, location, email, aboutCompany }: Attributes) {
     const user = await UserRepository.findOneBy({ id: user_id })
+    const company = await CompanyRepository.findOne({
+      where: { company: companyName }
+    })
 
     if(!user) {
       return new Error("User not found.")
@@ -21,10 +24,6 @@ export class Create {
     if(user.email != email) {
        return new Error("Invalid email.")
     }
-
-    const company = await CompanyRepository.findOne({
-      where: { company: companyName }
-    })
 
     if (company) {
       return new Error("Company name has already been registered.")
@@ -37,7 +36,6 @@ export class Create {
       aboutCompany,
       user
     })
-
     await CompanyRepository.save(newCompany)
     
     return { success_message: `"${newCompany.company}" company was registered` }
