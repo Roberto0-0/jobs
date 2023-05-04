@@ -28,8 +28,6 @@
                   <% user.company.forEach((company) => { %>
                     <a href="/company/<%= user.id %>/<%= company.id %>"/>company</a>
                   <% }) %>
-                <% } else { %>
-                  <a href="/company/registration">company</a>
                 <% } %>
                 <a href="/profile">profile</a>
               </ul>
@@ -42,11 +40,6 @@
                     <a href="/company/<%= user.id %>/<%= company.id %>"/>company</a>
                   </li>
                 <% }) %>
-              <% } else { %>
-                <li>
-                  <i class="ph-buildings-fill"></i>
-                  <a href="/company/registration">company</a>
-                </li>
               <% } %>
               <li>
                 <i class="ph-user-circle-gear-fill"></i>
@@ -63,30 +56,30 @@
           <i class="ph-bold ph-list"></i>
         </div>
       </div>
-      </header>
-      <main>
-        <% if(success_message.length > 0) { %>
-            <div class="notification"><span class="message"><%= success_message %></span><i class="ph-bold ph-checks"></i></div>
-        <% } %>
-        <div class="container">
-          <div class="firstBlock">
-            <h2>Welcome 💼</h2>
-            <h3>Find your dream job now!</h3>
-            <a href="/jobs" class="jobs" style="margin-bottom: 20px;">jobs</a>
-          </div>
-          <div class="secondBlock">
-            <img src="/assets/jobs/undraw_done_checking_re_6vyx.svg" alt="" width="100%">
-          </div>
-        </div>
-      </main>
-      <footer>
-        <div class="container">
-          <p>
-            &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
-          </p>
-        </div>
-      </footer>
     <% } %>
+  </header>
+  <main>
+    <% if(success_message.length > 0) { %>
+      <div class="notification"><span class="message"><%= success_message %></span><i class="ph-bold ph-checks"></i></div>
+    <% } %>
+    <div class="container">
+      <div class="firstBlock">
+        <h2>Welcome 💼</h2>
+        <h3>Find your dream job now!</h3>
+        <a href="/jobs" class="jobs" style="margin-bottom: 20px;">jobs</a>
+      </div>
+      <div class="secondBlock">
+        <img src="/assets/jobs/undraw_done_checking_re_6vyx.svg" alt="" width="100%">
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>
+        &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+      </p>
+    </div>
+  </footer>
   <script src="/js/menu/main.js"></script>
   <script src="/js/user/dashboard/main.js"></script>
 </body>

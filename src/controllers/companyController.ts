@@ -12,51 +12,50 @@ var newErrors: string[] = []
 
 export class CompanyController {
   async createIndex(req: Request, res: Response) {
-     try {
-        res.render("company/create/index.ejs")
-     } catch(error) {
-        console.error(error)
-        return res.status(500).send({ message: "Internal server error!"})
-     }
+    try {
+      res.render("company/create/index.ejs")
+    } catch(error) {
+      console.error(error)
+      return res.status(500).send({ message: "Internal server error!"})
+    }
   }
   async create(req: Request, res: Response) {
-     const { user_id } = req.params
-     const { employer, companyName, location, email, aboutCompany } = req.body
+    const { user_id } = req.params
+    const { employer, companyName, location, email, aboutCompany } = req.body
      
     try {
-        const validationResult = companySchema.safeParse({
-            user_id,
-            employer,
-            companyName,
-            location,
-            email,
-            aboutCompany
-        })
+      const validationResult = companySchema.safeParse({
+        user_id,
+        employer,
+        companyName,
+        location,
+        email,
+        aboutCompany
+      })
         
-        if(validationResult.success) {
-            const service = new CompanyCreate()
-            const result = await service.execute(validationResult.data)
-      
-            if(result instanceof Error) {
-                newErrors.push(result.message)
-                req.flash("error_message", result.message)
-                return res.redirect("/company/registration")
-            }
-      
-            req.flash("success_message", result.success_message)
-            res.redirect("/dashboard")
+      if(validationResult.success) {
+        const service = new CompanyCreate()
+        const result = await service.execute(validationResult.data)
+  
+        if(result instanceof Error) {
+            newErrors.push(result.message)
+            req.flash("error_message", result.message)
+            return res.redirect("/company/registration")
         }
-        
+  
+        req.flash("success_message", result.success_message)
+        return res.redirect("/dashboard")
+      } else {
         const err = validationResult.error.errors
-
+        
         err.map((values) => {
-            newErrors.push(values.message)
+          newErrors.push(values.message)
         })
 
         req.flash("error_message", newErrors)
         res.redirect("/company/registration")
         newErrors = []
-        
+      }
     } catch (error) {
       console.error(error)
       return res.status(500).send({ message: "Internal server error!" })
@@ -193,22 +192,22 @@ export class CompanyController {
   }
   
   async showAllCompanyPush(req: Request, res: Response) {
-        const { company_id } = req.params
-      
-        try {
-          const service = new LikeRead()
-          const result = await service.execute(company_id)
-    
-          if (result instanceof Error) {
-            return res.status(400).send({ message: result.message })
-          }
-    
-          return res.render("company/likes/index.ejs", {
-             data: result
-          })
-        } catch (error) {
-          console.error(error)
-          return res.status(500).send({ message: "Internal server error." })
-        }
+    const { company_id } = req.params
+  
+    try {
+      const service = new LikeRead()
+      const result = await service.execute(company_id)
+
+      if (result instanceof Error) {
+        return res.status(400).send({ message: result.message })
+      }
+
+      return res.render("company/likes/index.ejs", {
+         data: result
+      })
+    } catch (error) {
+      console.error(error)
+      return res.status(500).send({ message: "Internal server error." })
     }
+  }
 }

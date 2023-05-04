@@ -1,374 +1,374 @@
  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --global-color: #147CB7;
-    --global-hover-color: #178bcf;
-    --global-header-footer: #161B22;
-    --global-white: #fff;
-    --global-black: #000;
+  --global-color: #147CB7;
+  --global-hover-color: #178bcf;
+  --global-header-footer: #161B22;
+  --global-white: #fff;
+  --global-black: #000;
 
-    --light-primary-background: #fff;
-    --light-secondary-background: #F6F8FA;
-    --light-text: #413f3f;
-    --light-border: #30363D;
-    
-    --dark-primary-background: #0D1117;
-    --dark-secondary-background: #010409;
-    --dark-text: #CAD1D9;
-    --dark-border: #D0D7DE;
+  --light-primary-background: #fff;
+  --light-secondary-background: #F6F8FA;
+  --light-text: #413f3f;
+  --light-border: #30363D;
+  
+  --dark-primary-background: #0D1117;
+  --dark-secondary-background: #010409;
+  --dark-text: #CAD1D9;
+  --dark-border: #D0D7DE;
 }
 
 body, html {
-    -webkit-tap-highlight-color: transparent;
-    display: flex;
-    flex-direction: column;
-    
-    width: 100%;
-    min-height: 100vh;
-    
-    background: var(--light-primary-background);
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  flex-direction: column;
+  
+  width: 100%;
+  min-height: 100vh;
+  
+  background: var(--light-primary-background);
 
-    font-family: 'Roboto', sans-serif;
-    color: var(--light-text);
+  font-family: 'Roboto', sans-serif;
+  color: var(--light-text);
 }
 
 a {
-    color: var(--light-text);
+  color: var(--light-text);
 }
 
 header  {
-    width: 100%;
-    height: 70px;
+  width: 100%;
+  height: 70px;
 
-    background: var(--global-header-footer);
+  background: var(--global-header-footer);
 }
 
 header .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    
-    margin: 0 auto;
-    padding: 5px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  
+  margin: 0 auto;
+  padding: 5px 0px;
 
-    width: 95vw;
-    max-width: 1279px;
-    height: 100%;
+  width: 95vw;
+  max-width: 1279px;
+  height: 100%;
 
 }
 
 header .container .logo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    padding: 0px 10px;
+  padding: 0px 10px;
 
-    width: auto;
-    height: 70%;
+  width: auto;
+  height: 70%;
 
-    border-left: 3px solid var(--global-white);
-    text-decoration: none;
+  border-left: 3px solid var(--global-white);
+  text-decoration: none;
 
-    font-family: 'Chango', cursive;
-    font-size: 2em;
-    color: var(--global-white);
+  font-family: 'Chango', cursive;
+  font-size: 2em;
+  color: var(--global-white);
 }
 
 header .container nav {
-    display: block;
-    padding: 0px 10px;
+  display: block;
+  padding: 0px 10px;
 
-    width: auto;
-    height: 80%;
+  width: auto;
+  height: 80%;
 }
  
 header .container nav ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.3em;
+
+  width: 100%;
+  height: 100%;
+
+  list-style: none;
+}
+
+header .container nav ul li {
+  padding: 7px 15px;
+
+  width: auto;
+  height: auto;
+}
+
+header .container nav ul li i {
+  display: none;
+}
+
+header .container nav ul li a {
+  text-decoration: none;
+
+  font-size: 1.1em;
+  font-weight: 400;
+  color: var(--global-white);
+}
+
+header .container nav ul .login-button {
+  border-radius: 5px;
+  background: var(--global-color);
+
+  color: var(--dark-text);
+}
+
+header .container nav ul .login-button:hover {
+  background: var(--global-hover-color);
+}
+
+header .container .menu {
+  display: none;
+}
+
+main {
+  flex: 1;
+
+  margin: 20px auto;
+
+  width: 100%;
+  height: calc(100vh - 70px);
+}
+
+main .container {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+
+  margin: auto;
+
+  width: 95vw;
+  max-width: 1279px;
+  height: 100%;
+}
+
+main .container .firstBlock {
+  padding: 30px;
+
+  width: 50%;
+  
+  font-family: 'Roboto', sans-serif;
+}
+
+main .container .secondBlock {
+  width: 50%;
+}
+
+main .container .firstBlock h1 {
+  font-size: 2.5em;
+}
+
+main .container .firstBlock h2 {
+  margin-bottom: 1em;
+
+  font-weight: 500;
+  font-size: 2em;
+}
+
+main .container .firstBlock span {
+  font-weight: 600;
+}
+
+main .container .firstBlock .jobs {
+  padding: 5px 10px;
+
+  width: auto;
+  height: auto;
+
+  border-bottom: 2px solid var(--light-border);
+  text-decoration: none;
+
+  font-weight: 500;
+  font-size: 1.2em;
+}
+
+main .container .secondBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 50%;
+}
+
+main .container .secondBlock img {
+  width: 70%;
+}
+
+footer {
+  width: 100%;
+  height: 50px;
+
+  background: var(--global-header-footer);
+}
+
+footer .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 auto;
+
+  width: 95vw;
+  max-width: 1279px;
+  height: 100%;
+
+  font-family: 'Roboto', sans-serif;
+  color: var(--dark-text);
+}
+
+footer .container p {
+  text-align: center;
+  font-size: 1em;
+}
+
+footer .container a {
+  color: var(--dark-text);
+}
+
+@media (max-width: 600px) {
+  header .container .logo {
+    font-size: 1.5em;
+  }
+
+  header .container nav {
+    position: absolute;
+    top: 70px;
+    right: 0;
+
+    width: 0;
+    height: calc(100% - 64px);
+    
+    visibility: hidden;
+    border-left: 1px solid var(--light-border);
+    background: var(--light-primary-background);
+  }
+
+  header .container nav ul {
+    display: none;
+  }
+
+  header .container .menu {
+    display: block;
+
+    position: absolute;
+    top: 15px;
+    right: 10px;
+
+    width: 40px;
+    height: 40px;
+  }
+  
+  header .container .menu i {
+    font-size: 2.5em;
+    color: var(--global-white);
+  }
+
+  header .container nav.active {
+    display: block;
+    
+    width: 60vw;
+
+    transition: 0.4s;
+    visibility: visible;
+  }
+
+  header .container nav.active ul {
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px 0px;
+
+    width: 100%;
+    height: auto;
+  }
+
+  header .container nav.active ul li {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 0.3em;
 
-    width: 100%;
-    height: 100%;
+    padding: 0px 0px;
 
-    list-style: none;
-}
+    width: 95%;
 
-header .container nav ul li {
-    padding: 7px 15px;
+    border-bottom: 1px solid var(--light-border);
+  }
 
-    width: auto;
-    height: auto;
-}
-
-header .container nav ul li i {
-    display: none;
-}
-
-header .container nav ul li a {
-    text-decoration: none;
-
-    font-size: 1.1em;
-    font-weight: 400;
-    color: var(--global-white);
-}
-
-header .container nav ul .login-button {
-    border-radius: 5px;
-    background: var(--global-color);
-
-    color: var(--dark-text);
-}
-
-header .container nav ul .login-button:hover {
-    background: var(--global-hover-color);
-}
-
-header .container .menu {
-    display: none;
-}
-
-main {
-    flex: 1;
-
-    margin: 20px auto;
-
-    width: 100%;
-    height: calc(100vh - 70px);
-}
-
-main .container {
+  header .container .nav.active ul li:last-child {
+    border-bottom: 1px solid var(--light-border);
+  }
+  
+  header .container nav.active ul li i {
     display: flex;
-    flex-direction: row;
-    gap: 1em;
 
-    margin: auto;
+    font-size: 1.5em;
+    color: var(--white);
+  }
 
-    width: 95vw;
-    max-width: 1279px;
-    height: 100%;
-}
-
-main .container .firstBlock {
-    padding: 30px;
-
-    width: 50%;
+  header .container nav.active ul li a {
+    padding: 11px 0px;
     
-    font-family: 'Varela Round', sans-serif;
-}
-
-main .container .secondBlock {
-    width: 50%;
-}
-
-main .container .firstBlock h1 {
-    font-size: 2.5em;
-}
-
-main .container .firstBlock h2 {
-    margin-bottom: 1em;
-
-    font-weight: 500;
-    font-size: 2em;
-}
-
-main .container .firstBlock span {
-    font-weight: 600;
-}
-
-main .container .firstBlock .jobs {
-    padding: 5px 10px;
-
-    width: auto;
-    height: auto;
-
-    border-bottom: 2px solid var(--light-border);
-    text-decoration: none;
-
-    font-weight: 500;
+    width: 100%;
+    
     font-size: 1.2em;
-}
+    font-weight: bold;
+    color: var(--white);
+  }
 
-main .container .secondBlock {
-    display: flex;
+  header .container nav.active ul .login-button {
+    border: none;
+    border-bottom: 2px solid var(--light-border);
+    border-radius: 0;
+    background: transparent;
+    color: var(--light-text);
+  }
+
+  main .container {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  }
 
-    width: 50%;
-}
+  main .container .firstBlock {
+    padding: 0px 10px;
 
-main .container .secondBlock img {
-    width: 70%;
-}
-
-footer {
     width: 100%;
-    height: 50px;
+  }
 
-    background: var(--global-header-footer);
-}
+  main .container .firstBlock h2 {
+    font-size: 1.5em;
+  }
 
-footer .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  main .container .firstBlock .jobs {
+    font-size: 1.1em;
+  }
 
-    margin: 0 auto;
-
-    width: 95vw;
-    max-width: 1279px;
+  main .container .secondBlock {
+    width: 100%;
     height: 100%;
+  }
 
-    font-family: 'Roboto', sans-serif;
-    color: var(--dark-text);
-}
+  main .container .secondBlock img {
+    width: 100%;
+    height: 100%;
+  }
 
-footer .container p {
-    text-align: center;
-    font-size: 1em;
-}
-
-footer .container a {
-    color: var(--dark-text);
-}
-
-@media (max-width: 600px) {
-    header .container .logo {
-        font-size: 1.5em;
-    }
-
-    header .container nav {
-        position: absolute;
-        top: 70px;
-        right: 0;
-
-        width: 0;
-        height: calc(100% - 64px);
-        
-        visibility: hidden;
-        border-left: 1px solid var(--light-border);
-        background: var(--light-primary-background);
-    }
-
-    header .container nav ul {
-        display: none;
-    }
-
-    header .container .menu {
-        display: block;
-
-        position: absolute;
-        top: 15px;
-        right: 10px;
-
-        width: 40px;
-        height: 40px;
-    }
-    
-    header .container .menu i {
-      font-size: 2.5em;
-      color: var(--global-white);
-    }
-
-    header .container nav.active {
-        display: block;
-        
-        width: 60vw;
-
-        transition: 0.4s;
-        visibility: visible;
-    }
-
-    header .container nav.active ul {
-        display: flex;
-        flex-direction: column;
-
-        padding: 20px 0px;
-
-        width: 100%;
-        height: auto;
-    }
-
-    header .container nav.active ul li {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 0.3em;
-
-        padding: 0px 0px;
-
-        width: 95%;
-
-        border-bottom: 1px solid var(--light-border);
-    }
-
-    header .container .nav.active ul li:last-child {
-        border-bottom: 1px solid var(--light-border);
-    }
-    
-    header .container nav.active ul li i {
-        display: flex;
-
-        font-size: 1.5em;
-        color: var(--white);
-    }
-
-    header .container nav.active ul li a {
-        padding: 11px 0px;
-        
-        width: 100%;
-        
-        font-size: 1.2em;
-        font-weight: bold;
-        color: var(--white);
-    }
-
-    header .container nav.active ul .login-button {
-        border: none;
-        border-bottom: 2px solid var(--light-border);
-        border-radius: 0;
-        background: transparent;
-        color: var(--light-text);
-    }
-
-    main .container {
-        flex-direction: column;
-    }
-
-    main .container .firstBlock {
-        padding: 0px 10px;
-
-        width: 100%;
-    }
-
-    main .container .firstBlock h2 {
-        font-size: 1.5em;
-    }
-
-    main .container .firstBlock .jobs {
-        font-size: 1.1em;
-    }
-
-    main .container .secondBlock {
-        width: 100%;
-        height: 100%;
-    }
-
-    main .container .secondBlock img {
-        width: 100%;
-        height: 100%;
-    }
-
-    footer .container p {
-        font-size: 0.9em;
-    }
+  footer .container p {
+    font-size: 0.9em;
+  }
 }
