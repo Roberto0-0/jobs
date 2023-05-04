@@ -17,17 +17,11 @@ export class CompanyCreate {
       where: { company: companyName }
     })
 
-    if(!user) {
-      return new Error("User not found.")
-    }
+    if(!user) { return new Error("User not found.") }
     
-    if(user.email != email) {
-       return new Error("Invalid email.")
-    }
-
-    if (company) {
-      return new Error("Company name has already been registered.")
-    }
+    if(user.email != email) { return new Error("Invalid email.") }
+    
+    if (company) { return new Error("Company name has already been registered.") }
 
     const newCompany = CompanyRepository.create({
       employer,
@@ -37,7 +31,6 @@ export class CompanyCreate {
       user
     })
     await CompanyRepository.save(newCompany)
-    
     return { success_message: `"${newCompany.company}" company was registered` }
   }
 }

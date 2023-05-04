@@ -11,27 +11,27 @@ var newErrors: string[] = []
 
 export class PostController {
   async createIndex(req: Request, res: Response) {
-     const { user_id, company_id } = req.params
-     
-     try {
-        const service = new CompanyRead()
-        const result = await service.execute({
-          user_id,
-          company_id
-        })
-
-        if(result instanceof Error) {
-          return res.status(400).send({ message: result.message })
-        }
-
-        res.render("post/create/index.ejs", {
-           data: company_id,
-           company: result
-        })
-     } catch(error) {
-        console.error(error)
-        return res.status(500).send({ message: "Internal server error" })
-     }
+    const { user_id, company_id } = req.params
+    
+    try {
+      const service = new CompanyRead()
+      const result = await service.execute({
+        user_id,
+        company_id
+      })
+    
+      if(result instanceof Error) {
+        return res.status(400).send({ message: result.message })
+      }
+    
+      res.render("post/create/index.ejs", {
+       data: company_id,
+       company: result
+      })
+    } catch(error) {
+      console.error(error)
+      return res.status(500).send({ message: "Internal server error" })
+    }
   }
   
   async create(req: Request, res: Response) {
@@ -61,17 +61,17 @@ export class PostController {
 
         req.flash("success_message", result.success_message)
         return res.redirect("/company/" + user_id + "/" + company_id)
-      }
-      
-      const err = validationResult.error.errors
-      err.map((values) => {
-          newErrors.push(values.message)
-      })
+      } else {
+        const err = validationResult.error.errors
 
-      req.flash("error_message", newErrors)
-      res.redirect("/post/create/" + user_id + "/" + company_id)
-      newErrors = []
-      
+        err.map((values) => {
+          newErrors.push(values.message)
+        })
+        
+        req.flash("error_message", newErrors)
+        res.redirect("/post/create/" + user_id + "/" + company_id)
+        newErrors = []
+      }
     } catch (error) {
       console.error(error)
       return res.status(500).send({ message: "Internal server error!" })
@@ -90,7 +90,7 @@ export class PostController {
       }
 
       return res.render("company/posts/index.ejs", {
-         data: result
+        data: result
       })
     } catch (error) {
       console.error(error)
@@ -110,8 +110,8 @@ export class PostController {
       }
       
       return res.render("post/jobs/index.ejs", {
-         data: result,
-         lastOption: option
+       data: result,
+       lastOption: option
       })
     } catch (error) {
       console.error(error)

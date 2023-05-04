@@ -18,28 +18,27 @@ export class UserController {
       const validationResult = userSchema.safeParse(req.body)
 
       if(validationResult.success) {
-        const service = new Create()
-        const result = await service.execute(validationResult.data)
+        const userCreateService = new UserCreate()
+        const userCreateResult = await userCreateService.execute(validationResult.data)
 
-        if(result instanceof Error) {
-            newErrors.push(result.message)
-            req.flash("error_message", result.message)
-            return res.redirect("/register")
+        if(userCreateResult instanceof Error) {
+          newErrors.push(userCreateResult.message)
+          req.flash("error_message", userCreateResult.message)
+          return res.redirect("/register")
         }
 
         return res.redirect("/login")
+      } else {
+        const err = validationResult.error.errors
+
+        err.map((values) => {
+          newErrors.push(values.message)
+        })
+        
+        req.flash("error_message", newErrors)
+        res.redirect("/register")
+        newErrors = []
       }
-      
-      const err = validationResult.error.errors
-      
-      err.map((values) => {
-        newErrors.push(values.message)
-      })
-    
-      req.flash("error_message", newErrors)
-      res.redirect("/register")
-      newErrors = []
-      
     } catch(err) {
       console.error(err)
       return res.status(500).send({ message: "Internal server error!"})

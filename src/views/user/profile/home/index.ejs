@@ -10,59 +10,75 @@
     <title>Jobs</title>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <a href="" class="logo">Jobs</a>
-            <nav class="nav">
-              <ul>
-                <% if(user) { %>
-                   <li>
-                        <i class="ph-fill ph-key-return"></i>
-                        <a href="/dashboard">dashboard</a>
-                   </li>
-                <% } else { %>
-                   <li>
-                        <i class="ph-fill ph-key-return"></i>
-                        <a href="/">home</a>
-                   </li>
-                <% } %>
-              </ul>
-            </nav>
-      
-            <div class="menu">
-                <i class="ph-bold ph-list"></i>
+  <header>
+    <div class="container">
+      <a href="" class="logo">Jobs</a>
+      <nav class="nav">
+        <ul>
+          <% if(user) { %>
+            <li>
+              <i class="ph-fill ph-key-return"></i>
+              <a href="/dashboard">dashboard</a>
+            </li>
+          <% } else { %>
+          <li>
+            <i class="ph-fill ph-key-return"></i>
+            <a href="/">home</a>
+          </li>
+          <% } %>
+        </ul>
+      </nav>
+      <div class="menu"><i class="ph-bold ph-list"></i></div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <% if(user) { %>
+        <div class="moreInfo">
+          <a href="/profile/account">
+            <div class="accountInfo">
+              <i class="ph-light ph-user-circle-plus"></i>
+              Profile details
             </div>
-          </div>
-    </header>
-    <main>
-        <div class="container">
-            <% if(user) { %>
-                <div class="moreInfo">
-                    <a href="/profile/account">
-                        <div class="accountInfo">
-                            <i class="ph-light ph-user-circle-plus"></i>
-                            Profile details
-                        </div>
-                        <i class="ph ph-caret-right"></i>
-                    </a>
-                    <a href="/profile/settings/password">
-                        <div class="changePassword">
-                            <i class="ph-light ph-keyhole"></i>
-                            Change your password
-                        </div>
-                        <i class="ph ph-caret-right"></i>
-                    </a>
+            <i class="ph ph-caret-right"></i>
+          </a>
+          <% if(user.company.length > 0) { %>
+            <% user.company.forEach((company) => { %>
+              <a href="/company/<%= user.id %>/<%= company.id %>"/>
+                <div class="company">
+                  <i class="ph-light ph-buildings"></i>
+                  Company details
                 </div>
-            <% } %>
+                <i class="ph ph-caret-right"></i>
+              </a>
+            <% }) %>
+          <% } else { %>
+            <a href="/company/registration">
+              <div class="company">
+                <i class="ph-light ph-buildings"></i>
+                Register your company
+              </div>
+              <i class="ph ph-caret-right"></i>
+            </a>
+          <% } %>
+          <a href="/profile/settings/password">
+            <div class="changePassword">
+              <i class="ph-light ph-keyhole"></i>
+              Change your password
+            </div>
+            <i class="ph ph-caret-right"></i>
+          </a>
         </div>
-    </main>
-    <footer>
-        <div class="container">
-            <p>
-              &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
-            </p>
-          </div>
-    </footer>
-    <script src="/js/menu/main.js"></script>
+      <% } %>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>
+        &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+      </p>
+    </div>
+  </footer>
+  <script src="/js/menu/main.js"></script>
 </body>
 </html>

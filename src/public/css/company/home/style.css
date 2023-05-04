@@ -181,15 +181,6 @@ main .container .firstBlock {
     width: 50%;
 }
 
-main .container .firstBlock .postInfo {
-    margin-bottom: 1em;
-    padding: 5px 10px;
-}
-
-main .container .firstBlock .postInfo h2 {
-    font-size: 1.5em;
-}
-
 main .container .firstBlock ul {
     display: flex;
     flex-direction: row;
