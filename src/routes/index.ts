@@ -56,6 +56,8 @@ export class Routes {
     this.router.get("/company/posts/:user_id/:company_id", isAuth, new CompanyController().CompanyPostAdjustments)
     this.router.get("/company/post/:post_id", isAuth, new CompanyController().showCompanyPost)
     this.router.get("/company/likes/:company_id", new CompanyController().showAllCompanyPush)
+    this.router.get("/company/resumes", isAuth, new CompanyController().resumes)
+    this.router.get("/company/resume/page", isAuth, new CompanyController().pageResume)
     this.router.get("/company/:user_id/:company_id", isAuth, new CompanyController().read)
     this.router.put("/company/update/:id", new CompanyController().update)
     this.router.delete("/company/delete/:id", new CompanyController().delete)

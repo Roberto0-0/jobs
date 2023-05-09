@@ -282,6 +282,8 @@ main .container .userInfo .userSelect form .box .input {
     gap: 0.2em;
     
     width: 90%;
+
+    cursor: pointer;
 }
 
 main .container .userInfo .userSelect form button {
@@ -291,6 +293,7 @@ main .container .userInfo .userSelect form button {
     border: 1px solid var(--light-border);
     border-radius: 5px;
     background: var(--light-secondary-background);
+    cursor: pointer;
     
     font-size: 1em;
 }

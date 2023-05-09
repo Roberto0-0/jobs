@@ -210,4 +210,12 @@ export class CompanyController {
       return res.status(500).send({ message: "Internal server error." })
     }
   }
+
+  async resumes(req: Request, res: Response) {
+    res.render("company/resumes/index.ejs")
+  }
+
+  async pageResume(req: Request, res: Response) {
+    res.render("company/resumes/pageResume/index.ejs")
+  }
 }

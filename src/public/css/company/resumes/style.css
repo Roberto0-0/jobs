@@ -22,7 +22,6 @@
     --dark-border: #D0D7DE;
 }
 
-
 body, html {
     -webkit-tap-highlight-color: transparent;
     display: flex;
@@ -37,19 +36,19 @@ body, html {
     color: var(--light-text);
 }
 
-header {
+header  {
     width: 100%;
     height: 70px;
 
-    background-color: var(--global-header-footer);
+    background: var(--global-header-footer);
 }
 
 header .container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    
     align-items: center;
-
     margin: 0 auto;
 
     width: 95vw;
@@ -57,37 +56,39 @@ header .container {
     height: 100%;
 }
 
-header .container .company-name {
+header .container .logo {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 0.3em;
 
     padding: 0px 10px;
 
     width: auto;
     height: 70%;
 
-    text-decoration: none;
     border-left: 3px solid var(--global-white);
     text-decoration: none;
 
-    font-size: 1.3em;
-    font-weight: 600;
+    font-family: 'Chango', cursive;
+    font-size: 2.5em;
     color: var(--global-white);
+    
 }
 
 header .container nav {
+    display: block;
     padding: 0px 10px;
 
     width: auto;
     height: 80%;
 }
-
+ 
 header .container nav ul {
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 0.3em;
 
     width: 100%;
     height: 100%;
@@ -96,25 +97,38 @@ header .container nav ul {
 }
 
 header .container nav ul li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+    
     padding: 7px 15px;
 
     width: auto;
     height: auto;
 }
 
-header .container nav ul li a {
-    text-decoration: none;
-
-    font-size: 1em;
-    color: var(--global-white);
-}
-
 header .container nav ul li i {
     display: none;
+
+    font-size: 1.2em;
+}
+
+header .container nav ul a {
+    width: 100%;
+    height: 100%;
+    
+    text-decoration: none;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2em;
+    color: var(--global-white);
 }
 
 header .container .menu {
     display: none;
+
+    color: var(--dark-text);
 }
 
 main {
@@ -122,7 +136,7 @@ main {
 
     margin: 20px auto;
 
-    width: auto;
+    width: 100%;
     height: calc(100vh - 70px);
 }
 
@@ -164,117 +178,117 @@ main .notification i {
 
 main .container {
     display: flex;
-    flex-direction: row;
-    gap: 1em;
+    flex-direction: column;
 
     margin: auto;
 
     width: 95vw;
     max-width: 1279px;
-    height: auto;
+    height: 100%;
 }
 
-main .container .firstBlock {
+main .container .resumes-list {
     display: flex;
     flex-direction: column;
-
-    width: 50%;
-}
-
-main .container .firstBlock ul {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0.7em;
+    align-items: center;
+    gap: 0.5em;
 
     width: 100%;
+}
+
+main .container .resumes-list li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    max-width: 500px;
+    height: 70px;
     
-    overflow: hidden;
+    border: 1px solid var(--dark-border);
+    border-radius: 10px;
+    background-color: var(--light-secondary-background);
     list-style: none;
 }
 
-main .container .firstBlock ul::-webkit-scrollbar {
-    width: 0px;
-}
+main .container .resumes-list li .post-info {
+    padding: 10px;
 
-main .container .firstBlock ul::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-main .container .firstBlock ul::-webkit-scrollbar-thumb {
-    background: transparent;
-    border: none;
-}
-
-main .container .firstBlock ul li {
-    width: 200px;
-    height: 70px;
-
-    border: 1px solid var(--dark-border);
-    border-radius: 5px;
-    background: var(--light-secondary-background);
-    float: left;
-}
-
-main .container .firstBlock ul li a {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    width: 100%;
-    height: 100%;
-
-    text-decoration: none;
-    color: var(--light-text);
-}
-
-main .container .firstBlock ul li a .illustration {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    width: 30%;
-    height: 100%;
-  
-    border-radius: 5px 0px 0px 5px;
-    background: #cceeff;
-}
-
-main .container .firstBlock ul li a .illustration i {
-    font-size: 1.3em;
-    color: #0099e6;
-}
-
-main .container .firstBlock ul li a .info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
     width: 60%;
     height: 100%;
 }
 
-main .container .firstBlock ul li a .info .value {
-    font-weight: 600;
-}
-  
-main .container .firstBlock ul li a .info p {
-    font-size: 0.7em;
+main .container .resumes-list li .post-info a {
+    text-decoration: none;
 }
 
-main .container .secondBlock {
+main .container .resumes-list li .post-info .username {
+    font-size: 1.5em; 
+    font-weight: 400;
+    color: var(--global-color);
+}
+
+main .container .resumes-list li .post-info .vacancy {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.2em;
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    color: var(--light-text);
+}
+
+main .container .resumes-list li .post-info .vacancy i {
+   color: var(--global-color);
+}
+
+main .container .resumes-list li .option {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    width: 30%;
+    height: 100%;
+}
+
+main .container .resumes-list li .option a {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    width: 50%;
+    text-decoration: none;
 }
 
-main .container .secondBlock img {
-    width: 100%;
+main .container .resumes-list li .option .accept {
+    background: #65cc90;
+
+    padding: 10px;
+
+    width: 50%;
+    height: 100%;
 }
+
+main .container .resumes-list li .option .reject {
+    background: #cf6a6a;
+
+    padding: 10px;
+
+    width: 50%;
+    height: 100%;
+
+    border-radius: 0px 5px 5px 0px;
+}
+
+main .container .resumes-list li .option a i {
+    font-size: 1.5em;
+    color: var(--global-white);
+}
+
 
 footer {
     width: 100%;
@@ -294,8 +308,6 @@ footer .container {
     width: 95vw;
     max-width: 1279px;
     height: 100%;
-
-    font-family: 'Roboto', sans-serif;
 }
 
 footer .container p {
@@ -309,8 +321,8 @@ footer .container p a {
 }
 
 @media(max-width: 600px) {
-    header .container .company-name {
-        font-size: 1.2em;
+    header .container .logo {
+        font-size: 1.5em;
     }
 
     header .container nav {
@@ -319,7 +331,7 @@ footer .container p a {
         right: 0;
 
         width: 0;
-        height: calc(100% - 64px);
+        height: calc(100% - 70px);
 
         visibility: hidden;
         border-left: 1px solid var(--light-border);
@@ -365,83 +377,29 @@ footer .container p a {
         height: auto;
     }
 
-    header .container nav.active ul li {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 0.3em;
+    header .container nav.active ul li  {
+        padding: 0px;
         
-        padding: 0px 0px;
-
         width: 95%;
 
         border-bottom: 1px solid var(--light-border);
     }
-
-    header .container nav.active ul li i {
-        display: flex;
-
-        font-size: 1.5em;
-    }
-
-    header .container nav.active ul li a {
+    
+    header .container .nav.active ul li a {
         padding: 11px 0px;
         
-        width: 100%;
-        
-        font-size: 1.2em;
         font-weight: bold;
         color: var(--light-text);
     }
 
-    main .container {
-        flex-direction: column;
-    }
-
-    main .container .firstBlock {
-        width: 100%;
-    }
-
-    main .container .firstBlock ul {
-        grid-template-columns: 1fr;
-
-        width: 100%;
-    }
-
-    main .container .firstBlock ul li {
-        width: 100%;
-    }
-
-    main .container .firstBlock ul li a .illustration {
-        width: 40%;
-    }
-    
-    main .container .firstBlock ul li a .info {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+    header .container .nav.active ul li i {
+        display: block;
         
-        width: 60%;
-        height: 100%;
-    }
-    
-    main .container .firstBlock ul li a .info .value {
-        font-size: 1.3em;
-        font-weight: 600;
-    }
-  
-    main .container .firstBlock ul li a .info p {
-        font-size: 0.8em;
+        font-size: 1.5em;
     }
 
-    main .container .secondBlock {
-        width: 100%;
-        height: 100%;
-    }
-
-    main .container .secondBlock img {
-        width: 100%;
-        height: 100%;
+    main .container .resumes-list li .option {
+        width: 40%;
     }
 
     footer .container p {
