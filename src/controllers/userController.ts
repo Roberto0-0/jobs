@@ -169,4 +169,12 @@ export class UserController {
       return res.status(500).send({ message: "Internal server error." })
     }
   }
+
+  async resumeList(req: Request, res: Response) {
+    res.render("user/profile/curriculum/index.ejs")
+  }
+
+  async createResume(req: Request, res: Response) {
+    res.render("user/resume/index.ejs")
+  }
 }
