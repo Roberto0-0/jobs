@@ -1,0 +1,453 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --global-color: #147CB7;
+    --global-hover-color: #178bcf;
+    --global-header-footer: #161B22;
+    --global-white: #fff;
+    --global-black: #000;
+
+    --light-primary-background: #fff;
+    --light-secondary-background: #F6F8FA;
+    --light-text: #535252;
+    --light-border: #D0D7DE;
+
+    --dark-primary-background: #0D1117;
+    --dark-secondary-background: #010409;
+    --dark-text: #CAD1D9;
+    --dark-border: #30363D;
+}
+
+body, html {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: 100vh;
+
+    background: var(--light-primary-background);
+
+    font-family: sans-serif;
+    color: var(--light-text);
+}
+
+header  {
+    width: 100%;
+    height: 70px;
+
+    background: var(--global-header-footer);
+}
+
+header .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    align-items: center;
+    margin: 0 auto;
+
+    width: 95vw;
+    max-width: 1279px;
+    height: 100%;
+}
+
+header .container .logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0px 10px;
+
+    width: auto;
+    height: 70%;
+
+    border-left: 3px solid var(--global-white);
+    text-decoration: none;
+
+    font-family: 'Chango', cursive;
+    font-size: 2em;
+    color: var(--global-white);
+}
+
+header .container .logo i {
+    font-size: 2em;
+}
+
+header .container nav {
+    display: block;
+    padding: 0px 10px;
+
+    width: auto;
+    height: 80%;
+}
+ 
+header .container nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+
+    width: 100%;
+    height: 100%;
+
+    list-style: none;
+}
+
+header .container nav ul li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: auto;
+    height: auto;
+}
+
+header .container nav ul li i {
+    display: none;
+
+    font-size: 1.2em;
+}
+
+header .container nav ul a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+
+    width: 100%;
+    height: 100%;
+    
+    text-decoration: none;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2em;
+    color: var(--global-white);
+}
+
+header .container .menu {
+    display: none;
+    
+    color: var(--global-white);
+}
+
+main {
+    flex: 1;
+
+    margin: 10px auto;
+
+    width: 100%;
+    height: 100%;
+}
+
+main .notification {
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.3em;
+    
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    
+    transform: translate(-50%, -50%);
+    
+    padding: 10px;
+    
+    width: 95vw;
+    max-width: 600px;
+    
+    animation: down 0.4s;
+    border-radius: 5px;
+    background: rgb(45, 164, 78);
+    
+    font-weight: 600;
+    font-size: 1em;
+    color: var(--global-white);
+}
+
+main .notification i {
+    font-size: 1.3em;
+}
+
+@keyframes down {
+    from { top: 0px; }
+    to { top: 100px; }
+}
+
+main .container {
+    display: flex;
+    flex-direction: column;
+
+    margin: auto;
+    padding: 10px;
+
+    width: 95vw;
+    max-width: 600px;
+    height: auto;
+}
+
+main .container .postInfo {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 1.5em;
+
+    width: 100%;
+}
+
+main .container .postInfo h1 {
+    margin-bottom: 0.1em;
+
+    font-weight: 400;
+}
+
+main .container .postInfo h1 span {
+    font-weight: 600;
+}
+
+main .container .postInfo h2 {
+    font-weight: 400;
+}
+
+main .container .postInfo h2 span {
+    font-weight: 600;
+}
+
+main .container .postInfo h2 .vacancy {
+    text-decoration: underline;
+}
+
+main .container form {
+    display: flex;
+    flex-direction: column;
+}
+
+main .container form .inputContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1.2em;
+
+    margin-bottom: 1.5em;
+}
+
+
+main .container form .inputContainer .firstBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    width: 50%;
+}
+
+main .container form .inputContainer .secondBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    width: 50%;
+}
+
+main .container form .input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+
+main .container form .input label {
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+main .container form .input input {
+    padding: 10px;
+
+    width: 100%;
+    height: 40px;
+
+    border: 1px solid var(--light-border);
+    border-radius: 5px;
+    background-color: var(--light-secondary-background);
+
+    font-size: 1em;
+    color: var(--light-text);
+}
+
+main .container form .input input:focus {
+    outline-color: var(--global-color);
+}
+
+main .container form button {
+    display: block;
+
+    width: 100%;
+    height: 40px;
+
+    outline: transparent;
+    border: var(--dark-border);
+    border-radius: 5px;
+    background-color: var(--global-color);
+    cursor: pointer;
+    
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--global-white);
+}
+
+main .container form button:hover {
+    background: var(--global-hover-color);
+}
+
+main .container form .input .error_message {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+    
+    width: 100%;
+}
+
+main .container form .input .error_message i {
+    color: #c60909;
+}
+
+main .container form .input .error_message .message {
+    font-weight: 600;
+    font-size: 0.8em;
+    color: #c60909;
+}
+
+footer {
+    width: 100%;
+    height: 50px;
+
+    background: var(--global-header-footer);
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto;
+
+    width: 95%;
+    max-width: 1279px;
+    height: 100%;
+
+    color: var(--dark-text);
+}
+
+footer .container p {
+    text-align: center;
+    font-size: 1em;
+}
+
+footer .container a {
+    color: var(--dark-text);
+}
+
+@media(max-width: 600px) {
+    header .container .logo {
+        font-size: 1.5em;
+    }
+
+    header .container nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+
+        width: 0;
+        height: calc(100% - 64px);
+        
+        visibility: hidden;
+        border-left: 1px solid var(--dark-border);
+        background: var(--light-primary-background);
+    }
+
+    header .container nav ul {
+        display: none;
+    }
+
+    header .container .menu {
+        display: block;
+
+        position: absolute;
+        top: 15px;
+        right: 20px;
+
+        width: 30px;
+        height: 30px;
+    }
+    
+    header .container .menu i {
+      font-size: 2.5em;
+    }
+
+    header .container nav.active {
+        display: block;
+        
+        width: 60vw;
+
+        transition: 0.4s;
+        visibility: visible;
+    }
+
+    header .container nav.active ul {
+        display: flex;
+        flex-direction: column;
+
+        padding: 20px 0px;
+
+        width: 100%;
+        height: auto;
+    }
+
+    header .container nav.active ul li  {
+        width: 90%;
+
+        border-bottom: 1px solid var(--dark-border);
+
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    header .container .nav.active ul li:last-child {
+        border-bottom: 1px solid var(--dark-border);
+    }
+    
+    header .container nav.active ul li {
+        padding: 10px 0px;
+    }
+
+    header .container .nav.active ul li a {
+        font-size: 1em;
+        color: var(--light-text);
+    }
+    
+    header .container .nav.active ul li a i {
+        display: block;
+    }
+
+    main .container form .inputContainer {
+        flex-direction: column;
+    }
+
+    main .container form .inputContainer .firstBlock {
+        width: 100%;
+    }
+
+    main .container form .inputContainer .secondBlock {
+        width: 100%;
+    }
+    
+    footer .container p {
+        font-size: 0.9em;
+    }
+}
