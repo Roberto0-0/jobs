@@ -18,10 +18,8 @@ export class CompanyCreate {
     })
 
     if(!user) { return new Error("User not found.") }
-    
     if(user.email != email) { return new Error("Invalid email.") }
-    
-    if (company) { return new Error("Company name has already been registered.") }
+    if(company) { return new Error("Company name has already been registered.") }
 
     const newCompany = CompanyRepository.create({
       employer,
