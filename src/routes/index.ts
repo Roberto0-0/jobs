@@ -5,6 +5,7 @@ import { LoginController } from "../controllers/loginController"
 import { PostController } from "../controllers/postController"
 import { UserController } from "../controllers/userController"
 import { HomeController } from "../controllers/homeController"
+import { ResumeController } from "../controllers/resumeController"
 import { isAuth } from "../helpers/isAuth/index"
 
 export class Routes {
@@ -19,6 +20,7 @@ export class Routes {
     this.company()
     this.like()
     this.login()
+    this.resume()
   }
 
   home() {
@@ -36,8 +38,6 @@ export class Routes {
     this.router.get("/profile", isAuth, new UserController().userProfile)
     this.router.get("/profile/account", isAuth, new UserController().accountInformation)
     this.router.get("/profile/settings/password", isAuth, new UserController().changePasswordIndex)
-    this.router.get("/profile/resumes", isAuth, new UserController().resumeList)
-    this.router.get("/create/resume", isAuth, new UserController().createResume)
     this.router.post("/profile/settings/password/:id", new UserController().changePassword)
   }
 
@@ -74,5 +74,11 @@ export class Routes {
     this.router.get("/login", new LoginController().loginIndex)
     this.router.post("/login", new LoginController().login)
     this.router.get("/logout", new LoginController().logout)
+  }
+
+  resume() {
+    this.router.get("/profile/resumes", isAuth, new ResumeController().resumeList)
+    this.router.get("/resume/create/:post_id", isAuth, new ResumeController().createIndex)
+    this.router.post("/resume/create/:user_id/:post_id", new ResumeController().create)
   }
 }

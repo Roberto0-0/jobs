@@ -226,14 +226,13 @@ main .container .postInfo h2 .vacancy {
 main .container form {
     display: flex;
     flex-direction: column;
+    gap: 1em;
 }
 
 main .container form .inputContainer {
     display: flex;
     flex-direction: row;
     gap: 1.2em;
-
-    margin-bottom: 1.5em;
 }
 
 
@@ -279,6 +278,25 @@ main .container form .input input {
 }
 
 main .container form .input input:focus {
+    outline-color: var(--global-color);
+}
+
+main .container form .input textarea {
+    padding: 5px;
+
+    width: 100%;
+    height: 150px;
+
+    border-radius: 3px;
+    border: 1px solid var(--light-border);
+    background: var(--light-secondary-background);
+}
+
+main .container form .input textarea::placeholder {
+  color: var(--global-white);
+}
+
+main .container form .input textarea:focus {
     outline-color: var(--global-color);
 }
 

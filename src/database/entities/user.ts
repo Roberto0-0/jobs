@@ -8,6 +8,7 @@ import {
 } from "typeorm"
 import { Company } from "./company"
 import { Like } from "./like"
+import { Resume } from "./resume"
 
 @Entity("users")
 export class User {
@@ -41,6 +42,11 @@ export class User {
   
   @OneToMany(() => Like, (like) => like.user)
   like: Like[]
+
+  @OneToMany(() => Resume, (resume) => resume.user, {
+    cascade: true,
+  })
+  resume: Resume[]
   
   @CreateDateColumn()
   created_at: Date
