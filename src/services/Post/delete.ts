@@ -1,6 +1,5 @@
 import { CompanyRepository } from "../../repositories/CompanyRepository";
 import { PostRepository } from "../../repositories/PostRepository";
-import { LikeRepository } from "../../repositories/LikeRepository";
 
 interface Attributes {
   post_id: string;

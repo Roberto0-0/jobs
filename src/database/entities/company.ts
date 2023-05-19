@@ -5,7 +5,8 @@ import {
   OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne
+  ManyToOne,
+  JoinColumn
 } from "typeorm"
 import { User } from "./user"
 import { Post } from "./post"
@@ -41,7 +42,14 @@ export class Company {
   })
   aboutCompany: string
 
+  @Column({
+    type: "varchar",
+    nullable: false
+  })
+  user_id: string
+
   @ManyToOne(() => User, (user) => user.company)
+  @JoinColumn({ name: "user_id" })
   user: User
 
   @OneToMany(() => Post, (post) => post.company, {

@@ -5,8 +5,8 @@ export const postSchema = z.object({
     companyName: z.string({
         required_error: "Company name is required."
     }),
-    vancancy: z.string({
-        required_error: "Vancancy is required."
+    vacancy: z.string({
+        required_error: "Vacancy is required."
     }).min(5, "Very short vancancy."),
     location: z.string({
         required_error: "Location is required."
@@ -26,8 +26,8 @@ export const updatePostSchema = z.object({
     company_name: z.string({
         required_error: "Company name is required."
     }),
-    vancancy: z.string({
-        required_error: "Vancancy is required."
+    vacancy: z.string({
+        required_error: "Vacancy is required."
     }).min(5, "Very short vancancy."),
     location: z.string({
         required_error: "Location is required."

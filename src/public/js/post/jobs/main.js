@@ -79,10 +79,10 @@ const main = () => {
     like_button[i].onclick = () => {
         var xml = new XMLHttpRequest()
 
-        xml.open("GET", `http://localhost:3333/liked/${like_button[i].name}`)
+        xml.open("GET", `http://localhost:3333/pushed/${like_button[i].name}`)
         xml.onload = () => {
             const data = JSON.parse(xml.response)
-            like_value[i].innerHTML = data.likes
+            like_value[i].innerHTML = data.pushes
         }
         xml.send()
         }

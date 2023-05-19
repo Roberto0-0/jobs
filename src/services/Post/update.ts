@@ -5,7 +5,7 @@ interface Attributes {
   post_id: string;
   company_id: string;
   company_name?: string;
-  vancancy?: string;
+  vacancy?: string;
   location?: string;
   salary?: number;
   vacancies?: number;
@@ -14,7 +14,7 @@ interface Attributes {
 
 interface IPost {
   company_name?: string;
-  vancancy?: string;
+  vacancy?: string;
   location?: string;
   salary?: number;
   vacancies?: number;
@@ -28,7 +28,7 @@ export class PostUpdate {
     post_id,
     company_id,
     company_name,
-    vancancy,
+    vacancy,
     location,
     salary,
     vacancies,
@@ -42,7 +42,7 @@ export class PostUpdate {
     
     posts = {
         company_name,
-        vancancy,
+        vacancy,
         location,
         salary,
         vacancies,
@@ -50,6 +50,6 @@ export class PostUpdate {
     }
     
     await PostRepository.update(post_id, posts)
-    return { success_message: `"${posts.vancancy}" post has been updated.` }
+    return { success_message: `"${posts.vacancy}" post has been updated.` }
   }
 }

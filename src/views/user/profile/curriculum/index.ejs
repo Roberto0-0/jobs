@@ -16,11 +16,17 @@
           <a href="/" class="logo">Jobs</a>
           <nav class="nav">
             <ul>
-                <li>
-                <li>
-                    <i class="ph-fill ph-key-return"></i>
-                    <a href="/dashboard">back</a>
-                </li>
+                <% if(user) { %>
+                    <li>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/profile">back</a>
+                    </li>
+                <% } else { %>
+                    <li>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/">back</a>
+                    </li>
+                <% } %>
             </ul>
           </nav>
           <div class="menu">
@@ -31,28 +37,33 @@
     <main>
     <div class="container">
         <ul class="resumes-list">
-            <li class="li">
-                <div class="post-info">
-                    <a href="/company/resume/page">
-                        <h1 class="vacancy">Motorista</h1>
-                        <h2 class="company-name">
-                            carx
-                            <i class="ph-fill ph-seal-check"></i>
-                        </h2>
-                    </a>
-                </div>
-                <div class="result">
-                    <span>
-                        <i class="ph-light ph-clock-countdown"></i>
-                        waiting...
-                    </span>
-                    <!--<span>
-                        <i class="ph-light ph-handshake"></i>
-                        selected
-                    </span>-->
-                </div>
-            </li>
-            </ul>
+            <% data.map((resume) => { %>
+                <li class="li">
+                    <div class="post-info">
+                        <a href="/company/resume/page">
+                            <h1 class="vacancy"><%= resume.post.vacancy %></h1>
+                            <h2 class="company-name">
+                                <%= resume.post.company_name %>
+                                <i class="ph-fill ph-seal-check"></i>
+                            </h2>
+                        </a>
+                    </div>
+                    <div class="result">
+                        <% if(resume.option == "waiting") { %> 
+                            <span>
+                                <i class="ph-light ph-clock-countdown"></i>
+                                waiting...
+                            </span>
+                        <% } else { %>
+                            <span>
+                                <i class="ph-light ph-handshake"></i>
+                                selected
+                            </span>
+                        <% } %> 
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
         </div>
     </main>
     <footer>

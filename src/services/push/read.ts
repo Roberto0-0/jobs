@@ -1,5 +1,5 @@
 import { UserRepository } from "../../repositories/UserRepository"
-import { LikeRepository } from "../../repositories/LikeRepository"
+import { LikeRepository } from "../../repositories/PushRepository"
 import { PostRepository } from "../../repositories/PostRepository"
 import { CompanyRepository } from "../../repositories/CompanyRepository"
 import { Read } from "../Post/read"

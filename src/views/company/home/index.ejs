@@ -47,7 +47,7 @@
             <ul>
               <li>
                   <% if(data.post.length > 0) { %>
-                    <a href="/company/posts/<%= userId %>/<%= data.id %>">
+                    <a href="/company/posts/<%= data.id %>">
                       <div class="illustration">
                         <i class="ph-fill ph-note-blank"></i>
                       </div>
@@ -57,7 +57,7 @@
                       </div>        
                     </a>
                   <% } else { %>
-                    <a href="/post/create/<%= user.id %>/<%= data.id %>">
+                    <a href="/post/create/<%= data.id %>">
                       <div class="illustration">
                         <i class="ph-fill ph-note-blank"></i>
                       </div>
@@ -74,7 +74,7 @@
                     <i class="ph-fill ph-arrow-fat-lines-up"></i>
                   </div>
                   <div class="info">
-                    <span class="value"><%= likes %></span>
+                    <span class="value"><%= pushes %></span>
                     <p>Push</p>
                   </div>        
                 </a>
@@ -85,7 +85,7 @@
                     <i class="ph-fill ph-read-cv-logo"></i>
                   </div>
                   <div class="info">
-                    <span class="value"><%= likes %></span>
+                    <span class="value"><%= pushes %></span>
                     <p>Resumes</p>
                   </div>        
                 </a>

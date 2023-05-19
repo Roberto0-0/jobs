@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn
@@ -9,8 +10,8 @@ import {
 import { Post } from "./post";
 import { User } from "./user";
 
-@Entity("likes")
-export class Like {
+@Entity("pushes")
+export class Push {
   @PrimaryGeneratedColumn("uuid")
   id: string
 
@@ -19,7 +20,7 @@ export class Like {
     nullable: false,
     default: false
   })
-  liked: boolean
+  pushed: boolean
 
   @Column({
     type: "varchar",
@@ -33,13 +34,15 @@ export class Like {
   })
   post_id: string
 
-  @ManyToOne(() => User, (user) => user.like)
+  @ManyToOne(() => User, (user) => user.push)
+  @JoinColumn({ name: "user_id" })
   user: User
 
-  @ManyToOne(() => Post, (post) => post.like, {
+  @ManyToOne(() => Post, (post) => post.push, {
      onUpdate: 'CASCADE',
      onDelete: 'CASCADE' 
   })
+  @JoinColumn({ name: "post_id" })
   post: Post
 
   @CreateDateColumn()

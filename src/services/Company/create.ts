@@ -26,7 +26,8 @@ export class CompanyCreate {
       company: companyName,
       location,
       aboutCompany,
-      user
+      user,
+      user_id
     })
     await CompanyRepository.save(newCompany)
     return { success_message: `"${newCompany.company}" company was registered` }

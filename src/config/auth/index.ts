@@ -13,7 +13,7 @@ export default function(value: any): void {
        where: { id: user.id },
        relations: {
           company: true,
-          like: true
+          push: true
        }
       }).then((user) => {
         return done(null, user)

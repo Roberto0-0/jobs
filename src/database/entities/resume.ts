@@ -8,6 +8,7 @@ import {
 } from "typeorm"
 import { User } from "./user"
 import { Company } from "./company"
+import { Post } from "./post"
 
 @Entity("resumes")
 export class Resume {
@@ -42,7 +43,6 @@ export class Resume {
         type: "varchar",
         nullable: false
     })
-    
     maritalStatus: string
 
     @Column({
@@ -64,14 +64,31 @@ export class Resume {
     })
     option: string
 
+    @Column({
+        type: "varchar",
+        nullable: false
+    })
+    user_id: string;
+
+    @Column({
+        type: "varchar",
+        nullable: false
+    })
+    company_id: string;
+
     @ManyToOne(() => User, (user) => user.resume, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'  
     })
     user: User
 
-    @ManyToOne(() => Company, (company) => company.resume)
+    @ManyToOne(() => Company, (company) => company.resume, {
+        onUpdate: 'CASCADE',
+    })
     company: Company
+
+    @ManyToOne(() => Post, (post) => post.resume)
+    post: Post
 
     @CreateDateColumn()
     created_at: Date

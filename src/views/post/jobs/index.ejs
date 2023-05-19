@@ -69,7 +69,7 @@
             <% if(user) { %>
                <% data.forEach((post) => { %>
                   <li class="li">
-                     <h1 class="vancancy" ><%= post.vancancy %></h1>
+                     <h1 class="vancancy" ><%= post.vacancy %></h1>
                      <h2 class="company-name">
                         <%= post.company_name %>
                         <i class="ph-fill ph-seal-check"></i>
@@ -104,10 +104,10 @@
                      <div class="functions">
                            <div class="like">
                               <button class="like-button" name="<%= user.id %>/<%= post.id %>"><i class="ph ph-arrow-fat-line-up"></i></button>
-                              <span class="like-value" ><%= post.likes %></span>
+                              <span class="like-value" ><%= post.pushes %></span>
                            </div>
                            <div class="accept">
-                              <a href="/resume/create/<%= post.id %>">
+                              <a href="/resume/create/<%= post.id %>/<%= post.company.id %>">
                                 <button class="want">I want</button>
                               </a>
                            </div>
@@ -117,7 +117,7 @@
             <% } else { %>
                <% data.forEach((post) => { %>
                    <li class="li">
-                    <h1 class="vancancy" ><%= post.vancancy %></h1>
+                    <h1 class="vancancy" ><%= post.vacancy %></h1>
                     <h2 class="company-name">
                       <%= post.company_name %>
                       <i class="ph-fill ph-seal-check"></i>
@@ -154,7 +154,7 @@
                           <a href="/login">
                               <button class="like-button"><i class="ph ph-arrow-fat-line-up"></i></button>
                            </a>
-                           <span><%= post.likes %></span>
+                           <span><%= post.pushes %></span>
                         </div>
                         <div class="accept">
                             <a href="/login">

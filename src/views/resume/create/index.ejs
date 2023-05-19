@@ -36,9 +36,9 @@
                 <div class="container">
                     <div class="postInfo">
                         <h1>Hello, <span class="userName"><%= user.name %></span></h1>
-                        <h2>Send your resume for <span class="companyName"><%= data.company_name %></span> company <span class="vacancy"><%= data.vancancy %></span> vacancy</h2> 
+                        <h2>Send your resume for <span class="companyName"><%= data.company_name %></span> company <span class="vacancy"><%= data.vacancy %></span> vacancy</h2> 
                     </div>
-                    <form action="/resume/create/<%= user.id %>/<%= data.id %>" method="POST">
+                    <form action="/resume/create/<%= user.id %>/<%= data.id %>/<%= data.company.id %>" method="POST">
                         <div class="inputContainer">
                             <div class="firstBlock">
                                 <div class="input">

@@ -4,10 +4,10 @@ import {
   PrimaryGeneratedColumn, 
   OneToMany,
   CreateDateColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
 } from "typeorm"
 import { Company } from "./company"
-import { Like } from "./like"
+import { Push } from "./push"
 import { Resume } from "./resume"
 
 @Entity("users")
@@ -40,8 +40,8 @@ export class User {
   })
   company: Company[]
   
-  @OneToMany(() => Like, (like) => like.user)
-  like: Like[]
+  @OneToMany(() => Push, (push) => push.user)
+  push: Push[]
 
   @OneToMany(() => Resume, (resume) => resume.user, {
     cascade: true,

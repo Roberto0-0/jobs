@@ -1,4 +1,4 @@
-import { LikeRepository } from "../../repositories/LikeRepository"
+import { PushRepository } from "../../repositories/PushRepository"
 import { PostRepository } from "../../repositories/PostRepository"
 import { UserRepository } from "../../repositories/UserRepository"
 
@@ -7,65 +7,60 @@ interface Attributes {
   post_id: string;
 }
 
-export class Like {
+export class Push {
   async execute({ user_id, post_id }: Attributes) {
     const user = await UserRepository.findOneBy({ id: user_id })
     const post = await PostRepository.findOneBy({ id: post_id })
-    const like = await LikeRepository.findOne({
+    const like = await PushRepository.findOne({
       where: {
         user_id: user_id,
         post_id: post_id
       }
     })
 
-    if (!user) {
-      return new Error("User not found!")
-    }
+    if (!user) { return new Error("User not found!") }
+    if (!post) { return new Error("Post not found!") }
     
-    if (!post) {
-        return new Error("Post not found!")
-    }
-    
-    var newLikes = post.likes
+    var newpushes = post.pushes
     if (!like) {
-      const liked = LikeRepository.create({
-        liked: true,
+      const pushed = PushRepository.create({
+        pushed: true,
         user_id,
         post_id,
         user,
         post
     })
     
-    await LikeRepository.save(liked)
+    await PushRepository.save(pushed)
     await PostRepository.update(
         post_id,
-        { likes: newLikes += 1 }
+        { pushes: newpushes += 1 }
     )
     } else {
-      if (like.liked) {
-        await LikeRepository.update(
+      if (like.pushed) {
+        await PushRepository.update(
           like.id,
-          { liked: false }
+          { pushed: false }
         )
-        if (newLikes > 0) {
+        if (newpushes > 0) {
           await PostRepository.update(
             post_id,
-            { likes: newLikes -= 1 }
+            { pushes: newpushes -= 1 }
           )
-        } else if (newLikes <= 0) {
+        } else if (newpushes <= 0) {
           await PostRepository.update(
             post_id,
-            { likes: 0 }
+            { pushes: 0 }
           )
         }
       } else {
-        await LikeRepository.update(
+        await PushRepository.update(
           like.id,
-          { liked: true }
+          { pushed: true }
         )
         await PostRepository.update(
           post_id,
-          { likes: newLikes += 1 }
+          { pushes: newpushes += 1 }
         )
       }
     }
