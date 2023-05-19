@@ -2,11 +2,12 @@ import { Request, Response } from "express"
 import { CompanyCreate } from "../services/Company/create"
 import { CompanyReadAll } from "../services/Company/readAll"
 import { CompanyRead } from "../services/Company/read"
-import { LikeRead } from "../services/Like/read"
+import { LikeRead } from "../services/push/read"
 import { CompanyUpdate } from "../services/Company/update"
 import { CompanyDelete } from "../services/Company/delete"
 import { PostRead } from "../services/Post/read"
 import { companySchema } from "../schemas/companySchema"
+import { CompanyPosts } from "../services/Post/companyPosts"
 
 var newErrors: string[] = []
 
@@ -63,14 +64,11 @@ export class CompanyController {
   }
 
   async read(req: Request, res: Response) {
-    const { user_id, company_id } = req.params
+    const { user_id } = req.params
     
     try {
       const service = new CompanyRead()
-      const result = await service.execute({
-         user_id,
-         company_id
-      })
+      const result = await service.execute({ user_id })
 
       if (result instanceof Error) {
         return res.status(400).send({ message: result.message })
@@ -78,13 +76,13 @@ export class CompanyController {
 
       var sum = 0
       for(var posts of result.post) {
-        sum += posts.likes
+        sum += posts.pushes
       }
 
       return res.render("company/home/index.ejs", {
          data: result,
          userId: user_id,
-         likes: sum
+         pushes: sum
       })
     } catch (error) {
       console.error(error)
@@ -151,19 +149,16 @@ export class CompanyController {
   }
   
   async CompanyPostAdjustments(req: Request, res: Response) {
-    const { user_id, company_id } = req.params
+    const { company_id } = req.params
 
     try {
-      const service = new CompanyRead()
-      const result = await service.execute({
-         user_id,
-         company_id
-      })
+      const service = new CompanyPosts()
+      const result = await service.execute(company_id)
 
       if (result instanceof Error) {
         return res.status(400).send({ message: result.message })
       }
-      
+
       return res.render("company/postsSettings/index.ejs", {
          data: result
       })
@@ -174,11 +169,14 @@ export class CompanyController {
   }
 
   async showCompanyPost(req: Request, res: Response) {
-    const { post_id } = req.params
+    const { post_id, company_id } = req.params
 
     try {
       const service = new PostRead()
-      const result = await service.execute(post_id)
+      const result = await service.execute({
+        post_id,
+        company_id
+      })
 
       if(result instanceof Error) { return res.status(400).send({ message: result.message }) }
 

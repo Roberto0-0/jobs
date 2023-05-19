@@ -1,13 +1,13 @@
 import { Request, Response } from "express"
-import { Like } from "../services/Like/index"
+import { Push } from "../services/push/index"
 import { PostRead ,} from "../services/Post/read"
 
-export class LikeController {
-  async liked(req: Request, res: Response) {
+export class PushController {
+  async pushed(req: Request, res: Response) {
     const { user_id, post_id } = req.params
 
     try {
-      const service = new Like()
+      const service = new Push()
       const result = await service.execute(({
         user_id,
         post_id

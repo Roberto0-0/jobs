@@ -16,12 +16,10 @@
       <nav class="nav">
         <ul>
           <% if(user) { %>
-              <% if(company) { %>
-                 <li>
-                    <i class="ph-fill ph-key-return"></i>
-                    <a href="/company/<%= user.id %>/<%= company.id %>">back</a>
-                 </li>
-              <% } %>
+            <li>
+                <i class="ph-fill ph-key-return"></i>
+                <a href="/company/<%= user.id %>">back</a>
+            </li>
           <% } else { %>
              <li>
                  <i class="ph-fill ph-key-return"></i>
@@ -40,7 +38,7 @@
     <div class="container">
         <% if(user) { %>
           <% if(company) { %>
-            <form action="/post/create/<%= user.id %>/<%= data %>" method="POST">
+            <form action="/post/create/<%= user.id %>/<%= company.id %>" method="POST">
               <div class="inputContainer">
                 <div class="firstBlock">
                   <div class="input">

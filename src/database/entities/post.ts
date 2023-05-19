@@ -8,7 +8,8 @@ import {
   UpdateDateColumn
 } from "typeorm";
 import { Company } from "./company";
-import { Like } from "./like";
+import { Push } from "./push";
+import { Resume } from "./resume";
 
 @Entity("posts")
 export class Post {
@@ -25,7 +26,7 @@ export class Post {
     type: "varchar",
     nullable: false
   })
-  vancancy: string
+  vacancy: string
   
   @Column({
     type: "varchar",
@@ -56,7 +57,13 @@ export class Post {
     nullable: false,
     default: 0
   })
-  likes: number
+  pushes: number
+
+  @Column({
+    type: "varchar",
+    nullable: false
+  })
+  company_id: string
   
   @ManyToOne(() => Company, (company) => company.post, {
     onUpdate: 'CASCADE',
@@ -64,10 +71,13 @@ export class Post {
   })
   company: Company
   
-  @OneToMany(() => Like, (like) => like.post, {
+  @OneToMany(() => Push, (push) => push.post, {
     cascade: true,
   })
-  like: Like[]
+  push: Push[]
+
+  @OneToMany(() => Resume, (resume) => resume.post)
+  resume: Resume[]
   
   @CreateDateColumn()
   created_at: Date

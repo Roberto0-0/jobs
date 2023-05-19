@@ -18,15 +18,17 @@
         <nav class="nav">
           <ul>
             <% if(user) { %>
-               <li>
-                  <i class="ph-fill ph-key-return"></i>
-                  <a href="/dashboard">dashboard</a>
-               </li>
-            <% } else { %>
-               <li>
-                  <i class="ph-fill ph-key-return"></i>
-                  <a href="/">home</a>
-               </li>
+                <% if(data) { %>
+                    <li>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/company/posts/<%= data.company.id %>">back</a>
+                    </li>
+                <% } else { %>
+                    <li>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/">back</a>
+                    </li>
+                <% } %>
             <% } %>
           </ul>
         </nav>
@@ -41,7 +43,7 @@
          <ul class="jobs-menu">
             <% if(data) { %>
                 <li class="li">
-                    <h1 class="vancancy" ><%= data.vancancy %></h1>
+                    <h1 class="vancancy" ><%= data.vacancy %></h1>
                     <h2 class="company-name">
                     <%= data.company_name %>
                     <i class="ph-fill ph-seal-check"></i>
@@ -76,7 +78,7 @@
                     <div class="functions">
                         <div class="like">
                             <button class="like-button"><i class="ph ph-arrow-fat-line-up"></i></button>
-                            <span class="like-value" ><%= data.likes %></span>
+                            <span class="like-value" ><%= data.pushes %></span>
                         </div>
                     </div>
                 </li>

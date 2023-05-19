@@ -6,14 +6,13 @@ export class UserRead {
       where: { id: id },
       relations: {
         company: true,
-        like: true
+        push: true
       }
     })
 
-    if (!user) {
-      return new Error("User not found.")
-    }
+    console.log(user?.name)
 
+    if (!user) { return new Error("User not found.") }
     return user
   }
 

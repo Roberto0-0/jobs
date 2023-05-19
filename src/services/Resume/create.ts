@@ -6,6 +6,7 @@ import { CompanyRepository } from "../../repositories/CompanyRepository"
 interface Attributes {
     user_id: string;
     post_id: string;
+    company_id: string;
     fullName: string;
     dateOfBirth: Date;
     maritalStatus: string;
@@ -19,6 +20,7 @@ export class ResumeCreate {
     async execute({
         user_id,
         post_id,
+        company_id,
         fullName,
         dateOfBirth,
         maritalStatus,
@@ -29,7 +31,7 @@ export class ResumeCreate {
     }: Attributes) {
         const user = await UserRepository.findOneBy({ id: user_id })
         const post = await PostRepository.findOneBy({ id: post_id })
-        const company = await CompanyRepository.findOne({ where: { company: post?.company_name } })
+        const company = await CompanyRepository.findOneBy({ id: company_id })
 
         if(!user) { return new Error("User not found.") }
         if(!post) { return new Error("Post not found.") }
@@ -44,9 +46,11 @@ export class ResumeCreate {
             academicEducation,
             information,
             user,
-            company
+            company,
+            post,
+            user_id,
+            company_id
         })
-
         await ResumeRepository.save(newResume)
 
         return newResume

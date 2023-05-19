@@ -6,24 +6,20 @@ export class PostReadAll {
             async recent() {
                 const post = await PostRepository.find({
                     order: { created_at: "DESC" },
-                    relations: { like: true }
+                    relations: { company: true, push: true }
                 })
     
-                if (!post) {
-                  return new Error("Post not found.")
-                }
+                if (!post) { return new Error("Post not found.") }
                 return post
             },
         
             async relevant() {
                 const post = await PostRepository.find({
-                    order: { likes: "DESC" },
-                    relations: { like: true }
+                    order: { pushes: "DESC" },
+                    relations: { company: true, push: true }
                 })
     
-                if (!post) {
-                  return new Error("Post not found.")
-                }
+                if (!post) { return new Error("Post not found.") }
                 return post
             }
         }

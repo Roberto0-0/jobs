@@ -1,6 +1,6 @@
 import express, { Router, Request, Response } from "express"
 import { CompanyController } from "../controllers/companyController"
-import { LikeController } from "../controllers/likeController"
+import { PushController } from "../controllers/pushController"
 import { LoginController } from "../controllers/loginController"
 import { PostController } from "../controllers/postController"
 import { UserController } from "../controllers/userController"
@@ -18,7 +18,7 @@ export class Routes {
     this.user()
     this.post()
     this.company()
-    this.like()
+    this.push()
     this.login()
     this.resume()
   }
@@ -47,26 +47,26 @@ export class Routes {
     this.router.get("/jobs", new PostController().readAll)
     this.router.get("/post/show/:id", isAuth, new PostController().read)
     this.router.get("/post/update/:post_id/:company_id", isAuth, new PostController().updateIndex)
-    this.router.post("/post/update/:post_id/:company_id/:user_id", new PostController().update)
-    this.router.get("/post/delete/:post_id/:company_id/:user_id", new PostController().delete)
+    this.router.post("/post/update/:post_id/:company_id", new PostController().update)
+    this.router.get("/post/delete/:post_id/:company_id", new PostController().delete)
   }
 
   company() {
     this.router.get("/company/registration", isAuth, new CompanyController().createIndex)
     this.router.post("/company/registration/:user_id", new CompanyController().create)
-    this.router.get("/company/showAll", isAuth, new CompanyController().readAll)
-    this.router.get("/company/posts/:user_id/:company_id", isAuth, new CompanyController().CompanyPostAdjustments)
-    this.router.get("/company/post/:post_id", isAuth, new CompanyController().showCompanyPost)
-    this.router.get("/company/likes/:company_id", new CompanyController().showAllCompanyPush)
+    this.router.get("/company/showAll", new CompanyController().readAll)
+    this.router.get("/company/posts/:company_id", isAuth, new CompanyController().CompanyPostAdjustments)
+    this.router.get("/company/post/:post_id/:company_id", isAuth, new CompanyController().showCompanyPost)
+    this.router.get("/company/pushs/:company_id", new CompanyController().showAllCompanyPush)
     this.router.get("/company/resumes", isAuth, new CompanyController().resumes)
     this.router.get("/company/resume/page", isAuth, new CompanyController().pageResume)
-    this.router.get("/company/:user_id/:company_id", isAuth, new CompanyController().read)
+    this.router.get("/company/:user_id", isAuth, new CompanyController().read)
     this.router.put("/company/update/:id", new CompanyController().update)
     this.router.delete("/company/delete/:id", new CompanyController().delete)
   }
 
-  like() {
-    this.router.get("/liked/:user_id/:post_id", new LikeController().liked)
+  push() {
+    this.router.get("/pushed/:user_id/:post_id", new PushController().pushed)
   }
 
   login() {
@@ -77,8 +77,8 @@ export class Routes {
   }
 
   resume() {
-    this.router.get("/profile/resumes", isAuth, new ResumeController().resumeList)
-    this.router.get("/resume/create/:post_id", isAuth, new ResumeController().createIndex)
-    this.router.post("/resume/create/:user_id/:post_id", new ResumeController().create)
+    this.router.get("/resume/create/:post_id/:company_id", isAuth, new ResumeController().createIndex)
+    this.router.post("/resume/create/:user_id/:post_id/:company_id", new ResumeController().create)
+    this.router.get("/profile/resumes/:user_id", new ResumeController().userResume)
   }
 }

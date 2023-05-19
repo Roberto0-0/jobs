@@ -11,23 +11,17 @@ var newErrors: string[] = []
 
 export class PostController {
   async createIndex(req: Request, res: Response) {
-    const { user_id, company_id } = req.params
+    const { user_id } = req.params
     
     try {
       const service = new CompanyRead()
-      const result = await service.execute({
-        user_id,
-        company_id
-      })
+      const result = await service.execute({ user_id })
     
       if(result instanceof Error) {
         return res.status(400).send({ message: result.message })
       }
     
-      res.render("post/create/index.ejs", {
-       data: company_id,
-       company: result
-      })
+      res.render("post/create/index.ejs", { company: result })
     } catch(error) {
       console.error(error)
       return res.status(500).send({ message: "Internal server error" })
@@ -36,13 +30,19 @@ export class PostController {
   
   async create(req: Request, res: Response) {
     const { user_id, company_id } = req.params
-    const { companyName, vancancy, salary, vacancies, location, information } = req.body
+    const { 
+        companyName, 
+        vacancy, 
+        salary, 
+        vacancies, 
+        location, 
+        information } = req.body
 
     try {
       const validationResult = postSchema.safeParse({
         company_id,
         companyName,
-        vancancy,
+        vacancy,
         location,
         salary: Math.abs(salary),
         vacancies: Math.abs(vacancies),
@@ -56,11 +56,11 @@ export class PostController {
         if (result instanceof Error) {
           newErrors.push(result.message)
           req.flash("error_message", newErrors)
-          return res.redirect("/company/" + user_id + "/" + company_id)
+          return res.redirect("/company/" + user_id)
         }
 
         req.flash("success_message", result.success_message)
-        return res.redirect("/company/" + user_id + "/" + company_id)
+        return res.redirect("/company/" + user_id)
       } else {
         const err = validationResult.error.errors
 
@@ -69,7 +69,7 @@ export class PostController {
         })
         
         req.flash("error_message", newErrors)
-        res.redirect("/post/create/" + user_id + "/" + company_id)
+        res.redirect("/post/create/" + user_id)
         newErrors = []
       }
     } catch (error) {
@@ -79,11 +79,14 @@ export class PostController {
   }
 
   async read(req: Request, res: Response) {
-    const { id } = req.params
+    const { post_id, company_id } = req.params
 
     try {
       const service = new PostRead()
-      const result = await service.execute(id)
+      const result = await service.execute({
+        post_id,
+        company_id
+      })
 
       if (result instanceof Error) {
         return res.status(400).send({ message: result.message })
@@ -124,7 +127,10 @@ export class PostController {
      
      try {
         const service = new PostRead()
-        const result = await service.execute(post_id)
+        const result = await service.execute({
+            post_id,
+            company_id
+        })
         
         if(result instanceof Error) { return res.status(404).send({ message: result.message }) }
         
@@ -139,15 +145,15 @@ export class PostController {
   }
 
   async update(req: Request, res: Response) {
-    const { post_id, company_id, user_id } = req.params
-    const { companyName, vancancy, location, salary, vacancies, information } = req.body
+    const { post_id, company_id } = req.params
+    const { companyName, vacancy, location, salary, vacancies, information } = req.body
 
     try {
       const validation = updatePostSchema.safeParse({
         post_id,
         company_id,
         company_name: companyName,
-        vancancy,
+        vacancy,
         location,
         salary: Math.abs(salary),
         vacancies: Math.abs(vacancies),
@@ -161,12 +167,12 @@ export class PostController {
         if (result instanceof Error) {
           newErrors.push(result.message)
           req.flash("error_message", newErrors)
-          res.redirect("/company/" + user_id + "/" + company_id)
+          res.redirect("/company/" + company_id)
           return newErrors = []
         }
 
         req.flash("success_message", result.success_message)
-        return res.redirect("/company/posts/" + user_id + "/" + company_id)
+        return res.redirect("/company/posts/" + company_id)
       } else {
         const err = validation.error.errors
 
@@ -176,7 +182,7 @@ export class PostController {
       }
 
       req.flash("error_message", newErrors)
-      res.redirect("/post/create/" + user_id + "/" + company_id)
+      res.redirect("/post/create/" + company_id)
       newErrors = []
     } catch (error) {
       console.error(error)
@@ -185,7 +191,7 @@ export class PostController {
   }
 
   async delete(req: Request, res: Response) {
-    const { post_id, company_id, user_id } = req.params
+    const { post_id, company_id } = req.params
 
     try {
       const service = new PostDelete()
@@ -199,7 +205,7 @@ export class PostController {
       }
 
       req.flash("success_message", result.success_message)
-      res.redirect("/company/posts/" + user_id + "/" + company_id)
+      res.redirect("/company/posts/" + company_id)
     } catch (error) {
       console.error(error)
       return res.status(500).send({ message: "Internal server error!" })
