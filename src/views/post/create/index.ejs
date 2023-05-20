@@ -63,11 +63,11 @@
                     </div>
                   </div>
                   <div class="input">
-                    <label for="vancancy">Vancancy</label>
-                    <input type="text" name="vancancy" id="vancancy" autocomplete="off" required>
+                    <label for="vacancy">Vacancy</label>
+                    <input type="text" name="vacancy" id="vacancy" autocomplete="off" required>
                     <% if(error_message.length > 0) { %>
                         <% for(let i=0;i < error_message.length;i++) { %>
-                            <% if(error_message[i] == "Vancancy is required." || error_message[i] == "Very short vancancy.") { %>
+                            <% if(error_message[i] == "Vacancy is required." || error_message[i] == "Very short vacancy.") { %>
                                 <div class="error_message">
                                     <i class="ph-fill ph-warning"></i>
                                     <span class="message"><%= error_message[i] %></span>

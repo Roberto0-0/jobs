@@ -42,7 +42,7 @@ export class Routes {
   }
 
   post() {
-    this.router.get("/post/create/:user_id/:company_id", isAuth, new PostController().createIndex)
+    this.router.get("/post/create/:user_id", isAuth, new PostController().createIndex)
     this.router.post("/post/create/:user_id/:company_id", new PostController().create)
     this.router.get("/jobs", new PostController().readAll)
     this.router.get("/post/show/:id", isAuth, new PostController().read)
@@ -66,7 +66,8 @@ export class Routes {
   }
 
   push() {
-    this.router.get("/pushed/:user_id/:post_id", new PushController().pushed)
+    this.router.get("/pushed/:user_id/:post_id/:company_id", new PushController().pushed)
+    this.router.get("/pushed/readAll/:company_id", new PushController().read)
   }
 
   login() {

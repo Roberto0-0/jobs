@@ -1,16 +1,18 @@
 import { Request, Response } from "express"
 import { Push } from "../services/push/index"
+import { PushRead } from "../services/push/read"
 import { PostRead ,} from "../services/Post/read"
 
 export class PushController {
   async pushed(req: Request, res: Response) {
-    const { user_id, post_id } = req.params
+    const { user_id, post_id, company_id } = req.params
 
     try {
       const service = new Push()
       const result = await service.execute(({
         user_id,
-        post_id
+        post_id,
+        company_id
       }))
 
       if (result instanceof Error) {
@@ -28,6 +30,25 @@ export class PushController {
     } catch (error) {
       console.error(error)
       return res.status(500).send({ message: "Internal server error!" })
+    }
+  }
+  
+  async read(req: Request, res: Response) {
+    const { company_id } = req.params
+    
+    try {
+      const service = new PushRead()
+      const result = await service.execute(company_id)
+      
+      if(result instanceof Error) {
+          return res.status(400).send({ message : result.message })
+      }
+      
+      return res.send(result)
+      
+    } catch(error) {
+      console.error(error)
+      return res.status(500).send({ message: "Internal server error." })
     }
   }
 }
