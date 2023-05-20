@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from "typeorm";
+import { Company } from "./company";
 import { Post } from "./post";
 import { User } from "./user";
 
@@ -33,7 +34,13 @@ export class Push {
     nullable: false
   })
   post_id: string
-
+  
+  @Column({
+    type: "varchar",
+    nullable: false
+  })
+  company_id: string
+ 
   @ManyToOne(() => User, (user) => user.push)
   @JoinColumn({ name: "user_id" })
   user: User
@@ -44,6 +51,10 @@ export class Push {
   })
   @JoinColumn({ name: "post_id" })
   post: Post
+
+  @ManyToOne(() => Company, (company) => company.push)
+  @JoinColumn({ name: "company_id" })
+  company: Company
 
   @CreateDateColumn()
   created_at: Date

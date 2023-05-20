@@ -10,6 +10,7 @@ import {
 } from "typeorm"
 import { User } from "./user"
 import { Post } from "./post"
+import { Push } from "./push"
 import { Resume } from "./resume"
 
 @Entity("companies")
@@ -61,6 +62,9 @@ export class Company {
     cascade: true,
   })
   resume: Resume[]
+
+  @OneToMany(() => Push, (push) => push.company)
+  push: Push[]
 
   @CreateDateColumn()
   created_at: Date

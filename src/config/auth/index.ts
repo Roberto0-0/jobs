@@ -9,13 +9,7 @@ export default function(value: any): void {
   });
 
   passport.deserializeUser((user: any, done) => {
-    UserRepository.findOne({
-       where: { id: user.id },
-       relations: {
-          company: true,
-          push: true
-       }
-      }).then((user) => {
+    UserRepository.findOne({where: { id: user.id }}).then((user) => {
         return done(null, user)
     }).catch((err) => {
       console.error(err)
