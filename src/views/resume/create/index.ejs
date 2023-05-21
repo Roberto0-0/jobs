@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="/css/user/resume/create/style.css">
+    <link rel="stylesheet" href="/css/resume/create/style.css">
     <title>Jobs</title>
 </head>
 <body>
@@ -35,7 +35,6 @@
                 <div class="notification">Resume sent successfully<i class="ph-bold ph-checks"></i></div>
                 <div class="container">
                     <div class="postInfo">
-                        <h1>Hello, <span class="userName"><%= user.name %></span></h1>
                         <h2>Send your resume for <span class="companyName"><%= data.company_name %></span> company <span class="vacancy"><%= data.vacancy %></span> vacancy</h2> 
                     </div>
                     <form action="/resume/create/<%= user.id %>/<%= data.id %>/<%= data.company.id %>" method="POST">

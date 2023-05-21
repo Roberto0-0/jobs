@@ -11,10 +11,7 @@ export class PostRead {
     const company = await CompanyRepository.findOneBy({ id: company_id })
     const post = await PostRepository.findOne({
       where: { id: post_id, company_id: company_id },
-      relations: {
-        company: true,
-        push: true
-      }
+      relations: { company: true, push: true }
     })
 
     if (!company) { return new Error("Company not found.") }

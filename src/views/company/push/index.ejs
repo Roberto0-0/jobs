@@ -7,19 +7,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/phosphor-icons"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
-    <link rel="stylesheet" href="/css/company/posts/style.css">
+    <link rel="stylesheet" href="/css/company/push/style.css">
     <title>Jobs</title>
 </head>
 <body>
      <header>
       <div class="container">
-        <a href="" class="logo">Jobs</a>
+        <a href="/" class="logo">Jobs</a>
         <nav class="nav">
           <ul>
             <% if(user) { %>
                <li>
                   <i class="ph-arrow-circle-left-fill"></i>
-                  <a href="/dashboard">back</a>
+                  <a href="/company/<%= user.id %>">back</a>
                </li>
             <% } else { %>
                <li>
@@ -29,7 +29,6 @@
             <% } %>
           </ul>
         </nav>
-  
         <div class="menu">
           <i class="ph-list-fill"></i>
         </div>
@@ -37,10 +36,12 @@
    </header>
    <main>
        <div class="container">
-          <ul class="jobs-menu">
-             <% if(data) { %>
-                 <h2><%= data.name %></h2>
-             <% } %>
+            <ul class="users">
+                <li>
+                    <% data.map((push) => { %>
+                        <h2><%= push.user.name %></h2>
+                    <% }) %>
+                </li>
             </ul>
         </div>
     </main>
@@ -51,7 +52,6 @@
         </p>
       </div>
     </footer>
-   
    <script src="/js/post/jobs/main.js"></script>
    <script src="/js/menu/main.js"></script>
 </body>

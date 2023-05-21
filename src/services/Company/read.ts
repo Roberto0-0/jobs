@@ -10,7 +10,7 @@ export class CompanyRead {
     const user = await UserRepository.findOneBy({ id: user_id })
     const company = await CompanyRepository.findOne({
         where: { user_id: user_id },
-        relations: { post: true }
+        relations: { post: true, resume: true }
     })
      
     if(!user) { return new Error("User not found.") }

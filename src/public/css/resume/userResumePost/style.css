@@ -22,6 +22,7 @@
     --dark-border: #D0D7DE;
 }
 
+
 body, html {
     -webkit-tap-highlight-color: transparent;
     display: flex;
@@ -110,8 +111,6 @@ header .container nav ul li {
 
 header .container nav ul li i {
     display: none;
-
-    font-size: 1.2em;
 }
 
 header .container nav ul a {
@@ -125,10 +124,13 @@ header .container nav ul a {
     color: var(--global-white);
 }
 
+header .container nav ul .login-button {
+    border: 1px solid var(--white);
+    border-radius: 10px;
+}
+
 header .container .menu {
     display: none;
-
-    color: var(--dark-text);
 }
 
 main {
@@ -140,45 +142,10 @@ main {
     height: calc(100vh - 70px);
 }
 
-main .notification {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.3em;
-    
-    position: absolute;
-    top: 100px;
-    left: 50%;
-    
-    transform: translate(-50%, -50%);
-    
-    padding: 15px;
-    
-    width: 95vw;
-    max-width: 600px;
-    
-    animation: down 0.4s;
-    border-radius: 5px;
-    background: rgb(45, 164, 78);
-    
-    font-weight: 600;
-    font-size: 1em;
-    color: var(--global-white);
-}
-
-main .notification i {
-    font-size: 1.3em;
-}
-
-@keyframes down {
-    from { top: 0px; }
-    to { top: 100px; }
-}
-
 main .container {
     display: flex;
     flex-direction: column;
+    gap: 1em;
 
     margin: auto;
 
@@ -187,7 +154,7 @@ main .container {
     height: 100%;
 }
 
-main .container .resumes-list {
+main .container .jobs-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -196,107 +163,169 @@ main .container .resumes-list {
     width: 100%;
 }
 
-main .container .resumes-list li {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+main .container .jobs-menu li {
+    padding: 10px 10px 0px 10px;
 
     width: 100%;
     max-width: 500px;
-    height: 80px;
     
     border: 1px solid var(--dark-border);
     border-radius: 10px;
-    background-color: var(--light-secondary-background);
+    background: var(--light-secondary-background);
     list-style: none;
 }
 
-main .container .resumes-list li .post-info {
-    padding: 10px;
-
-    width: 60%;
-    height: 100%;
-}
-
-main .container .resumes-list li .post-info a {
-    text-decoration: none;
-}
-
-main .container .resumes-list li .post-info .vacancy {
-    font-size: 1.5em; 
+main .container .jobs-menu li h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2em; 
     font-weight: 400;
     color: var(--global-color);
 }
 
-main .container .resumes-list li .post-info .company-name {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.2em;
+main .container .jobs-menu li .company-name {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 0.2em;
+   
+    margin-bottom: 1em;
 
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bold;
-    font-size: 1em;
-    color: var(--light-text);
+    font-size: 1.2em;
 }
 
-main .container .resumes-list li .post-info .company-name i {
+main .container .jobs-menu li .company-name i {
    color: var(--global-color);
 }
 
-main .container .resumes-list li .result {
+main .container .jobs-menu li .jobInfo {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 0.3em;
+
+    margin-bottom: 1em;
+
+    width: auto;
+    height: auto;
+}
+
+main .container .jobs-menu li .jobInfo li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+    
+    padding: 0;
+    
+    border: none;
+    background: none;
+}
+
+main .container .jobs-menu li .jobInfo li .info {
+    display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 0.2em;
-
-    padding: 0px 10px;
-
-    width: 30%;
-    height: 100%;
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    font-weight: 600;
 }
 
-main .container .resumes-list li .result span  {
+main .container .jobs-menu li .jobInfo li .info i {
+    font-size: 1.2em;
+}
+
+main .container .jobs-menu li .jobInfo li span {
+    background: #e6e6e6;
+    
+    font-weight: 400;
+}
+
+main .container .jobs-menu li .text-box {
     display: flex;
-    flex-direction: row;
-    justify-content: right;
-    align-items: center;
-    gap: 0.3em;
-
-    width: 100%;
+    flex-direction: column;
+    
+    margin-bottom: 0.8em;
 }
 
-
-main .container .resumes-list li .result span i {
-    font-size: 1.5em;
-    color: var(--global-black);
+main .container .jobs-menu li .text-box .description {
+    font-size: 0.9em;
+    color: #535252;
 }
 
-main .container .resumes-list li .result .option-area {
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    align-items: center;
-    gap: 0.3em;
+main .container .jobs-menu li .text-box .text {
+    margin-bottom: 0.3em;
 
-    width: 100%;
+    height: 100px;
+
+    overflow: hidden;
+
+    text-align: justify;
+    word-break: break-all;
+    line-height: 1.5em;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
 }
 
-main .container .resumes-list li .result .option-area a {
+main .container .jobs-menu li .text-box .btn-seeMore {
+    margin-left: auto;
+
+    outline: transparent;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    font-size: 1em;
+    color: #535252;
+}
+
+main .container .jobs-menu li .functions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  
+  padding: 10px 0px;
+  
+  width: 100%;
+  
+  border-top: 1px solid var(--dark-border);
+}
+
+main .container .jobs-menu li .functions .like {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4em;
+  
+  width: 50%;
+}
+
+main .container .jobs-menu li .functions .like a {
     text-decoration: none;
-    border: 1px solid var(--dark-border);
-    border-radius: 5px;
-    color: var(--light-text);
-
-    padding: 5px 15px;
 }
 
-main .container .resumes-list li .result .option-area a i {
-    font-size: 1.3em;
+main .container .jobs-menu li .functions .like .like-button {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   
+   width: 20px;
+   height: 20px;
+   
+   outline: transparent;
+   border: none;
+   background: none;
+   cursor: pointer;
 }
 
+main .container .jobs-menu li .functions .like .like-button i {
+  font-size: 1.9em;
+  color: var(--light-text);
+}
 
 footer {
     width: 100%;
@@ -316,15 +345,17 @@ footer .container {
     width: 95vw;
     max-width: 1279px;
     height: 100%;
+
+    font-family: 'Roboto', sans-serif;
+    color: var(--dark-text);
 }
 
 footer .container p {
     text-align: center;
     font-size: 1em;
-    color: var(--dark-text);
 }
 
-footer .container p a {
+footer .container a {
     color: var(--dark-text);
 }
 
@@ -339,8 +370,8 @@ footer .container p a {
         right: 0;
 
         width: 0;
-        height: calc(100% - 70px);
-
+        height: calc(100% - 64px);
+        
         visibility: hidden;
         border-left: 1px solid var(--light-border);
         background: var(--light-primary-background);
@@ -392,25 +423,31 @@ footer .container p a {
 
         border-bottom: 1px solid var(--light-border);
     }
-    
-    header .container .nav.active ul li a {
+
+    header .container nav.active ul li i {
+        display: block;
+        
+        font-size: 1.5em;
+    }
+
+    header .container nav.active ul li a {
         padding: 11px 0px;
         
         font-weight: bold;
         color: var(--light-text);
     }
 
-    header .container .nav.active ul li i {
-        display: block;
-        
-        font-size: 1.5em;
-    }
-
-    main .container .resumes-list li .result {
-        width: 40%;
+    header .container nav.active ul .login-button {
+        border: none;
     }
 
     footer .container p {
         font-size: 0.9em;
+    }
+}
+
+@media(max-width: 360px) {
+    header .container .logo {
+        font-size: 1.1em;
     }
 }

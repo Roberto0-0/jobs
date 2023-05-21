@@ -201,16 +201,6 @@ main .container .postInfo {
     width: 100%;
 }
 
-main .container .postInfo h1 {
-    margin-bottom: 0.1em;
-
-    font-weight: 400;
-}
-
-main .container .postInfo h1 span {
-    font-weight: 600;
-}
-
 main .container .postInfo h2 {
     font-weight: 400;
 }

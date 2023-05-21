@@ -22,6 +22,7 @@
     --dark-border: #D0D7DE;
 }
 
+
 body, html {
     -webkit-tap-highlight-color: transparent;
     display: flex;
@@ -36,19 +37,19 @@ body, html {
     color: var(--light-text);
 }
 
-header  {
+header {
     width: 100%;
     height: 70px;
 
-    background: var(--global-header-footer);
+    background-color: var(--global-header-footer);
 }
 
 header .container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    
     align-items: center;
+
     margin: 0 auto;
 
     width: 95vw;
@@ -61,34 +62,31 @@ header .container .logo {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+  
     padding: 0px 10px;
-
+  
     width: auto;
     height: 70%;
-
+  
     border-left: 3px solid var(--global-white);
     text-decoration: none;
-
+  
     font-family: 'Chango', cursive;
-    font-size: 2.5em;
+    font-size: 2em;
     color: var(--global-white);
-    
 }
 
 header .container nav {
-    display: block;
     padding: 0px 10px;
 
     width: auto;
     height: 80%;
 }
- 
+
 header .container nav ul {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.3em;
 
     width: 100%;
     height: 100%;
@@ -97,38 +95,25 @@ header .container nav ul {
 }
 
 header .container nav ul li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.3em;
-    
     padding: 7px 15px;
 
     width: auto;
     height: auto;
 }
 
-header .container nav ul li i {
-    display: none;
-
-    font-size: 1.2em;
-}
-
-header .container nav ul a {
-    width: 100%;
-    height: 100%;
-    
+header .container nav ul li a {
     text-decoration: none;
 
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.2em;
+    font-size: 1em;
     color: var(--global-white);
+}
+
+header .container nav ul li i {
+    display: none;
 }
 
 header .container .menu {
     display: none;
-
-    color: var(--dark-text);
 }
 
 main {
@@ -136,133 +121,30 @@ main {
 
     margin: 20px auto;
 
-    width: 100%;
+    width: auto;
     height: calc(100vh - 70px);
 }
 
 main .container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1em;
 
     margin: auto;
 
     width: 95vw;
     max-width: 1279px;
-    height: 100%;
+    height: auto;
 }
 
-main .container .resume-page {
+main .container .users {
     margin: auto;
-    padding: 10px;
 
     width: 100%;
-    max-width: 500px;
-    
-    border: 1px solid var(--dark-border);
-    border-radius: 5px;
-    background: var(--light-secondary-background);
-
-}
-
-main .container .resume-page .postInfo {
-    display: flex;
-    flex-direction: column;
-
-    margin-bottom: 1em;
-}
-
-main .container .resume-page .postInfo .username {
-    font-family: 'Roboto', sans-serif;
-    font-size: 2em; 
-    font-weight: 500;
-    color: var(--global-color);
-}
-
-main .container .resume-page .postInfo .vacancy {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 600;
-    font-size: 1.2em;   
-}
-
-main .container .resume-page .vacancy i {
-   color: var(--global-color);
-}
-
-main .container .resume-page .about {
-    display: flex;
-    flex-direction: column;
-    
-    margin-bottom: 0.8em;
-}
-
-main .container .resume-page .about .text {
-    margin-bottom: 0.3em;
-
+    max-width: 400px;
     height: auto;
-    max-height: 100px;
 
-    overflow: hidden;
-
-    text-align: justify;
-    word-break: break-all;
-    line-height: 1.5em;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1em;
-}
-
-main .container .resume-page .contact {
-    margin-bottom: 0.3em;
-
-    font-weight: 500;
-}
-
-main .container .resume-page .contact-area {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4em;
-
-    margin-bottom: 1em;
-
-    width: auto;
-    height: auto;
-}
-
-main .container .resume-page .contact-area li {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2em;
-    
-    padding: 3px;
-}
-
-main .container .resume-page .contact-area li label {
-    font-size: 0.9em;
-    font-weight: 600;
-}
-
-main .container .resume-page .contact-area li .info {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.2em;
-
-    width: 100%;
-
-    font-size: 1em;
-    font-weight: 400;
-}
-
-main .container .resume-page .contact-area li .info i {
-    font-size: 1.1em;
-}
-
-main .container .resume-page .contact-area li .info span {
-    font-size: 0.9em;
+    list-style: none;
 }
 
 footer {
@@ -283,6 +165,8 @@ footer .container {
     width: 95vw;
     max-width: 1279px;
     height: 100%;
+
+    font-family: 'Roboto', sans-serif;
 }
 
 footer .container p {
@@ -306,7 +190,7 @@ footer .container p a {
         right: 0;
 
         width: 0;
-        height: calc(100% - 70px);
+        height: calc(100% - 64px);
 
         visibility: hidden;
         border-left: 1px solid var(--light-border);
@@ -352,33 +236,36 @@ footer .container p a {
         height: auto;
     }
 
-    header .container nav.active ul li  {
-        padding: 0px;
+    header .container nav.active ul li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.3em;
         
+        padding: 0px 0px;
+
         width: 95%;
 
         border-bottom: 1px solid var(--light-border);
     }
-    
-    header .container .nav.active ul li a {
-        padding: 11px 0px;
-        
-        font-weight: bold;
-        color: var(--light-text);
-    }
 
-    header .container .nav.active ul li i {
-        display: block;
-        
+    header .container nav.active ul li i {
+        display: flex;
+
         font-size: 1.5em;
     }
 
-    main .container .resumes-list li .option {
-        width: 40%;
+    header .container nav.active ul li a {
+        padding: 11px 0px;
+        
+        width: 100%;
+        
+        font-size: 1.2em;
+        font-weight: bold;
+        color: var(--light-text);
     }
 
     footer .container p {
         font-size: 0.9em;
     }
 }
-
