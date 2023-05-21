@@ -30,9 +30,11 @@
           </div>
     </header>
     <main>
+        <% if(success_message.length > 0) { %>
+            <div class="notification"><span class="message"><%= success_message %></span><i class="ph-bold ph-checks"></i></div>
+        <% } %>
         <% if(user) { %>
             <% if(data) { %>
-                <div class="notification">Resume sent successfully<i class="ph-bold ph-checks"></i></div>
                 <div class="container">
                     <div class="postInfo">
                         <h2>Send your resume for <span class="companyName"><%= data.company_name %></span> company <span class="vacancy"><%= data.vacancy %></span> vacancy</h2> 
@@ -87,5 +89,6 @@
         </div>
     </footer>
     <script src="/js/menu/main.js"></script>
+    <script src="/js/resume/create/main.js"></script>
 </body>
 </html>

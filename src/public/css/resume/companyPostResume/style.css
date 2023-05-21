@@ -204,7 +204,7 @@ main .container .resumes-list li {
 
     width: 100%;
     max-width: 500px;
-    height: 80px;
+    height: 70px;
     
     border: 1px solid var(--dark-border);
     border-radius: 10px;
@@ -223,13 +223,13 @@ main .container .resumes-list li .post-info a {
     text-decoration: none;
 }
 
-main .container .resumes-list li .post-info .vacancy {
+main .container .resumes-list li .post-info .username {
     font-size: 1.5em; 
     font-weight: 400;
     color: var(--global-color);
 }
 
-main .container .resumes-list li .post-info .company-name {
+main .container .resumes-list li .post-info .vacancy {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -241,60 +241,52 @@ main .container .resumes-list li .post-info .company-name {
     color: var(--light-text);
 }
 
-main .container .resumes-list li .post-info .company-name i {
+main .container .resumes-list li .post-info .vacancy i {
    color: var(--global-color);
 }
 
-main .container .resumes-list li .result {
+main .container .resumes-list li .option {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 0.2em;
-
-    padding: 0px 10px;
 
     width: 30%;
     height: 100%;
 }
 
-main .container .resumes-list li .result span  {
+main .container .resumes-list li .option a {
     display: flex;
-    flex-direction: row;
-    justify-content: right;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 0.3em;
 
-    width: 100%;
-}
-
-
-main .container .resumes-list li .result span i {
-    font-size: 1.5em;
-    color: var(--global-black);
-}
-
-main .container .resumes-list li .result .option-area {
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    align-items: center;
-    gap: 0.3em;
-
-    width: 100%;
-}
-
-main .container .resumes-list li .result .option-area a {
     text-decoration: none;
-    border: 1px solid var(--dark-border);
-    border-radius: 5px;
-    color: var(--light-text);
-
-    padding: 5px 15px;
 }
 
-main .container .resumes-list li .result .option-area a i {
-    font-size: 1.3em;
+main .container .resumes-list li .option .accept {
+    background: #65cc90;
+
+    padding: 10px;
+
+    width: 50%;
+    height: 100%;
+}
+
+main .container .resumes-list li .option .reject {
+    background: #cf6a6a;
+
+    padding: 10px;
+
+    width: 50%;
+    height: 100%;
+
+    border-radius: 0px 5px 5px 0px;
+}
+
+main .container .resumes-list li .option a i {
+    font-size: 1.5em;
+    color: var(--global-white);
 }
 
 
@@ -373,6 +365,7 @@ footer .container p a {
 
         transition: 0.4s;
         visibility: visible;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
 
     header .container nav.active ul {
@@ -406,7 +399,7 @@ footer .container p a {
         font-size: 1.5em;
     }
 
-    main .container .resumes-list li .result {
+    main .container .resumes-list li .option {
         width: 40%;
     }
 

@@ -5,6 +5,7 @@ import { PostRead } from "../services/Post/read"
 import { PostUpdate } from "../services/Post/update"
 import { PostDelete } from "../services/Post/delete"
 import { CompanyRead } from "../services/Company/read"
+import { CompanyPost } from "../services/Post/companyPosts"
 import { postSchema, updatePostSchema } from "../schemas/postSchema"
 
 var newErrors: string[] = []
@@ -103,7 +104,7 @@ export class PostController {
 
   async readAll(req: Request, res: Response) {
     const { option } = req.query
-      
+
     try {
       const service = new PostReadAll()
       const result = await service.execute(option)
@@ -206,6 +207,47 @@ export class PostController {
 
       req.flash("success_message", result.success_message)
       res.redirect("/company/posts/" + company_id)
+    } catch (error) {
+      console.error(error)
+      return res.status(500).send({ message: "Internal server error!" })
+    }
+  }
+
+  async CompanyPostAdjustments(req: Request, res: Response) {
+    const { company_id } = req.params
+
+    try {
+      const service = new CompanyPost()
+      const result = await service.execute(company_id)
+
+      if (result instanceof Error) {
+        return res.status(400).send({ message: result.message })
+      }
+
+      return res.render("post/settings/index.ejs", {
+         data: result
+      })
+    } catch (error) {
+      console.error(error)
+      res.status(500).send({ message: "Internal server error!" })
+    }
+  }
+
+  async showCompanyPost(req: Request, res: Response) {
+    const { post_id, company_id } = req.params
+
+    try {
+      const service = new PostRead()
+      const result = await service.execute({
+        post_id,
+        company_id
+      })
+
+      if(result instanceof Error) { return res.status(400).send({ message: result.message }) }
+
+      res.render("post/companyViewPost/index.ejs", {
+        data: result
+      })
     } catch (error) {
       console.error(error)
       return res.status(500).send({ message: "Internal server error!" })

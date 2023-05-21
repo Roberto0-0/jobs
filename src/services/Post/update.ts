@@ -50,6 +50,6 @@ export class PostUpdate {
     }
     
     await PostRepository.update(post_id, posts)
-    return { success_message: `"${posts.vacancy}" post has been updated.` }
+    return { success_message: `"${posts.vacancy}" post has been updated` }
   }
 }

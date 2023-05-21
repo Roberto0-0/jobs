@@ -140,10 +140,45 @@ main {
     height: calc(100vh - 70px);
 }
 
+main .notification {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.3em;
+    
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    
+    transform: translate(-50%, -50%);
+    
+    padding: 15px;
+    
+    width: 95vw;
+    max-width: 600px;
+    
+    animation: down 0.4s;
+    border-radius: 5px;
+    background: rgb(45, 164, 78);
+    
+    font-weight: 600;
+    font-size: 1em;
+    color: var(--global-white);
+}
+
+main .notification i {
+    font-size: 1.3em;
+}
+
+@keyframes down {
+    from { top: 0px; }
+    to { top: 100px; }
+}
+
 main .container {
     display: flex;
     flex-direction: column;
-    gap: 1em;
 
     margin: auto;
 
@@ -152,117 +187,123 @@ main .container {
     height: 100%;
 }
 
-main .container .resume-page {
-    margin: auto;
-    padding: 10px;
+main .container .resumes-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+
+    width: 100%;
+}
+
+main .container .resumes-list li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
     width: 100%;
     max-width: 500px;
+    height: auto;
     
     border: 1px solid var(--dark-border);
-    border-radius: 5px;
-    background: var(--light-secondary-background);
-
+    border-radius: 10px;
+    background-color: var(--light-secondary-background);
+    list-style: none;
 }
 
-main .container .resume-page .postInfo {
-    display: flex;
-    flex-direction: column;
+main .container .resumes-list li .post-info {
+    padding: 10px;
 
-    margin-bottom: 1em;
+    width: 70%;
+    height: 100%;
 }
 
-main .container .resume-page .postInfo .username {
-    font-family: 'Roboto', sans-serif;
-    font-size: 2em; 
-    font-weight: 500;
+main .container .resumes-list li .post-info a {
+    text-decoration: none;
+}
+
+main .container .resumes-list li .post-info .vacancy {
+    font-size: 1.5em; 
+    font-weight: 400;
     color: var(--global-color);
 }
 
-main .container .resume-page .postInfo .vacancy {
+main .container .resumes-list li .post-info .company-name {
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 0.2em;
 
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 600;
-    font-size: 1.2em;   
+    font-weight: bold;
+    font-size: 1em;
+    color: var(--light-text);
 }
 
-main .container .resume-page .vacancy i {
+main .container .resumes-list li .post-info .company-name i {
    color: var(--global-color);
 }
 
-main .container .resume-page .about {
+main .container .resumes-list li .result {
     display: flex;
     flex-direction: column;
-    
-    margin-bottom: 0.8em;
+
+    width: 30%;
+    height: 69px;
 }
 
-main .container .resume-page .about .text {
-    margin-bottom: 0.3em;
-
-    height: auto;
-    max-height: 100px;
-
-    overflow: hidden;
-
-    text-align: justify;
-    word-break: break-all;
-    line-height: 1.5em;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1em;
-}
-
-main .container .resume-page .contact {
-    margin-bottom: 0.3em;
-
-    font-weight: 500;
-}
-
-main .container .resume-page .contact-area {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4em;
-
-    margin-bottom: 1em;
-
-    width: auto;
-    height: auto;
-}
-
-main .container .resume-page .contact-area li {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2em;
-    
-    padding: 3px;
-}
-
-main .container .resume-page .contact-area li label {
-    font-size: 0.9em;
-    font-weight: 600;
-}
-
-main .container .resume-page .contact-area li .info {
+main .container .resumes-list li .result span  {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
-    gap: 0.2em;
+    gap: 0.3em;
 
     width: 100%;
+    height: 50%;
 
-    font-size: 1em;
-    font-weight: 400;
+    font-size: 0.8em;
 }
 
-main .container .resume-page .contact-area li .info i {
-    font-size: 1.1em;
+
+main .container .resumes-list li .result span i {
+    font-size: 1.5em;
+    color: var(--global-black);
 }
 
-main .container .resume-page .contact-area li .info span {
-    font-size: 0.9em;
+main .container .resumes-list li .result .option-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2em;
+    
+    width: 100%;
+    height: 100%;
+}
+
+main .container .resumes-list li .result .option-area a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    border: 1px solid var(--dark-border);
+    border-radius: 5px 0px 0px 5px;
+    color: var(--light-text);
+
+    width: 100%;
+    height: 100%;
+}
+
+main .container .resumes-list li .result .option-area a:last-child {
+    border-radius: 0px 5px 5px 0px;
+}
+
+main .container .resumes-list li .result .option-area a i {
+    font-size: 1.5em;
 }
 
 footer {
@@ -340,6 +381,7 @@ footer .container p a {
 
         transition: 0.4s;
         visibility: visible;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
 
     header .container nav.active ul {
@@ -373,12 +415,7 @@ footer .container p a {
         font-size: 1.5em;
     }
 
-    main .container .resumes-list li .option {
-        width: 40%;
-    }
-
     footer .container p {
         font-size: 0.9em;
     }
 }
-

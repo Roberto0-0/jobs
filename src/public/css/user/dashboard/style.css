@@ -148,36 +148,39 @@ header .container nav ul .menu-dropdown .submenu {
 
   display: none;
   flex-direction: column;
+  gap: 0.3em;
 
-  padding: 5px;
+  padding: 15px;
 
   width: 100px;
   height: auto;
 
   border-radius: 5px;
-  border: 1px solid var(--dark-border);
+  border: 1px solid var(--light-border);
   background: var(--light-secondary-background);
 }
 
 header .container nav ul .menu-dropdown .submenu::before {
     content: "";
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: var(--light-secondary-background);
     top: 0;
     left: 50%;
     transform-origin: 0 0;
     transform: rotate(45deg) translate(-50%, -50%);
 
+    width: 20px;
+    height: 20px;
+
+    border: var(--light-border);
+    background-color: var(--light-secondary-background);
 }
 
 header .container nav ul .menu-dropdown .submenu a {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
 
-  margin: 3px;
   padding: 0;
 
   width: 100%;
@@ -185,7 +188,7 @@ header .container nav ul .menu-dropdown .submenu a {
  
   text-decoration: none;
 
-  font-size: 0.8em;
+  font-size: 0.9em;
   color: var(--light-text);
 }
 
@@ -386,6 +389,7 @@ header .container .menu {
     
     transition: 0.4s;
     visibility: visible;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
 
   header .container nav.active ul {

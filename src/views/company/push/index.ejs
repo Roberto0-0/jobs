@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/phosphor-icons"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="/css/company/push/style.css">
     <title>Jobs</title>
 </head>
@@ -18,19 +18,19 @@
           <ul>
             <% if(user) { %>
                <li>
-                  <i class="ph-arrow-circle-left-fill"></i>
-                  <a href="/company/<%= user.id %>">back</a>
+                    <i class="ph-fill ph-key-return"></i>
+                    <a href="/company/<%= user.id %>">back</a>
                </li>
             <% } else { %>
                <li>
-                  <i class="ph-arrow-circle-left-fill"></i>
-                  <a href="/">back</a>
+                    <i class="ph-fill ph-key-return"></i>
+                    <a href="/">back</a>
                </li>
             <% } %>
           </ul>
         </nav>
         <div class="menu">
-          <i class="ph-list-fill"></i>
+            <i class="ph ph-list"></i>
         </div>
       </div>
    </header>
@@ -39,7 +39,9 @@
             <ul class="users">
                 <li>
                     <% data.map((push) => { %>
-                        <h2><%= push.user.name %></h2>
+                        <% if(push.pushed) { %>
+                            <h2><%= push.user.name %></h2>
+                        <% } %>
                     <% }) %>
                 </li>
             </ul>
