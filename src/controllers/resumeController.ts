@@ -3,6 +3,7 @@ import { PostRead } from "../services/Post/read"
 import { ResumeCreate } from "../services/Resume/create"
 import { ResumeRead } from "../services/Resume/read"
 import { UserResume } from "../services/Resume/userResumes"
+import { CompanyResume } from "../services/Resume/companyResumes"
 
 export class ResumeController {    
     async createIndex(req: Request, res: Response) {
@@ -89,7 +90,61 @@ export class ResumeController {
 
             if(result instanceof Error) { return { message: result.message } }
 
-            return res.render("user/profile/curriculum/index.ejs", {
+            return res.render("resume/userSentResumes/index.ejs", {
+                data: result
+            })
+        } catch (error) {
+            console.error(error)
+            return res.status(500).send({ message: "Internal server error." })
+        }
+    }
+
+    async userResumePost(req: Request, res: Response) {
+        const { post_id, company_id } = req.params
+
+        try {
+            const service = new PostRead()
+            const result = await service.execute({ post_id, company_id })
+
+            if(result instanceof Error) { return res.status(400).send({ message: result.message }) }
+
+            return res.render("resume/userResumePost/index.ejs", {
+                data: result
+            })
+        } catch (error) {
+            console.error(error)
+            return res.status(500).send({ message: "Internal server error." })
+        }
+    }
+
+    async companyPostResume(req: Request, res: Response) {
+        const { company_id } = req.params
+
+        try {
+            const service = new CompanyResume()
+            const result = await service.execute(company_id)
+
+            if(result instanceof Error) { return res.status(400).send({ message: result.message }) }
+
+            return res.render("resume/companyPostResume/index.ejs", {
+                data: result
+            })
+        } catch (error) {
+            console.error(error)
+            return res.status(500).send({ message: "Internal server error" })
+        }
+    }
+
+    async companyResume(req: Request, res: Response) {
+        const { resume_id } = req.params
+
+        try {
+            const service = new ResumeRead()
+            const result = await service.execute(resume_id)
+
+            if(result instanceof Error) { return res.status(400).send({ message: result.message }) }
+
+            return res.render("resume/companyResumePage/index.ejs", {
                 data: result
             })
         } catch (error) {

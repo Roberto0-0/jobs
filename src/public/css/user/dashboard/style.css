@@ -143,20 +143,33 @@ header .container nav ul .menu-dropdown button {
 
 header .container nav ul .menu-dropdown .submenu {
   position: absolute;
-  top: 100%;
-  left: 0%;
+  top: 120%;
+  left: -9%;
 
   display: none;
   flex-direction: column;
 
-  padding: 10px;
+  padding: 5px;
 
-  width: 80px;
+  width: 100px;
   height: auto;
 
   border-radius: 5px;
   border: 1px solid var(--dark-border);
   background: var(--light-secondary-background);
+}
+
+header .container nav ul .menu-dropdown .submenu::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--light-secondary-background);
+    top: 0;
+    left: 50%;
+    transform-origin: 0 0;
+    transform: rotate(45deg) translate(-50%, -50%);
+
 }
 
 header .container nav ul .menu-dropdown .submenu a {

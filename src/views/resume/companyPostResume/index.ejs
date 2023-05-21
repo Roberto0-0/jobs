@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/resume/companyResume/style.css">
+    <title>Jobs</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+          <a href="/" class="logo">Jobs</a>
+          <nav class="nav">
+            <ul>
+                <% if(user) { %>
+                    <li>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/company/<%= user.id %>">back</a>
+                    </li>
+                <% } else { %>
+                    <li>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/">back</a>
+                    </li>
+                <% } %>
+            </ul>
+          </nav>
+          <div class="menu">
+            <i class="ph-bold ph-list"></i>
+          </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <ul class="resumes-list">
+                <% data.forEach((resume) => { %>
+                    <li class="li">
+                        <div class="post-info">
+                            <a href="/company/resume/page/<%= resume.id %>">
+                                <h1 class="username"><%= resume.user.name %></h1>
+                                <h2 class="vacancy"><%= resume.post.vacancy %></h2>
+                            </a>
+                        </div>
+                        <div class="option">
+                            <a href="#" class="accept">
+                                <i class="ph-bold ph-check"></i>
+                            </a>
+                            <a href="#" class="reject">
+                                <i class="ph-bold ph-x"></i>
+                            </a>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+    </main>
+    <footer>
+    <div class="container">
+        <p>
+        &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+        </p>
+    </div>
+    </footer>
+    <script src="/js/menu/main.js"></script>
+</body>
+</html>

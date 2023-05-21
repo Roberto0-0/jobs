@@ -40,7 +40,7 @@
             <% data.map((resume) => { %>
                 <li class="li">
                     <div class="post-info">
-                        <a href="/company/resume/page">
+                        <a href="/resume/post/page/<%= resume.post.id %>/<%= resume.company_id %>">
                             <h1 class="vacancy"><%= resume.post.vacancy %></h1>
                             <h2 class="company-name">
                                 <%= resume.post.company_name %>
@@ -52,13 +52,28 @@
                         <% if(resume.option == "waiting") { %> 
                             <span>
                                 <i class="ph-light ph-clock-countdown"></i>
-                                waiting...
+                                waiting
                             </span>
-                        <% } else { %>
+                            <div class="option-area">
+                                <a href=""><i class="ph-light ph-pencil-simple"></i></a>
+                                <a href=""><i class="ph-light ph-prohibit"></i></a>
+                            </div>
+                        <% } else if(resume.option == "selected") { %>
                             <span>
                                 <i class="ph-light ph-handshake"></i>
                                 selected
                             </span>
+                            <div class="option-area">
+                                <a href=""><i class="ph-light ph-check"></i></a>
+                            </div>
+                        <% } else if(resume.option == "notSelected") { %>
+                            <span>
+                                <i class="ph ph-warning-circle"></i>
+                                not selected
+                            </span>
+                            <div class="option-area">
+                                <a href=""><i class="ph-light ph-check"></i></a>
+                            </div>
                         <% } %> 
                     </div>
                 </li>

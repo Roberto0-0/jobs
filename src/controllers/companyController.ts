@@ -2,7 +2,7 @@ import { Request, Response } from "express"
 import { CompanyCreate } from "../services/Company/create"
 import { CompanyReadAll } from "../services/Company/readAll"
 import { CompanyRead } from "../services/Company/read"
-import { LikeRead } from "../services/push/read"
+import { PushRead } from "../services/push/read"
 import { CompanyUpdate } from "../services/Company/update"
 import { CompanyDelete } from "../services/Company/delete"
 import { PostRead } from "../services/Post/read"
@@ -193,7 +193,7 @@ export class CompanyController {
     const { company_id } = req.params
   
     try {
-      const service = new LikeRead()
+      const service = new PushRead()
       const result = await service.execute(company_id)
 
       if (result instanceof Error) {
@@ -207,13 +207,5 @@ export class CompanyController {
       console.error(error)
       return res.status(500).send({ message: "Internal server error." })
     }
-  }
-
-  async resumes(req: Request, res: Response) {
-    res.render("company/resumes/index.ejs")
-  }
-
-  async pageResume(req: Request, res: Response) {
-    res.render("company/resumes/pageResume/index.ejs")
   }
 }

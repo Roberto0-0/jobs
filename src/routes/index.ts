@@ -58,8 +58,6 @@ export class Routes {
     this.router.get("/company/posts/:company_id", isAuth, new CompanyController().CompanyPostAdjustments)
     this.router.get("/company/post/:post_id/:company_id", isAuth, new CompanyController().showCompanyPost)
     this.router.get("/company/pushs/:company_id", new CompanyController().showAllCompanyPush)
-    this.router.get("/company/resumes", isAuth, new CompanyController().resumes)
-    this.router.get("/company/resume/page", isAuth, new CompanyController().pageResume)
     this.router.get("/company/:user_id", isAuth, new CompanyController().read)
     this.router.put("/company/update/:id", new CompanyController().update)
     this.router.delete("/company/delete/:id", new CompanyController().delete)
@@ -68,6 +66,7 @@ export class Routes {
   push() {
     this.router.get("/pushed/:user_id/:post_id/:company_id", new PushController().pushed)
     this.router.get("/pushed/readAll/:company_id", new PushController().read)
+    this.router.get("/company/pushes/:company_id", isAuth, new PushController().read)
   }
 
   login() {
@@ -80,6 +79,9 @@ export class Routes {
   resume() {
     this.router.get("/resume/create/:post_id/:company_id", isAuth, new ResumeController().createIndex)
     this.router.post("/resume/create/:user_id/:post_id/:company_id", new ResumeController().create)
-    this.router.get("/profile/resumes/:user_id", new ResumeController().userResume)
+    this.router.get("/profile/resumes/:user_id", isAuth, new ResumeController().userResume)
+    this.router.get("/resume/post/page/:post_id/:company_id", isAuth, new ResumeController().userResumePost)
+    this.router.get("/company/resume/:company_id", isAuth, new ResumeController().companyPostResume)
+    this.router.get("/company/resume/page/:resume_id", isAuth, new ResumeController().companyResume)
   }
 }
