@@ -32,10 +32,12 @@ export class ResumeCreate {
         const user = await UserRepository.findOneBy({ id: user_id })
         const post = await PostRepository.findOneBy({ id: post_id })
         const company = await CompanyRepository.findOneBy({ id: company_id })
+        const resume = await ResumeRepository.findOne({ where: { phone: phone } })
 
         if(!user) { return new Error("User not found.") }
         if(!post) { return new Error("Post not found.") }
         if(!company) { return new Error("Company not found.") }
+        if(resume) { return new Error("Phone already exist.") }
 
         const newResume = ResumeRepository.create({
             fullName,
@@ -53,6 +55,6 @@ export class ResumeCreate {
         })
         await ResumeRepository.save(newResume)
 
-        return newResume
+        return { success_message: `Resume has been sent` }
     }
 }

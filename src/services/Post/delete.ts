@@ -15,6 +15,6 @@ export class PostDelete {
     if (!company) { return new Error("Company not found.") }
 
     await PostRepository.delete(post.id)
-    return { success_message: `"${post.vancancy}" post has been deleted.` }
+    return { success_message: `"${post.vacancy}" post has been deleted` }
   }
 }

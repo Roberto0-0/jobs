@@ -145,7 +145,7 @@ main {
 }
 
 main .notification {
-    display: none;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -405,6 +405,7 @@ footer .container a {
 
         transition: 0.4s;
         visibility: visible;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
 
     header .container nav.active ul {

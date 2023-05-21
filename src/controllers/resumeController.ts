@@ -4,6 +4,7 @@ import { ResumeCreate } from "../services/Resume/create"
 import { ResumeRead } from "../services/Resume/read"
 import { UserResume } from "../services/Resume/userResumes"
 import { CompanyResume } from "../services/Resume/companyResumes"
+import { ResumeDelete } from "../services/Resume/delete"
 
 export class ResumeController {    
     async createIndex(req: Request, res: Response) {
@@ -56,6 +57,7 @@ export class ResumeController {
 
             if(result instanceof Error) { return res.status(400).send({ message: result.message }) }
 
+            req.flash("success_message", result.success_message)
             return res.redirect("/resume/create/" + post_id + "/" + company_id)
         } catch (error) {
             console.error(error)
@@ -78,6 +80,23 @@ export class ResumeController {
         } catch (error) {
             console.error(error)
             return res.status(500).send({ message: "Internal server error." })
+        }
+    }
+
+    async delete(req: Request, res: Response) {
+        const { user_id, resume_id } = req.params
+
+        try {
+            const service = new ResumeDelete()
+            const result = await service.execute({ user_id, resume_id })
+
+            if(result instanceof Error) { return res.status(400).send({ message: result.message }) }
+
+            req.flash("success_message", result.success_message)
+            return res.redirect("/profile/resumes/" + user_id)
+        } catch (error) {
+            console.error(error)
+            return res.status(500).send({ message: "Internal server errror." })
         }
     }
 

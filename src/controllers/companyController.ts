@@ -5,9 +5,7 @@ import { CompanyRead } from "../services/Company/read"
 import { PushRead } from "../services/push/read"
 import { CompanyUpdate } from "../services/Company/update"
 import { CompanyDelete } from "../services/Company/delete"
-import { PostRead } from "../services/Post/read"
 import { companySchema } from "../schemas/companySchema"
-import { CompanyPosts } from "../services/Post/companyPosts"
 
 var newErrors: string[] = []
 
@@ -145,47 +143,6 @@ export class CompanyController {
     } catch (error) {
         console.error(error)
         return res.status(500).send({ message: "Internal server error." })
-    }
-  }
-  
-  async CompanyPostAdjustments(req: Request, res: Response) {
-    const { company_id } = req.params
-
-    try {
-      const service = new CompanyPosts()
-      const result = await service.execute(company_id)
-
-      if (result instanceof Error) {
-        return res.status(400).send({ message: result.message })
-      }
-
-      return res.render("company/postsSettings/index.ejs", {
-         data: result
-      })
-    } catch (error) {
-      console.error(error)
-      res.status(500).send({ message: "Internal server error!" })
-    }
-  }
-
-  async showCompanyPost(req: Request, res: Response) {
-    const { post_id, company_id } = req.params
-
-    try {
-      const service = new PostRead()
-      const result = await service.execute({
-        post_id,
-        company_id
-      })
-
-      if(result instanceof Error) { return res.status(400).send({ message: result.message }) }
-
-      res.render("company/postsSettings/post/index.ejs", {
-        data: result
-      })
-    } catch (error) {
-      console.error(error)
-      return res.status(500).send({ message: "Internal server error!" })
     }
   }
   

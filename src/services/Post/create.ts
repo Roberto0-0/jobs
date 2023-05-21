@@ -35,6 +35,6 @@ export class PostCreate {
       company_id
     })
     await PostRepository.save(newPost)
-    return { success_message: `"${newPost.vacancy}" post was created.` }
+    return { success_message: `"${newPost.vacancy}" post was created` }
   }
 }

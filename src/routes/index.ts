@@ -49,14 +49,14 @@ export class Routes {
     this.router.get("/post/update/:post_id/:company_id", isAuth, new PostController().updateIndex)
     this.router.post("/post/update/:post_id/:company_id", new PostController().update)
     this.router.get("/post/delete/:post_id/:company_id", new PostController().delete)
+    this.router.get("/company/posts/:company_id", isAuth, new PostController().CompanyPostAdjustments)
+    this.router.get("/company/post/:post_id/:company_id", isAuth, new PostController().showCompanyPost)
   }
 
   company() {
     this.router.get("/company/registration", isAuth, new CompanyController().createIndex)
     this.router.post("/company/registration/:user_id", new CompanyController().create)
     this.router.get("/company/showAll", new CompanyController().readAll)
-    this.router.get("/company/posts/:company_id", isAuth, new CompanyController().CompanyPostAdjustments)
-    this.router.get("/company/post/:post_id/:company_id", isAuth, new CompanyController().showCompanyPost)
     this.router.get("/company/pushs/:company_id", new CompanyController().showAllCompanyPush)
     this.router.get("/company/:user_id", isAuth, new CompanyController().read)
     this.router.put("/company/update/:id", new CompanyController().update)
@@ -83,5 +83,6 @@ export class Routes {
     this.router.get("/resume/post/page/:post_id/:company_id", isAuth, new ResumeController().userResumePost)
     this.router.get("/company/resume/:company_id", isAuth, new ResumeController().companyPostResume)
     this.router.get("/company/resume/page/:resume_id", isAuth, new ResumeController().companyResume)
+    this.router.get("/resume/delete/:user_id/:resume_id", isAuth, new ResumeController().delete)
   }
 }
