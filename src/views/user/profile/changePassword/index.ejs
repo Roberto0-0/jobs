@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="/css/user/profile/changePassword/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
     <title>Jobs</title>
 </head>
 <body>
@@ -36,11 +37,8 @@
     </header>
     <main>
         <% if(success_message.length > 0) { %>
-            <div class="success_message"><%= success_message %></div>
-         <% } %>
-         <% for(var i=0;i < error_message.length;i++) { %>
-            <div class="error_message"><%= error_message[i] %></div>
-         <% } %>
+            <div class="notification"><span class="message"><%= success_message %></span></div>
+        <% } %>
         <div class="container">
             <% if(user) { %>
                 <form action="/profile/settings/password/<%= user.id %>" method="POST">

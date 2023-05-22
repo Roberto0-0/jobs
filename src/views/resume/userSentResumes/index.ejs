@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="/css/resume/userSentResume/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
     <title>Jobs</title>
 </head>
 <body>
@@ -36,7 +37,7 @@
     </header>
     <main>
         <% if(success_message.length > 0) { %>
-            <div class="notification"><span class="message"><%= success_message %></span><i class="ph-bold ph-checks"></i></div>
+            <div class="notification"><span class="message"><%= success_message %></span></div>
         <% } %>
         <div class="container">
             <ul class="resumes-list">
@@ -52,30 +53,39 @@
                             </a>
                         </div>
                         <div class="result">
-                            <% if(resume.option == "waiting") { %> 
-                                <span>
+                            <% if(resume.option == "waiting") { %>
+                                <div class="resume-status">
                                     <i class="ph-light ph-clock-countdown"></i>
-                                    waiting
-                                </span>
+                                    <span>waiting</span>
+                                </div>
                                 <div class="option-area">
-                                    <a href=""><i class="ph-light ph-pencil-simple"></i></a>
-                                    <a href="/resume/delete/<%= user.id %>/<%= resume.id %>"><i class="ph-light ph-prohibit"></i></a>
+                                    <div class="dots"><i class="ph-fill ph-dots-three-outline-vertical"></i></div>
+                                    <ul class="submenu">
+                                        <li><a href="">edit</a></li>
+                                        <li><a href="/resume/delete/<%= user.id %>/<%= resume.id %>">cancel</a></li>
+                                    </ul>
                                 </div>
                             <% } else if(resume.option == "selected") { %>
-                                <span>
+                                <div class="resume-status">
                                     <i class="ph-light ph-handshake"></i>
-                                    selected
-                                </span>
+                                    <span>selected</span>
+                                </div>
                                 <div class="option-area">
-                                    <a href=""><i class="ph-light ph-check"></i></a>
+                                    <div class="dots"><i class="ph-fill ph-dots-three-outline-vertical"></i></div>
+                                    <ul class="submenu">
+                                        <li><a href="/resume/delete/<%= user.id %>/<%= resume.id %>">done</a></li>
+                                    </ul>
                                 </div>
                             <% } else if(resume.option == "notSelected") { %>
-                                <span>
+                                <div class="resume-status">
                                     <i class="ph ph-warning-circle"></i>
-                                    not selected
-                                </span>
+                                    <span>not selected</span>
+                                </div>
                                 <div class="option-area">
-                                    <a href=""><i class="ph-light ph-check"></i></a>
+                                    <div class="dots"><i class="ph-fill ph-dots-three-outline-vertical"></i></div>
+                                    <ul class="submenu">
+                                        <li><a href="/resume/delete/<%= user.id %>/<%= resume.id %>">done</a></li>
+                                    </ul>
                                 </div>
                             <% } %> 
                         </div>

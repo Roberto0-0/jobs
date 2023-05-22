@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
     <link rel="stylesheet" href="/css/company/postsSettings/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
     <title>Jobs</title>
 </head>
 <body>
@@ -38,10 +39,7 @@
    </header>
    <main>
       <% if(success_message.length > 0) { %>
-          <div class="notification">
-              <span class="message"><%= success_message %></span>
-              <i class="ph-bold ph-checks"></i>
-          </div>
+          <div class="notification"><span class="message"><%= success_message %></span></div>
       <% } %>
       <div class="container">
          <ul class="jobs-menu">

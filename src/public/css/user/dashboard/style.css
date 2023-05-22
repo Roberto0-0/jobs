@@ -209,42 +209,6 @@ main {
   height: calc(100vh - 70px);
 }
 
-main .notification {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.3em;
-  
-  position: absolute;
-  top: 100px;
-  left: 50%;
-  
-  transform: translate(-50%, -50%);
-  
-  padding: 15px;
-  
-  width: 95vw;
-  max-width: 600px;
-  
-  animation: down 0.4s;
-  border-radius: 5px;
-  background: rgb(45, 164, 78);
-  
-  font-weight: 600;
-  font-size: 1em;
-  color: var(--global-white);
-}
-
-main .notification i {
-  font-size: 1.3em;
-}
-
-@keyframes down {
-  from { top: 0px; }
-  to { top: 100px; }
-}
-
 main .container {
   display: flex;
   flex-direction: row;
