@@ -140,42 +140,6 @@ main {
     height: calc(100vh - 70px);
 }
 
-main .notification {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.3em;
-    
-    position: absolute;
-    top: 100px;
-    left: 50%;
-    
-    transform: translate(-50%, -50%);
-    
-    padding: 15px;
-    
-    width: 95vw;
-    max-width: 600px;
-    
-    animation: down 0.4s;
-    border-radius: 5px;
-    background: rgb(45, 164, 78);
-    
-    font-weight: 600;
-    font-size: 1em;
-    color: var(--global-white);
-}
-
-main .notification i {
-    font-size: 1.3em;
-}
-
-@keyframes down {
-    from { top: 0px; }
-    to { top: 100px; }
-}
-
 main .container {
     display: flex;
     flex-direction: column;
@@ -202,6 +166,8 @@ main .container .resumes-list li {
     justify-content: space-between;
     align-items: center;
 
+    position: relative;
+
     width: 100%;
     max-width: 500px;
     height: auto;
@@ -215,7 +181,7 @@ main .container .resumes-list li {
 main .container .resumes-list li .post-info {
     padding: 10px;
 
-    width: 70%;
+    width: 50%;
     height: 100%;
 }
 
@@ -247,27 +213,33 @@ main .container .resumes-list li .post-info .company-name i {
 
 main .container .resumes-list li .result {
     display: flex;
-    flex-direction: column;
+    flex-direction: flex;
+    justify-content: right;
 
-    width: 30%;
+    width: 50%;
     height: 69px;
 }
 
-main .container .resumes-list li .result span  {
+main .container .resumes-list li .result .resume-status {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     gap: 0.3em;
 
-    width: 100%;
-    height: 50%;
+    position: absolute;
+    left: 30%;
 
-    font-size: 0.8em;
+    width: 60%;
+    height: 100%;
+}
+
+main .container .resumes-list li .result  .resume-status span  {
+    font-size: 1em;
 }
 
 
-main .container .resumes-list li .result span i {
+main .container .resumes-list li .result .resume-status i {
     font-size: 1.5em;
     color: var(--global-black);
 }
@@ -278,32 +250,65 @@ main .container .resumes-list li .result .option-area {
     justify-content: center;
     align-items: center;
     gap: 0.2em;
+
+    position: relative;
     
-    width: 100%;
+    width: 40%;
     height: 100%;
 }
 
-main .container .resumes-list li .result .option-area a {
-    display: flex;
+main .container .resumes-list li .result .option-area .dots {
+    position: absolute;
+    top: 9%;
+    left: 83%;
+
+    cursor: pointer;
+    color: var(--light-text);
+}
+
+main .container .resumes-list li .result .option-area .submenu {
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    text-decoration: none;
+    position: relative;
+    top: 30%;
+    left: 1%;
+
+    padding: 8px;
+
+    width: 100px;
+    height: auto;
+
     border: 1px solid var(--dark-border);
-    border-radius: 5px 0px 0px 5px;
-    color: var(--light-text);
+    border-radius: 5px;
+    background: var(--light-secondary-background);
+}
+
+main .container .resumes-list li .result .option-area .submenu li {
+    width: 100%;
+
+    border: none;
+}
+
+main .container .resumes-list li .result .option-area .submenu li a {
+    display: flex;
 
     width: 100%;
-    height: 100%;
+
+    text-decoration: none;
+    color: var(--light-text);
 }
 
-main .container .resumes-list li .result .option-area a:last-child {
-    border-radius: 0px 5px 5px 0px;
+main .container .resumes-list li .result .option-area .submenu li a:hover {
+    background: var(--dark-border);
 }
 
-main .container .resumes-list li .result .option-area a i {
-    font-size: 1.5em;
+main .container .resumes-list li .result .option-area .submenu.active {
+    display: flex;
+
+    z-index: 1000;
 }
 
 footer {
@@ -413,6 +418,11 @@ footer .container p a {
         display: block;
         
         font-size: 1.5em;
+    }
+
+    main .container .resumes-list li .result .option-area .dots {
+        top: 9%;
+        left: 77%;
     }
 
     footer .container p {
