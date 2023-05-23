@@ -198,38 +198,6 @@ main .container ul li span {
     font-size: 0.9em;
 }
 
-footer {
-    width: 100%;
-    height: 50px;
-
-    background: var(--global-header-footer);
-}
-
-footer .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    margin: 0 auto;
-
-    width: 95vw;
-    max-width: 1279px;
-    height: 100%;
-
-    font-family: 'Roboto', sans-serif;
-    color: var(--dark-text);
-}
-
-footer .container p {
-    text-align: center;
-    font-size: 1em;
-}
-
-footer .container a {
-    color: var(--dark-text);
-}
-
 @media(max-width: 600px) {
     header .container .logo {
         font-size: 1.5em;
@@ -315,9 +283,5 @@ footer .container a {
     
         font-weight: bold;
         color: var(--light-text);
-    }
-
-    footer .container p {
-        font-size: 0.9em;
     }
 }

@@ -311,36 +311,6 @@ main .container .resumes-list li .result .option-area .submenu.active {
     z-index: 1000;
 }
 
-footer {
-    width: 100%;
-    height: 50px;
-
-    background: var(--global-header-footer);
-}
-
-footer .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    margin: 0 auto;
-
-    width: 95vw;
-    max-width: 1279px;
-    height: 100%;
-}
-
-footer .container p {
-    text-align: center;
-    font-size: 1em;
-    color: var(--dark-text);
-}
-
-footer .container p a {
-    color: var(--dark-text);
-}
-
 @media(max-width: 600px) {
     header .container .logo {
         font-size: 1.5em;
@@ -387,6 +357,7 @@ footer .container p a {
         transition: 0.4s;
         visibility: visible;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        z-index: 1000;
     }
 
     header .container nav.active ul {
@@ -423,9 +394,5 @@ footer .container p a {
     main .container .resumes-list li .result .option-area .dots {
         top: 9%;
         left: 77%;
-    }
-
-    footer .container p {
-        font-size: 0.9em;
     }
 }
