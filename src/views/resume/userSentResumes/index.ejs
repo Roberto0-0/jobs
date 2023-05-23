@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/resume/userSentResume/style.css">
     <link rel="stylesheet" href="/css/notification/style.css">
     <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColor/style.css">
     <title>Jobs</title>
 </head>
 <body>
@@ -62,8 +63,14 @@
                                 <div class="option-area">
                                     <div class="dots"><i class="ph-fill ph-dots-three-outline-vertical"></i></div>
                                     <ul class="submenu">
-                                        <li><a href="">edit</a></li>
-                                        <li><a href="/resume/delete/<%= user.id %>/<%= resume.id %>">cancel</a></li>
+                                        <li>
+                                            <i class="ph-light ph-pencil-line"></i>
+                                            <a href="">edit</a>
+                                        </li>
+                                        <li>
+                                            <i class="ph-light ph-prohibit"></i>
+                                            <a href="/resume/delete/<%= user.id %>/<%= resume.id %>">cancel</a>
+                                        </li>
                                     </ul>
                                 </div>
                             <% } else if(resume.option == "selected") { %>
@@ -74,7 +81,10 @@
                                 <div class="option-area">
                                     <div class="dots"><i class="ph-fill ph-dots-three-outline-vertical"></i></div>
                                     <ul class="submenu">
-                                        <li><a href="/resume/delete/<%= user.id %>/<%= resume.id %>">done</a></li>
+                                        <li>
+                                            <i class="ph-light ph-check-circle"></i>
+                                            <a href="/resume/delete/<%= user.id %>/<%= resume.id %>">done</a>
+                                        </li>
                                     </ul>
                                 </div>
                             <% } else if(resume.option == "notSelected") { %>

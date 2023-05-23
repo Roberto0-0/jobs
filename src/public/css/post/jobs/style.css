@@ -4,24 +4,6 @@
     box-sizing: border-box;
 }
 
-:root {
-    --global-color: #147CB7;
-    --global-hover-color: #178bcf;
-    --global-header-footer: #161B22;
-    --global-white: #fff;
-    --global-black: #000;
-
-    --light-primary-background: #fff;
-    --light-secondary-background: #F6F8FA;
-    --light-text: #413f3f;
-    --light-border: #30363D;
-    
-    --dark-primary-background: #0D1117;
-    --dark-secondary-background: #010409;
-    --dark-text: #CAD1D9;
-    --dark-border: #D0D7DE;
-}
-
 
 body, html {
     -webkit-tap-highlight-color: transparent;

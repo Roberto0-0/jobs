@@ -4,29 +4,6 @@
     box-sizing: border-box;
 }
 
-:root {
-    --global-color: #147CB7;
-    --global-hover-color: #178bcf;
-    --global-header-footer: #161B22;
-    --global-white: #fff;
-    --global-black: #000;
-
-    --light-primary-background: #fff;
-    --light-secondary-background: #F6F8FA;
-    --light-text: #413f3f;
-    --light-border: #30363D;
-    
-    --dark-primary-background: #0D1117;
-    --dark-secondary-background: #010409;
-    --dark-text: #CAD1D9;
-    --dark-border: #D0D7DE;
-
-    --background-message-success: #76e7a5;
-    --background-message-error: #e77676;
-    --text-message-success: #02703d;
-    --text-message-error: #700202;
-}
-
 body, html {
     -webkit-tap-highlight-color: transparent;
     display: flex;
@@ -79,6 +56,20 @@ header .container .logo {
 
     font-family: 'Chango', cursive;
     font-size: 2em;
+    color: var(--global-white);
+}
+
+header .container .nav-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+}
+
+header .container .change-color {
+    cursor: pointer;
+
+    font-size: 1.2em;
     color: var(--global-white);
 }
 
@@ -144,7 +135,7 @@ main .container {
     max-width: 400px;
 }
 
-main .container .register {
+main .container .logo-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -248,18 +239,15 @@ main .container form button:hover {
     background: var(--global-hover-color);
 }
 
-main .container .company p, a {
+main .container .company {
     padding: 20px 0px;
 
     width: 100%;
     height: auto;
-
-    color: var(--light-text);
 }
 
 main .container .company p {
     text-align: center;
-    font-family: 'Roboto', sans-serif;
     font-size: 1em;
 }
 
@@ -286,6 +274,10 @@ main .container form .input .error_message .message {
 @media(max-width: 600px) {
     header .container .logo {
         font-size: 1.5em;
+    }
+
+    header .container .nav-area {
+        margin-right: 60px;
     }
 
     header .container nav {

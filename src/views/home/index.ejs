@@ -9,28 +9,35 @@
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="/css/home/style.css">
   <link rel="stylesheet" href="/css/footer/style.css">
+  <link rel="stylesheet" href="/css/rootColor/style.css">
+  <link rel="stylesheet" href="/css/darkTheme/style.css">
   <title>Jobs</title>
 </head>
 <body>
   <header>
     <div class="container">
       <a href="/" class="logo">Jobs</a>
-      <nav class="nav">
-        <ul>
-          <li>
-            <i class="ph-fill ph-house"></i>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <i class="ph-fill ph-info"></i>
-            <a href="/about">about</a>
-          </li>
-          <li class="login-button">
-            <i class="ph-fill ph-sign-in"></i>
-            <a href="/login">sign in</a>
-          </li>
-        </ul>
-      </nav>
+      <div class="nav-area">
+        <div class="change-color" id="moon">
+            <i class="ph ph-moon"></i>
+          </div>
+          <nav class="nav">
+            <ul>
+              <li>
+                <i class="ph-fill ph-house"></i>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <i class="ph-fill ph-info"></i>
+                <a href="/about">about</a>
+              </li>
+              <li class="login-button">
+                <i class="ph-fill ph-sign-in"></i>
+                <a href="/login">sign in</a>
+              </li>
+            </ul>
+          </nav>
+      </div>
       <div class="menu">
         <i class="ph-bold ph-list"></i>
       </div>
@@ -56,5 +63,6 @@
     </div>
   </footer>
   <script src="/js/menu/main.js"></script>
+  <script src="/js/themes/main.js"></script>
 </body>
 </html>
