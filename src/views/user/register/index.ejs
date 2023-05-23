@@ -8,20 +8,27 @@
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="/css/user/register/style.css">
   <link rel="stylesheet" href="/css/footer/style.css">
+  <link rel="stylesheet" href="/css/rootColor/style.css">
+  <link rel="stylesheet" href="/css/darkTheme/style.css">
   <title>Jobs</title>
 </head>
 <body>
   <header>
     <div class="container">
       <a href="/" class="logo">Jobs</a>
-      <nav class="nav">
-        <ul>
-          <li>
-            <i class="ph-fill ph-sign-in"></i>
-            <a href="/login">login</a>
-          </li>
-        </ul>
-      </nav>
+      <div class="nav-area">
+        <div class="change-color" id="moon">
+            <i class="ph ph-moon"></i>
+          </div>
+          <nav class="nav">
+            <ul>
+              <li>
+                <i class="ph-fill ph-sign-in"></i>
+                <a href="/login">login</a>
+              </li>
+            </ul>
+          </nav>
+      </div>
       <div class="menu">
         <i class="ph-bold ph-list"></i>
       </div>
@@ -29,7 +36,7 @@
   </header>
   <main>
     <div class="container">
-      <div class="register">
+      <div class="logo-form">
         <h2>Register</h2>
       </div>
       <form action="/user/register" method="POST">
@@ -113,5 +120,6 @@
   </footer>
   <script src="/js/user/register/main.js"></script>
   <script src="/js/menu/main.js"></script>
+  <script src="/js/themes/main.js"></script>
 </body>
 </html>

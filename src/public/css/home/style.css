@@ -4,24 +4,6 @@
   box-sizing: border-box;
 }
 
-:root {
-  --global-color: #147CB7;
-  --global-hover-color: #178bcf;
-  --global-header-footer: #161B22;
-  --global-white: #fff;
-  --global-black: #000;
-
-  --light-primary-background: #fff;
-  --light-secondary-background: #F6F8FA;
-  --light-text: #413f3f;
-  --light-border: #30363D;
-  
-  --dark-primary-background: #0D1117;
-  --dark-secondary-background: #010409;
-  --dark-text: #CAD1D9;
-  --dark-border: #D0D7DE;
-}
-
 body, html {
   -webkit-tap-highlight-color: transparent;
   display: flex;
@@ -52,7 +34,7 @@ header .container {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  
+
   margin: 0 auto;
   padding: 5px 0px;
 
@@ -79,6 +61,20 @@ header .container .logo {
   font-family: 'Chango', cursive;
   font-size: 2em;
   color: var(--global-white);
+}
+
+header .container .nav-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+}
+
+header .container .change-color {
+    cursor: pointer;
+
+    font-size: 1.2em;
+    color: var(--global-white);
 }
 
 header .container nav {
@@ -214,6 +210,10 @@ main .container .secondBlock img {
     font-size: 1.5em;
   }
 
+  header .container .nav-area {
+    margin-right: 60px;
+  }
+
   header .container nav {
     position: absolute;
     top: 70px;
@@ -288,7 +288,7 @@ main .container .secondBlock img {
     display: flex;
 
     font-size: 1.5em;
-    color: var(--white);
+    color: var(--light-text);
   }
 
   header .container nav.active ul li a {
@@ -298,7 +298,7 @@ main .container .secondBlock img {
     
     font-size: 1.2em;
     font-weight: bold;
-    color: var(--white);
+    color: var(--light-text);
   }
 
   header .container nav.active ul .login-button {

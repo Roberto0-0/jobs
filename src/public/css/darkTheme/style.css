@@ -1,0 +1,42 @@
+body.active {
+    background: var(--dark-secondary-background);
+    color: var(--dark-text);
+    border-color: var(--light-border);
+}
+
+body.active a {
+    color: var(--dark-text);
+    border-color: var(--light-border);
+}
+
+body.active main .container .logo-form {
+    border-bottom: 2px solid var(--dark-border);
+}
+
+body.active main .container form .input input {
+    background-color: var(--dark-primary-background);
+    border-color: var(--light-border);
+} 
+
+body.active main .container form .input .subInput {
+    background-color: var(--dark-primary-background);
+    border-color: var(--light-border);
+}
+
+@media (max-width: 600px) {
+    body.active header .container nav {
+        background: var(--dark-primary-background);
+    }
+
+    body.active header .container .nav.active ul li i {
+        color: var(--dark-border);
+    }
+
+    body.active header .container nav.active ul li a {
+        color: var(--dark-text);
+    }
+    
+    body.active header .container nav.active ul .login-button {
+        color: var(--dark-text);
+    }
+}

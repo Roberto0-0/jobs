@@ -4,24 +4,6 @@
     box-sizing: border-box;
 }
 
-:root {
-    --global-color: #147CB7;
-    --global-hover-color: #178bcf;
-    --global-header-footer: #161B22;
-    --global-white: #fff;
-    --global-black: #000;
-
-    --light-primary-background: #fff;
-    --light-secondary-background: #F6F8FA;
-    --light-text: #413f3f;
-    --light-border: #30363D;
-    
-    --dark-primary-background: #0D1117;
-    --dark-secondary-background: #010409;
-    --dark-text: #CAD1D9;
-    --dark-border: #D0D7DE;
-}
-
 body, html {
     -webkit-tap-highlight-color: transparent;
     display: flex;
@@ -273,13 +255,14 @@ main .container .resumes-list li .result .option-area .submenu {
     align-items: center;
 
     position: relative;
-    top: 30%;
+    top: 34%;
     left: 1%;
 
     padding: 8px;
 
     width: 100px;
-    height: auto;
+    min-width: 100px;
+    height: 65px;
 
     border: 1px solid var(--dark-border);
     border-radius: 5px;
@@ -287,9 +270,21 @@ main .container .resumes-list li .result .option-area .submenu {
 }
 
 main .container .resumes-list li .result .option-area .submenu li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+
+    padding: 3px;
+
     width: 100%;
 
     border: none;
+    border-radius: 0;
+}
+
+main .container .resumes-list li .result .option-area .submenu li i {
+    font-size: 1.1em;
 }
 
 main .container .resumes-list li .result .option-area .submenu li a {
@@ -301,7 +296,7 @@ main .container .resumes-list li .result .option-area .submenu li a {
     color: var(--light-text);
 }
 
-main .container .resumes-list li .result .option-area .submenu li a:hover {
+main .container .resumes-list li .result .option-area .submenu li:hover {
     background: var(--dark-border);
 }
 
@@ -394,5 +389,9 @@ main .container .resumes-list li .result .option-area .submenu.active {
     main .container .resumes-list li .result .option-area .dots {
         top: 9%;
         left: 77%;
+    }
+
+    main .container .resumes-list li .result .option-area .submenu {
+        left: -20%;
     }
 }
