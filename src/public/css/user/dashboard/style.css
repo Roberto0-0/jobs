@@ -200,6 +200,10 @@ header .container nav ul .mobile-option {
   display: none;
 }
 
+header .container .menu {
+  display: none;
+}
+
 main {
   flex: 1;
 
@@ -269,43 +273,6 @@ main .container .secondBlock {
 
 main .container .secondBlock img {
   width: 100%;
-}
-
-footer {
-  width: 100%;
-  height: 50px;
-
-  background: var(--global-header-footer);
-}
-
-footer .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  margin: 0 auto;
-
-  width: 90%;
-  max-width: 1279px;
-  min-width: 300px;
-  height: 100%;
-
-  font-family: 'Roboto', sans-serif;
-}
-
-footer .container p {
-  text-align: center;
-  font-size: 1em;
-  color: var(--dark-text);
-}
-
-footer .container p a {
-  color: var(--dark-text);
-}
-
-header .container .menu {
-  display: none;
 }
 
 @media(max-width: 600px) {
@@ -432,11 +399,11 @@ header .container .menu {
   }
 
   main .container .firstBlock h2 {
-    font-size: 2.5em;
+    font-size: 2.6em;
   }
 
   main .container .firstBlock h3 {
-    font-size: 1.2em;
+    font-size: 1.3em;
   }
 
   main .container .firstBlock .jobs {
@@ -451,9 +418,5 @@ header .container .menu {
   main .container .secondBlock img {
     width: 100%;
     height: 100%;
-  }
-
-  footer .container p {
-    font-size: 0.9em;
   }
 }
