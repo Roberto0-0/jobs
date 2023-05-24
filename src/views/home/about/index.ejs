@@ -6,25 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/phosphor-icons"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="/css/home/about/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColor/style.css">
+    <link rel="stylesheet" href="/css/darkTheme/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
     <title>Jobs</title>
 </head>
 <body>
     <header>
         <div class="container">
           <a href="" class="logo">Jobs</a>
-          <nav class="nav">
-            <ul>
-                <li>
-                    <i class="ph-fill ph-arrow-circle-left"></i>
-                    <a href="/">back</a>
-                </li>
-            </ul>
-          </nav>
-          <div class="menu">
-            <i class="ph-list-fill"></i>
-          </div>
+            <div class="nav-area">
+                <div class="change-color" id="moon">
+                    <i style="display: none;" class="ph ph-moon"></i>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li>
+                            <i class="ph-fill ph-key-return"></i>
+                            <a href="/">back</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+          <div class="menu"><i class="ph-bold ph-list"></i></div>
         </div>
     </header>
     <main>
@@ -70,5 +78,6 @@
         </div>
       </footer>
       <script src="/js/menu/main.js"></script>
+      <script src="/js/themes/main.js"></script>
 </body>
 </html>

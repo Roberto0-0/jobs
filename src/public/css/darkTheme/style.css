@@ -167,22 +167,34 @@ body.active main .container .resumes-list li .result .option-area .submenu a {
     color: var(--dark-text);
 }
 
+body.active main .container .firstBlock .companyStatus li a .illustration {
+    background: #99ddff;
+}
+
+body.active main .container .jobs-menu li .settings .update {
+    background: #51a875;
+}
+
+body.active main .container .jobs-menu li .settings .delete {
+    background: #af4e4e;
+}
+
 body.active footer {
     background: var(--dark-header-footer);
 }
 
 @media (max-width: 600px) {
     body.active header .container nav {
-        border-color: var(--dark-border);
+        border-color: var(--light-border);
         background: var(--dark-secondary-background);
     }
 
     body.active header .container nav.active li {
-        border-bottom: 1px solid var(--dark-border);
+        border-bottom: 1px solid var(--light-border);
     }
 
     body.active header .container .nav.active ul li:last-child {
-        border-bottom: 1px solid var(--dark-border);
+        border-bottom: 1px solid var(--light-border);
       }
 
     body.active header .container nav.active ul li i {
