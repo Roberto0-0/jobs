@@ -2,7 +2,7 @@ footer {
   width: 100%;
   height: 50px;
 
-  background: var(--global-header-footer);
+  background: var(--light-header-footer);
 }
 
 footer .container {

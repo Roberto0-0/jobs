@@ -7,16 +7,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
-    <link rel="stylesheet" href="/css/company/postsSettings/style.css">
+    <link rel="stylesheet" href="/css/post/settings/style.css">
     <link rel="stylesheet" href="/css/notification/style.css">
     <link rel="stylesheet" href="/css/footer/style.css">
     <link rel="stylesheet" href="/css/rootColor/style.css">
+    <link rel="stylesheet" href="/css/darkTheme/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
     <title>Jobs</title>
 </head>
 <body>
    <header>
       <div class="container">
         <a href="" class="logo">Jobs</a>
+        <div class="nav-area">
+            <div style="display: none;" class="change-color" id="moon">
+                <i class="ph ph-moon"></i>
+              </div>
+        </div>
         <nav class="nav">
           <ul>
             <% if(user) { %>
@@ -78,8 +85,8 @@
         </p>
       </div>
     </footer>
-   
    <script src="/js/company/postsSettings/main.js"></script>
    <script src="/js/menu/main.js"></script>
+   <script src="/js/themes/main.js"></script>
 </body>
 </html>

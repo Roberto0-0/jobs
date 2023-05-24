@@ -18,7 +18,7 @@ main .container {
     height: 100%;
 }
 
-main .container .resumes-list {
+main .container .jobs-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +27,7 @@ main .container .resumes-list {
     width: 100%;
 }
 
-main .container .resumes-list li {
+main .container .jobs-menu li {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -43,24 +43,24 @@ main .container .resumes-list li {
     list-style: none;
 }
 
-main .container .resumes-list li .post-info {
+main .container .jobs-menu li .postInfo {
     padding: 10px;
 
     width: 60%;
     height: 100%;
 }
 
-main .container .resumes-list li .post-info a {
+main .container .jobs-menu li .postInfo a {
     text-decoration: none;
 }
 
-main .container .resumes-list li .post-info .username {
+main .container .jobs-menu li .postInfo h1 {
     font-size: 1.5em; 
     font-weight: 400;
     color: var(--global-color);
 }
 
-main .container .resumes-list li .post-info .postVacancy {
+main .container .jobs-menu li .postInfo .company-name {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -72,11 +72,11 @@ main .container .resumes-list li .post-info .postVacancy {
     color: var(--light-text);
 }
 
-main .container .resumes-list li .post-info .postVacancy i {
+main .container .jobs-menu li .postInfo .company-name i {
    color: var(--global-color);
 }
 
-main .container .resumes-list li .option {
+main .container .jobs-menu li .settings {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -86,7 +86,7 @@ main .container .resumes-list li .option {
     height: 100%;
 }
 
-main .container .resumes-list li .option a {
+main .container .jobs-menu li .settings a {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -95,7 +95,7 @@ main .container .resumes-list li .option a {
     text-decoration: none;
 }
 
-main .container .resumes-list li .option .accept {
+main .container .jobs-menu li .settings .update {
     background: #65cc90;
 
     padding: 10px;
@@ -104,7 +104,7 @@ main .container .resumes-list li .option .accept {
     height: 100%;
 }
 
-main .container .resumes-list li .option .reject {
+main .container .jobs-menu li .settings .delete {
     background: #cf6a6a;
 
     padding: 10px;
@@ -115,13 +115,13 @@ main .container .resumes-list li .option .reject {
     border-radius: 0px 5px 5px 0px;
 }
 
-main .container .resumes-list li .option a i {
+main .container .jobs-menu li .settings a i {
     font-size: 1.5em;
     color: var(--global-white);
 }
 
 @media(max-width: 600px) {
-    main .container .resumes-list li .option {
+    main .container .jobs-menu li .settings {
         width: 40%;
     }
 }

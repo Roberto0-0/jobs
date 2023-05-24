@@ -11,25 +11,31 @@
     <link rel="stylesheet" href="/css/notification/style.css">
     <link rel="stylesheet" href="/css/footer/style.css">
     <link rel="stylesheet" href="/css/rootColor/style.css">
+    <link rel="stylesheet" href="/css/darkTheme/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/errorMessage/style.css">
     <title>Jobs</title>
 </head>
 <body>
     <header>
         <div class="container">
             <a href="" class="logo">Jobs</a>
-            <nav class="nav">
-              <ul>
-                <li>
-                    <a href="/jobs">
-                        <i class="ph-fill ph-key-return"></i>
-                        back
-                    </a>
-                </li>
-              </ul>
-            </nav>
-            <div class="menu">
-                <i class="ph-bold ph-list"></i>
+            <div class="nav-area">
+                <div class="change-color" id="moon">
+                    <i style="display: none;" class="ph ph-moon"></i>
+                </div>
+                <nav class="nav">
+                    <ul>
+                      <li>
+                          <a href="/jobs">
+                              <i class="ph-fill ph-key-return"></i>
+                              back
+                          </a>
+                      </li>
+                    </ul>
+                </nav>
             </div>
+            <div class="menu"><i class="ph-bold ph-list"></i></div>
           </div>
     </header>
     <main>
@@ -48,7 +54,6 @@
                                 <div class="input">
                                     <label for="fullName">Full name</label>
                                     <input type="text" name="fullName" id="" required>
-                                    <div class="error_message"><i class="ph-fill ph-warning"></i><span class="message">full name is required!</span></div>
                                 </div>
                                 <div class="input">
                                     <label for="dateOfBirth">Date of birth</label>
@@ -93,5 +98,6 @@
     </footer>
     <script src="/js/menu/main.js"></script>
     <script src="/js/resume/create/main.js"></script>
+    <script src="/js/themes/main.js"></script>
 </body>
 </html>

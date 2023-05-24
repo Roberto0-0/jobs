@@ -36,7 +36,7 @@ export class Routes {
     this.router.put("/user/update/:id", new UserController().update)
     this.router.delete("/user/delete/:id", new UserController().delete)
     this.router.get("/profile", isAuth, new UserController().userProfile)
-    this.router.get("/profile/account", isAuth, new UserController().accountInformation)
+    this.router.get("/profile/account", isAuth, new UserController().accountDetails)
     this.router.get("/profile/settings/password", isAuth, new UserController().changePasswordIndex)
     this.router.post("/profile/settings/password/:id", new UserController().changePassword)
   }

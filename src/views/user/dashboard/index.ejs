@@ -10,7 +10,9 @@
   <link rel="stylesheet" href="/css/user/dashboard/style.css">
   <link rel="stylesheet" href="/css/notification/style.css">
   <link rel="stylesheet" href="/css/footer/style.css">
+  <link rel="stylesheet" href="/css/header/style.css">
   <link rel="stylesheet" href="/css/rootColor/style.css">
+  <link rel="stylesheet" href="/css/darkTheme/style.css">
   <title>Jobs</title>
 </head>
 <body>
@@ -18,43 +20,48 @@
     <% if(user) { %>
       <div class="container">
         <a href="/profile" class="username">Hello, <span><%= user.name %></span>👋</a>
-        <nav class="nav">
-          <ul>
-            <li>
-              <i class="ph-briefcase-fill"></i>
-              <a href="/jobs">jobs</a>
-            </li>
-            <div class="menu-dropdown">
-              <button>more</button>
-              <ul class="submenu">
-                <% if(user.company.length > 0) { %>
-                  <% user.company.forEach((company) => { %>
-                    <a href="/company/<%= user.id %>"/>company</a>
-                  <% }) %>
-                <% } %>
-                <a href="/profile">profile</a>
-              </ul>
-            </div>
-            <div class="mobile-option">
-              <% if(user.company.length > 0) { %>
-                <% user.company.forEach((company) => { %>
+        <div class="nav-area">
+            <div class="change-color" id="moon">
+                <i class="ph ph-moon"></i>
+              </div>
+              <nav class="nav">
+                <ul>
                   <li>
-                    <i class="ph-buildings-fill"></i>
-                    <a href="/company/<%= user.id %>"/>company</a>
+                    <i class="ph-briefcase-fill"></i>
+                    <a href="/jobs">jobs</a>
                   </li>
-                <% }) %>
-              <% } %>
-              <li>
-                <i class="ph-user-circle-gear-fill"></i>
-                <a href="/profile">profile</a>
-              </li>
-            </div>
-            <li>
-              <i class="ph-sign-out-fill"></i>
-              <a href="/logout">logout</a>
-            </li>
-          </ul>
-        </nav>
+                  <div class="menu-dropdown">
+                    <button>more</button>
+                    <ul class="submenu">
+                      <% if(user.company.length > 0) { %>
+                        <% user.company.forEach((company) => { %>
+                          <a href="/company/<%= user.id %>"/>company</a>
+                        <% }) %>
+                      <% } %>
+                      <a href="/profile">profile</a>
+                    </ul>
+                  </div>
+                  <div class="mobile-option">
+                    <% if(user.company.length > 0) { %>
+                      <% user.company.forEach((company) => { %>
+                        <li>
+                          <i class="ph-buildings-fill"></i>
+                          <a href="/company/<%= user.id %>"/>company</a>
+                        </li>
+                      <% }) %>
+                    <% } %>
+                    <li>
+                      <i class="ph-user-circle-gear-fill"></i>
+                      <a href="/profile">profile</a>
+                    </li>
+                  </div>
+                  <li>
+                    <i class="ph-sign-out-fill"></i>
+                    <a href="/logout">logout</a>
+                  </li>
+                </ul>
+              </nav>
+        </div>
         <div class="menu">
           <i class="ph-bold ph-list"></i>
         </div>
@@ -85,5 +92,6 @@
   </footer>
   <script src="/js/menu/main.js"></script>
   <script src="/js/user/dashboard/main.js"></script>
+  <script src="/js/themes/main.js"></script>
 </body>
 </html>

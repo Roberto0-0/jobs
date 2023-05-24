@@ -1,0 +1,69 @@
+main {
+    flex: 1;
+
+    margin: 20px auto;
+
+    width: 100%;
+    height: calc(100vh - 70px);
+}
+
+main .container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+
+    margin: auto;
+
+    width: 95vw;
+    max-width: 400px;
+    height: 100%;
+}
+
+main .container .accountMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    width: 100%;
+    height: auto;
+
+    border-radius: 10px;
+    list-style: none;
+}
+
+main .container .accountMenu li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+
+main .container .accountMenu li label {
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+main .container .accountMenu li .subContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+    
+    padding: 10px;
+
+    width: 100%;
+
+    border-radius: 5px;
+    border: 1px solid var(--dark-border);
+    background: var(--light-secondary-background);
+
+    font-size: 1em;
+    font-weight: 400;
+}
+
+main .container .accountMenu li i {
+    font-size: 1.2em;
+}
+
+main .container .accountMenu li span {
+    font-size: 0.9em;
+}

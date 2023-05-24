@@ -124,9 +124,9 @@ export class UserController {
     }
   }
 
-  async accountInformation(req: Request, res: Response) {
+  async accountDetails(req: Request, res: Response) {
     try {
-      res.render("user/profile/accountInfo/index.ejs")
+      res.render("user/profile/accountDetails/index.ejs")
     } catch(error) {
       console.error(error)
       return res.status(500).send({ message: "Internal server error." })

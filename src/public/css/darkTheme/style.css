@@ -9,6 +9,26 @@ body.active a {
     border-color: var(--light-border);
 }
 
+body.active header {
+    background: var(--dark-header-footer);
+}
+
+body.active header .container nav ul .menu-dropdown .submenu {
+    border: 1px solid var(--light-border);
+    background: var(--dark-secondary-background);
+}
+
+body.active header .container nav ul .menu-dropdown .submenu::before {
+    border-color: var(--light-border);
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    background: var(--dark-secondary-background);
+}
+
+body.active header .container nav ul .menu-dropdown .submenu a {
+    color: var(--dark-text);
+}
+
 body.active main .container .logo-form {
     border-bottom: 2px solid var(--dark-border);
 }
@@ -16,20 +36,157 @@ body.active main .container .logo-form {
 body.active main .container form .input input {
     background-color: var(--dark-primary-background);
     border-color: var(--light-border);
-} 
+    color: var(--dark-text);
+}
+
+body.active main .container form .input input::placeholder {
+    color: var(--dark-text);
+}
+
 
 body.active main .container form .input .subInput {
     background-color: var(--dark-primary-background);
     border-color: var(--light-border);
 }
 
+body.active main .container form .input textarea {
+    border: 1px solid var(--light-border);
+    background: var(--dark-primary-background);
+    color: var(--dark-text);
+}
+
+body.active main .container form .subInput .select {
+    color: var(--dark-text);
+}
+
+body.active main .container .firstBlock .jobs {
+    color: var(--dark-text);
+    border-bottom: 2px solid var(--dark-border);
+}
+
+body.active main .container .sign-up a {
+    color: var(--dark-text);
+}
+
+body.active main .container .firstBlock ul li {
+    border: 1px solid var(--light-border);
+    background: var(--dark-header-footer);
+}
+
+body.active main .container .firstBlock .companyStatus li {
+    border: 1px solid var(--light-border);
+    background: var(--dark-header-footer);
+}
+
+body.active main .container .firstBlock ul li a {
+    color: var(--dark-text);
+} 
+
+body.active main .container .jobs-menu li {
+    border: 1px solid var(--light-border);
+    background-color: var(--dark-header-footer);
+}
+
+body.active main .container .jobs-menu li .postInfo .company-name {
+    color: var(--dark-text);
+}
+
+body.active main .container .jobs-menu li {
+    border: 1px solid var(--light-border);
+    background: var(--dark-header-footer);
+}
+
+body.active main .container .jobs-menu li .jobInfo li {
+    border: none;
+}
+
+body.active main .container .jobs-menu li .jobInfo li span {
+    background: var(--light-header-footer);
+}
+
+body.active main .container .jobs-menu li .text-box .description {
+    color: var(--dark-text);
+}
+
+body.active main .container .jobs-menu li .functions .like .like-button i {
+    color: var(--dark-text);
+}
+
+body.active main .container .jobs-menu li .functions {
+    border-color: var(--light-border);
+}
+
+body.active main .container .resumes-list li {
+    border-color: var(--light-border);
+    background: var(--dark-header-footer);
+}
+
+body.active main .container .resumes-list li .post-info .postVacancy {
+    color: var(--dark-text);
+}
+
+body.active main .container .resume-page {
+    border-color: var(--light-border);
+    background: var(--dark-header-footer);
+}
+
+body.active main .container .moreInfo a {
+    border-color: var(--light-border);
+    background: var(--dark-header-footer);
+    color: var(--dark-text);
+}
+
+body.active main .container .accountMenu li .subContainer {
+    border-color: var(--light-border);
+    background: var(--dark-header-footer);
+} 
+
+body.active main .container .resumes-list li .post-info .vacancy {
+    color: var(--global-color);
+}
+
+body.active main .container .resumes-list li .post-info .company-name {
+    color: var(--dark-text);
+}
+
+body.active main .container .resumes-list li .result .resume-status i {
+    color: var(--dark-text);
+}
+
+body.active main .container .resumes-list li .result .dots {
+    color: var(--dark-text);
+}
+
+body.active main .container .resumes-list li .result .option-area .submenu {
+    border-color: var(--light-border);
+    background: var(--dark-header-footer);
+    color: var(--dark-text);
+}
+
+body.active main .container .resumes-list li .result .option-area .submenu a {
+    color: var(--dark-text);
+}
+
+body.active footer {
+    background: var(--dark-header-footer);
+}
+
 @media (max-width: 600px) {
     body.active header .container nav {
-        background: var(--dark-primary-background);
+        border-color: var(--dark-border);
+        background: var(--dark-secondary-background);
     }
 
-    body.active header .container .nav.active ul li i {
-        color: var(--dark-border);
+    body.active header .container nav.active li {
+        border-bottom: 1px solid var(--dark-border);
+    }
+
+    body.active header .container .nav.active ul li:last-child {
+        border-bottom: 1px solid var(--dark-border);
+      }
+
+    body.active header .container nav.active ul li i {
+        color: var(--dark-text);
     }
 
     body.active header .container nav.active ul li a {
@@ -38,5 +195,9 @@ body.active main .container form .input .subInput {
     
     body.active header .container nav.active ul .login-button {
         color: var(--dark-text);
+    }
+
+    body.active main .container .firstBlock ul li {
+        width: 100%;
     }
 }

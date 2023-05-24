@@ -9,12 +9,20 @@
   <link rel="stylesheet" href="/css/post/create/style.css">
   <link rel="stylesheet" href="/css/footer/style.css">
   <link rel="stylesheet" href="/css/rootColor/style.css">
+  <link rel="stylesheet" href="/css/darkTheme/style.css">
+  <link rel="stylesheet" href="/css/header/style.css">
+  <link rel="stylesheet" href="/css/errorMessage/style.css">
   <title>Jobs</title>
 </head>
 <body>
   <header>
     <div class="container">
       <a href="/" class="logo">Jobs</a>
+      <div class="nav-area">
+        <div class="change-color" id="moon">
+            <i style="display: none;" class="ph ph-moon"></i>
+        </div>
+      </div>
       <nav class="nav">
         <ul>
           <% if(user) { %>
@@ -150,5 +158,6 @@
   </footer>
   <script src="/js/post/create/main.js"></script>
   <script src="/js/menu/main.js"></script>
+  <script src="/js/themes/main.js"></script>
 </body>
 </html>
