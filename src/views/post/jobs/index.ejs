@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
-  <link rel="stylesheet" href="/css/post/jobs/style.css">
-  <link rel="stylesheet" href="/css/footer/style.css">
-  <link rel="stylesheet" href="/css/rootColor/style.css">
-  <title>Jobs</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
+    <link rel="stylesheet" href="/css/post/jobs/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColor/style.css">
+    <link rel="stylesheet" href="/css/darkTheme/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <title>Jobs</title>
 </head>
 <body>
    <header>
@@ -23,25 +25,27 @@
          </button>
          <input type="text" id="searchItems" onkeyup="getItems()" placeholder="find your job!" >
         </div>
-        <nav class="nav">
-          <ul>
-            <% if(user) { %>
-               <li>
-                  <i class="ph-fill ph-key-return"></i>
-                  <a href="/dashboard">back</a>
-               </li>
-            <% } else { %>
-               <li>
-                  <i class="ph-fill ph-key-return"></i>
-                  <a href="/">back</a>
-               </li>
-            <% } %>
-          </ul>
-        </nav>
-  
-        <div class="menu">
-          <i class="ph ph-list"></i>
+        <div class="nav-area">
+            <div class="change-color" id="moon">
+                <i style="display: none;" class="ph ph-moon"></i>
+            </div>
+            <nav class="nav">
+                <ul>
+                  <% if(user) { %>
+                     <li>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/dashboard">back</a>
+                     </li>
+                  <% } else { %>
+                     <li>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/">back</a>
+                     </li>
+                  <% } %>
+                </ul>
+              </nav>
         </div>
+        <div class="menu"><i class="ph ph-list"></i></div>
       </div>
    </header>
    <main>
@@ -179,5 +183,6 @@
     </footer>
   <script src="/js/post/jobs/main.js"></script>
   <script src="/js/menu/main.js"></script>
+  <script src="/js/themes/main.js"></script>
 </body>
 </html>

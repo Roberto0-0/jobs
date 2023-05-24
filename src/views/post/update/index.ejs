@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <link rel="stylesheet" href="/css/post/update/style.css">
-  <link rel="stylesheet" href="/css/footer/style.css">
-  <link rel="stylesheet" href="/css/rootColor/style.css">
-  <title>Jobs</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/post/update/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColor/style.css">
+    <link rel="stylesheet" href="/css/darkTheme/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/errorMessage/style.css">
+    <title>Jobs</title>
 </head>
 <body>
   <header>
     <div class="container">
       <a href="/" class="logo">Jobs</a>
-      <nav class="nav">
-        <ul>
-          <% if(user) { %>
-                <li>
-                  <i class="ph-fill ph-key-return"></i>
-                  <a href="/company/posts/<%= companyId %>">back</a>
-                </li>
-          <% } else { %>
-             <li>
-                 <i class="ph-fill ph-key-return"></i>
-                 <a href="/">posts</a>
-             </li>
-          <% } %>
-        </ul>
-      </nav>
-
+      <div class="nav-area">
+        <div style="display: none;" class="change-color" id="moon">
+            <i style="display: none;" class="ph ph-moon"></i>
+          </div>
+          <nav class="nav">
+            <ul>
+              <% if(user) { %>
+                    <li>
+                      <i class="ph-fill ph-key-return"></i>
+                      <a href="/company/posts/<%= companyId %>">back</a>
+                    </li>
+              <% } else { %>
+                 <li>
+                     <i class="ph-fill ph-key-return"></i>
+                     <a href="/">posts</a>
+                 </li>
+              <% } %>
+            </ul>
+          </nav>
+      </div>
       <div class="menu">
         <i class="ph-bold ph-list"></i>
       </div>
@@ -99,5 +106,6 @@
   </footer>
   <script src="/js/post/update/main.js"></script>
   <script src="/js/menu/main.js"></script>
+  <script src="/js/themes/main.js"></script>
 </body>
 </html>

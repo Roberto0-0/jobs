@@ -11,30 +11,35 @@
     <link rel="stylesheet" href="/css/notification/style.css">
     <link rel="stylesheet" href="/css/footer/style.css">
     <link rel="stylesheet" href="/css/rootColor/style.css">
+    <link rel="stylesheet" href="/css/darkTheme/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
     <title>Jobs</title>
 </head>
 <body>
     <header>
         <div class="container">
-          <a href="/" class="logo">Jobs</a>
-          <nav class="nav">
-            <ul>
-                <% if(user) { %>
-                    <li>
-                        <i class="ph-fill ph-key-return"></i>
-                        <a href="/profile">back</a>
-                    </li>
-                <% } else { %>
-                    <li>
-                        <i class="ph-fill ph-key-return"></i>
-                        <a href="/">back</a>
-                    </li>
-                <% } %>
-            </ul>
-          </nav>
-          <div class="menu">
-            <i class="ph-bold ph-list"></i>
-          </div>
+            <a href="/" class="logo">Jobs</a>
+            <div class="nav-area">
+                <div class="change-color" id="moon">
+                    <i style="display: none;" class="ph ph-moon"></i>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <% if(user) { %>
+                            <li>
+                                <i class="ph-fill ph-key-return"></i>
+                                <a href="/profile">back</a>
+                            </li>
+                        <% } else { %>
+                            <li>
+                                <i class="ph-fill ph-key-return"></i>
+                                <a href="/">back</a>
+                            </li>
+                        <% } %>
+                    </ul>
+                </nav>
+            </div>
+            <div class="menu"><i class="ph-bold ph-list"></i></div>
         </div>
     </header>
     <main>
@@ -112,5 +117,6 @@
     </footer>
     <script src="/js/menu/main.js"></script>
     <script src="/js/resume/userSentResume/main.js"></script>
+    <script src="/js/themes/main.js"></script>
 </body>
 </html>

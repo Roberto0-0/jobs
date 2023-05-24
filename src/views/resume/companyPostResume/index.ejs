@@ -11,27 +11,34 @@
     <link rel="stylesheet" href="/css/notification/style.css">
     <link rel="stylesheet" href="/css/footer/style.css">
     <link rel="stylesheet" href="/css/rootColor/style.css">
+    <link rel="stylesheet" href="/css/darkTheme/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
     <title>Jobs</title>
 </head>
 <body>
     <header>
         <div class="container">
           <a href="/" class="logo">Jobs</a>
-          <nav class="nav">
-            <ul>
-                <% if(user) { %>
-                    <li>
-                        <i class="ph-fill ph-key-return"></i>
-                        <a href="/company/<%= user.id %>">back</a>
-                    </li>
-                <% } else { %>
-                    <li>
-                        <i class="ph-fill ph-key-return"></i>
-                        <a href="/">back</a>
-                    </li>
-                <% } %>
-            </ul>
-          </nav>
+          <div class="nav-area">
+            <div class="change-color" id="moon">
+                <i style="display: none;" class="ph ph-moon"></i>
+              </div>
+              <nav class="nav">
+                <ul>
+                    <% if(user) { %>
+                        <li>
+                            <i class="ph-fill ph-key-return"></i>
+                            <a href="/company/<%= user.id %>">back</a>
+                        </li>
+                    <% } else { %>
+                        <li>
+                            <i class="ph-fill ph-key-return"></i>
+                            <a href="/">back</a>
+                        </li>
+                    <% } %>
+                </ul>
+              </nav>
+          </div>
           <div class="menu">
             <i class="ph-bold ph-list"></i>
           </div>
@@ -48,7 +55,7 @@
                         <div class="post-info">
                             <a href="/company/resume/page/<%= resume.id %>">
                                 <h1 class="username"><%= resume.user.name %></h1>
-                                <h2 class="vacancy"><%= resume.post.vacancy %></h2>
+                                <h2 class="postVacancy"><%= resume.post.vacancy %></h2>
                             </a>
                         </div>
                         <div class="option">
@@ -72,5 +79,6 @@
     </div>
     </footer>
     <script src="/js/menu/main.js"></script>
+    <script src="/js/themes/main.js"></script>
 </body>
 </html>

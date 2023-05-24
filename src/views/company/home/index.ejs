@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <link rel="stylesheet" href="/css/company/home/style.css">
-  <link rel="stylesheet" href="/css/notification/style.css">
-  <link rel="stylesheet" href="/css/footer/style.css">
-  <link rel="stylesheet" href="/css/rootColor/style.css">
-  <title>Jobs</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/company/home/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColor/style.css">
+    <link rel="stylesheet" href="/css/darkTheme/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <title>Jobs</title>
 </head>
 <body>
   <% if(user) { %>
@@ -19,22 +21,27 @@
       <header>
         <div class="container">
           <a href="#" class="company-name"><span><%= data.company %></span><i class="ph-fill ph-seal-check"></i></a>
-          <nav class="nav">
-            <ul>
-                <li>
-                  <i class="ph-fill ph-briefcase"></i>
-                  <a href="/jobs">jobs</a>
-                </li>
-                <li>
-                  <i class="ph-fill ph-note"></i>
-                  <a href="/post/create/<%= user.id %>">post</a>
-                </li>
-                <li>
-                    <i class="ph-fill ph-key-return"></i>
-                    <a href="/dashboard">dashboard</a>
-                </li>
-            </ul>
-          </nav>
+          <div class="nav-area">
+            <div class="change-color" id="moon">
+                <i class="ph ph-moon"></i>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li>
+                      <i class="ph-fill ph-briefcase"></i>
+                      <a href="/jobs">jobs</a>
+                    </li>
+                    <li>
+                      <i class="ph-fill ph-note"></i>
+                      <a href="/post/create/<%= user.id %>">post</a>
+                    </li>
+                    <li>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/dashboard">dashboard</a>
+                    </li>
+                </ul>
+              </nav>
+          </div>
           <div class="menu">
             <i class="ph-bold ph-list"></i>
           </div>
@@ -47,7 +54,7 @@
         <% } %>
         <div class="container">
           <div class="firstBlock">
-            <ul>
+            <ul class="companyStatus">
               <li>
                   <% if(data.post.length > 0) { %>
                     <a href="/company/posts/<%= data.id %>">
@@ -111,5 +118,6 @@
   <% } %>
   <script src="/js/menu/main.js"></script>
   <script src="/js/company/home/main.js"></script>
+  <script src="/js/themes/main.js"></script>
 </body>
 </html>

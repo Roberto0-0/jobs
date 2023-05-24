@@ -10,27 +10,34 @@
     <link rel="stylesheet" href="/css/company/push/style.css">
     <link rel="stylesheet" href="/css/footer/style.css">
     <link rel="stylesheet" href="/css/rootColor/style.css">
+    <link rel="stylesheet" href="/css/darkTheme/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
     <title>Jobs</title>
 </head>
 <body>
      <header>
       <div class="container">
         <a href="/" class="logo">Jobs</a>
-        <nav class="nav">
-          <ul>
-            <% if(user) { %>
-               <li>
-                    <i class="ph-fill ph-key-return"></i>
-                    <a href="/company/<%= user.id %>">back</a>
-               </li>
-            <% } else { %>
-               <li>
-                    <i class="ph-fill ph-key-return"></i>
-                    <a href="/">back</a>
-               </li>
-            <% } %>
-          </ul>
-        </nav>
+        <div class="nav-area">
+            <div class="change-color" id="moon">
+                <i style="display: none;" class="ph ph-moon"></i>
+            </div>
+            <nav class="nav">
+            <ul>
+                <% if(user) { %>
+                    <li>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/company/<%= user.id %>">back</a>
+                    </li>
+                <% } else { %>
+                    <li>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/">back</a>
+                    </li>
+                <% } %>
+            </ul>
+            </nav>
+        </div>
         <div class="menu">
             <i class="ph ph-list"></i>
         </div>
@@ -56,7 +63,7 @@
         </p>
       </div>
     </footer>
-   <script src="/js/post/jobs/main.js"></script>
    <script src="/js/menu/main.js"></script>
+   <script src="/js/themes/main.js"></script>
 </body>
 </html>

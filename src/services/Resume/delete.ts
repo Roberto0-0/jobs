@@ -15,6 +15,6 @@ export class ResumeDelete {
         if(!resume) { return new Error("Resume not found.") }
 
         await ResumeRepository.delete(resume_id)
-        return { success_message: "Post has been deleted" }
+        return { success_message: "Successfully canceled." }
     }
 }
