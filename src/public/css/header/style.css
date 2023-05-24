@@ -12,7 +12,7 @@ body, html {
     width: 100%;
     min-height: 100vh;
 
-    background: white;
+    background: var(--light-primary-background);
 
     font-family: 'Roboto', sans-serif;
     color: var(--light-text);
@@ -61,10 +61,15 @@ header .container .nav-area {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.5em;
 }
 
 header .container .change-color {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 5px;
+
     cursor: pointer;
 
     font-size: 1.2em;
@@ -72,7 +77,7 @@ header .container .change-color {
 }
 
 header .container .change-color .ph-sun {
-    color: #ebeb13;
+    color: #dddd12;
 }
 
 header .container nav {
@@ -133,7 +138,7 @@ header .container .menu {
       height: calc(100% - 64px);
       
       visibility: hidden;
-      border-left: 1px solid var(--light-border);
+      border-left: 1px solid var(--dark-border);
       background: var(--light-primary-background);
     }
   
@@ -150,6 +155,8 @@ header .container .menu {
   
       width: 40px;
       height: 40px;
+
+      cursor: pointer;
     }
     
     header .container .menu i {
@@ -187,11 +194,11 @@ header .container .menu {
   
       width: 95%;
   
-      border-bottom: 1px solid var(--light-border);
+      border-bottom: 1px solid var(--dark-border);
     }
   
     header .container .nav.active ul li:last-child {
-      border-bottom: 1px solid var(--light-border);
+      border-bottom: 1px solid var(--dark-border);
     }
     
     header .container nav.active ul li i {

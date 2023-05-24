@@ -92,7 +92,7 @@ main .container .resumes-list li .result .resume-status {
     flex-direction: row;
     justify-content: right;
     align-items: center;
-    gap: 0.3em;
+    gap: 0.5em;
 
     position: absolute;
     left: 30%;

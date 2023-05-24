@@ -35,10 +35,10 @@
                     <ul class="submenu">
                       <% if(user.company.length > 0) { %>
                         <% user.company.forEach((company) => { %>
-                          <a href="/company/<%= user.id %>"/>company</a>
+                          <a href="/company/<%= user.id %>"/><i class="ph-buildings-fill"></i>company</a>
                         <% }) %>
                       <% } %>
-                      <a href="/profile">profile</a>
+                      <a href="/profile"><i class="ph-user-circle-gear-fill"></i>profile</a>
                     </ul>
                   </div>
                   <div class="mobile-option">
@@ -79,7 +79,7 @@
         <a href="/jobs" class="jobs" style="margin-bottom: 20px;">jobs</a>
       </div>
       <div class="secondBlock">
-        <img src="/assets/jobs/undraw_done_checking_re_6vyx.svg" alt="" width="100%">
+        <img src="/assets/jobs/undraw_done_checking_re_6vyx.svg" class="dashboard-illustration" alt="" width="100%">
       </div>
     </div>
   </main>

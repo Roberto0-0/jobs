@@ -1,127 +1,148 @@
 header .container nav ul .login-button {
-  border-radius: 5px;
-  background: var(--global-color);
+    padding: 0px;
 
-  color: var(--dark-text);
+    width: 75px;
+    height: 33px;
+
+    border-radius: 5px;
+    background: var(--global-color);
+
+    color: var(--dark-text);
+}
+
+header .container nav ul .login-button a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
 }
 
 header .container nav ul .login-button:hover {
-  background: var(--global-hover-color);
+    background: var(--global-hover-color);
 }
 
 header .container .menu {
-  display: none;
+    display: none;
 }
 
 main {
-  flex: 1;
+    flex: 1;
 
-  margin: 20px auto;
+    margin: 20px auto;
 
-  width: 100%;
-  height: calc(100vh - 70px);
+    width: 100%;
+    height: calc(100vh - 70px);
 }
 
 main .container {
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
 
-  margin: auto;
+    margin: auto;
 
-  width: 95vw;
-  max-width: 1279px;
-  height: 100%;
+    width: 95vw;
+    max-width: 1279px;
+    height: 100%;
 }
 
 main .container .firstBlock {
-  padding: 30px;
+    padding: 30px;
 
-  width: 50%;
-  
-  font-family: 'Roboto', sans-serif;
+    width: 50%;
 }
 
 main .container .secondBlock {
-  width: 50%;
+    width: 50%;
 }
 
 main .container .firstBlock h1 {
-  font-size: 2.5em;
+    font-size: 2.5em;
 }
 
 main .container .firstBlock h2 {
-  margin-bottom: 1em;
+    margin-bottom: 1em;
 
-  font-weight: 500;
-  font-size: 2em;
+    font-weight: 500;
+    font-size: 2em;
 }
 
 main .container .firstBlock span {
-  font-weight: 600;
+    font-weight: 600;
 }
 
 main .container .firstBlock .jobs {
-  padding: 5px 10px;
+    padding: 5px 10px;
 
-  width: auto;
-  height: auto;
+    width: auto;
+    height: auto;
 
-  border-bottom: 2px solid var(--light-border);
-  text-decoration: none;
+    border-bottom: 2px solid var(--light-border);
+    text-decoration: none;
 
-  font-weight: 500;
-  font-size: 1.2em;
-  color: var(--light-text);
+    font-weight: 500;
+    font-size: 1.2em;
+    color: var(--light-text);
 }
 
 main .container .secondBlock {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-  width: 50%;
+    width: 50%;
 }
 
 main .container .secondBlock img {
-  width: 100%;
+    width: 100%;
 }
 
 @media (max-width: 600px) {
-  header .container nav.active ul .login-button {
-    border: none;
-    border-bottom: 2px solid var(--light-border);
-    border-radius: 0;
-    background: transparent;
-    color: var(--light-text);
-  }
+    header .container nav.active ul .login-button {
+        height: 47px;
 
-  main .container {
-    flex-direction: column;
-  }
+        border: none;
+        border-bottom: 2px solid var(--light-border);
+        border-radius: 0;
+        background: transparent;
+        color: var(--light-text);
+    }
 
-  main .container .firstBlock {
-    padding: 0px 10px;
+    header .container nav.active ul .login-button a {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+    }
 
-    width: 100%;
-  }
+    main .container {
+        flex-direction: column;
+    }
 
-  main .container .firstBlock h2 {
-    font-size: 1.5em;
-  }
+    main .container .firstBlock {
+        padding: 0px 10px;
 
-  main .container .firstBlock .jobs {
-    font-size: 1.1em;
-  }
+        width: 100%;
+    }
 
-  main .container .secondBlock {
-    width: 100%;
-    height: 100%;
-  }
+    main .container .firstBlock h2 {
+        font-size: 1.5em;
+    }
 
-  main .container .secondBlock img {
-    width: 100%;
-    height: 100%;
-  }
+    main .container .firstBlock .jobs {
+        font-size: 1.1em;
+    }
+
+    main .container .secondBlock {
+        width: 100%;
+        height: 100%;
+    }
+
+    main .container .secondBlock img {
+        width: 100%;
+        height: 100%;
+    }
 }
