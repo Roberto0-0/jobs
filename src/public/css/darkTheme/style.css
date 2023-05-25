@@ -155,6 +155,7 @@ body.active main .container .resumes-list li .result .resume-status i {
 
 body.active main .container .resumes-list li .result .dots {
     color: var(--dark-text);
+    border-color: var(--light-border);
 }
 
 body.active main .container .resumes-list li .result .option-area .submenu {
@@ -165,6 +166,13 @@ body.active main .container .resumes-list li .result .option-area .submenu {
 
 body.active main .container .resumes-list li .result .option-area .submenu a {
     color: var(--dark-text);
+}
+
+body.active main .container .resumes-list li .result .option-area .submenu::before {
+    border-color: var(--light-border);
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    background: var(--dark-header-footer);
 }
 
 body.active main .container .firstBlock .companyStatus li a .illustration {

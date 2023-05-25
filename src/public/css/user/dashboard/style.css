@@ -47,7 +47,7 @@ header .container nav ul .menu-dropdown button {
 header .container nav ul .menu-dropdown .submenu {
   position: absolute;
   top: 120%;
-  left: -9%;
+  left: -15%;
 
   display: none;
   flex-direction: column;
@@ -59,7 +59,7 @@ header .container nav ul .menu-dropdown .submenu {
   height: auto;
 
   border-radius: 5px;
-  border: 1px solid var(--light-border);
+  border: 1px solid var(--dark-border);
   background: var(--light-secondary-background);
   z-index: 1000;
 }
@@ -93,10 +93,10 @@ header .container nav ul .menu-dropdown .submenu::before {
     transform-origin: 0 0;
     transform: rotate(45deg) translate(-50%, -50%);
 
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
 
-    border: 1px solid var(--light-border);
+    border: 1px solid var(--dark-border);
     border-bottom-color: transparent;
     border-right-color: transparent;
     background: var(--light-secondary-background);
@@ -213,7 +213,7 @@ main .container .secondBlock img {
 
     width: 95%;
 
-    border-bottom: 1px solid var(--light-border);
+    border-bottom: 1px solid var(--dark-border);
   }
 
   main .container {

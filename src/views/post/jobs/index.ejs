@@ -82,20 +82,20 @@
                      </h2>
                      <ul class="jobInfo">
                         <li>
-                            <div class="info"><i class="ph-fill ph-currency-dollar"></i>Salary:</div>
+                            <div class="info"><i class="ph ph-currency-dollar-simple"></i></div>
                             <span class="salary"><%= post.salary %></span>
                         </li>
                         <li>
-                            <div class="info"><i class="ph-fill ph-map-pin"></i>Location:</div>
+                            <div class="info"><i class="ph ph-map-pin"></i></div>
                             <span><%= post.location %></span>
                         </li>
                         <li>
-                            <div class="info"><i class="ph-fill ph-calendar"></i>Published:</div>
+                            <div class="info"><i class="ph ph-calendar"></i></div>
                             <span class="date"><strong><%= post.created_at %></strong></span>
                         </li>
                         <li>
-                            <div class="info"><i class="ph-fill ph-user-plus"></i>Vacancy:</div>
-                            <span><%= post.vacancies %></span>
+                            <div class="info"><i class="ph ph-user-plus"></i></div>
+                            <span><%= post.vacancies %></span> vacancies 
                         </li>
                      </ul>
                      <div class="text-box">
@@ -109,7 +109,7 @@
                      </div>
                      <div class="functions">
                            <div class="like">
-                              <button class="like-button" name="<%= user.id %>/<%= post.id %>/<%= post.company.id %>"><i class="ph ph-arrow-fat-line-up"></i></button>
+                              <button class="like-button" name="<%= user.id %>/<%= post.id %>/<%= post.company.id %>"><i class="ph ph-arrow-fat-up"></i></button>
                               <span class="like-value" ><%= post.pushes %></span>
                            </div>
                            <div class="accept">
