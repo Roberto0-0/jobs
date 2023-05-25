@@ -82,19 +82,20 @@
                      </h2>
                      <ul class="jobInfo">
                         <li>
-                            <div class="info"><i class="ph ph-currency-dollar-simple"></i></div>
+                            <i class="ph ph-currency-dollar-simple"></i>
                             <span class="salary"><%= post.salary %></span>
                         </li>
                         <li>
-                            <div class="info"><i class="ph ph-map-pin"></i></div>
+                            <i class="ph ph-map-pin"></i>
                             <span><%= post.location %></span>
                         </li>
                         <li>
-                            <div class="info"><i class="ph ph-calendar"></i></div>
+                            <i class="ph ph-calendar"></i>
+                            published at
                             <span class="date"><strong><%= post.created_at %></strong></span>
                         </li>
                         <li>
-                            <div class="info"><i class="ph ph-user-plus"></i></div>
+                            <i class="ph ph-user-plus"></i>
                             <span><%= post.vacancies %></span> vacancies 
                         </li>
                      </ul>
@@ -130,20 +131,21 @@
                     </h2>
                     <ul class="jobInfo">
                         <li>
-                            <div class="info"><i class="ph-fill ph-currency-dollar"></i>Salary:</div>
+                            <i class="ph ph-currency-dollar-simple"></i>
                             <span class="salary"><%= post.salary %></span>
                         </li>
                         <li>
-                            <div class="info"><i class="ph-fill ph-map-pin"></i>Location:</div>
+                            <i class="ph ph-map-pin"></i>
                             <span><%= post.location %></span>
                         </li>
                         <li>
-                            <div class="info"><i class="ph-fill ph-calendar"></i>Published:</div>
+                            <i class="ph ph-calendar"></i>
+                            published at
                             <span class="date"><strong><%= post.created_at %></strong></span>
                         </li>
                         <li>
-                            <div class="info"><i class="ph-fill ph-user-plus"></i>Vacancy:</div>
-                            <span><%= post.vacancies %></span>
+                            <i class="ph ph-user-plus"></i>
+                            <span><%= post.vacancies %></span> vacancies
                         </li>
                     </ul>
                     <div class="text-box">
@@ -158,7 +160,7 @@
                     <div class="functions">
                        <div class="like">
                           <a href="/login">
-                              <button class="like-button"><i class="ph ph-arrow-fat-line-up"></i></button>
+                              <button class="like-button"><i class="ph ph-arrow-fat-up"></i></button>
                            </a>
                            <span><%= post.pushes %></span>
                         </div>

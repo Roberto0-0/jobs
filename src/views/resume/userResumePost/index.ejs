@@ -47,49 +47,48 @@
    <main>
       <div class="container">
          <ul class="jobs-menu">
-            <% if(user) { %>
-               <% if(data) { %>
-                  <li class="li">
-                     <h1 class="vancancy" ><%= data.vacancy %></h1>
-                     <h2 class="company-name">
+            <% if(data) { %>
+                <li class="li">
+                    <h1 class="vancancy" ><%= data.vacancy %></h1>
+                    <h2 class="company-name">
                         <%= data.company_name %>
                         <i class="ph-fill ph-seal-check"></i>
-                     </h2>
-                     <ul class="jobInfo">
-                        <li>
-                            <div class="info"><i class="ph-fill ph-currency-dollar"></i>Salary:</div>
-                            <span class="salary"><%= data.salary %></span>
-                        </li>
-                        <li>
-                            <div class="info"><i class="ph-fill ph-map-pin"></i>Location:</div>
-                            <span><%= data.location %></span>
-                        </li>
-                        <li>
-                            <div class="info"><i class="ph-fill ph-calendar"></i>Published:</div>
-                            <span class="date"><strong><%= data.created_at %></strong></span>
-                        </li>
-                        <li>
-                            <div class="info"><i class="ph-fill ph-user-plus"></i>Vacancy:</div>
-                            <span><%= data.vacancies %></span>
-                        </li>
-                     </ul>
-                     <div class="text-box">
-                        <% if(data.information) { %>
-                           <h2 class="description">Description</h2>
-                        <% } %>
-                        <div class="text">
-                           <%= data.information %>
-                        </div>
+                        </h2>
+                    <ul class="jobInfo">
+                    <li>
+                        <i class="ph ph-currency-dollar-simple"></i>
+                        <span class="salary"><%= data.salary %></span>
+                    </li>
+                    <li>
+                        <i class="ph ph-map-pin"></i>
+                        <span><%= data.location %></span>
+                    </li>
+                    <li>
+                        <i class="ph ph-calendar"></i>
+                        published at
+                        <span class="date"><strong><%= data.created_at %></strong></span>
+                    </li>
+                    <li>
+                        <i class="ph ph-user-plus"></i>
+                        <span><%= data.vacancies %></span> vacancies 
+                    </li>
+                    </ul>
+                    <div class="text-box">
+                    <% if(data.information) { %>
+                        <h2 class="description">Description</h2>
+                    <% } %>
+                    <div class="text">
+                        <%= data.information %>
+                    </div>
                         <button class="btn-seeMore">...see more</button>
-                     </div>
-                     <div class="functions">
-                           <div class="like">
-                              <button class="like-button"><i class="ph ph-arrow-fat-line-up"></i></button>
-                              <span class="like-value" ><%= data.pushes %></span>
-                           </div>
-                     </div>
-                  </li>
-               <% } %>
+                    </div>
+                    <div class="functions">
+                        <div class="like">
+                            <button class="like-button"><i class="ph ph-arrow-fat-up"></i></button>
+                            <span class="like-value" ><%= data.pushes %></span>
+                        </div>
+                    </div>
+                </li>
             <% } %>
          </ul>
      </div>  

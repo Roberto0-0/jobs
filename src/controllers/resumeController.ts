@@ -6,6 +6,8 @@ import { UserResume } from "../services/Resume/userResumes"
 import { CompanyResume } from "../services/Resume/companyResumes"
 import { ResumeDelete } from "../services/Resume/delete"
 
+var newErrors = []
+
 export class ResumeController {    
     async createIndex(req: Request, res: Response) {
         const { post_id, company_id } = req.params
@@ -55,7 +57,11 @@ export class ResumeController {
                 information
             })
 
-            if(result instanceof Error) { return res.status(400).send({ message: result.message }) }
+            if(result instanceof Error) { 
+                newErrors.push(result.message)
+                req.flash("error_message", result.message)
+                return res.redirect("/resume/create/" + post_id + "/" + company_id)
+            }
 
             req.flash("success_message", result.success_message)
             return res.redirect("/resume/create/" + post_id + "/" + company_id)

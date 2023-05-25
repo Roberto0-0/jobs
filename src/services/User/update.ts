@@ -15,7 +15,7 @@ interface IUser {
 }
 
 interface ChangePassword {
-  id: string;
+  user_id: string;
   currentPassword: string;
   newPassword: string;
   repeatNewPassword: string
@@ -46,20 +46,18 @@ export class UserUpdate {
     }
   }
 
-  async changePassword({id, currentPassword, newPassword, repeatNewPassword }: ChangePassword) {
-    const user = await UserRepository.findOneBy({ id: id })
+  async changePassword({user_id, currentPassword, newPassword, repeatNewPassword }: ChangePassword) {
+    const user = await UserRepository.findOneBy({ id: user_id })
     
     if(!user) { return new Error("User not found!") }
     
-    bcrypt.compare(currentPassword, user.password, (err, isMatch) => {
-      if(err) { return err }
-      if(!isMatch) { return new Error("The password you entered was incorrect.") }
-    })
-
-    if(newPassword == currentPassword) { return new Error("Your new password cannot be the same as your old one.") }
+    const validPassword = await bcrypt.compare(currentPassword, user.password)
+    
+    if(!validPassword) { return new Error("The password you entered was incorrect.") }
+    if(newPassword === currentPassword) { return new Error("Your new password cannot be the same as your old one.") }
     if(repeatNewPassword != newPassword) { return new Error("The passwords are different.") }
 
     const passwordhash = await CreatePasswordHash(newPassword)
-    await UserRepository.update(id, { password: passwordhash })
+    await UserRepository.update(user_id, { password: passwordhash })
   }
 }

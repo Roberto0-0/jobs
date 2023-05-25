@@ -76,6 +76,12 @@ export class Resume {
     })
     company_id: string;
 
+    @Column({
+        type: "varchar",
+        nullable: false
+    })
+    post_id: string
+
     @ManyToOne(() => User, (user) => user.resume, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'  

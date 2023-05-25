@@ -47,70 +47,74 @@
             <div class="notification"><span class="message"><%= success_message %></span></div>
         <% } %>
         <div class="container">
-            <ul class="resumes-list">
-                <% data.map((resume) => { %>
-                    <li class="li">
-                        <div class="post-info">
-                            <a href="/resume/post/page/<%= resume.post.id %>/<%= resume.company_id %>">
-                                <h1 class="vacancy"><%= resume.post.vacancy %></h1>
-                                <h2 class="company-name">
-                                    <%= resume.post.company_name %>
-                                    <i class="ph-fill ph-seal-check"></i>
-                                </h2>
-                            </a>
-                        </div>
-                        <div class="result">
-                            <% if(resume.option == "waiting") { %>
-                                <div class="resume-status">
-                                    <i class="ph-light ph-clock-countdown"></i>
-                                    <span>waiting...</span>
-                                </div>
-                                <div class="option-area">
-                                    <div class="dots"><i class="ph-fill ph-dots-three-outline-vertical"></i></div>
-                                    <ul class="submenu">
-                                        <li>
-                                            <i class="ph ph-pencil"></i>
-                                            <a href="">edit</a>
-                                        </li>
-                                        <li>
-                                            <i class="ph ph-prohibit"></i>
-                                            <a href="/resume/delete/<%= user.id %>/<%= resume.id %>">cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            <% } else if(resume.option == "selected") { %>
-                                <div class="resume-status">
-                                    <i class="ph-light ph-handshake"></i>
-                                    <span>selected</span>
-                                </div>
-                                <div class="option-area">
-                                    <div class="dots"><i class="ph-fill ph-dots-three-outline-vertical"></i></div>
-                                    <ul class="submenu">
-                                        <li>
-                                            <i class="ph-light ph-check-circle"></i>
-                                            <a href="/resume/delete/<%= user.id %>/<%= resume.id %>">done</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            <% } else if(resume.option == "notSelected") { %>
-                                <div class="resume-status">
-                                    <i class="ph ph-warning-circle"></i>
-                                    <span>not selected</span>
-                                </div>
-                                <div class="option-area">
-                                    <div class="dots"><i class="ph-fill ph-dots-three-outline-vertical"></i></div>
-                                    <ul class="submenu">
-                                        <li>
-                                            <i class="ph-light ph-check-circle"></i>
-                                            <a href="/resume/delete/<%= user.id %>/<%= resume.id %>">done</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            <% } %> 
-                        </div>
-                    </li>
-                <% }) %>
-            </ul>
+            <% if(data.length > 0) { %>
+                <ul class="resumes-list">
+                    <% data.map((resume) => { %>
+                        <li class="li">
+                            <div class="post-info">
+                                <a href="/resume/post/page/<%= resume.post.id %>/<%= resume.company_id %>">
+                                    <h1 class="vacancy"><%= resume.post.vacancy %></h1>
+                                    <h2 class="company-name">
+                                        <%= resume.post.company_name %>
+                                        <i class="ph-fill ph-seal-check"></i>
+                                    </h2>
+                                </a>
+                            </div>
+                            <div class="result">
+                                <% if(resume.option == "waiting") { %>
+                                    <div class="resume-status">
+                                        <i class="ph-light ph-clock-countdown"></i>
+                                        <span>waiting...</span>
+                                    </div>
+                                    <div class="option-area">
+                                        <div class="dots"><i class="ph-fill ph-dots-three-outline-vertical"></i></div>
+                                        <ul class="submenu">
+                                            <li>
+                                                <i class="ph ph-pencil"></i>
+                                                <a href="">edit</a>
+                                            </li>
+                                            <li>
+                                                <i class="ph ph-prohibit"></i>
+                                                <a href="/resume/delete/<%= user.id %>/<%= resume.id %>">cancel</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                <% } else if(resume.option == "selected") { %>
+                                    <div class="resume-status">
+                                        <i class="ph-light ph-handshake"></i>
+                                        <span>selected</span>
+                                    </div>
+                                    <div class="option-area">
+                                        <div class="dots"><i class="ph-fill ph-dots-three-outline-vertical"></i></div>
+                                        <ul class="submenu">
+                                            <li>
+                                                <i class="ph-light ph-check-circle"></i>
+                                                <a href="/resume/delete/<%= user.id %>/<%= resume.id %>">done</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                <% } else if(resume.option == "notSelected") { %>
+                                    <div class="resume-status">
+                                        <i class="ph ph-warning-circle"></i>
+                                        <span>not selected</span>
+                                    </div>
+                                    <div class="option-area">
+                                        <div class="dots"><i class="ph-fill ph-dots-three-outline-vertical"></i></div>
+                                        <ul class="submenu">
+                                            <li>
+                                                <i class="ph-light ph-check-circle"></i>
+                                                <a href="/resume/delete/<%= user.id %>/<%= resume.id %>">done</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                <% } %> 
+                            </div>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <div class="notfound">you haven't sent any resumes yet</div>
+            <% } %>
         </div>
     </main>
     <footer>
@@ -121,5 +125,6 @@
     <script src="/js/menu/main.js"></script>
     <script src="/js/resume/userSentResume/main.js"></script>
     <script src="/js/themes/main.js"></script>
+    <script src="/js/notification/main.js"></script>
 </body>
 </html>

@@ -25,10 +25,12 @@
               </div>
               <nav class="nav">
                 <ul>
-                    <li>
-                        <i class="ph-fill ph-key-return"></i>
-                        <a href="/dashboard">back</a>
-                    </li>
+                    <% if(data) { %>
+                        <li>
+                            <i class="ph-fill ph-key-return"></i>
+                            <a href="/company/resume/<%= data.company_id %>">back</a>
+                        </li>
+                    <% } %>
                 </ul>
               </nav>
             </div>
@@ -101,7 +103,7 @@
     <footer>
     <div class="container">
         <p>
-        &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+            &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
         </p>
     </div>
     </footer>

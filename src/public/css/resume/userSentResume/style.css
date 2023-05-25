@@ -18,6 +18,25 @@ main .container {
     height: 100%;
 }
 
+
+main .container .notfound {
+    margin: 0 auto;
+    padding: 10px;
+
+    width: 95vw;
+    max-width: 400px;
+
+    border-radius: 10px;
+    background: transparent;
+
+    text-align: center;
+    word-break: break-all;
+    font-size: 1.5em;
+    font-weight: bold;
+
+    color: var(--light-text);
+}
+
 main .container .resumes-list {
     display: flex;
     flex-direction: column;

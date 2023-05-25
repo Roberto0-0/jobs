@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const companySchema = z.object({
+export const companyRegisterSchema = z.object({
     user_id: z.string({
         required_error: "User id is required."
     }),

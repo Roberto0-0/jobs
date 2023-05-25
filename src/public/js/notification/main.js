@@ -1,6 +1,6 @@
 const notification = document.querySelector('.notification')
 
-const main = () => {
+const notificationMessage = () => {
     if(notification) {
         setTimeout(() => {
             notification.style.display = "none"
@@ -8,4 +8,4 @@ const main = () => {
     }
 }
 
-main()
+notificationMessage()

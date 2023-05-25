@@ -45,11 +45,13 @@
    </header>
    <main>
        <div class="container">
-            <ul class="users">
+            <ul class="usersPushed">
                 <li>
                     <% data.map((push) => { %>
                         <% if(push.pushed) { %>
-                            <h2><%= push.user.name %></h2>
+                            <i class="ph-light ph-user-circle"></i>
+                            <span><%= push.user.name %></span>
+                            <i class="ph-fill ph-arrow-fat-up"></i>
                         <% } %>
                     <% }) %>
                 </li>

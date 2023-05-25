@@ -100,10 +100,6 @@ body.active main .container .jobs-menu li .jobInfo li {
     border: none;
 }
 
-body.active main .container .jobs-menu li .jobInfo li span {
-    background: var(--light-header-footer);
-}
-
 body.active main .container .jobs-menu li .text-box .description {
     color: var(--dark-text);
 }
@@ -187,7 +183,20 @@ body.active main .container .jobs-menu li .settings .delete {
     background: #af4e4e;
 }
 
+body.active main .container .resumes-list li .option .accept {
+    background: #51a875;
+}
+
+body.active main .container .resumes-list li .option .reject {
+    background: #af4e4e;
+}
+
 body.active footer {
+    background: var(--dark-header-footer);
+}
+
+body.active main .container .usersPushed li {
+    border-color: var(--light-border);
     background: var(--dark-header-footer);
 }
 
@@ -195,6 +204,7 @@ body.active footer {
     body.active header .container nav {
         border-color: var(--light-border);
         background: var(--dark-secondary-background);
+        box-shadow: rgba(44, 44, 46, 0.2) 0px 7px 29px 0px;
     }
 
     body.active header .container nav.active li {

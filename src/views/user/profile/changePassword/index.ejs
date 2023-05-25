@@ -55,6 +55,14 @@
                           <input type="password" name="currentPassword" class="password" id="currentPassword" autocomplete="off" required>
                           <i class="ph ph-eye" id="eye-button"></i>
                         </div>
+                        <% if(error_message.length > 0) { %>
+                            <% if(error_message == "Password is required." || error_message == "Password at least 8 characters." || error_message == "The password you entered was incorrect.") { %>
+                                <div class="error_message">
+                                    <i class="ph-fill ph-warning"></i>
+                                    <span class="message"><%= error_message %></span>
+                                </div>
+                            <% } %>
+                         <% } %>
                     </div>
                     <div class="input">
                         <label for="newPassword">New password</label>
@@ -62,6 +70,14 @@
                           <input type="password" name="newPassword" id="newPassword" class="password" placeholder="At least 8 characters" autocomplete="off" required>
                           <i class="ph ph-eye" id="eye-button"></i>
                         </div>
+                        <% if(error_message.length > 0) { %>
+                            <% if(error_message == "New password is required." || error_message == "Password at least 8 characters." || error_message == "Your new password cannot be the same as your old one.") { %>
+                                <div class="error_message">
+                                    <i class="ph-fill ph-warning"></i>
+                                    <span class="message"><%= error_message %></span>
+                                </div>
+                            <% } %>
+                         <% } %>
                     </div>
                     <div class="input">
                         <label for="repeatPassword">Repeat password</label>
@@ -69,6 +85,14 @@
                           <input type="password" name="repeatNewPassword" id="repeatNewPassword" class="password" placeholder="At least 8 characters" autocomplete="off" required>
                           <i class="ph ph-eye" id="eye-button"></i>
                         </div>
+                        <% if(error_message.length > 0) { %>
+                            <% if(error_message == "Repeat new password is required." || error_message == "Password at least 8 characters." || error_message == "The passwords did not match.") { %>
+                                <div class="error_message">
+                                    <i class="ph-fill ph-warning"></i>
+                                    <span class="message"><%= error_message %></span>
+                                </div>
+                            <% } %>
+                         <% } %>
                     </div>
                     <button>update</button>
                 </form>
@@ -85,5 +109,7 @@
     <script src="/js/menu/main.js"></script>
     <script src="/js/user/profile/changePassword/main.js"></script>
     <script src="/js/themes/main.js"></script>
+    <script src="/js/errorMessage/main.js"></script>
+    <script src="/js/notification/main.js"></script>
 </body>
 </html>

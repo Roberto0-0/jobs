@@ -4,7 +4,8 @@ import { UserDelete } from "../services/User/delete"
 import { UserRead } from "../services/User/read"
 import { UserReadAll } from "../services/User/readAll"
 import { UserUpdate } from "../services/User/update"
-import { userSchema } from "../schemas/userSchema"
+import { userRegisterSchema } from "../schemas/userRegisterSchema"
+import { changePasswordSchema } from "../schemas/changePasswordSchema"
 
 var newErrors: string[] = []
 
@@ -15,7 +16,7 @@ export class UserController {
 
   async create(req: Request, res: Response) {
     try {
-      const validationResult = userSchema.safeParse(req.body)
+      const validationResult = userRegisterSchema.safeParse(req.body)
 
       if(validationResult.success) {
         const userCreateService = new UserCreate()
@@ -143,30 +144,44 @@ export class UserController {
   }
 
   async changePassword(req: Request, res: Response) {
-    const { id } = req.params
+    const { user_id } = req.params
     const { currentPassword, newPassword, repeatNewPassword } = req.body
 
     try {
-      const service = new UserUpdate()
-      const result = await service.changePassword({
-        id,
-        currentPassword,
-        newPassword,
-        repeatNewPassword
-      })
+        const validationResult = changePasswordSchema.safeParse({
+            user_id,
+            currentPassword,
+            newPassword,
+            repeatNewPassword
+        })
 
-      if(result instanceof Error) { 
-        newErrors.push(result.message)
-        req.flash("error_message", newErrors)
-        res.redirect("/profile/settings/password")
-        return newErrors = []
-       }
+        if(validationResult.success) {
+            const service = new UserUpdate()
+            const result = await service.changePassword(validationResult.data)
+      
+            if(result instanceof Error) { 
+                newErrors.push(result.message)
+                req.flash("error_message", newErrors)
+                res.redirect("/profile/settings/password")
+                return newErrors = []
+            }
+      
+            req.flash("success_message", "Successfully updated password.")
+            res.redirect("/profile/settings/password")
+        } else {
+            const err = validationResult.error.errors
 
-      req.flash("success_message", "Successfully updated password.")
-      res.redirect("/profile/settings/password")
+            err.map((values) => {
+                newErrors.push(values.message)
+            })
+            
+            req.flash("error_message", newErrors)
+            res.redirect("/profile/settings/password")
+            newErrors = []
+        }
     } catch(error) {
-      console.error(error)
-      return res.status(500).send({ message: "Internal server error." })
+        console.error(error)
+        return res.status(500).send({ message: "Internal server error." })
     }
   }
 }
