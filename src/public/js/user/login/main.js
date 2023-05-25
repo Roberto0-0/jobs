@@ -1,6 +1,5 @@
 const password = document.querySelector("#password")
 const eyeButton = document.querySelector("#eye-button")
-const error_message = document.querySelectorAll(".error_message")
 
 const main = () => {
     eyeButton.onclick = () => {
@@ -14,12 +13,6 @@ const main = () => {
             }
         }
     }
-    
-    setTimeout(() => {
-        for(var i=0;i < error_message.length;i++) {
-            error_message[i].style.display = "none"
-        }
-    }, 5000)
 }
 
 main()

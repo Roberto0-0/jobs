@@ -19,7 +19,11 @@ main .container {
     height: auto;
 }
 
-main .container .users {
+main .container .usersPushed {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+
     margin: auto;
 
     width: 100%;
@@ -27,4 +31,30 @@ main .container .users {
     height: auto;
 
     list-style: none;
+}
+
+main .container .usersPushed li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.2em;
+
+    padding: 5px;
+
+    width: 100%;
+    height: auto;
+
+    border: 1px solid var(--dark-border);
+    border-radius: 5px;
+    background: var(--light-secondary-background);
+}
+
+main .container .usersPushed li i {
+    font-size: 2em;
+}
+
+main .container .usersPushed li .ph-arrow-fat-up {
+    margin-left: auto;
+
+    font-size: 1.5em;
 }

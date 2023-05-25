@@ -5,7 +5,7 @@ import { CompanyRead } from "../services/Company/read"
 import { PushRead } from "../services/push/read"
 import { CompanyUpdate } from "../services/Company/update"
 import { CompanyDelete } from "../services/Company/delete"
-import { companySchema } from "../schemas/companySchema"
+import { companyRegisterSchema } from "../schemas/companyRegisterSchema"
 
 var newErrors: string[] = []
 
@@ -23,7 +23,7 @@ export class CompanyController {
     const { employer, companyName, location, email, aboutCompany } = req.body
      
     try {
-      const validationResult = companySchema.safeParse({
+      const validationResult = companyRegisterSchema.safeParse({
         user_id,
         employer,
         companyName,

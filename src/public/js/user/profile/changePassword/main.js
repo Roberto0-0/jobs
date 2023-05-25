@@ -1,7 +1,5 @@
 const password = document.querySelectorAll(".password")
 const eyeButton = document.querySelectorAll(".ph-eye")
-const error_message = document.querySelectorAll(".error_message")
-const success_message = document.querySelectorAll(".success_message")
 
 const main = () => {
     for (let i = 0; i < password.length; i++) {
@@ -16,20 +14,6 @@ const main = () => {
                 }
             }
         }   
-    }
-
-    setTimeout(() => {
-        for(let i=0;i < error_message.length;i++) {
-            error_message[i].style.display = "none"
-        }
-    }, 5000);
-    
-    if(success_message) {
-      setTimeout(() => {
-          for(let i=0;i < success_message.length;i++) {
-              success_message[i].style.display = "none"
-          }
-      }, 5000);
     }
 }
 

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const userSchema = z.object({
+export const userRegisterSchema = z.object({
   name: z.string({
     required_error: "Name is required."
   }).min(3, "Very short name."),

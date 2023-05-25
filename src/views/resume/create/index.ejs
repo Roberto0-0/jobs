@@ -51,6 +51,9 @@
         <% if(success_message.length > 0) { %>
             <div class="notification"><span class="message"><%= success_message %></span></div>
         <% } %>
+        <% if(error_message.length > 0) { %>
+            <div class="notification"><span class="message"><%= error_message %></span></div>
+        <% } %>
         <% if(user) { %>
             <% if(data) { %>
                 <div class="container">
@@ -90,7 +93,7 @@
                         </div>
                         <div class="input">
                             <label for="information">More information</label>
-                            <textarea name="information" id="information" cols="30" rows="10"></textarea>
+                            <textarea name="information" id="information" cols="30" rows="10" required></textarea>
                         </div>
                         <button>send</button>
                     </form>
@@ -106,7 +109,7 @@
         </div>
     </footer>
     <script src="/js/menu/main.js"></script>
-    <script src="/js/resume/create/main.js"></script>
+    <script src="/js/notification/main.js"></script>
     <script src="/js/themes/main.js"></script>
 </body>
 </html>

@@ -3,15 +3,10 @@ const salary = document.getElementsByClassName("salary")
 const li = document.querySelectorAll(".li")
 const text = document.querySelectorAll(".text")
 const btnseeMore = document.querySelectorAll(".btn-seeMore")
-const notification = document.querySelector('.notification')
 
 var clicked = false
 
 const main = () => {
-    setTimeout(() => {
-        notification.style.display = "none"
-    }, 3000)
-
   for(let j=0;j < li.length;j++) {
     if(text[j].textContent.length > 250) {
       btnseeMore[j].style.display = "block"

@@ -232,18 +232,7 @@ main .container .jobs-menu li .jobInfo li {
     box-shadow: none;
 }
 
-main .container .jobs-menu li .jobInfo li .info {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.2em;
-    
-    font-family: 'Roboto', sans-serif;
-    font-size: 1em;
-    font-weight: 600;
-}
-
-main .container .jobs-menu li .jobInfo li .info i {
+main .container .jobs-menu li .jobInfo li i {
     font-size: 1.3em;
 }
 
