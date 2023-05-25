@@ -95,7 +95,7 @@ main .container .resumes-list li .result .resume-status {
     gap: 0.5em;
 
     position: absolute;
-    left: 30%;
+    left: 25%;
 
     width: 60%;
     height: 100%;
@@ -125,11 +125,21 @@ main .container .resumes-list li .result .option-area {
 }
 
 main .container .resumes-list li .result .option-area .dots {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  
     position: absolute;
     top: 9%;
-    left: 83%;
-
+    left: 65%;
+    
+    padding: 5px;
+    
+    border: 1px solid var(--dark-border);
+    border-radius: 5px;
     cursor: pointer;
+    
     color: var(--light-text);
 }
 
@@ -138,16 +148,17 @@ main .container .resumes-list li .result .option-area .submenu {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 0.2em;
 
     position: relative;
-    top: 34%;
-    left: 1%;
+    top: 60%;
+    left: -10%;
 
-    padding: 8px;
+    padding: 8px 4px;
 
-    width: 100px;
-    min-width: 100px;
-    height: 65px;
+    width: 115px;
+    min-width: 115px;
+    height: 75px;
 
     border: 1px solid var(--dark-border);
     border-radius: 5px;
@@ -181,10 +192,27 @@ main .container .resumes-list li .result .option-area .submenu li a {
     color: var(--light-text);
 }
 
+main .container .resumes-list li .result .option-area .submenu::before {
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 85%;
+    transform-origin: 0 0;
+    transform: rotate(45deg) translate(-50%, -50%);
+
+    width: 10px;
+    height: 10px;
+
+    border: 1px solid var(--dark-border);
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    background: var(--light-secondary-background);
+}
+
 main .container .resumes-list li .result .option-area .submenu.active {
     display: flex;
 
-    z-index: 1000;
+    z-index: 500;
 }
 
 @media(max-width: 600px) {
@@ -193,11 +221,11 @@ main .container .resumes-list li .result .option-area .submenu.active {
       }
 
     main .container .resumes-list li .result .option-area .dots {
-        top: 9%;
-        left: 77%;
+        left: 60%;
     }
 
     main .container .resumes-list li .result .option-area .submenu {
+        top: 60%;
         left: -20%;
     }
 }

@@ -63,17 +63,17 @@
                             <% if(resume.option == "waiting") { %>
                                 <div class="resume-status">
                                     <i class="ph-light ph-clock-countdown"></i>
-                                    <span>waiting</span>
+                                    <span>waiting...</span>
                                 </div>
                                 <div class="option-area">
                                     <div class="dots"><i class="ph-fill ph-dots-three-outline-vertical"></i></div>
                                     <ul class="submenu">
                                         <li>
-                                            <i class="ph-light ph-pencil-line"></i>
+                                            <i class="ph ph-pencil"></i>
                                             <a href="">edit</a>
                                         </li>
                                         <li>
-                                            <i class="ph-light ph-prohibit"></i>
+                                            <i class="ph ph-prohibit"></i>
                                             <a href="/resume/delete/<%= user.id %>/<%= resume.id %>">cancel</a>
                                         </li>
                                     </ul>
