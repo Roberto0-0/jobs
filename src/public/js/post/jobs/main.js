@@ -4,13 +4,11 @@ const li = document.querySelectorAll(".li")
 const text = document.querySelectorAll(".text")
 const btnseeMore = document.querySelectorAll(".btn-seeMore")
 const notfound = document.querySelector(".notfound")
-const success_message = document.querySelector(".success_message")
 const like_value = document.querySelectorAll(".like-value")
 const like_button = document.querySelectorAll(".like-button")
 
 var clicked = false
 var count = []
-
 
 function getItems() {
   let inputItems = document.querySelector("#searchItems").value
@@ -41,12 +39,6 @@ function getItems() {
 }
 
 const main = () => {
-  if(success_message) {
-    setTimeout(() => {
-      success_message.style.display = "none"
-    }, 5000)
-  }
-
   for(let j=0;j < li.length;j++) {
     if(text[j].textContent.length > 250) {
       btnseeMore[j].style.display = "block"
@@ -68,7 +60,43 @@ const main = () => {
   } 
 
   for(var i=0; i < date.length;i++) {
-    date[i].innerHTML = `${dayjs(date[i].textContent).format("DD/MM/YY")}`
+    const timeAgo = (DateParameter) => {
+      const seconds = Math.floor((new Date() - DateParameter) / 1000);
+    
+      let interval = Math.floor(seconds / 31536000);
+      if (interval > 1) {
+        return interval + ' years ago';
+      }
+    
+      interval = Math.floor(seconds / 2592000);
+      if (interval > 1) {
+        return interval + ' months ago';
+      }
+    
+      interval = Math.floor(seconds / 86400);
+      if (interval > 1) {
+        return interval + ' days ago';
+      }
+    
+      interval = Math.floor(seconds / 3600);
+      if (interval > 1) {
+        return interval + ' hours ago';
+      }
+    
+      interval = Math.floor(seconds / 60);
+      if (interval > 1) {
+        return interval + ' minutes ago';
+      }
+    
+      if(seconds < 10) return 'just now';
+    
+      return Math.floor(seconds) + ' seconds ago';
+    }
+
+    var browserFormatDate = new Date(date[i].textContent)
+    var localFormatDate = `${browserFormatDate.getFullYear()}-${Number(browserFormatDate.getMonth() + 1)}-${browserFormatDate.getDate()} ${browserFormatDate.getUTCHours()}:${browserFormatDate.getMinutes()}:${browserFormatDate.getSeconds()}`
+
+    date[i].innerHTML = timeAgo(new Date(localFormatDate))
   }
   
   for(var i=0; i < salary.length;i++) {

@@ -29,6 +29,10 @@ body.active header .container nav ul .menu-dropdown .submenu a {
     color: var(--dark-text);
 }
 
+body.active .notfound {
+    color: var(--dark-text);
+}
+
 body.active main .container .logo-form {
     border-bottom: 2px solid var(--dark-border);
 }

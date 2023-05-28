@@ -10,8 +10,6 @@ export class UserRead {
       }
     })
 
-    console.log(user?.name)
-
     if (!user) { return new Error("User not found.") }
     return user
   }
