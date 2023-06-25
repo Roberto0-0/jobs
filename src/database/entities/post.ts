@@ -76,7 +76,9 @@ export class Post {
   })
   push: Push[]
 
-  @OneToMany(() => Resume, (resume) => resume.post)
+  @OneToMany(() => Resume, (resume) => resume.post, {
+    cascade: true,
+  })
   resume: Resume[]
   
   @CreateDateColumn()

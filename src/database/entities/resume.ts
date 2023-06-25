@@ -93,7 +93,10 @@ export class Resume {
     })
     company: Company
 
-    @ManyToOne(() => Post, (post) => post.resume)
+    @ManyToOne(() => Post, (post) => post.resume, {
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE' 
+    })
     post: Post
 
     @CreateDateColumn()

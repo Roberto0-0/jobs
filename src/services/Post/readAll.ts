@@ -1,8 +1,9 @@
 import { PostRepository } from "../../repositories/PostRepository";
+import { IStringIndex } from "../Resume/resumeResult";
 
 export class PostReadAll {
     execute(option: string) {
-        const selectOption = {
+        const selectOption: IStringIndex = {
             async recent() {
                 const post = await PostRepository.find({
                     order: { created_at: "DESC" },
