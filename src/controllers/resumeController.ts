@@ -5,6 +5,7 @@ import { ResumeRead } from "../services/Resume/read"
 import { UserResume } from "../services/Resume/userResumes"
 import { CompanyResume } from "../services/Resume/companyResumes"
 import { ResumeDelete } from "../services/Resume/delete"
+import { ResumeStatus } from "../services/Resume/resumeResult"
 
 var newErrors = []
 
@@ -172,6 +173,32 @@ export class ResumeController {
             return res.render("resume/companyResumePage/index.ejs", {
                 data: result
             })
+        } catch (error) {
+            console.error(error)
+            return res.status(500).send({ message: "Internal server error." })
+        }
+    }
+
+    async resumeStatus(req: Request, res: Response) {
+        const { resume_id, user_id, post_id } = req.params
+        const { option } = req.query
+
+        if(!option) { return res.status(404).send({ message: "Option not found." }) }
+        if (typeof option !== "string") { return res.status(500).send({ message: 'Invalid dataset' }) }
+
+        try {
+            const service = new ResumeStatus()
+            const result = await service.execute({ 
+                resume_id,
+                user_id, 
+                post_id,
+                option
+            })
+
+            if(result instanceof Error) { return res.status(400).send({ message: result.message }) }
+
+            req.flash("success_message", result.successMessage)
+            return res.redirect("/company/resume/" + result.company_id)
         } catch (error) {
             console.error(error)
             return res.status(500).send({ message: "Internal server error." })

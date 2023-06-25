@@ -76,7 +76,7 @@ main .container .resumes-list li .post-info .postVacancy i {
    color: var(--global-color);
 }
 
-main .container .resumes-list li .option {
+main .container .resumes-list li .resumeOption {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -86,7 +86,7 @@ main .container .resumes-list li .option {
     height: 100%;
 }
 
-main .container .resumes-list li .option a {
+main .container .resumes-list li .resumeOption a {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -95,7 +95,7 @@ main .container .resumes-list li .option a {
     text-decoration: none;
 }
 
-main .container .resumes-list li .option .accept {
+main .container .resumes-list li .resumeOption .accept {
     background: #65cc90;
 
     padding: 10px;
@@ -104,7 +104,7 @@ main .container .resumes-list li .option .accept {
     height: 100%;
 }
 
-main .container .resumes-list li .option .reject {
+main .container .resumes-list li .resumeOption .reject {
     background: #cf6a6a;
 
     padding: 10px;
@@ -115,13 +115,13 @@ main .container .resumes-list li .option .reject {
     border-radius: 0px 5px 5px 0px;
 }
 
-main .container .resumes-list li .option a i {
+main .container .resumes-list li .resumeOption a i {
     font-size: 1.5em;
     color: var(--global-white);
 }
 
 @media(max-width: 600px) {
-    main .container .resumes-list li .option {
+    main .container .resumes-list li .resumeOption {
         width: 40%;
     }
 }

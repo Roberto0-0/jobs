@@ -36,6 +36,8 @@ export class Push {
         post,
         company
       })
+
+      if(!pushed) { return new Error("Pushed not found.") }
     
       await PushRepository.save(pushed)
       await PostRepository.update(post_id, { pushes: newPushes += 1 })

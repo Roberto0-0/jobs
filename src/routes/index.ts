@@ -84,5 +84,6 @@ export class Routes {
     this.router.get("/company/resume/:company_id", isAuth, new ResumeController().companyPostResume)
     this.router.get("/company/resume/page/:resume_id", isAuth, new ResumeController().companyResume)
     this.router.get("/resume/delete/:user_id/:resume_id", isAuth, new ResumeController().delete)
+    this.router.get("/resume/status/:resume_id/:user_id/:post_id", isAuth, new ResumeController().resumeStatus)
   }
 }

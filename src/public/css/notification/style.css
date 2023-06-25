@@ -33,3 +33,17 @@ main .notification {
     from { top: 0px; }
     to { top: 100px; }
 }
+
+@media(max-width: 600px) {
+    main .notification {
+        position: fixed;
+        top: 90vh;
+
+        transition: .2s;
+    }
+
+    @keyframes down {
+        from { top: 90vh; }
+        to { top: 90vh; }
+    }
+}
