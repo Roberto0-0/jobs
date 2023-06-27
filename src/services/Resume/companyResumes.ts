@@ -6,7 +6,8 @@ export class CompanyResume {
         const company = await CompanyRepository.findOneBy({ id: company_id })
         const resume = await ResumeRepository.find({ 
             where: { company_id: company_id },
-            relations: { user: true, post: true }
+            relations: { user: true, post: true },
+            order: { created_at: "DESC" },
         })
 
         if(!company) { return new Error("Company not found.") }

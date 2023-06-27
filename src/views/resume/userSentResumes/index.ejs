@@ -61,7 +61,7 @@
                                 </a>
                             </div>
                             <div class="result">
-                                <% if(resume.option == "waiting") { %>
+                                <% if(resume.status == "waiting") { %>
                                     <div class="resume-status">
                                         <i class="ph-light ph-clock-countdown"></i>
                                         <span>waiting...</span>
@@ -70,16 +70,14 @@
                                         <div class="dots"><i class="ph-fill ph-dots-three-outline-vertical"></i></div>
                                         <ul class="submenu">
                                             <li>
-                                                <i class="ph ph-pencil"></i>
-                                                <a href="">edit</a>
+                                                <a href=""><i class="ph ph-pencil"></i></a>
                                             </li>
                                             <li>
-                                                <i class="ph ph-prohibit"></i>
-                                                <a href="/resume/delete/<%= user.id %>/<%= resume.id %>">cancel</a>
+                                                <a href="/resume/delete/<%= user.id %>/<%= resume.id %>"><i class="ph ph-prohibit"></i></a>
                                             </li>
                                         </ul>
                                     </div>
-                                <% } else if(resume.option == "selected") { %>
+                                <% } else if(resume.status == "selected") { %>
                                     <div class="resume-status">
                                         <i class="ph-light ph-handshake"></i>
                                         <span>selected</span>
@@ -88,12 +86,11 @@
                                         <div class="dots"><i class="ph-fill ph-dots-three-outline-vertical"></i></div>
                                         <ul class="submenu">
                                             <li>
-                                                <i class="ph-light ph-check-circle"></i>
-                                                <a href="/resume/delete/<%= user.id %>/<%= resume.id %>">done</a>
+                                                <a href="/resume/delete/<%= user.id %>/<%= resume.id %>"><i class="ph ph-check"></i></a>
                                             </li>
                                         </ul>
                                     </div>
-                                <% } else if(resume.option == "notSelected") { %>
+                                <% } else if(resume.status == "notSelected") { %>
                                     <div class="resume-status">
                                         <i class="ph ph-warning-circle"></i>
                                         <span>not selected</span>
@@ -102,8 +99,7 @@
                                         <div class="dots"><i class="ph-fill ph-dots-three-outline-vertical"></i></div>
                                         <ul class="submenu">
                                             <li>
-                                                <i class="ph-light ph-check-circle"></i>
-                                                <a href="/resume/delete/<%= user.id %>/<%= resume.id %>">done</a>
+                                                <a href="/resume/delete/<%= user.id %>/<%= resume.id %>"><i class="ph ph-check"></i></a>
                                             </li>
                                         </ul>
                                     </div>

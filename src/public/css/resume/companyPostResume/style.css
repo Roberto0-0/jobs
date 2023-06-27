@@ -120,6 +120,17 @@ main .container .resumes-list li .resumeOption a i {
     color: var(--global-white);
 }
 
+main .container .resumes-list li .resumeOption .replySent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+}
+
+main .container .resumes-list li .resumeOption .replySent i {
+    font-size: 1.5em;
+}
+
 @media(max-width: 600px) {
     main .container .resumes-list li .resumeOption {
         width: 40%;
