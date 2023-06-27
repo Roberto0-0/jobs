@@ -51,7 +51,7 @@
         <div class="container">
             <ul class="resumes-list">
                 <% data.forEach((resume) => { %>
-                    <li class="li">
+                    <li class="li" id="<%= resume.alteration %>">
                         <div class="post-info">
                             <a href="/company/resume/page/<%= resume.id %>">
                                 <h1 class="username"><%= resume.user.name %></h1>
@@ -81,5 +81,6 @@
     <script src="/js/menu/main.js"></script>
     <script src="/js/themes/main.js"></script>
     <script src="/js/notification/main.js"></script>
+    <script src="/js/resume/companyPostResume/main.js"></script>
 </body>
 </html>

@@ -25,7 +25,8 @@ export class ResumeStatus {
 
         const resumeStatus: IStringIndex = {
             async accepted() {
-                resume.option = "selected"
+                resume.status = "selected"
+                resume.alteration = true
 
                 if(post.vacancies === 0) { return new Error("There are no more vacancies.") }
                 post.vacancies = post.vacancies - 1
@@ -33,17 +34,18 @@ export class ResumeStatus {
                 await ResumeRepository.save(resume)
                 await PostRepository.save(post)
                 return {
-                    successMessage: `${user.name} resume was accepted`,
+                    successMessage: `"${user.name}" resume was accepted`,
                     company_id: post.company_id
                 }
             },
 
             async refused() {
-                resume.option = "notSelected"
+                resume.status = "notSelected"
+                resume.alteration = true
 
                 await ResumeRepository.save(resume)
                 return {
-                    successMessage: `${user.name} resume was rejected`,
+                    successMessage: `"${user.name}" resume was rejected`,
                     company_id: post.company_id
                 }
             }

@@ -125,6 +125,11 @@ body.active main .container .resumes-list li .post-info .postVacancy {
     color: var(--dark-text);
 }
 
+body.active main .container .resumes-list li .result .option-area .submenu li a {
+    border-color: var(--light-border);
+    background: var(--light-header-footer);
+}
+
 body.active main .container .resume-page {
     border-color: var(--light-border);
     background: var(--dark-header-footer);

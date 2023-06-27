@@ -72,16 +72,19 @@ main .container .resumes-list li .post-info {
 }
 
 main .container .resumes-list li .post-info a {
+    width: 100%;
+    height: auto;
+
     text-decoration: none;
 }
 
-main .container .resumes-list li .post-info .vacancy {
+main .container .resumes-list li .post-info a .vacancy {
     font-size: 1.5em; 
     font-weight: 400;
     color: var(--global-color);
 }
 
-main .container .resumes-list li .post-info .company-name {
+main .container .resumes-list li .post-info a .company-name {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -93,7 +96,7 @@ main .container .resumes-list li .post-info .company-name {
     color: var(--light-text);
 }
 
-main .container .resumes-list li .post-info .company-name i {
+main .container .resumes-list li .post-info a .company-name i {
    color: var(--global-color);
 }
 
@@ -164,20 +167,20 @@ main .container .resumes-list li .result .option-area .dots {
 
 main .container .resumes-list li .result .option-area .submenu {
     display: none;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 0.2em;
 
     position: relative;
-    top: 60%;
+    top: 50%;
     left: -10%;
 
     padding: 8px 4px;
 
     width: 115px;
     min-width: 115px;
-    height: 75px;
+    height: auto;
 
     border: 1px solid var(--dark-border);
     border-radius: 5px;
@@ -187,28 +190,39 @@ main .container .resumes-list li .result .option-area .submenu {
 main .container .resumes-list li .result .option-area .submenu li {
     display: flex;
     flex-direction: row;
+    justify-items: center;
     align-items: center;
     gap: 0.3em;
 
     padding: 3px;
 
-    width: 100%;
+    width: 50%;
 
     border: none;
     border-radius: 0;
 }
 
-main .container .resumes-list li .result .option-area .submenu li i {
-    font-size: 1.1em;
-}
 
 main .container .resumes-list li .result .option-area .submenu li a {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 5px;
 
     width: 100%;
 
+    border: 1px solid var(--dark-border);
+    border-radius: 5px;
+    background: var(--light-primary-background);
+
     text-decoration: none;
     color: var(--light-text);
+}
+
+main .container .resumes-list li .result .option-area .submenu li a i {
+    font-size: 1.1em;
 }
 
 main .container .resumes-list li .result .option-area .submenu::before {

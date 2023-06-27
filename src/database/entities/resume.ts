@@ -62,7 +62,14 @@ export class Resume {
         nullable: false,
         default: "waiting"
     })
-    option: string
+    status: string
+
+    @Column({
+        type: "boolean",
+        default: false,
+        nullable: false
+    })
+    alteration: boolean
 
     @Column({
         type: "varchar",
