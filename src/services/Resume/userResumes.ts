@@ -6,7 +6,8 @@ export class UserResume {
         const user = await UserRepository.findOneBy({ id: user_id })
         const resume = await ResumeRepository.find({
             where: { user_id: user_id },
-            relations: { post: true }
+            relations: { post: true },
+            order: { created_at: "DESC" }
         })
 
         if(!user) { return new Error("User not found.") }

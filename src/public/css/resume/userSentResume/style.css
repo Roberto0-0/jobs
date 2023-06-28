@@ -258,7 +258,7 @@ main .container .resumes-list li .result .option-area .submenu.active {
     }
 
     main .container .resumes-list li .result .option-area .submenu {
-        top: 60%;
-        left: -20%;
+        top: 50%;
+        left: -21%;
     }
 }
