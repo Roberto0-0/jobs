@@ -10,12 +10,34 @@ main {
 main .container {
     display: flex;
     flex-direction: column;
+    gap: 0.5em;
 
     margin: auto;
 
     width: 95vw;
     max-width: 1279px;
     height: 100%;
+}
+
+main .container .sentResume {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+
+    margin: auto;
+    padding: 3px;
+    
+    width: 100%;
+    max-width: 500px;
+}
+
+main .container .sentResume i {
+    font-size: 1.5em;
+}
+
+main .container .sentResume h2 {
+    font-size: 1.3em;
 }
 
 main .container .resumes-list {

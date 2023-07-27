@@ -43,7 +43,7 @@ main .notification {
     }
 
     @keyframes down {
-        from { top: 90vh; }
+        from { top: 100vh; }
         to { top: 90vh; }
     }
 }
