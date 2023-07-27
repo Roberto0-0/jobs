@@ -49,26 +49,51 @@
             <div class="notification"><span class="message"><%= success_message %></span></div>
         <% } %>
         <div class="container">
-            <ul class="resumes-list">
-                <% data.forEach((resume) => { %>
-                    <li class="li" id="<%= resume.alteration %>">
-                        <div class="post-info">
-                            <a href="/company/resume/page/<%= resume.id %>">
-                                <h1 class="username"><%= resume.user.name %></h1>
-                                <h2 class="postVacancy"><%= resume.post.vacancy %></h2>
-                            </a>
-                        </div>
-                        <div class="resumeOption">
-                            <a href="/resume/status/<%= resume.id %>/<%= resume.user.id %>/<%= resume.post.id %>?option=accepted" class="accept">
-                                <i class="ph-bold ph-check"></i>
-                            </a>
-                            <a href="/resume/status/<%= resume.id %>/<%= resume.user.id %>/<%= resume.post.id %>?option=refused" class="reject">
-                                <i class="ph-bold ph-x"></i>
-                            </a>
-                        </div>
-                    </li>
-                <% }) %>
-            </ul>
+            <% data.forEach((resume) => { %>
+                <% if(!resume.alteration) { %>
+                    <ul class="resumes-list">
+                        <li class="li" id="<%= resume.alteration %>">
+                            <div class="post-info">
+                                <a href="/company/resume/page/<%= resume.id %>">
+                                    <h1 class="username"><%= resume.user.name %></h1>
+                                    <h2 class="postVacancy"><%= resume.post.vacancy %></h2>
+                                </a>
+                            </div>
+                            <div class="resumeOption">
+                                <a href="/resume/status/<%= resume.id %>/<%= resume.user.id %>/<%= resume.post.id %>?option=accepted" class="accept">
+                                    <i class="ph-bold ph-check"></i>
+                                </a>
+                                <a href="/resume/status/<%= resume.id %>/<%= resume.user.id %>/<%= resume.post.id %>?option=refused" class="reject">
+                                    <i class="ph-bold ph-x"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                <% } %>
+            <% }) %>
+            <div class="sentResume"><h2>Sent</h2><i class="ph-bold ph-checks"></i></div>
+            <% data.forEach((resume) => { %>
+                <% if(resume.alteration) { %>
+                    <ul class="resumes-list">
+                        <li class="li" id="<%= resume.alteration %>">
+                            <div class="post-info">
+                                <a href="/company/resume/page/<%= resume.id %>">
+                                    <h1 class="username"><%= resume.user.name %></h1>
+                                    <h2 class="postVacancy"><%= resume.post.vacancy %></h2>
+                                </a>
+                            </div>
+                            <div class="resumeOption">
+                                <a href="/resume/status/<%= resume.id %>/<%= resume.user.id %>/<%= resume.post.id %>?option=accepted" class="accept">
+                                    <i class="ph-bold ph-check"></i>
+                                </a>
+                                <a href="/resume/status/<%= resume.id %>/<%= resume.user.id %>/<%= resume.post.id %>?option=refused" class="reject">
+                                    <i class="ph-bold ph-x"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                <% } %>
+            <% }) %>
         </div>
     </main>
     <footer>
