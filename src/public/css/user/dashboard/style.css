@@ -147,15 +147,15 @@ main .container .secondBlock {
   width: 50%;
 }
 
-main .container .firstBlock h2 {
-  font-size: 3em;
+main .container .firstBlock h1 {
+  font-size: 3.5em;
 }
 
-main .container .firstBlock h3 {
+main .container .firstBlock h2 {
   margin-bottom: 1em;
   
-  font-weight: 600;
-  font-size: 1.5em;
+  font-weight: 500;
+  font-size: 1.8em;
 }
 
 main .container .firstBlock .jobs {
@@ -227,11 +227,11 @@ main .container .secondBlock img {
     width: 100%;
   }
 
-  main .container .firstBlock h2 {
+  main .container .firstBlock h1 {
     font-size: 2.6em;
   }
 
-  main .container .firstBlock h3 {
+  main .container .firstBlock h2 {
     font-size: 1.3em;
   }
 

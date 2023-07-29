@@ -26,7 +26,9 @@ const main = () => {
   } 
 
   for(var i=0; i < date.length;i++) {
-    date[i].innerHTML = `${dayjs(date[i].textContent).format("DD/MM/YY")}`
+    var browserFormatDate = new Date(date[i].textContent)
+    var localFormatDate = `${browserFormatDate.getFullYear()}-${Number(browserFormatDate.getMonth() + 1)}-${browserFormatDate.getDate()} ${browserFormatDate.getUTCHours()}:${browserFormatDate.getMinutes()}:${browserFormatDate.getSeconds()}`
+    date[i].innerHTML = moment(localFormatDate).fromNow()
   }
   
   for(var i=0; i < salary.length;i++) {
