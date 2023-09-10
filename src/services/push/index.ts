@@ -18,7 +18,8 @@ export class Push {
       where: {
         user_id: user_id,
         post_id: post_id
-      }
+      },
+      relations: { user: true }
     })
 
     if(!user) { return new Error("User not found.") }

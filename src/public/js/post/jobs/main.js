@@ -6,6 +6,7 @@ const btnseeMore = document.querySelectorAll(".btn-seeMore")
 const notfound = document.querySelector(".notfound")
 const like_value = document.querySelectorAll(".like-value")
 const like_button = document.querySelectorAll(".like-button")
+const pushIllustration = document.querySelectorAll(".ph-arrow-fat-up")
 
 var clicked = false
 var count = []
@@ -71,12 +72,23 @@ const main = () => {
   
   for(let i=0;i < li.length;i++) {
     like_button[i].onclick = () => {
+        var userId = like_button[i].name.substring(0,36)
         var xml = new XMLHttpRequest()
 
         xml.open("GET", `http://localhost:3333/pushed/${like_button[i].name}`)
         xml.onload = () => {
             const data = JSON.parse(xml.response)
-            like_value[i].innerHTML = data.pushes
+            data.push.map((value) => {
+              if(value.user_id === userId) {
+                if(value.pushed) {
+                  pushIllustration[i].classList = "ph-fill ph-arrow-fat-up"
+                  like_value[i].innerHTML = data.pushes
+                } else {
+                  pushIllustration[i].classList = "ph ph-arrow-fat-up"
+                  like_value[i].innerHTML = data.pushes 
+                }
+              }
+            })
         }
         xml.send()
         }

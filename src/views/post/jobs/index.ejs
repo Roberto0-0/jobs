@@ -110,8 +110,17 @@
                      </div>
                      <div class="functions">
                            <div class="like">
-                              <button class="like-button" name="<%= user.id %>/<%= post.id %>/<%= post.company.id %>"><i class="ph ph-arrow-fat-up"></i></button>
-                              <span class="like-value" ><%= post.pushes %></span>
+                              <% post.push.forEach((value) => { %>
+                                 <% if(value.user_id === user.id) { %>
+                                    <% if(value.pushed) { %>
+                                       <button class="like-button" name="<%= user.id %>/<%= post.id %>/<%= post.company.id %>"><i class="ph-fill ph-arrow-fat-up"></i></button>
+                                       <span class="like-value" ><%= post.pushes %></span>
+                                    <% } else { %>
+                                       <button class="like-button" name="<%= user.id %>/<%= post.id %>/<%= post.company.id %>"><i class="ph ph-arrow-fat-up"></i></button>
+                                       <span class="like-value" ><%= post.pushes %></span>
+                                    <% } %>
+                                 <% } %>
+                              <% }) %>
                            </div>
                            <div class="accept">
                               <a href="/resume/create/<%= post.id %>/<%= post.company.id %>">
