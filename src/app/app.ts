@@ -49,7 +49,5 @@ export class App {
     this.app.use(bodyParser.json())
   }
 
-  routes() {
-    this.app.use(new Routes().router)
-  }
+  routes() { this.app.use(new Routes().router) }
 }

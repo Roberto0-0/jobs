@@ -4,97 +4,105 @@ import { UserDelete } from "../services/User/delete"
 import { UserRead } from "../services/User/read"
 import { UserReadAll } from "../services/User/readAll"
 import { UserUpdate } from "../services/User/update"
+import { UserUpdatePassword } from "../services/User/updatePassword"
 import { userRegisterSchema } from "../schemas/userRegisterSchema"
-import { changePasswordSchema } from "../schemas/changePasswordSchema"
+import { updatePasswordSchema } from "../schemas/updatePasswordSchema"
 
-var newErrors: string[] = []
+var errorStorage: string[] = []
 
 export class UserController { 
-  createIndex(req: Request, res: Response) {
-     res.render("user/register/index.ejs")
-  }
+  createIndex(req: Request, res: Response) { res.render("user/register/index.ejs") }
 
   async create(req: Request, res: Response) {
-    try {
-      const validationResult = userRegisterSchema.safeParse(req.body)
+    const { ...data } = req.body
 
-      if(validationResult.success) {
+    try {
+      const userSchemaValidationResult = userRegisterSchema.safeParse(data)
+
+      if(userSchemaValidationResult.success) {
         const userCreateService = new UserCreate()
-        const userCreateResult = await userCreateService.execute(validationResult.data)
+        const userCreateResult = await userCreateService.execute(userSchemaValidationResult.data)
 
         if(userCreateResult instanceof Error) {
-          newErrors.push(userCreateResult.message)
+          errorStorage.push(userCreateResult.message)
           req.flash("error_message", userCreateResult.message)
           return res.redirect("/register")
         }
 
         return res.redirect("/login")
       } else {
-        const err = validationResult.error.errors
+        const err = userSchemaValidationResult.error.errors
 
-        err.map((values) => {
-          newErrors.push(values.message)
-        })
+        err.map((values) => { errorStorage.push(values.message) })
         
-        req.flash("error_message", newErrors)
+        req.flash("error_message", errorStorage)
         res.redirect("/register")
-        newErrors = []
+        errorStorage = []
       }
-    } catch(err) {
-      console.error(err)
-      return res.status(500).send({ message: "Internal server error!"})
+    } catch(error) {
+      console.error(error)
+      return res.status(500).json({
+        statusCode: 500,
+        message: "Internal server error."
+      })
     }
   }
 
-  async read(req: Request, res: Response) {
+  async getByid(req: Request, res: Response) {
     const { id } = req.params
 
     try {
-      const serivce = new UserRead()
-      const result = await serivce.execute(id)
+      const userGetByIdService = new UserRead()
+      const userGetByIdResult = await userGetByIdService.execute(id)
 
-      if(result instanceof Error) {
-        return res.status(400).send({ message: result.message })
-      }
+      if(userGetByIdResult instanceof Error) { return res.status(400).json({ message: userGetByIdResult.message }) }
 
-      return res.status(200).send(result)
+      return res.status(200).json(userGetByIdResult)
     } catch (error) {
-      
+      console.error(error)
+      return res.status(500).json({
+        statusCode: 500,
+        message: "Internal server error."
+      })
     }
   }
 
-  async readAll(req: Request, res: Response) {
+  async getAll(req: Request, res: Response) {
     try {
-      const serivce = new UserReadAll()
-      const result = await serivce.execute()
+      const userGetAllService = new UserReadAll()
+      const userGetAllResult = await userGetAllService.execute()
 
-      return res.status(200).send(result)
+      if(userGetAllResult instanceof Error) { return res.status(400).json({ message: userGetAllResult.message }) }
+
+      return res.status(200).json(userGetAllResult)
     } catch (error) {
-      
+      console.error(error)
+      return res.status(500).json({
+        statusCode: 500,
+        message: "Internal server error."
+      })
     }
   }
 
   async update(req: Request, res: Response) {
     const { id } = req.params
-    const { name, email, password } = req.body
+    const { ...data } = req.body
+
+    data.id = id
 
     try {
-      const service = new UserUpdate()
-      const result = await service.execute({
-        id,
-        name,
-        email,
-        password
-      })
+      const userUpdateService = new UserUpdate()
+      const userUpdateResult = await userUpdateService.execute(data)
 
-      if(result instanceof Error) {
-        return res.status(400).send({ message: result.message })
-      }
+      if(userUpdateResult instanceof Error) { return res.status(400).json({ message: userUpdateResult.message }) }
 
-      return res.status(200).send({ message: "Account updated successfully." })
+      return res.status(200).json({ message: "Account updated successfully." })
     } catch (error) {
       console.error(error)
-      return res.status(500).send({ message: "Internal server error." })
+      return res.status(500).json({
+        statusCode: 500,
+        message: "Internal server error."
+      })
     }
   }
 
@@ -102,86 +110,88 @@ export class UserController {
     const { id } = req.params
 
     try {
-      const sercive = new UserDelete()
-      const result = await sercive.execute(id)
+      const userDeleteService = new UserDelete()
+      const userDeleteResult = await userDeleteService.execute(id)
 
-      if(result instanceof Error) {
-        return res.status(400).send({ messsage: result.message })
-      }
+      if(userDeleteResult instanceof Error) { return res.status(400).json({ messsage: userDeleteResult.message }) }
 
-      return res.status(200).send({ message: "Account deleted successfully." })
+      return res.status(200).json({ message: "Account deleted successfully." })
     } catch (error) {
       console.error(error)
-      return res.status(500).send({ message: "Internal server error." })
+      return res.status(500).json({
+        statusCode: 500,
+        message: "Internal server error."
+      })
     }
   }
   
-  async userProfile(req: Request, res: Response) {
-    try {
-      res.render("user/profile/home/index.ejs")
-    } catch(error) {
+  async profile(req: Request, res: Response) {
+    try { return res.render("user/profile/home/index.ejs") } catch(error) {
       console.error(error)
-      return res.status(500).send({ message: "Internal server error." })
+      return res.status(500).json({
+        statusCode: 500,
+        message: "Internal server error."
+      })
     }
   }
 
   async accountDetails(req: Request, res: Response) {
-    try {
-      res.render("user/profile/accountDetails/index.ejs")
-    } catch(error) {
+    try { res.render("user/profile/accountDetails/index.ejs") } catch(error) {
       console.error(error)
-      return res.status(500).send({ message: "Internal server error." })
+      return res.status(500).json({
+        statusCode: 500,
+        message: "Internal server error."
+      })
     }
   }
 
-  async changePasswordIndex(req: Request, res: Response) {
-    try {
-      res.render("user/profile/changePassword/index.ejs")
-    } catch (error) {
+  async updatePasswordIndex(req: Request, res: Response) {
+    try { res.render("user/profile/changePassword/index.ejs") } catch (error) {
       console.error(error)
-      return res.status(500).send({ message: "Internal server error." })
+      return res.status(500).json({
+        statusCode: 500,
+        message: "Internal server error."
+      })
     }
   }
 
-  async changePassword(req: Request, res: Response) {
+  async updatePassword(req: Request, res: Response) {
     const { user_id } = req.params
-    const { currentPassword, newPassword, repeatNewPassword } = req.body
+    const { ...data } = req.body
+
+    data.user_id = user_id
 
     try {
-        const validationResult = changePasswordSchema.safeParse({
-            user_id,
-            currentPassword,
-            newPassword,
-            repeatNewPassword
-        })
+        const userUpdatePasswordSchemaResult = updatePasswordSchema.safeParse(data)
 
-        if(validationResult.success) {
-            const service = new UserUpdate()
-            const result = await service.changePassword(validationResult.data)
+        if(userUpdatePasswordSchemaResult.success) {
+            const service = new UserUpdatePassword()
+            const result = await service.execute(userUpdatePasswordSchemaResult.data)
       
             if(result instanceof Error) { 
-                newErrors.push(result.message)
-                req.flash("error_message", newErrors)
+                errorStorage.push(result.message)
+                req.flash("error_message", errorStorage)
                 res.redirect("/profile/settings/password")
-                return newErrors = []
+                return errorStorage = []
             }
       
             req.flash("success_message", "Successfully updated password.")
             res.redirect("/profile/settings/password")
         } else {
-            const err = validationResult.error.errors
+            const err = userUpdatePasswordSchemaResult.error.errors
 
-            err.map((values) => {
-                newErrors.push(values.message)
-            })
+            err.map((values) => { errorStorage.push(values.message) })
             
-            req.flash("error_message", newErrors)
+            req.flash("error_message", errorStorage)
             res.redirect("/profile/settings/password")
-            newErrors = []
+            errorStorage = []
         }
     } catch(error) {
-        console.error(error)
-        return res.status(500).send({ message: "Internal server error." })
+      console.error(error)
+      return res.status(500).json({
+        statusCode: 500,
+        message: "Internal server error."
+      })
     }
   }
 }

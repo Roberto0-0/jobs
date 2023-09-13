@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-export const changePasswordSchema = z.object({
+export const updatePasswordSchema = z.object({
     user_id: z.string({
         required_error: "User id is required."
     }),

@@ -1,4 +1,4 @@
-import express, { Router, Request, Response } from "express"
+import express, { Router } from "express"
 import { CompanyController } from "../controllers/companyController"
 import { PushController } from "../controllers/pushController"
 import { LoginController } from "../controllers/loginController"
@@ -31,14 +31,14 @@ export class Routes {
   user() {
     this.router.get("/register", new UserController().createIndex)
     this.router.post("/user/register", new UserController().create)
-    this.router.get("/user/show/:id", new UserController().read)
-    this.router.get("/user/showAll", new UserController().readAll)
+    this.router.get("/user/show/:id", new UserController().getByid)
+    this.router.get("/user/showAll", new UserController().getAll)
     this.router.put("/user/update/:id", new UserController().update)
     this.router.delete("/user/delete/:id", new UserController().delete)
-    this.router.get("/profile", isAuth, new UserController().userProfile)
+    this.router.get("/profile", isAuth, new UserController().profile)
     this.router.get("/profile/account", isAuth, new UserController().accountDetails)
-    this.router.get("/profile/settings/password", isAuth, new UserController().changePasswordIndex)
-    this.router.post("/profile/settings/password/:user_id", new UserController().changePassword)
+    this.router.get("/profile/settings/password", isAuth, new UserController().updatePasswordIndex)
+    this.router.post("/profile/settings/password/:user_id", new UserController().updatePassword)
   }
 
   post() {
