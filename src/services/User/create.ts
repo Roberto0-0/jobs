@@ -1,8 +1,10 @@
 import { UserRepository } from "../../repositories/UserRepository"
-import { CreatePasswordHash} from "../Bcrypt/index"
-import { EmailValidation } from "../EmailValidation"; 
+import { BcryptService } from "../Bcrypt/index"
+import { EmailValidation } from "../EmailValidation"
 
-interface Attributes {
+const bcryptService = new BcryptService()
+
+interface userCreateAttributes {
   name: string;
   email: string;
   password: string;
@@ -10,31 +12,19 @@ interface Attributes {
 }
 
 export class UserCreate {
-  async execute({ name, email, password, confirmPassword }: Attributes) {
-    const user = await UserRepository.findOne({
-      where: { email: email }
-    })
+  async execute({ ...attributes }: userCreateAttributes) {
+    const user = await UserRepository.findOne({ where: { email: attributes.email } })
     
-    if(user) {
-      return new Error("Email already registered.")
-    }
-
-    if(!EmailValidation(email)) {
-      return new Error("Invalid email.")
-    }
+    if(user) { return new Error("Email already registered.") }
+    if(!EmailValidation(attributes.email)) { return new Error("Invalid email.") }
+    if(attributes.confirmPassword !== attributes.password) { return new Error("Differents password.") }
     
-    if(password !== confirmPassword) {
-      return new Error("Differents password.")
-    }
+    const passwordHash = await bcryptService.createPasswordHash(attributes.password)
     
-    const newPassword = await CreatePasswordHash(password)
+    const { confirmPassword: _, ...data } = attributes
+    data.password = passwordHash
+    const userCreated = UserRepository.create(data)
     
-    const newUser = UserRepository.create({
-      name,
-      email,
-      password: newPassword
-    })
-    
-    await UserRepository.save(newUser)
+    return await UserRepository.save(userCreated)
   }
 }
