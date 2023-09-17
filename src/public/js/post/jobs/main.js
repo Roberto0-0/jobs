@@ -39,7 +39,7 @@ function getItems() {
   }
 }
 
-const main = () => {
+const main = async () => {
   for(let j=0;j < li.length;j++) {
     if(text[j].textContent.length > 250) {
       btnseeMore[j].style.display = "block"

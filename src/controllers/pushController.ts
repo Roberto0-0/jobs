@@ -24,7 +24,7 @@ export class PushController {
         post_id: result,
         company_id
        })
-      
+
       if(postResult instanceof Error) {
           return res.status(400).send({ message : postResult.message })
       }

@@ -1,14 +1,14 @@
 import express, { Router } from "express"
 import { CompanyController } from "../controllers/companyController"
 import { PushController } from "../controllers/pushController"
-import { LoginController } from "../controllers/loginController"
 import { PostController } from "../controllers/postController"
 import { UserController } from "../controllers/userController"
 import { HomeController } from "../controllers/homeController"
 import { ResumeController } from "../controllers/resumeController"
-import { isAuth } from "../helpers/isAuth/index"
+import { isAuthenticated } from "../services/isAuthenticated/index"
+import { isAuthorized } from "../services/isAuthorized"
 
-export class Routes {
+export class AppRoutes {
   router: express.IRouter
 
   constructor() {
@@ -19,7 +19,6 @@ export class Routes {
     this.post()
     this.company()
     this.push()
-    this.login()
     this.resume()
   }
 
@@ -35,55 +34,52 @@ export class Routes {
     this.router.get("/user/showAll", new UserController().getAll)
     this.router.put("/user/update/:id", new UserController().update)
     this.router.delete("/user/delete/:id", new UserController().delete)
-    this.router.get("/profile", isAuth, new UserController().profile)
-    this.router.get("/profile/account", isAuth, new UserController().accountDetails)
-    this.router.get("/profile/settings/password", isAuth, new UserController().updatePasswordIndex)
+    this.router.get("/profile", isAuthenticated, isAuthorized, new UserController().profile)
+    this.router.get("/profile/account", isAuthenticated, isAuthorized, new UserController().accountDetails)
+    this.router.get("/profile/settings/password", isAuthenticated, isAuthorized, new UserController().updatePasswordIndex)
     this.router.post("/profile/settings/password/:user_id", new UserController().updatePassword)
+    this.router.get("/dashboard", isAuthenticated, isAuthorized ,new UserController().dashboard)
+    this.router.get("/login", new UserController().loginIndex)
+    this.router.post("/login", new UserController().login)
+    this.router.get("/logout", new UserController().logout)
   }
 
   post() {
-    this.router.get("/post/create/:user_id", isAuth, new PostController().createIndex)
+    this.router.get("/post/create/:user_id" ,isAuthenticated, isAuthorized, new PostController().createIndex)
     this.router.post("/post/create/:user_id/:company_id", new PostController().create)
-    this.router.get("/jobs", new PostController().readAll)
-    this.router.get("/post/show/:id", isAuth, new PostController().read)
-    this.router.get("/post/update/:post_id/:company_id", isAuth, new PostController().updateIndex)
+    this.router.get("/jobs", isAuthorized, new PostController().readAll)
+    this.router.get("/post/show/:id", isAuthenticated, isAuthorized, new PostController().read)
+    this.router.get("/post/update/:post_id/:company_id", isAuthenticated, isAuthorized, new PostController().updateIndex)
     this.router.post("/post/update/:post_id/:company_id", new PostController().update)
-    this.router.get("/post/delete/:post_id/:company_id", new PostController().delete)
-    this.router.get("/company/posts/:company_id", isAuth, new PostController().CompanyPostAdjustments)
-    this.router.get("/company/post/:post_id/:company_id", isAuth, new PostController().showCompanyPost)
+    this.router.get("/post/delete/:post_id/:company_id", isAuthenticated, isAuthorized, new PostController().delete)
+    this.router.get("/company/posts/:company_id", isAuthenticated, isAuthorized, new PostController().CompanyPostAdjustments)
+    this.router.get("/company/post/:post_id/:company_id", isAuthenticated, isAuthorized, new PostController().showCompanyPost)
   }
 
   company() {
-    this.router.get("/company/registration", isAuth, new CompanyController().createIndex)
+    this.router.get("/company/registration", isAuthenticated, isAuthorized, new CompanyController().createIndex)
     this.router.post("/company/registration/:user_id", new CompanyController().create)
-    this.router.get("/company/showAll", new CompanyController().readAll)
-    this.router.get("/company/pushs/:company_id", new CompanyController().showAllCompanyPush)
-    this.router.get("/company/:user_id", isAuth, new CompanyController().read)
-    this.router.put("/company/update/:id", new CompanyController().update)
+    this.router.get("/company/showAll", isAuthenticated, isAuthorized, new CompanyController().readAll)
+    this.router.get("/company/pushs/:company_id", isAuthenticated, isAuthorized, new CompanyController().showAllCompanyPush)
+    this.router.get("/company/:user_id", isAuthenticated, isAuthorized, isAuthenticated, new CompanyController().read)
+    this.router.put("/company/update/:id", isAuthenticated, isAuthorized, new CompanyController().update)
     this.router.delete("/company/delete/:id", new CompanyController().delete)
   }
 
   push() {
-    this.router.get("/pushed/:user_id/:post_id/:company_id", new PushController().pushed)
-    this.router.get("/pushed/readAll/:company_id", new PushController().read)
-    this.router.get("/company/pushes/:company_id", isAuth, new PushController().read)
-  }
-
-  login() {
-    this.router.get("/dashboard", isAuth, new LoginController().dashboard)
-    this.router.get("/login", new LoginController().loginIndex)
-    this.router.post("/login", new LoginController().login)
-    this.router.get("/logout", new LoginController().logout)
+    this.router.get("/pushed/:user_id/:post_id/:company_id", isAuthenticated, isAuthorized, new PushController().pushed)
+    this.router.get("/pushed/readAll/:company_id", isAuthenticated, isAuthorized, new PushController().read)
+    this.router.get("/company/pushes/:company_id", isAuthenticated, isAuthorized, new PushController().read)
   }
 
   resume() {
-    this.router.get("/resume/create/:post_id/:company_id", isAuth, new ResumeController().createIndex)
+    this.router.get("/resume/create/:post_id/:company_id", isAuthenticated, isAuthorized, new ResumeController().createIndex)
     this.router.post("/resume/create/:user_id/:post_id/:company_id", new ResumeController().create)
-    this.router.get("/profile/resumes/:user_id", isAuth, new ResumeController().userResume)
-    this.router.get("/resume/post/page/:post_id/:company_id", isAuth, new ResumeController().userResumePost)
-    this.router.get("/company/resume/:company_id", isAuth, new ResumeController().companyPostResume)
-    this.router.get("/company/resume/page/:resume_id", isAuth, new ResumeController().companyResume)
-    this.router.get("/resume/delete/:user_id/:resume_id", isAuth, new ResumeController().delete)
-    this.router.get("/resume/status/:resume_id/:user_id/:post_id", isAuth, new ResumeController().resumeStatus)
+    this.router.get("/profile/resumes/:user_id", isAuthenticated, isAuthorized, new ResumeController().userResume)
+    this.router.get("/resume/post/page/:post_id/:company_id", isAuthenticated, isAuthorized, new ResumeController().userResumePost)
+    this.router.get("/company/resume/:company_id", isAuthenticated, isAuthorized, new ResumeController().companyPostResume)
+    this.router.get("/company/resume/page/:resume_id", isAuthenticated, isAuthorized, new ResumeController().companyResume)
+    this.router.get("/resume/delete/:user_id/:resume_id", isAuthenticated, isAuthorized, new ResumeController().delete)
+    this.router.get("/resume/status/:resume_id/:user_id/:post_id", isAuthenticated, isAuthorized, new ResumeController().resumeStatus)
   }
 }
