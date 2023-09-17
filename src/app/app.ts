@@ -1,16 +1,16 @@
 import express, { NextFunction, Request, Response } from "express"
 import bodyParser from "body-parser"
+import cookieParser from "cookie-parser"
 import session from "express-session"
-import { Routes } from "../routes"
+import { AppRoutes } from "../routes"
 import flash from "connect-flash"
 import path from "path"
 import ejs from "ejs"
 import passport from "passport"
-import config from "../config/auth/index"
+
+import "../authenticate/user"
 import "reflect-metadata"
 import "dotenv/config"
-
-config(passport)
 
 export class App {
   app: express.Application
@@ -26,12 +26,13 @@ export class App {
     this.app.use(session({
       secret: process.env.SESSION_SECRET as string | string[],
       resave: false,
-      saveUninitialized: false,
+      saveUninitialized: true,
       cookie: { maxAge: 24 * 60 * 1000 }
     }))
     this.app.use(passport.initialize())
     this.app.use(passport.session())
     this.app.use(flash())
+
     this.app.use((req: Request, res: Response, next: NextFunction) => {
       res.locals.success_message = req.flash("success_message")
       res.locals.error_message = req.flash("error_message")
@@ -47,7 +48,8 @@ export class App {
 
     this.app.use(bodyParser.urlencoded({ extended: false }))
     this.app.use(bodyParser.json())
+    this.app.use(cookieParser())
   }
 
-  routes() { this.app.use(new Routes().router) }
+  routes() { this.app.use(new AppRoutes().router) }
 }
