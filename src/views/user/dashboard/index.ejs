@@ -8,11 +8,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/phosphor-icons"></script>
   <link rel="stylesheet" href="/css/user/dashboard/style.css">
-  <link rel="stylesheet" href="/css/notification/style.css">
-  <link rel="stylesheet" href="/css/footer/style.css">
   <link rel="stylesheet" href="/css/header/style.css">
-  <link rel="stylesheet" href="/css/rootColor/style.css">
-  <link rel="stylesheet" href="/css/darkTheme/style.css">
+  <link rel="stylesheet" href="/css/footer/style.css">
+  <link rel="stylesheet" href="/css/rootColors/style.css">
+  <link rel="stylesheet" href="/css/themeChange/style.css">
+  <link rel="stylesheet" href="/css/notification/style.css">
   <title>Jobs</title>
 </head>
 <body>
@@ -33,23 +33,10 @@
                   <div class="menu-dropdown">
                     <button>more</button>
                     <ul class="submenu">
-                      <% if(user.company.length > 0) { %>
-                        <% user.company.forEach((company) => { %>
-                          <a href="/company/<%= user.id %>"/><i class="ph-buildings-fill"></i>company</a>
-                        <% }) %>
-                      <% } %>
                       <a href="/profile"><i class="ph-user-circle-gear-fill"></i>profile</a>
                     </ul>
                   </div>
                   <div class="mobile-option">
-                    <% if(user.company.length > 0) { %>
-                      <% user.company.forEach((company) => { %>
-                        <li>
-                          <i class="ph-buildings-fill"></i>
-                          <a href="/company/<%= user.id %>"/>company</a>
-                        </li>
-                      <% }) %>
-                    <% } %>
                     <li>
                       <i class="ph-user-circle-gear-fill"></i>
                       <a href="/profile">profile</a>
@@ -91,7 +78,7 @@
     </div>
   </footer>
   <script src="/js/menu/main.js"></script>
-  <script src="/js/themes/main.js"></script>
+  <script src="/js/themeChange/main.js"></script>
   <script src="/js/notification/main.js"></script>
 </body>
 </html>

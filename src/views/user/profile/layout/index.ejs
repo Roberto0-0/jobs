@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/user/profile/layout/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <link rel="stylesheet" href="/css/themeChange/style.css">
+    <title>Jobs</title>
+</head>
+<body>
+  <header>
+    <div class="container">
+        <a href="" class="logo">Jobs</a>
+        <div class="nav-area">
+            <div class="change-color" id="moon">
+                <i style="display: none;" class="ph ph-moon"></i>
+            </div>
+            <nav class="nav">
+                <ul>
+                  <% if(user) { %>
+                    <li>
+                      <i class="ph-fill ph-key-return"></i>
+                      <a href="/dashboard">back</a>
+                    </li>
+                  <% } else { %>
+                  <li>
+                    <i class="ph-fill ph-key-return"></i>
+                    <a href="/">back</a>
+                  </li>
+                  <% } %>
+                </ul>
+            </nav>
+        </div>
+        <div class="menu"><i class="ph-bold ph-list"></i></div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <% if(user) { %>
+        <div class="moreInfo">
+          <a href="/profile/account">
+            <div class="accountInfo">
+              <i class="ph-light ph-user-circle-plus"></i>
+              <p>Profile details</p>
+            </div>
+            <i class="ph ph-caret-right"></i>
+          </a>
+          <a href="/profile/resumes/<%= user.id %>">
+              <div class="curriculum">
+              <i class="ph-light ph-read-cv-logo"></i>
+              <p>Sent resumes</p>
+              </div>
+              <i class="ph ph-caret-right"></i>
+          </a>
+          <a href="/profile/settings/password">
+            <div class="changePassword">
+              <i class="ph-light ph-keyhole"></i>
+              <p>Change your password</p>
+            </div>
+            <i class="ph ph-caret-right"></i>
+          </a>
+        </div>
+      <% } %>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>
+        &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+      </p>
+    </div>
+  </footer>
+  <script src="/js/menu/main.js"></script>
+  <script src="/js/themeChange/main.js"></script>
+</body>
+</html>

@@ -43,7 +43,7 @@ main .container form {
 
 main .container form .inputContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 1.2em;
 
     width: 100%;
@@ -51,18 +51,26 @@ main .container form .inputContainer {
 
 main .container form .inputContainer .firstBlock {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1em;
 
-    width: 50%;
+    width: 100%;
 }
 
 main .container form .inputContainer .secondBlock {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1em;
 
-    width: 50%;
+    width: 100%;
+}
+
+main .container form .inputContainer .thirdBlock {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+
+    width: 100%;
 }
 
 main .container form .input {
@@ -96,25 +104,35 @@ main .container form .input input:focus {
     outline-color: var(--global-color);
 }
 
-main .container form .input textarea {
-    padding: 5px;
+main .container form .input .subInput {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
     width: 100%;
-    height: 150px;
+    height: 100%;
 
-    border-radius: 3px;
     border: 1px solid var(--dark-border);
-    background: var(--light-secondary-background);
+    border-radius: 5px;
+    background-color: var(--light-secondary-background);
+}
+
+main .container form .input .subInput input {
+    padding: 10px;
+
+    width: 90%;
+
+    outline: transparent;
+    border: none;
+    background: none;
+
+    font-size: 1em;
+}
+
+main .container form .input .subInput i {
+    cursor: pointer;
     
-    color: var(--white);
-}
-
-main .container form .input textarea::placeholder {
-  color: var(--global-white);
-}
-
-main .container form .input textarea:focus {
-    outline-color: var(--global-color);
+    font-size: 1.2em;
 }
 
 main .container form button {
@@ -151,10 +169,17 @@ main .container form .input .error_message {
     }
 
     main .container form .inputContainer .firstBlock {
+        flex-direction: column;
         width: 100%;
     }
 
     main .container form .inputContainer .secondBlock {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    main .container form .inputContainer .thirdBlock {
+        flex-direction: column;
         width: 100%;
     }
 }

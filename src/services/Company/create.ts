@@ -1,35 +1,32 @@
 import { CompanyRepository } from "../../repositories/CompanyRepository";
-import { UserRepository } from "../../repositories/UserRepository";
+import { BcryptService } from "../Bcrypt/index"
 
-interface Attributes {
-  user_id: string;
-  employer: string;
-  companyName: string;
-  location: string;
+const bcryptService = new BcryptService()
+
+interface CompanyCreateAttributes {
+  name: string;
+  surname: string;
+  CNPJ: string;
+  company: string;
   email: string;
-  aboutCompany: string;
+  password: string;
+  confirmPassword: string;
 }
 
 export class CompanyCreate {
-  async execute({ user_id, employer, companyName, location, email, aboutCompany }: Attributes) {
-    const user = await UserRepository.findOneBy({ id: user_id })
-    const company = await CompanyRepository.findOne({
-      where: { company: companyName }
-    })
+  async execute({ ...data }: CompanyCreateAttributes) {
+    const company = await CompanyRepository.findOne({ where: { email : data.email } })
 
-    if(!user) { return new Error("User not found.") }
-    if(user.email != email) { return new Error("Invalid email.") }
-    if(company) { return new Error("Company name has already been registered.") }
+    if(company) { return new Error("Email already registered.") }
 
-    const newCompany = CompanyRepository.create({
-      employer,
-      company: companyName,
-      location,
-      aboutCompany,
-      user,
-      user_id
-    })
-    await CompanyRepository.save(newCompany)
-    return { success_message: `"${newCompany.company}" company was registered` }
+    const passwordHash = await bcryptService.createPasswordHash(data.password)
+
+    const { confirmPassword: _, ...payload } = data
+    payload.password = passwordHash
+
+    const companyCreated = CompanyRepository.create(payload)
+    await CompanyRepository.save(companyCreated)
+
+    return
   }
 }

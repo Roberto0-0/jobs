@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/complement/create/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <link rel="stylesheet" href="/css/themeChange/style.css">
+    <link rel="stylesheet" href="/css/errorMessage/style.css">
+    <title>Jobs</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">Jobs</a>
+            <div class="nav-area">
+                <div class="change-color" id="moon">
+                    <i style="display: none;" class="ph ph-moon"></i>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <% if(company) { %>
+                        <li>
+                            <i class="ph-fill ph-key-return"></i>
+                            <a href="/company/dashboard %>">back</a>
+                        </li>
+                    <% } else { %>
+                        <li>
+                            <i class="ph-fill ph-key-return"></i>
+                            <a href="/">back</a>
+                        </li>
+                    <% } %>
+                </ul>
+            </nav>
+            <div class="menu"><i class="ph-bold ph-list"></i></div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="alert">
+                <h2>Complete the fields below to complete registration</h2>
+            </div>
+            <% if(company) { %>
+            <form action="/company/register/finish/<%= company.payload.id %>" method="POST">
+                <div class="inputContainer">
+                    <div class="input">
+                        <label for="sector">Sector</label>
+                        <div class="subInput">
+                            <select type="text" name="sector" id="sector" class="select" required>
+                                <option selected disabled></option>
+                                <option value="Administrative">Administrative</option>
+                                <option value="Financial">Financial</option>
+                                <option value="Human Resources (HR)">Human Resources (HR)</option>
+                                <option value="Commercial">Commercial</option>
+                                <option value="Operational or Production">Operational or Production</option>
+                                <option value="Information Technologies (IT)">Information Technologies (IT)</option>
+                                <% if(error_message.length > 0) { %>
+                                    <% for(let i=0;i < error_message.length;i++) { %>
+                                        <% if(error_message[i] == "Sector is requied." || error_message[i] === "Very short sector.") { %>
+                                            <div class="error_message">
+                                                <i class="ph-fill ph-warning"></i>
+                                                <span class="message"><%= error_message[i] %></span>
+                                            </div>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label for="employees">Employees</label>
+                        <div class="subInput">
+                            <input type="number" name="employees" id="employees" autocomplete="off" required>
+                            <% if(error_message.length > 0) { %>
+                                <% for(let i=0;i < error_message.length;i++) { %>
+                                    <% if(error_message[i] == "Employees is requied." || error_message[i] == "Very short Employees.") { %>
+                                        <div class="error_message">
+                                            <i class="ph-fill ph-warning"></i>
+                                            <span class="message"><%= error_message[i] %></span>
+                                        </div>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label for="location">Location</label>
+                        <div class="subInput">
+                            <input type="text" name="location" id="location" required>
+                            <% if(error_message.length > 0) { %>
+                                <% for(let i=0;i < error_message.length;i++) { %>
+                                    <% if(error_message[i] == "Location is required." || error_message[i] == "Ivalid location.") { %>
+                                        <div class="error_message">
+                                            <i class="ph-fill ph-warning"></i>
+                                            <span class="message"><%= error_message[i] %></span>
+                                        </div>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" cols="30" rows="10" required></textarea>
+                        <% if(error_message.length > 0) { %>
+                            <% for(let i=0;i < error_message.length;i++) { %>
+                                <% if(error_message[i] == "Description is required.") { %>
+                                    <div class="error_message">
+                                        <i class="ph-fill ph-warning"></i>
+                                        <span class="message"><%= error_message[i] %></span>
+                                    </div>
+                                <% } %>
+                            <% } %>
+                        <% } %>
+                    </div>
+                    <button>done</button>
+                </div>
+            </form>
+            <% } %>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+        <p>
+            &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+        </p>
+        </div>
+    </footer>
+    <script src="/js/menu/main.js"></script>
+    <script src="/js/themeChange/main.js"></script>
+    <script src="/js/errorMessage/main.js"></script>
+</body>
+</html>

@@ -5,7 +5,7 @@ import { UserRead } from "../services/User/read"
 import { UserReadAll } from "../services/User/readAll"
 import { UserUpdate } from "../services/User/update"
 import { UserUpdatePassword } from "../services/User/updatePassword"
-import { userRegisterSchema } from "../schemas/userRegisterSchema"
+import { userRegisterSchema } from "../schemas/userSchema"
 import { updatePasswordSchema } from "../schemas/updatePasswordSchema"
 import { UserLogin } from "../services/User/login"
 
@@ -127,7 +127,7 @@ export class UserController {
   }
   
   async profile(req: Request, res: Response) {
-    try { return res.render("user/profile/home/index.ejs") } catch(error) {
+    try { return res.render("user/profile/layout/index.ejs") } catch(error) {
       console.error(error)
       return res.status(500).json({
         statusCode: 500,
@@ -146,8 +146,8 @@ export class UserController {
     }
   }
 
-  async updatePasswordIndex(req: Request, res: Response) {
-    try { res.render("user/profile/changePassword/index.ejs") } catch (error) {
+  async passwordUpdateIndex(req: Request, res: Response) {
+    try { res.render("user/profile/passwordUpdate/index.ejs") } catch (error) {
       console.error(error)
       return res.status(500).json({
         statusCode: 500,
@@ -156,7 +156,7 @@ export class UserController {
     }
   }
 
-  async updatePassword(req: Request, res: Response) {
+  async passwordUpdate(req: Request, res: Response) {
     const { user_id } = req.params
     const { ...data } = req.body
 
@@ -198,7 +198,7 @@ export class UserController {
 
   loginIndex(req: Request, res: Response) { return res.render("user/login/index.ejs") }
   
-  login(req: Request, res: Response, next: NextFunction) {
+  userLogin(req: Request, res: Response, next: NextFunction) {
     try {
       const userLoginSerice = new UserLogin()
       const userLoginResult = userLoginSerice.execute(req, res, next)
@@ -216,7 +216,7 @@ export class UserController {
   logout(req: Request, res: Response, next: NextFunction) {
     req.logout((err) => {
       if(err) { return next(err) }
-      res.clearCookie('payload')
+      res.clearCookie('user_payload')
       res.redirect("/")
 
       return

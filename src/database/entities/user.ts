@@ -6,7 +6,6 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm"
-import { Company } from "./company"
 import { Push } from "./push"
 import { Resume } from "./resume"
 
@@ -34,12 +33,6 @@ export class User {
   })
   password: string
 
-  @OneToMany(() => Company, (company) => company.user, {
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE'
-  })
-  company: Company[]
-  
   @OneToMany(() => Push, (push) => push.user)
   push: Push[]
 

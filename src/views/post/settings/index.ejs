@@ -7,11 +7,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="/css/post/settings/style.css">
-    <link rel="stylesheet" href="/css/notification/style.css">
-    <link rel="stylesheet" href="/css/footer/style.css">
-    <link rel="stylesheet" href="/css/rootColor/style.css">
-    <link rel="stylesheet" href="/css/darkTheme/style.css">
     <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <link rel="stylesheet" href="/css/themeChange/style.css">
     <title>Jobs</title>
 </head>
 <body>
@@ -25,13 +25,11 @@
         </div>
         <nav class="nav">
           <ul>
-            <% if(user) { %>
-                <% if(data) { %>
-                   <li>
-                      <i class="ph-fill ph-key-return"></i>
-                      <a href="/company/<%= user.id %>/<%= data.id %>">back</a>
-                   </li>
-                <% } %>
+            <% if(company) { %>
+               <li>
+                  <i class="ph-fill ph-key-return"></i>
+                  <a href="/company/dashboard">back</a>
+               </li>
             <% } else { %>
                <li>
                   <i class="ph-fill ph-key-return"></i>
@@ -51,27 +49,27 @@
       <% } %>
       <div class="container">
          <ul class="jobs-menu">
-            <% if(user) { %>
-               <% data.forEach((post) => { %>
-                <li class="li">
-                    <div class="postInfo">
-                       <a href="/company/post/<%= post.id %>/<%= post.company.id %>">
-                          <h1><%= post.vacancy %></h1>
-                          <h2 class="company-name">
-                             <%= post.company_name %>
-                             <i class="ph-fill ph-seal-check"></i>
-                          </h2>
-                       </a>
-                    </div>
-                    <div class="settings">
-                       <a href="/post/update/<%= post.id %>/<%= post.company.id %>" class="update">
-                          <i class="ph-fill ph-wrench"></i>
-                       </a>
-                       <a href="/post/delete/<%= post.id %>/<%= post.company.id %>" class="delete">
-                          <i class="ph-fill ph-trash-simple"></i>
-                       </a>
-                    </div>
-                 </li>
+            <% if(company) { %>
+               <% company.payload.post.forEach((value) => { %>
+                  <li class="li">
+                     <div class="postInfo">
+                        <a href="/company/post/<%= value.id %>/<%= company.payload.id %>">
+                           <h1><%= value.vacancy %></h1>
+                           <h2 class="company-name">
+                              <%= value.company_name %>
+                              <i class="ph-fill ph-seal-check"></i>
+                           </h2>
+                        </a>
+                     </div>
+                     <div class="settings">
+                        <a href="/post/update/<%= value.id %>/<%= company.payload.id %>" class="update">
+                           <i class="ph-fill ph-wrench"></i>
+                        </a>
+                        <a href="/post/delete/<%= value.id %>/<%= company.payload.id %>" class="delete">
+                           <i class="ph-fill ph-trash-simple"></i>
+                        </a>
+                     </div>
+                  </li>
                <% }) %>
             <% } %>
             </ul>
@@ -84,9 +82,9 @@
         </p>
       </div>
     </footer>
-   <script src="/js/company/postsSettings/main.js"></script>
+   <script src="/js/post/settings/main.js"></script>
    <script src="/js/menu/main.js"></script>
-   <script src="/js/themes/main.js"></script>
+   <script src="/js/themeChange/main.js"></script>
    <script src="/js/notification/main.js"></script>
 </body>
 </html>

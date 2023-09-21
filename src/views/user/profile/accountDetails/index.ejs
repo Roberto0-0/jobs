@@ -8,10 +8,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="/css/user/profile/accountDetails/style.css">
-    <link rel="stylesheet" href="/css/footer/style.css">
-    <link rel="stylesheet" href="/css/rootColor/style.css">
-    <link rel="stylesheet" href="/css/darkTheme/style.css">
     <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <link rel="stylesheet" href="/css/themeChange/style.css">
     <title>Jobs</title>
 </head>
 <body>
@@ -68,17 +68,6 @@
                             <span class="username"><%= user.email %></span>
                         </div>
                     </li>
-                    <li>
-                        <% if(user.company.length > 0) { %>
-                            <% user.company.forEach((value) => { %>
-                                <label for="company">Company</label>
-                                <div class="subContainer">
-                                    <i class="ph ph-buildings"></i>
-                                    <span class="username"><%= value.company %></span>
-                                </div>
-                            <% }) %>
-                        <% } %>
-                    </li>
                 </ul>
             <% } %>
         </div>
@@ -92,6 +81,6 @@
     </footer>
     <script src="/js/menu/main.js"></script>
     <script src="/js/user/profile/accountDetails/main.js"></script>
-    <script src="/js/themes/main.js"></script>
+    <script src="/js/themeChange/main.js"></script>
 </body>
 </html>

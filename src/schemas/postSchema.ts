@@ -1,16 +1,10 @@
 import { z } from "zod";
 
-export const postSchema = z.object({
+const postCreateSchema = z.object({
     company_id: z.string(),
-    companyName: z.string({
-        required_error: "Company name is required."
-    }),
     vacancy: z.string({
         required_error: "Vacancy is required."
     }).min(5, "Very short vacancy."),
-    location: z.string({
-        required_error: "Location is required."
-    }).min(5, "Invalid location."),
     salary: z.number({
         required_error: "Salary is required."
     }).min(1000, "Invalid salary."),
@@ -20,18 +14,12 @@ export const postSchema = z.object({
     information: z.string()
 })
 
-export const updatePostSchema = z.object({
+const postUpdateSchema = z.object({
     post_id: z.string(),
     company_id: z.string(),
-    company_name: z.string({
-        required_error: "Company name is required."
-    }),
     vacancy: z.string({
         required_error: "Vacancy is required."
     }).min(5, "Very short vacancy."),
-    location: z.string({
-        required_error: "Location is required."
-    }).min(5, "Ivalid location."),
     salary: z.number({
         required_error: "Salary is required."
     }).min(500, "Invalid salary."),
@@ -40,3 +28,5 @@ export const updatePostSchema = z.object({
     }).min(1, "Invalid vacancies."),
     information: z.string()
 })
+
+export { postCreateSchema, postUpdateSchema }

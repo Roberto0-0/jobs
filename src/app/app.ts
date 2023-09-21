@@ -8,9 +8,9 @@ import path from "path"
 import ejs from "ejs"
 import passport from "passport"
 
-import "../authenticate/user"
 import "reflect-metadata"
 import "dotenv/config"
+import "../authenticate/index"
 
 export class App {
   app: express.Application
@@ -38,6 +38,7 @@ export class App {
       res.locals.error_message = req.flash("error_message")
       res.locals.error = req.flash("error")
       res.locals.user = req.user || null
+      res.locals.company = req.user || null
       next()
     })
 
