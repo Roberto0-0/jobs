@@ -107,7 +107,7 @@ export class ResumeController {
         }
     }
 
-    async userResume(req: Request, res: Response) {
+    async userCreatedResume(req: Request, res: Response) {
         const { user_id } = req.params
 
         try {
@@ -116,7 +116,7 @@ export class ResumeController {
 
             if(result instanceof Error) { return { message: result.message } }
 
-            return res.render("resume/userSentResumes/index.ejs", {
+            return res.render("resume/userCreatedResume/index.ejs", {
                 data: result
             })
         } catch (error) {
@@ -125,7 +125,7 @@ export class ResumeController {
         }
     }
 
-    async userResumePost(req: Request, res: Response) {
+    async userResumeContent(req: Request, res: Response) {
         const { post_id, company_id } = req.params
 
         try {
@@ -134,7 +134,7 @@ export class ResumeController {
 
             if(result instanceof Error) { return res.status(400).send({ message: result.message }) }
 
-            return res.render("resume/userResumePost/index.ejs", {
+            return res.render("resume/userCreatedResume/resumeContent/index.ejs", {
                 data: result
             })
         } catch (error) {
@@ -143,7 +143,7 @@ export class ResumeController {
         }
     }
 
-    async companyPostResume(req: Request, res: Response) {
+    async resumeSentCompany(req: Request, res: Response) {
         const { company_id } = req.params
 
         try {
@@ -152,7 +152,7 @@ export class ResumeController {
 
             if(result instanceof Error) { return res.status(400).send({ message: result.message }) }
 
-            return res.render("resume/companyPostResume/index.ejs", {
+            return res.render("resume/resumeSentCompany/index.ejs", {
                 data: result
             })
         } catch (error) {
@@ -161,7 +161,7 @@ export class ResumeController {
         }
     }
 
-    async companyResume(req: Request, res: Response) {
+    async resumeSentCompanyContent(req: Request, res: Response) {
         const { resume_id } = req.params
 
         try {
@@ -170,7 +170,7 @@ export class ResumeController {
 
             if(result instanceof Error) { return res.status(400).send({ message: result.message }) }
 
-            return res.render("resume/companyResumePage/index.ejs", {
+            return res.render("resume/resumeSentCompany/resumeContent/index.ejs", {
                 data: result
             })
         } catch (error) {

@@ -15,7 +15,7 @@ main .container {
     padding: 0px 10px;
 
     width: 95vw;
-    max-width: 600px;
+    max-width: 400px;
     height: 100%;
 }
 
@@ -29,24 +29,8 @@ main .container form {
 
 main .container form .inputContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 1.2em;
-}
-
-main .container form .inputContainer .firstBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-
-    width: 50%;
-}
-
-main .container form .inputContainer .secondBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-
-    width: 50%;
 }
 
 main .container form .input {
@@ -93,22 +77,6 @@ main .container form .input .subInput {
     background-color: var(--light-secondary-background);
 }
 
-main .container form .input .subInput .select {
-    padding: 10px;
-
-    width: 100%;
-
-    outline: transparent;
-    border: none;
-    background: none;
-
-    font-size: 1em;
-}
-
-main .container form .subInput .select option {
-    background: var(--global-color);
-}
-
 main .container form .input textarea {
     padding: 5px;
 
@@ -152,13 +120,5 @@ main .container form button:hover {
 @media(max-width: 600px) {
     main .container form .inputContainer {
         flex-direction: column;
-    }
-
-    main .container form .inputContainer .firstBlock {
-        width: 100%;
-    }
-
-    main .container form .inputContainer .secondBlock {
-        width: 100%;
     }
 }

@@ -1,0 +1,151 @@
+main {
+    flex: 1;
+
+    margin: 20px auto;
+
+    width: 100%;
+    height: calc(100vh - 70px);
+}
+
+main .container {
+    display: flex;
+    flex-direction: column;
+
+    margin: auto;
+    padding: 0px 10px;
+
+    width: 95vw;
+    max-width: 400px;
+    height: 100%;
+}
+
+main .container .alert {
+    margin-bottom: 1.5em;
+    
+    font-size: 1.1em;
+}
+
+main .container .alert h2 {
+    font-weight: 400;
+}
+
+main .container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    width: 100%;
+}
+
+main .container form .inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+}
+
+
+main .container form .input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+
+    width: 100%;
+}
+
+main .container form .input label {
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+main .container form .input input {
+    padding: 10px;
+
+    width: 100%;
+    height: 40px;
+
+    border: 1px solid var(--dark-border);
+    border-radius: 5px;
+    background-color: var(--light-secondary-background);
+
+    font-size: 1em;
+    color: var(--light-text);
+}
+
+main .container form .input input:focus {
+    outline-color: var(--global-color);
+}
+
+main .container form .input .subInput {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    border: 1px solid var(--dark-border);
+    border-radius: 5px;
+    background-color: var(--light-secondary-background);
+}
+
+main .container form .input .subInput .select {
+    padding: 10px;
+
+    width: 100%;
+
+    outline: transparent;
+    border: none;
+    background: none;
+
+    font-size: 1em;
+}
+
+main .container form .subInput .select option {
+    background: var(--light-secondary-background);
+}
+
+main .container form .input textarea {
+    padding: 5px;
+
+    width: 100%;
+    height: 150px;
+
+    border-radius: 3px;
+    border: 1px solid var(--dark-border);
+    background: var(--light-secondary-background);
+    
+    color: var(--white);
+}
+
+main .container form .input textarea::placeholder {
+  color: var(--global-white);
+}
+
+main .container form .input textarea:focus {
+    outline-color: var(--global-color);
+}
+
+main .container form button {
+    width: 100%;
+    height: 40px;
+
+    outline: transparent;
+    border: var(--dark-border);
+    border-radius: 5px;
+    background-color: var(--global-color);
+    cursor: pointer;
+    
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--global-white);
+}
+
+main .container form button:hover {
+    background: var(--global-hover-color);
+}
+
+@media(max-width: 600px) {
+    main .container form .inputContainer {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/company/dashboard/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <link rel="stylesheet" href="/css/themeChange/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
+    <title>Jobs</title>
+</head>
+<body>
+  <% if(company) { %>
+      <header>
+        <div class="container">
+          <a href="/" class="company-name"><span><%= company.payload.company %></span><i class="ph-fill ph-seal-check"></i></a>
+          <div class="nav-area">
+            <div class="change-color" id="moon">
+                <i class="ph ph-moon"></i>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li>
+                      <i class="ph-fill ph-briefcase"></i>
+                      <a href="/jobs">jobs</a>
+                    </li>
+                    <% if(company.payload.complement) { %>
+                      <li>
+                        <i class="ph-fill ph-note"></i>
+                        <a href="/post/create/<%= company.payload.id %>">new post</a>
+                      </li>
+                    <% } else { %>
+                      <li>
+                        <i class="ph-fill ph-check-square"></i>
+                        <a href="/company/register/finish">finish</a>
+                      </li>
+                    <% } %>
+                </ul>
+              </nav>
+          </div>
+          <div class="menu">
+            <i class="ph-bold ph-list"></i>
+          </div>
+        </div>
+      </header>
+      </div>
+      <main>
+        <% if(success_message.length > 0) { %>
+          <div class="notification"><span class="message"><%= success_message %></span></div>
+        <% } %>
+        <div class="container">
+          <div class="firstBlock">
+            <ul class="companyStatus">
+              <li>
+                  <% if(company.payload.post.length > 0) { %>
+                    <a href="/company/posts/<%= company.payload.id %>">
+                      <div class="illustration">
+                        <i class="ph-fill ph-note-blank"></i>
+                      </div>
+                      <div class="info">
+                        <span class="value"><%= company.payload.post.length %></span>
+                        <p>Posts</p>
+                      </div>        
+                    </a>
+                  <% } else { %>
+                    <% if(company.payload.complement) { %>
+                      <a href="/post/create/<%= company.payload.id %>">
+                        <div class="illustration">
+                          <i class="ph-fill ph-note-blank"></i>
+                        </div>
+                        <div class="info">
+                          <span class="value"><%= company.payload.post.length %></span>
+                          <p>Posts</p>
+                        </div>        
+                      </a>
+                    <% } else { %>
+                      <a href="/company/register/finish">
+                        <div class="illustration">
+                          <i class="ph-fill ph-note-blank"></i>
+                        </div>
+                        <div class="info">
+                          <span class="value"><%= company.payload.post.length %></span>
+                          <p>Posts</p>
+                        </div>        
+                      </a>
+                    <% } %>
+                  <% } %>
+              </li>
+              <li>
+                <a href="/company/pushes/<%= company.payload.id %>">
+                  <div class="illustration">
+                    <i class="ph-fill ph-arrow-fat-lines-up"></i>
+                  </div>
+                  <div class="info">
+                    <span class="value"><%= company.pushes %></span>
+                    <p>Pushes</p>
+                  </div>        
+                </a>
+              </li>
+              <li>
+                <a href="/company/resume/<%= company.payload.id %>">
+                  <div class="illustration">
+                    <i class="ph-fill ph-read-cv-logo"></i>
+                  </div>
+                  <div class="info">
+                    <span class="value"><%= company.payload.resume.length %></span>
+                    <p>Resumes</p>
+                  </div>        
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="secondBlock">
+            <img src="../../assets/jobs/undraw_financial_data_re_p0fl.svg" class="company-illustration" alt="">
+          </div>
+        </div>
+      </main>
+       <footer>
+         <div class="container">
+           <p>
+             &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+           </p>
+         </div>
+       </footer>
+  <% } %>
+  <script src="/js/menu/main.js"></script>
+  <script src="/js/themeChange/main.js"></script>
+  <script src="/js/notification/main.js"></script>
+</body>
+</html>

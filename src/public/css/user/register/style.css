@@ -121,14 +121,14 @@ main .container form button:hover {
     background: var(--global-hover-color);
 }
 
-main .container .company {
+main .container .other-alternatives {
     padding: 20px 0px;
 
     width: 100%;
     height: auto;
 }
 
-main .container .company p {
+main .container .other-alternatives p {
     text-align: center;
     font-size: 1em;
 }

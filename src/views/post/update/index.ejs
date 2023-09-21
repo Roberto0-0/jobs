@@ -7,10 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="/css/post/update/style.css">
-    <link rel="stylesheet" href="/css/footer/style.css">
-    <link rel="stylesheet" href="/css/rootColor/style.css">
-    <link rel="stylesheet" href="/css/darkTheme/style.css">
     <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <link rel="stylesheet" href="/css/themeChange/style.css">
     <link rel="stylesheet" href="/css/errorMessage/style.css">
     <title>Jobs</title>
 </head>
@@ -24,15 +24,15 @@
           </div>
           <nav class="nav">
             <ul>
-              <% if(user) { %>
+              <% if(company) { %>
                     <li>
                       <i class="ph-fill ph-key-return"></i>
-                      <a href="/company/posts/<%= companyId %>">back</a>
+                      <a href="/company/posts/<%= company.payload.id %>">back</a>
                     </li>
               <% } else { %>
                  <li>
                      <i class="ph-fill ph-key-return"></i>
-                     <a href="/">posts</a>
+                     <a href="/">back</a>
                  </li>
               <% } %>
             </ul>
@@ -45,9 +45,9 @@
   </header>
   <main>
     <div class="container">
-        <% if(user) { %>
+        <% if(company) { %>
           <% if(data) { %>
-            <form action="/post/update/<%= data.id %>/<%= companyId %>" method="POST">
+            <form action="/post/update/<%= data.id %>/<%= company.payload.id %>" method="POST">
               <div class="inputContainer">
                 <div class="firstBlock">
                   <div class="input">
@@ -155,7 +155,7 @@
     </div>
   </footer>
   <script src="/js/menu/main.js"></script>
-  <script src="/js/themes/main.js"></script>
+  <script src="/js/themeChange/main.js"></script>
   <script src="/js/errorMessage/main.js"></script>
 </body>
 </html>

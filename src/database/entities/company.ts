@@ -5,13 +5,12 @@ import {
   OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
-  JoinColumn
+  OneToOne,
 } from "typeorm"
-import { User } from "./user"
 import { Post } from "./post"
 import { Push } from "./push"
 import { Resume } from "./resume"
+import { Complement } from "./complement"
 
 @Entity("companies")
 export class Company {
@@ -22,7 +21,20 @@ export class Company {
     type: "varchar",
     nullable: false
   })
-  employer: string
+  name: string;
+
+  @Column({
+    type: "varchar",
+    nullable: false
+  })
+  surname: string;
+
+  @Column({
+    type: "varchar",
+    nullable: false,
+    unique: true
+  })
+  CNPJ: string
 
   @Column({
     type: "varchar",
@@ -33,25 +45,20 @@ export class Company {
 
   @Column({
     type: "varchar",
-    nullable: false
+    nullable: false,
+    unique: true
   })
-  location: string
-  
-  @Column({
-    type: "varchar",
-    nullable: false
-  })
-  aboutCompany: string
+  email: string
 
   @Column({
     type: "varchar",
-    nullable: false
+    nullable: false,
+    unique: true
   })
-  user_id: string
+  password: string
 
-  @ManyToOne(() => User, (user) => user.company)
-  @JoinColumn({ name: "user_id" })
-  user: User
+  @OneToOne(() => Complement, (complement) => complement.company)
+  complement: Complement
 
   @OneToMany(() => Post, (post) => post.company, {
     cascade: true,

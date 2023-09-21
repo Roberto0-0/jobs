@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/user/profile/passwordUpdate/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <link rel="stylesheet" href="/css/themeChange/style.css">
+    <link rel="stylesheet" href="/css/errorMessage/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
+    <title>Jobs</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">Jobs</a>
+            <div class="nav-area">
+                <div class="change-color" id="moon">
+                    <i style="display: none;" class="ph ph-moon"></i>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <% if(user) { %>
+                            <li>
+                                <i class="ph-fill ph-key-return"></i>
+                                <a href="/profile">back</a>
+                            </li>
+                        <% } else { %>
+                            <li>
+                                <i class="ph-fill ph-key-return"></i>
+                                <a href="/">back</a>
+                            </li>
+                        <% } %>
+                    </ul>
+                </nav>
+            </div>
+            <div class="menu"><i class="ph-bold ph-list"></i></div>
+          </div>
+    </header>
+    <main>
+        <% if(success_message.length > 0) { %>
+            <div class="notification"><span class="message"><%= success_message %></span></div>
+        <% } %>
+        <div class="container">
+            <% if(user) { %>
+                <form action="/profile/settings/password/<%= user.id %>" method="POST">
+                    <div class="input">
+                        <label for="currentPassword">Current password</label>
+                        <div class="subInput">
+                          <input type="password" name="currentPassword" class="password" id="currentPassword" autocomplete="off" required>
+                          <i class="ph ph-eye" id="eye-button"></i>
+                        </div>
+                        <% if(error_message.length > 0) { %>
+                            <% if(error_message == "Password is required." || error_message == "Password at least 8 characters." || error_message == "The password you entered was incorrect.") { %>
+                                <div class="error_message">
+                                    <i class="ph-fill ph-warning"></i>
+                                    <span class="message"><%= error_message %></span>
+                                </div>
+                            <% } %>
+                         <% } %>
+                    </div>
+                    <div class="input">
+                        <label for="newPassword">New password</label>
+                        <div class="subInput">
+                          <input type="password" name="newPassword" id="newPassword" class="password" placeholder="At least 8 characters" autocomplete="off" required>
+                          <i class="ph ph-eye" id="eye-button"></i>
+                        </div>
+                        <% if(error_message.length > 0) { %>
+                            <% if(error_message == "New password is required." || error_message == "Password at least 8 characters." || error_message == "Your new password cannot be the same as your old one.") { %>
+                                <div class="error_message">
+                                    <i class="ph-fill ph-warning"></i>
+                                    <span class="message"><%= error_message %></span>
+                                </div>
+                            <% } %>
+                         <% } %>
+                    </div>
+                    <div class="input">
+                        <label for="repeatPassword">Repeat password</label>
+                        <div class="subInput">
+                          <input type="password" name="repeatNewPassword" id="repeatNewPassword" class="password" placeholder="At least 8 characters" autocomplete="off" required>
+                          <i class="ph ph-eye" id="eye-button"></i>
+                        </div>
+                        <% if(error_message.length > 0) { %>
+                            <% if(error_message == "Repeat new password is required." || error_message == "Password at least 8 characters." || error_message == "The passwords did not match.") { %>
+                                <div class="error_message">
+                                    <i class="ph-fill ph-warning"></i>
+                                    <span class="message"><%= error_message %></span>
+                                </div>
+                            <% } %>
+                         <% } %>
+                    </div>
+                    <button>update</button>
+                </form>
+            <% } %>            
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>
+              &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+            </p>
+          </div>
+    </footer>
+    <script src="/js/user/profile/passwordUpdate/main.js"></script>
+    <script src="/js/menu/main.js"></script>
+    <script src="/js/themeChange/main.js"></script>
+    <script src="/js/errorMessage/main.js"></script>
+    <script src="/js/notification/main.js"></script>
+</body>
+</html>

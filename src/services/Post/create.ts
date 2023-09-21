@@ -1,40 +1,33 @@
 import { CompanyRepository } from "../../repositories/CompanyRepository";
 import { PostRepository } from "../../repositories/PostRepository";
 
-export interface Attributes {
+export interface PostCreateAttributes {
   company_id: string;
-  companyName: string;
   vacancy: string;
-  location: string;
   salary: number;
   vacancies: number;
   information?: string;
 }
 
 export class PostCreate {
-  async execute({ 
-    company_id, 
-    companyName, 
-    vacancy, 
-    location, 
-    salary, 
-    vacancies, 
-    information }: Attributes) {
-    const company = await CompanyRepository.findOneBy({ id: company_id })
+  async execute({ ...data }: PostCreateAttributes) {
+    const company = await CompanyRepository.findOne({ 
+      where: { id: data.company_id },
+      relations: { complement: true }
+     })
 
     if (!company) { return new Error("Company not found.") }
 
-    const newPost = PostRepository.create({
-      company_name: companyName,
-      vacancy,
-      location,
-      salary,
-      vacancies,
-      information,
+    const postCreated = PostRepository.create({
+      company_name: company.company,
+      vacancy: data.vacancy,
+      location: company.complement.location,
+      salary: data.salary,
+      vacancies: data.vacancies,
       company,
-      company_id
+      company_id: company.id
     })
-    await PostRepository.save(newPost)
-    return { success_message: `"${newPost.vacancy}" post was created` }
+    await PostRepository.save(postCreated)
+    return { success_message: `"${postCreated.vacancy}" post was created` }
   }
 }

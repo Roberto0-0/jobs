@@ -6,7 +6,7 @@ const SECRET_KEY = process.env.SECRET_KEY as string
 
 export class UserLogin {
     async execute(req: any, res: any, next: any) {
-        passport.authenticate('local', { session: true }, async (err: any, user: any, info: any) => {
+        passport.authenticate('user_local', { session: false }, async (err: any, user: any, info: any) => {
             try {
                 if(err || !user) {
                     req.flash('error', info.message)
@@ -18,8 +18,7 @@ export class UserLogin {
                     if(error) { return next() }
 
                     const token = jwt.sign({ id: user.id }, SECRET_KEY ,{ expiresIn: "1h" })
-                    res.cookie('payload', token)
-
+                    res.cookie('user_payload', token)
                     res.redirect("/dashboard")
                     return next()
                 })

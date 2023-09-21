@@ -61,10 +61,10 @@ export class Post {
 
   @Column({
     type: "varchar",
-    nullable: false
+    nullable: false,
   })
   company_id: string
-  
+
   @ManyToOne(() => Company, (company) => company.post, {
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE' 

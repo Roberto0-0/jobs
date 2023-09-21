@@ -7,11 +7,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="/css/company/create/style.css">
-  <link rel="stylesheet" href="/css/footer/style.css">
-  <link rel="stylesheet" href="/css/rootColor/style.css">
-  <link rel="stylesheet" href="/css/darkTheme/style.css">
-  <link rel="stylesheet" href="/css/errorMessage/style.css">
   <link rel="stylesheet" href="/css/header/style.css">
+  <link rel="stylesheet" href="/css/footer/style.css">
+  <link rel="stylesheet" href="/css/rootColors/style.css">
+  <link rel="stylesheet" href="/css/themeChange/style.css">
+  <link rel="stylesheet" href="/css/errorMessage/style.css">
   <title>Jobs</title>
 </head>
 <body>
@@ -26,7 +26,7 @@
                 <ul>
                   <li>
                     <i class="ph-fill ph-key-return"></i>
-                    <a href="/profile">back</a>
+                    <a href="/company/login">back</a>
                   </li>
                 </ul>
             </nav>
@@ -39,16 +39,15 @@
      <div class="info">
         <h2>Register your <span>company</span> on our website completely <span>free</span> of charge</h2>
      </div>
-      <% if(user) { %>
-        <form action="/company/registration/<%= user.id %>" method="POST">
+        <form action="/company/registration" method="POST">
           <div class="inputContainer">
             <div class="firstBlock">
               <div class="input">
-                <label for="employer">Employer</label>
-                <input type="text" name="employer" autocomplete="off" required>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" autocomplete="off" required>
                 <% if(error_message.length > 0) { %>
                     <% for(let i=0;i < error_message.length;i++) { %>
-                        <% if(error_message[i] == "Employer is required." || error_message[i] == "Employer name is too short.") { %>
+                        <% if(error_message[i] == "Name is requied." || error_message[i] == "Very short name.") { %>
                             <div class="error_message">
                                 <i class="ph-fill ph-warning"></i>
                                 <span class="message"><%= error_message[i] %></span>
@@ -58,11 +57,11 @@
                <% } %>
               </div>
               <div class="input">
-                <label for="companyname">Company</label>
-                <input type="text" name="companyName" autocomplete="off" required>
+                <label for="surname">Surname</label>
+                <input type="text" name="surname" id="surname" autocomplete="off" required>
                 <% if(error_message.length > 0) { %>
                     <% for(let i=0;i < error_message.length;i++) { %>
-                        <% if(error_message[i] == "Company name is required." || error_message[i] == "Company name is too short." || error_message[i] == "Company name has already been registered.") { %>
+                        <% if(error_message[i] == "Surname is requied." || error_message[i] == "Very short surname.") { %>
                             <div class="error_message">
                                 <i class="ph-fill ph-warning"></i>
                                 <span class="message"><%= error_message[i] %></span>
@@ -74,11 +73,11 @@
             </div>
             <div class="secondBlock">
               <div class="input">
-                <label for="location">Location</label>
-                <input type="text" name="location" autocomplete="off" required>
+                <label for="company">Company</label>
+                <input type="text" name="company" id="company" autocomplete="off" required>
                 <% if(error_message.length > 0) { %>
                     <% for(let i=0;i < error_message.length;i++) { %>
-                        <% if(error_message[i] == "location is required." || error_message[i] == "Invalid location.") { %>
+                        <% if(error_message[i] == "Company name is required." || error_message[i] == "Company name is too short." || error_message[i] == "Company name has already been registered.") { %>
                             <div class="error_message">
                                 <i class="ph-fill ph-warning"></i>
                                 <span class="message"><%= error_message[i] %></span>
@@ -88,11 +87,11 @@
                <% } %>
               </div>
               <div class="input">
-                <label for="email">Email</label>
-                <input type="email" name="email" class="email-input" autocomplete="off" required>
+                <label for="CNPJ">CNPJ</label>
+                <input type="text" name="CNPJ" id="CNPJ" autocomplete="off" required>
                 <% if(error_message.length > 0) { %>
                     <% for(let i=0;i < error_message.length;i++) { %>
-                        <% if(error_message[i] == "Email is required." || error_message[i] == "Invalid email.") { %>
+                        <% if(error_message[i] == "CNPJ is requied." || error_message[i] == "The CNPJ field requires 14 digits.") { %>
                             <div class="error_message">
                                 <i class="ph-fill ph-warning"></i>
                                 <span class="message"><%= error_message[i] %></span>
@@ -102,24 +101,59 @@
                <% } %>
               </div>
             </div>
-          </div> 
-          <div class="input">
-            <label for="aboutCompany">About your company</label>
-            <textarea name="aboutCompany" id="aboutCompany" cols="30" rows="10" required></textarea>
-            <% if(error_message.length > 0) { %>
-                    <% for(let i=0;i < error_message.length;i++) { %>
-                        <% if(error_message[i] == "This field is required.") { %>
-                            <div class="error_message">
-                                <i class="ph-fill ph-warning"></i>
-                                <span class="message"><%= error_message[i] %></span>
-                            </div>
-                        <% } %>
-                    <% } %>
-               <% } %>
+            <div class="input">
+              <label for="email">Email</label>
+              <input type="email" name="email" class="email-input" id="email" placeholder="you@example.com" autocomplete="off" required>
+              <% if(error_message.length > 0) { %>
+                  <% for(let i=0;i < error_message.length;i++) { %>
+                      <% if(error_message[i] == "Email is required." || error_message[i] == "Invalid email.") { %>
+                          <div class="error_message">
+                              <i class="ph-fill ph-warning"></i>
+                              <span class="message"><%= error_message[i] %></span>
+                          </div>
+                      <% } %>
+                  <% } %>
+             <% } %>
+            </div>
+            <div class="thirdBlock">
+              <div class="input">
+                <label for="password">Password</label>
+                <div class="subInput">
+                  <input type="password" name="password" class="password" placeholder="At least 8 characters" required>
+                  <i class="ph ph-eye"></i>
+                </div>
+                <% if(error_message.length > 0) { %>
+                  <% for(let i=0;i < error_message.length;i++) { %>
+                      <% if(error_message[i] == "Password at least 8 characters." || error_message[i] == "Password is required.") { %>
+                          <div class="error_message">
+                              <i class="ph-fill ph-warning"></i>
+                              <span class="message"><%= error_message[i] %></span>
+                          </div>
+                      <% } %>
+                  <% } %>
+                 <% } %>
+              </div>
+              <div class="input">
+                <label for="confirm-password">Repeat password</label>
+                <div class="subInput">
+                  <input type="password" name="confirmPassword" class="password" placeholder="At least 8 characters" autocomplete="off" required>
+                  <i class="ph ph-eye"></i>
+                </div>
+                <% if(error_message.length > 0) { %>
+                  <% for(let i=0;i < error_message.length;i++) { %>
+                      <% if(error_message[i] == "The passwords did not match." || error_message[i] == "Confirm password is required.") { %>
+                          <div class="error_message">
+                              <i class="ph-fill ph-warning"></i>
+                              <span class="message"><%= error_message[i] %></span>
+                          </div>
+                      <% } %>
+                  <% } %>
+                 <% } %>
+              </div>
+            </div>
           </div>
-          <button>create company</button>
+          <button>register</button>
         </form>
-      <% } %> 
     </div>
   </main>
    <footer>
@@ -130,7 +164,8 @@
     </div>
   </footer>
     <script src="/js/menu/main.js"></script>
-    <script src="/js/themes/main.js"></script>
+    <script src="/js/visiblePassword/main.js"></script>
+    <script src="/js/themeChange/main.js"></script>
     <script src="/js/errorMessage/main.js"></script>
   </body>
 </html>

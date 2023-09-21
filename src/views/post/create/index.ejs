@@ -7,10 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="/css/post/create/style.css">
-  <link rel="stylesheet" href="/css/footer/style.css">
-  <link rel="stylesheet" href="/css/rootColor/style.css">
-  <link rel="stylesheet" href="/css/darkTheme/style.css">
   <link rel="stylesheet" href="/css/header/style.css">
+  <link rel="stylesheet" href="/css/footer/style.css">
+  <link rel="stylesheet" href="/css/rootColors/style.css">
+  <link rel="stylesheet" href="/css/themeChange/style.css">
   <link rel="stylesheet" href="/css/errorMessage/style.css">
   <title>Jobs</title>
 </head>
@@ -25,10 +25,10 @@
       </div>
       <nav class="nav">
         <ul>
-          <% if(user) { %>
+          <% if(company) { %>
             <li>
                 <i class="ph-fill ph-key-return"></i>
-                <a href="/company/<%= user.id %>">back</a>
+                <a href="/company/dashboard %>">back</a>
             </li>
           <% } else { %>
              <li>
@@ -46,106 +46,58 @@
   </header>
   <main>
     <div class="container">
-        <% if(user) { %>
-          <% if(company) { %>
-            <form action="/post/create/<%= user.id %>/<%= company.id %>" method="POST">
-              <div class="inputContainer">
-                <div class="firstBlock">
-                  <div class="input">
-                    <label for="companyName">Company name</label>
-                    <div class="subInput">
-                      <select name="companyName" id="companyName" class="select" required>
-                        <option selected disabled></option>
-                        <% if(company.company) { %>
-                          <option value="<%= company.company %>"><%= company.company %></option>
+        <% if(company) { %>
+          <form action="/post/create/<%= company.payload.id %>" method="POST">
+            <div class="inputContainer">
+              <div class="input">
+                <label for="vacancy">Vacancy</label>
+                <input type="text" name="vacancy" id="vacancy" autocomplete="off" required>
+                <% if(error_message.length > 0) { %>
+                    <% for(let i=0;i < error_message.length;i++) { %>
+                        <% if(error_message[i] == "Vacancy is required." || error_message[i] == "Very short vacancy.") { %>
+                            <div class="error_message">
+                                <i class="ph-fill ph-warning"></i>
+                                <span class="message"><%= error_message[i] %></span>
+                            </div>
                         <% } %>
-                      </select>
-                      <% if(error_message.length > 0) { %>
-                        <% for(let i=0;i < error_message.length;i++) { %>
-                            <% if(error_message[i] == "Company name is required.") { %>
-                                <div class="error_message">
-                                    <i class="ph-fill ph-warning"></i>
-                                    <span class="message"><%= error_message[i] %></span>
-                                </div>
-                            <% } %>
-                        <% } %>
-                      <% } %>
-                    </div>
-                  </div>
-                  <div class="input">
-                    <label for="vacancy">Vacancy</label>
-                    <input type="text" name="vacancy" id="vacancy" autocomplete="off" required>
-                    <% if(error_message.length > 0) { %>
-                        <% for(let i=0;i < error_message.length;i++) { %>
-                            <% if(error_message[i] == "Vacancy is required." || error_message[i] == "Very short vacancy.") { %>
-                                <div class="error_message">
-                                    <i class="ph-fill ph-warning"></i>
-                                    <span class="message"><%= error_message[i] %></span>
-                                </div>
-                            <% } %>
-                        <% } %>
-                     <% } %>
-                  </div>
-                  <div class="input">
-                    <label for="location">Location</label>
-                    <div class="subInput">
-                      <select name="location" id="location" class="select" required>
-                        <option selected disabled></option>
-                        <% if(company.location) { %>
-                          <option value="<%= company.location %>"><%= company.location %></option>
-                        <% } %>
-                      </select>
-                      <% if(error_message.length > 0) { %>
-                        <% for(let i=0;i < error_message.length;i++) { %>
-                            <% if(error_message[i] == "Location is required." || error_message[i] == "Ivalid location.") { %>
-                                <div class="error_message">
-                                    <i class="ph-fill ph-warning"></i>
-                                    <span class="message"><%= error_message[i] %></span>
-                                </div>
-                            <% } %>
-                        <% } %>
-                     <% } %>
-                    </div>
-                  </div>
-                </div>
-                <div class="secondBlock">
-                  <div class="input">
-                    <label for="salary">Salary</label>
-                    <input type="number" name="salary" id="salary" required>
-                    <% if(error_message.length > 0) { %>
-                        <% for(let i=0;i < error_message.length;i++) { %>
-                            <% if(error_message[i] == "Salary is required." || error_message[i] == "Invalid salary.") { %>
-                                <div class="error_message">
-                                    <i class="ph-fill ph-warning"></i>
-                                    <span class="message"><%= error_message[i] %></span>
-                                </div>
-                            <% } %>
-                        <% } %>
-                     <% } %>
-                  </div>
-                  <div class="input">
-                    <label for="vacancies">Vacancies</label>
-                    <input type="number" name="vacancies" id="vacancies" required>
-                    <% if(error_message.length > 0) { %>
-                        <% for(let i=0;i < error_message.length;i++) { %>
-                            <% if(error_message[i] == "Vacancies is required." || error_message[i] == "Invalid vacancies.") { %>
-                                <div class="error_message">
-                                    <i class="ph-fill ph-warning"></i>
-                                    <span class="message"><%= error_message[i] %></span>
-                                </div>
-                            <% } %>
-                        <% } %>
-                     <% } %>
-                  </div>
-                </div>      
+                    <% } %>
+                  <% } %>
               </div>
               <div class="input">
-                <label for="information">Description</label>
-                <textarea name="information" id="information" cols="30" rows="10"></textarea>
+                <label for="salary">Salary</label>
+                <input type="number" name="salary" id="salary" required>
+                <% if(error_message.length > 0) { %>
+                    <% for(let i=0;i < error_message.length;i++) { %>
+                        <% if(error_message[i] == "Salary is required." || error_message[i] == "Invalid salary.") { %>
+                            <div class="error_message">
+                                <i class="ph-fill ph-warning"></i>
+                                <span class="message"><%= error_message[i] %></span>
+                            </div>
+                        <% } %>
+                    <% } %>
+                  <% } %>
               </div>
-              <button>create post</button>
-            </form>
-          <% } %>
+              <div class="input">
+                <label for="vacancies">Vacancies</label>
+                <input type="number" name="vacancies" id="vacancies" required>
+                <% if(error_message.length > 0) { %>
+                    <% for(let i=0;i < error_message.length;i++) { %>
+                        <% if(error_message[i] == "Vacancies is required." || error_message[i] == "Invalid vacancies.") { %>
+                            <div class="error_message">
+                                <i class="ph-fill ph-warning"></i>
+                                <span class="message"><%= error_message[i] %></span>
+                            </div>
+                        <% } %>
+                    <% } %>
+                  <% } %>
+              </div>
+            </div>      
+            <div class="input">
+              <label for="information">Description</label>
+              <textarea name="information" id="information" cols="30" rows="10"></textarea>
+            </div>
+            <button>create post</button>
+          </form>
         <% } %>
     </div>
   </main>
@@ -157,7 +109,7 @@
     </div>
   </footer>
   <script src="/js/menu/main.js"></script>
-  <script src="/js/themes/main.js"></script>
+  <script src="/js/themeChange/main.js"></script>
   <script src="/js/errorMessage/main.js"></script>
 </body>
 </html>

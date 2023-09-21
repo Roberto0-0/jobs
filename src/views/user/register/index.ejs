@@ -7,10 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="/css/user/register/style.css">
-  <link rel="stylesheet" href="/css/footer/style.css">
-  <link rel="stylesheet" href="/css/rootColor/style.css">
-  <link rel="stylesheet" href="/css/darkTheme/style.css">
   <link rel="stylesheet" href="/css/header/style.css">
+  <link rel="stylesheet" href="/css/footer/style.css">
+  <link rel="stylesheet" href="/css/rootColors/style.css">
+  <link rel="stylesheet" href="/css/themeChange/style.css">
   <link rel="stylesheet" href="/css/errorMessage/style.css">
   <title>Jobs</title>
 </head>
@@ -25,8 +25,8 @@
           <nav class="nav">
             <ul>
               <li>
-                <i class="ph-fill ph-sign-in"></i>
-                <a href="/login">login</a>
+                <i class="ph-fill ph-key-return"></i>
+                <a href="/login">back</a>
               </li>
             </ul>
           </nav>
@@ -73,7 +73,7 @@
         <div class="input">
           <label for="password">Password</label>
           <div class="subInput">
-            <input type="password" name="password" class="password" required>
+            <input type="password" name="password" class="password" placeholder="At least 8 characters" required>
             <i class="ph ph-eye"></i>
           </div>
           <% if(error_message.length > 0) { %>
@@ -90,7 +90,7 @@
         <div class="input">
           <label for="confirm-password">Repeat password</label>
           <div class="subInput">
-            <input type="password" name="confirmPassword" class="password" autocomplete="off" required>
+            <input type="password" name="confirmPassword" class="password" placeholder="At least 8 characters" autocomplete="off" required>
             <i class="ph ph-eye"></i>
           </div>
           <% if(error_message.length > 0) { %>
@@ -104,12 +104,10 @@
             <% } %>
            <% } %>
         </div>
-        <button>create registration</button>
+        <button>register</button>
       </form>
-      <div class="company">
-        <p>
-          You already have an account? <a href="/login">click here!</a>
-        </p>
+      <div class="other-alternatives">
+        <p class="user-login">You already have an account? <a href="/login">click here!</a></p>
       </div>
     </div>
   </main>
@@ -120,9 +118,9 @@
       </p>
     </div>
   </footer>
-  <script src="/js/user/register/main.js"></script>
+  <script src="/js/visiblePassword/main.js"></script>
   <script src="/js/menu/main.js"></script>
-  <script src="/js/themes/main.js"></script>
+  <script src="/js/themeChange/main.js"></script>
   <script src="/js/errorMessage/main.js"></script>
 </body>
 </html>
