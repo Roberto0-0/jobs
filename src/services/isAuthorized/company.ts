@@ -12,5 +12,7 @@ export const isCompanyAuthorized = (req: Request, res: Response, next: NextFunct
             res.locals.company = company
             return next()
         }
+        res.locals.company = company
+        return next()
     })(req, res, next)
 }

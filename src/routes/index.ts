@@ -69,7 +69,7 @@ export class AppRoutes {
   post() {
     this.router.get("/post/create/:company_id" ,isCompanyAuthenticated, isCompanyAuthorized, new PostController().createIndex)
     this.router.post("/post/create/:company_id", new PostController().create)
-    this.router.get("/jobs", isUserAuthorized, new PostController().readAll)
+    this.router.get("/jobs", isUserAuthorized, isCompanyAuthorized, new PostController().readAll)
     this.router.get("/post/show/:id", isCompanyAuthenticated, isCompanyAuthorized, new PostController().read)
     this.router.get("/post/update/:post_id/:company_id", isCompanyAuthenticated, isCompanyAuthorized, new PostController().updateIndex)
     this.router.post("/post/update/:post_id/:company_id", new PostController().update)
@@ -86,7 +86,7 @@ export class AppRoutes {
     this.router.get("/company/resume/:company_id", isCompanyAuthenticated, isCompanyAuthorized, new ResumeController().resumeSentCompany)
     this.router.get("/company/resume/page/:resume_id", isCompanyAuthenticated, isCompanyAuthorized, new ResumeController().resumeSentCompanyContent)
     this.router.get("/resume/delete/:user_id/:resume_id", isUserAuthenticated, isUserAuthorized, new ResumeController().delete)
-    this.router.get("/resume/status/:resume_id/:user_id/:post_id", isUserAuthenticated, isUserAuthorized, new ResumeController().resumeStatus)
+    this.router.get("/resume/status/:resume_id/:user_id/:post_id", isCompanyAuthenticated, isCompanyAuthorized, new ResumeController().resumeStatus)
   }
 
   push() {
