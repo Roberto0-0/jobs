@@ -9,7 +9,7 @@ main {
 
 main .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 1em;
 
     margin: auto;

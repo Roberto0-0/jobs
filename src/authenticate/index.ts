@@ -26,6 +26,7 @@ passport.use('user_local',
       bcrypt.compare(password, user.password, (err, isMatch) => {
         if(err) { return done(null, err) }
         if(!isMatch) { return done(null, false, { message: "Check your email or password." }) }
+
         return done(null, user)
       })
     } catch (error) { return done(error) }
@@ -41,9 +42,9 @@ passport.use('company_local',
 
         if(!company) { return done(null, false, { message: "Check your email or password." }) }
 
-        bcrypt.compare(password, company.password, (err, match) => {
+        bcrypt.compare(password, company.password, (err, isMatch) => {
             if(err) { return done(err) }
-            if(!match) { return done(null, company) }
+            if(!isMatch) { return done(null, false, { message: "Check your email or password." }) }
 
             return done(null, company)
         })

@@ -125,7 +125,11 @@ body.active main .container .resumes-list li {
     background: var(--dark-header-footer);
 }
 
-body.active main .container .resumes-list li .post-info .postVacancy {
+body.active main .container .resumes-list li .post-info .subInfo .postVacancy {
+    color: var(--dark-text);
+}
+
+body.active main .container .resumes-list li .post-info .subInfo .postedTime {
     color: var(--dark-text);
 }
 

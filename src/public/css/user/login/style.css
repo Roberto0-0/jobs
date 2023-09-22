@@ -1,8 +1,5 @@
 header .container nav ul .company-button {
-    padding: 0px;
-
-    width: 85px;
-    height: 33px;
+    padding: 5px 10px;
 
     border-radius: 5px;
     background: var(--global-color);
