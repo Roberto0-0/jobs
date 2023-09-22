@@ -18,12 +18,15 @@
 <body>
     <header>
         <div class="container">
-          <a href="/" class="logo">Jobs</a>
-          <div class="nav-area">
+        <a href="/" class="logo">
+            <span><i class="ph-light ph-briefcase"></i></span>
+            <h2>Jobs</h2>
+        </a>
+        <div class="nav-area">
             <div class="change-color" id="moon">
                 <i style="display: none;" class="ph ph-moon"></i>
-              </div>
-              <nav class="nav">
+                </div>
+                <nav class="nav">
                 <ul>
                     <% if(data) { %>
                         <li>
@@ -32,11 +35,9 @@
                         </li>
                     <% } %>
                 </ul>
-              </nav>
-            </div>
-          <div class="menu">
-            <i class="ph-bold ph-list"></i>
-          </div>
+            </nav>
+        </div>
+        <div class="menu"><i class="ph-bold ph-list"></i></div>
         </div>
     </header>
     <main>

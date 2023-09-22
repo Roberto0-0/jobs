@@ -8,11 +8,7 @@ export class BcryptService {
   }
   
   async comparePasswordHash(password: string, userPassword: string) {
-    bcrypt.compare(password, userPassword, (err, isMatch) => {
-      if(err) { return err }
-      if(!isMatch) { return false }
-      
-      return true
-    })
+    if(!bcrypt.compare(password, userPassword)) { return false }
+    return true
   }
 }

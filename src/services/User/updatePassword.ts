@@ -1,8 +1,6 @@
 import { UserRepository } from "../../repositories/UserRepository"
-import { BcryptService } from "../Bcrypt/index"
 import bcrypt from "bcryptjs"
-
-const bcryptService = new BcryptService()
+import { BcryptService } from "../Bcrypt";
 
 interface UserUpdatePasswordAttributes {
     user_id: string;
@@ -11,19 +9,21 @@ interface UserUpdatePasswordAttributes {
     repeatNewPassword: string;
 }
 
-export class UserUpdatePassword {
-    async execute({ ...attributes }: UserUpdatePasswordAttributes) {
-        const user = await UserRepository.findOneBy({ id: attributes.user_id })
+export class UserUpdatePassword extends BcryptService {
+    private constructor() { super(), this.createPasswordHash }
+
+    public async execute({ ...data }: UserUpdatePasswordAttributes): Promise<void | Error> {
+        const user = await UserRepository.findOneBy({ id: data.user_id })
     
         if(!user) { return new Error("User not found.") }
 
-        const comparePasswordResult = await bcrypt.compare(user.password, attributes.currentPassword)
-        if(!comparePasswordResult) { return new Error("The password you entered was incorrect.") }
-        if(attributes.newPassword === attributes.currentPassword) { return new Error("Your new password cannot be the same as your old one.") }
-        if(attributes.repeatNewPassword !== attributes.newPassword) { return new Error("The passwords are different.") }
+        if(!bcrypt.compare(user.password, data.currentPassword)) { return new Error("The password you entered was incorrect.") }
+        if(data.newPassword === data.currentPassword) { return new Error("Your new password cannot be the same as your old one.") }
+        if(data.repeatNewPassword !== data.newPassword) { return new Error("The passwords are different.") }
     
-        const passwordhash = await bcryptService.createPasswordHash(attributes.newPassword)
+        const passwordhash = await this.createPasswordHash(data.newPassword)
 
-        return await UserRepository.update(attributes.user_id, { password: passwordhash })
+        await UserRepository.update(data.user_id, { password: passwordhash })
+        return
     }
 }

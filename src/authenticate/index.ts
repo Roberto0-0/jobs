@@ -43,7 +43,7 @@ passport.use('company_local',
         if(!company) { return done(null, false, { message: "Check your email or password." }) }
 
         bcrypt.compare(password, company.password, (err, isMatch) => {
-            if(err) { return done(err) }
+            if(err) { return done(null, err) }
             if(!isMatch) { return done(null, false, { message: "Check your email or password." }) }
 
             return done(null, company)
