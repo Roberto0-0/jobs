@@ -52,28 +52,62 @@
       <div class="logo-form">
         <h2>Login</h2>
       </div>
-      <form action="/login" method="POST">
-        <div class="input">
-          <label for="email">Email</label>
-          <input type="email" name="email" class="email-input" autocomplete="off" required>
-          <% if(error.length > 0) { %>
-              <% if(error == "Check your email or password.") { %>
+      <% if(error.length > 0) { %>
+        <% error.forEach((err) => { %>
+          <% if(err.data) { %>
+            <form action="/login" method="POST">
+              <div class="input">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="email-input" autocomplete="off" value="<%= err.data.email %>" required>
+                <% if(err.message == "Check your email or password.") { %>
                   <div class="error_message">
                       <i class="ph-fill ph-warning"></i>
-                      <span class="message"><%= error %></span>
+                      <span class="message"><%= err.message %></span>
                   </div>
-              <% } %>
-           <% } %>
-        </div>
-        <div class="input">
-          <label for="password">Password</label>
-          <div class="subInput">
-            <input type="password" name="password" id="password" autocomplete="off" required>
-            <i class="ph ph-eye" id="eye-button"></i>
+                <% } %>
+              </div>
+              <div class="input">
+                <label for="password">Password</label>
+                <div class="subInput">
+                  <input type="password" name="password" id="password" autocomplete="off" value="<%= err.data.password %>" required>
+                  <i class="ph ph-eye" id="eye-button"></i>
+                </div>
+              </div>
+              <button>sign in</button>
+            </form>
+          <% } else { %>
+            <form action="/login" method="POST">
+              <div class="input">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="email-input" autocomplete="off" required>
+              </div>
+              <div class="input">
+                <label for="password">Password</label>
+                <div class="subInput">
+                  <input type="password" name="password" id="password" autocomplete="off" required>
+                  <i class="ph ph-eye" id="eye-button"></i>
+                </div>
+              </div>
+              <button>sign in</button>
+            </form>
+          <% } %>
+        <% }) %>
+       <% } else { %>
+        <form action="/login" method="POST">
+          <div class="input">
+            <label for="email">Email</label>
+            <input type="email" name="email" class="email-input" autocomplete="off" required>
           </div>
-        </div>
-        <button>sign in</button>
-      </form>
+          <div class="input">
+            <label for="password">Password</label>
+            <div class="subInput">
+              <input type="password" name="password" id="password" autocomplete="off" required>
+              <i class="ph ph-eye" id="eye-button"></i>
+            </div>
+          </div>
+          <button>sign in</button>
+        </form>
+       <% } %>
       <div class="sign-up">
         <p>
           Not have accaunt? <a href="/register">click here!</a>

@@ -9,7 +9,10 @@ export class CompanyLogin {
         passport.authenticate('company_local', { session: false }, async (err: any, company: any, info: any) => {
             try {
                 if(err || !company) {
-                    req.flash("error", info.message)
+                    req.flash('error', { 
+                        message: info.message,
+                        data: req.body
+                     })
                     res.redirect("/company/login")
                     return
                 }

@@ -90,7 +90,7 @@ main .container .resumes-list li .post-info .subInfo {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.4em;
+    gap: 0.3em;
 }
 
 main .container .resumes-list li .post-info .subInfo .postVacancy {
@@ -98,6 +98,14 @@ main .container .resumes-list li .post-info .subInfo .postVacancy {
     font-weight: bold;
     font-size: 1em;
     color: var(--light-text);
+}
+
+main .container .resumes-list li .post-info .subInfo .dot {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+    background: var(--light-text);
 }
 
 main .container .resumes-list li .post-info .subInfo .postedTime {

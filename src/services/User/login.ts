@@ -9,7 +9,10 @@ export class UserLogin {
         passport.authenticate('user_local', { session: false }, async (err: any, user: any, info: any) => {
             try {
                 if(err || !user) {
-                    req.flash('error', info.message)
+                    req.flash('error', { 
+                        message: info.message,
+                        data: req.body
+                     })
                     res.redirect("/login")
                     return
                 }
