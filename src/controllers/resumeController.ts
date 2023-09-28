@@ -33,15 +33,7 @@ export class ResumeController {
     
     async create(req: Request, res: Response) {
         const { user_id, post_id, company_id } = req.params
-        const {
-            fullName,
-            dateOfBirth,
-            maritalStatus,
-            address,
-            phone,
-            academicEducation,
-            information
-        } = req.body
+        const { information } = req.body
 
         try {
             const service = new ResumeCreate()
@@ -49,12 +41,6 @@ export class ResumeController {
                 user_id,
                 post_id,
                 company_id,
-                fullName,
-                dateOfBirth,
-                maritalStatus,
-                address,
-                phone,
-                academicEducation,
                 information
             })
 
@@ -153,7 +139,7 @@ export class ResumeController {
             if(result instanceof Error) { return res.status(400).send({ message: result.message }) }
 
             return res.render("resume/resumeSentCompany/index.ejs", {
-                data: result
+                data: result,
             })
         } catch (error) {
             console.error(error)

@@ -79,7 +79,9 @@
                     </ul>
                 <% } %>
             <% }) %>
-            <div class="sentResume"><h2>Sent</h2><i class="ph-bold ph-checks"></i></div>
+            <% if(data.length > 0) { %>
+                <div class="sentResume"><h2>Sent</h2><i class="ph-bold ph-checks"></i></div>
+            <% } %>
             <% data.forEach((resume) => { %>
                 <% if(resume.alteration) { %>
                     <ul class="resumes-list">

@@ -2,16 +2,15 @@ import {
     Entity,
     Column,
     PrimaryGeneratedColumn,
-    ManyToOne,
     CreateDateColumn,
     UpdateDateColumn,
+    JoinColumn,
+    OneToOne
 } from "typeorm"
 import { User } from "./user"
-import { Company } from "./company"
-import { Post } from "./post"
 
-@Entity("resumes")
-export class Resume {
+@Entity("address")
+export class Address {
     @PrimaryGeneratedColumn("uuid")
     id: string
 
@@ -34,6 +33,7 @@ export class Resume {
 
     @Column({
         type: "varchar",
+        unique: true,
         nullable: false
     })
     phone: string
@@ -51,59 +51,17 @@ export class Resume {
     academicEducation: string
 
     @Column({
-        type: "text",
-        nullable: false
-    })
-    information: string
-
-    @Column({
-        type: "varchar",
-        nullable: false,
-        default: "waiting"
-    })
-    status: string
-
-    @Column({
-        type: "boolean",
-        default: false,
-        nullable: false
-    })
-    alteration: boolean
-
-    @Column({
         type: "varchar",
         nullable: false
     })
     user_id: string;
-
-    @Column({
-        type: "varchar",
-        nullable: false
-    })
-    company_id: string;
-
-    @Column({
-        type: "varchar",
-        nullable: false
-    })
-    post_id: string
-
-    @ManyToOne(() => User, (user) => user.resume, {
+  
+    @OneToOne(() => User, (user) => user.address, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'  
     })
+    @JoinColumn({ name: "user_id" })
     user: User
-
-    @ManyToOne(() => Company, (company) => company.resume, {
-        onUpdate: 'CASCADE',
-    })
-    company: Company
-
-    @ManyToOne(() => Post, (post) => post.resume, {
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE' 
-    })
-    post: Post
 
     @CreateDateColumn()
     created_at: Date

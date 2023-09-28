@@ -65,35 +65,6 @@
                     </div>
                     <form action="/resume/create/<%= user.id %>/<%= data.id %>/<%= data.company.id %>" method="POST">
                         <div class="inputContainer">
-                            <div class="firstBlock">
-                                <div class="input">
-                                    <label for="fullName">Full name</label>
-                                    <input type="text" name="fullName" id="" required>
-                                </div>
-                                <div class="input">
-                                    <label for="dateOfBirth">Date of birth</label>
-                                    <input type="date" name="dateOfBirth" id="" required>
-                                </div>
-                                <div class="input">
-                                    <label for="maritalStatus">Marital status</label>
-                                    <input type="text" name="maritalStatus" id="" required>
-                                </div>
-                            </div>
-                            <div class="secondBlock">
-                                <div class="input">
-                                    <label for="address">Address</label>
-                                    <input type="text" name="address" id="" required>
-                                </div>
-                                <div class="input">
-                                    <label for="phone">Phone</label>
-                                    <input type="tel" name="phone" id="" placeholder="(xx) xxxx-xxxx" required>
-                                </div>
-                                <div class="input">
-                                    <label for="academicEducation">Academic education</label>
-                                    <input type="text" name="academicEducation" id="" required>
-                                </div>
-                            </div>
-                        </div>
                         <div class="input">
                             <label for="information">More information</label>
                             <textarea name="information" id="information" cols="30" rows="10" required></textarea>

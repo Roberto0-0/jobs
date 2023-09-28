@@ -5,7 +5,7 @@ export class UserRead {
   async execute(id: string): Promise<User | Error> {
     const user = await UserRepository.findOne({
       where: { id: id },
-      relations: { push: true }
+      relations: { address: true, push: true }
     })
 
     if (!user) { return new Error("User not found.") }
