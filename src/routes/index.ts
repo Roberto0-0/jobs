@@ -10,6 +10,7 @@ import { isUserAuthenticated } from "../services/isAuthenticated/user"
 import { isUserAuthorized } from "../services/isAuthorized/user"
 import { isCompanyAuthenticated } from "../services/isAuthenticated/company"
 import { isCompanyAuthorized } from "../services/isAuthorized/company"
+import { AddressController } from "../controllers/addressController"
 
 export class AppRoutes {
   router: express.IRouter
@@ -22,6 +23,7 @@ export class AppRoutes {
     this.company()
     this.complement()
     this.post()
+    this.address()
     this.resume()
     this.push()
   }
@@ -64,6 +66,11 @@ export class AppRoutes {
     this.router.get("/company/register/finish", isCompanyAuthenticated, isCompanyAuthorized, new ComplementController().createIndex)
     this.router.post("/company/register/finish/:company_id", new ComplementController().create)
     this.router.get("/complement/read/:complement_id/:company_id", isCompanyAuthenticated, isCompanyAuthorized, new ComplementController().read)
+  }
+
+  address() {
+    this.router.get("/address/register", isUserAuthenticated, isUserAuthorized ,new AddressController().createIndex)
+    this.router.post("/address/register/:user_id", new AddressController().create)
   }
 
   post() {

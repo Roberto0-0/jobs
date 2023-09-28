@@ -11,7 +11,7 @@ main .container {
     display: flex;
     flex-direction: column;
 
-    margin: auto;
+    margin: 20px auto;
     padding: 10px;
 
     width: 95vw;
@@ -19,26 +19,6 @@ main .container {
     height: auto;
 }
 
-main .container .postInfo {
-    display: flex;
-    flex-direction: column;
-
-    margin-bottom: 1.5em;
-
-    width: 100%;
-}
-
-main .container .postInfo h2 {
-    font-weight: 400;
-}
-
-main .container .postInfo h2 span {
-    font-weight: 600;
-}
-
-main .container .postInfo h2 .vacancy {
-    text-decoration: underline;
-}
 
 main .container form {
     display: flex;
@@ -48,8 +28,25 @@ main .container form {
 
 main .container form .inputContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1.2em;
+}
+
+
+main .container form .inputContainer .firstBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    width: 50%;
+}
+
+main .container form .inputContainer .secondBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    width: 50%;
 }
 
 main .container form .input {
@@ -81,23 +78,33 @@ main .container form .input input:focus {
     outline-color: var(--global-color);
 }
 
-main .container form .input textarea {
-    padding: 5px;
+main .container form .input .subInput {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
     width: 100%;
-    height: 150px;
+    height: 100%;
 
-    border-radius: 3px;
     border: 1px solid var(--dark-border);
+    border-radius: 5px;
+    background-color: var(--light-secondary-background);
+}
+
+main .container form .input .subInput .select {
+    padding: 10px;
+
+    width: 100%;
+
+    outline: transparent;
+    border: none;
+    background: none;
+
+    font-size: 1em;
+}
+
+main .container form .input .subInput .select option {
     background: var(--light-secondary-background);
-}
-
-main .container form .input textarea::placeholder {
-  color: var(--global-white);
-}
-
-main .container form .input textarea:focus {
-    outline-color: var(--global-color);
 }
 
 main .container form button {
@@ -119,4 +126,18 @@ main .container form button {
 
 main .container form button:hover {
     background: var(--global-hover-color);
+}
+
+@media(max-width: 600px) {
+    main .container form .inputContainer {
+        flex-direction: column;
+    }
+
+    main .container form .inputContainer .firstBlock {
+        width: 100%;
+    }
+
+    main .container form .inputContainer .secondBlock {
+        width: 100%;
+    }
 }

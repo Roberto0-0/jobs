@@ -5,7 +5,7 @@ const main = () => {
     for (let i=0;i < dots.length;i++) {
         dots[i].onclick = () => {
             submenu[i].classList.toggle("active")
-        }        
+        }
     }
 }
 

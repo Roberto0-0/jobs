@@ -10,7 +10,7 @@ interface UserUpdatePasswordAttributes {
 }
 
 export class UserUpdatePassword extends BcryptService {
-    private constructor() { super(), this.createPasswordHash }
+    constructor() { super(), this.createPasswordHash }
 
     public async execute({ ...data }: UserUpdatePasswordAttributes): Promise<void | Error> {
         const user = await UserRepository.findOneBy({ id: data.user_id })

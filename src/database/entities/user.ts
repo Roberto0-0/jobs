@@ -5,9 +5,11 @@ import {
   OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToOne,
 } from "typeorm"
 import { Push } from "./push"
 import { Resume } from "./resume"
+import { Address } from "./address"
 
 @Entity("users")
 export class User {
@@ -33,13 +35,18 @@ export class User {
   })
   password: string
 
-  @OneToMany(() => Push, (push) => push.user)
-  push: Push[]
+  @OneToOne(() => Address, (address)  => address.user, {
+    cascade: true,
+  })
+  address: Address
 
   @OneToMany(() => Resume, (resume) => resume.user, {
     cascade: true,
   })
   resume: Resume[]
+
+  @OneToMany(() => Push, (push) => push.user)
+  push: Push[]
   
   @CreateDateColumn()
   created_at: Date

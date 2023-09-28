@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/address/create/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <link rel="stylesheet" href="/css/themeChange/style.css">
+    <link rel="stylesheet" href="/css/errorMessage/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
+    <title>Jobs</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">
+                <span><i class="ph-light ph-briefcase"></i></span>
+                <h2>Jobs</h2>
+              </a>
+            <div class="nav-area">
+                <div class="change-color" id="moon">
+                    <i style="display: none;" class="ph ph-moon"></i>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <% if(user) { %>
+                            <li>
+                                <i class="ph-fill ph-user-circle-gear"></i>
+                                <a href="/profile">back</a>
+                              </li>
+                            </li>
+                        <% } else { %>
+                            <li>
+                                <i class="ph-fill ph-key-return"></i>
+                                <a href="/">back</a>
+                            </li>
+                        <% } %>
+                    </ul>
+                </nav>
+            </div>
+            <div class="menu"><i class="ph-bold ph-list"></i></div>
+          </div>
+    </header>
+    <main>
+        <% if(success_message.length > 0) { %>
+            <div class="notification"><span class="message"><%= success_message %></span></div>
+        <% } %>
+        <% if(error_message.length > 0) { %>
+            <div class="notification"><span class="message"><%= error_message %></span></div>
+        <% } %>
+        <% if(user) { %>
+            <div class="container">
+                <form action="/address/register/<%= user.id %>" method="POST">
+                    <div class="inputContainer">
+                        <div class="firstBlock">
+                            <div class="input">
+                                <label for="fullName">Full name</label>
+                                <input type="text" name="fullName" id="" required>
+                            </div>
+                            <div class="input">
+                                <label for="dateOfBirth">Date of birth</label>
+                                <input type="date" name="dateOfBirth" id="" required>
+                            </div>
+                            <div class="input">
+                                <label for="maritalStatus">Marital status</label>
+                                <div class="subInput">
+                                    <select type="text" name="maritalStatus" id="maritalStatus" class="select" required>
+                                        <option selected disabled></option>
+                                        <option value="Single">Single</option>
+                                        <option value="Married">Married</option>
+                                        <option value="Separate">Separate</option>
+                                        <option value="Divorced">Divorced</option>
+                                        <option value="Widower">Widower</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="secondBlock">
+                            <div class="input">
+                                <label for="address">Address</label>
+                                <input type="text" name="address" id="" required>
+                            </div>
+                            <div class="input">
+                                <label for="phone">Phone</label>
+                                <input type="tel" name="phone" id="" placeholder="(xx) xxxx-xxxx" required>
+                            </div>
+                            <div class="input">
+                                <label for="academicEducation">Academic education</label>
+                                <input type="text" name="academicEducation" id="" required>
+                            </div>
+                        </div>
+                    </div>
+                    <button>register</button>
+                </form>
+            </div> 
+        <% } %>
+    </main>
+    <footer>
+        <div class="container">
+          <p>
+            &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+          </p>
+        </div>
+    </footer>
+    <script src="/js/menu/main.js"></script>
+    <script src="/js/themeChange/main.js"></script>
+    <script src="/js/notification/main.js"></script>
+</body>
+</html>
