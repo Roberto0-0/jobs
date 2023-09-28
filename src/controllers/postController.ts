@@ -101,7 +101,7 @@ export class PostController {
   }
 
   async readAll(req: Request, res: Response) {
-    const { option } = req.query
+    const option = req.query.option as string
 
     try {
       const service = new PostReadAll()

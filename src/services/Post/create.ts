@@ -24,6 +24,7 @@ export class PostCreate {
       location: company.complement.location,
       salary: data.salary,
       vacancies: data.vacancies,
+      information: data.information,
       company,
       company_id: company.id
     })

@@ -18,7 +18,7 @@
     <header>
         <div class="container">
             <a href="/" class="logo">
-                <span><i class="ph-light ph-briefcase"></i></span>
+                <span><i class="ph-fill ph-briefcase"></i></span>
                 <h2>Jobs</h2>
               </a>
             <div class="nav-area">
@@ -47,84 +47,106 @@
     <main>
         <div class="container">
             <div class="alert">
-                <h2>Complete the fields below to complete registration</h2>
+                <h2>Complete the fields below to create posts.</h2>
             </div>
             <% if(company) { %>
-            <form action="/company/register/finish/<%= company.payload.id %>" method="POST">
-                <div class="inputContainer">
-                    <div class="input">
-                        <label for="sector">Sector</label>
-                        <div class="subInput">
-                            <select type="text" name="sector" id="sector" class="select" required>
-                                <option selected disabled></option>
-                                <option value="Administrative">Administrative</option>
-                                <option value="Financial">Financial</option>
-                                <option value="Human Resources (HR)">Human Resources (HR)</option>
-                                <option value="Commercial">Commercial</option>
-                                <option value="Operational or Production">Operational or Production</option>
-                                <option value="Information Technologies (IT)">Information Technologies (IT)</option>
-                                <% if(error_message.length > 0) { %>
-                                    <% for(let i=0;i < error_message.length;i++) { %>
-                                        <% if(error_message[i] == "Sector is requied." || error_message[i] === "Very short sector.") { %>
-                                            <div class="error_message">
-                                                <i class="ph-fill ph-warning"></i>
-                                                <span class="message"><%= error_message[i] %></span>
-                                            </div>
+                <% if(error_message.length > 0) { %>
+                    <form action="/company/register/finish/<%= company.payload.id %>" method="POST">
+                        <div class="inputContainer">
+                            <div class="input">
+                                <label for="sector">Sector</label>
+                                <div class="subInput">
+                                    <select type="text" name="sector" id="sector" class="select" required>
+                                        <option selected disabled><%= error_message[1].sector %></option>
+                                        <option value="Administrative">Administrative</option>
+                                        <option value="Financial">Financial</option>
+                                        <option value="Human Resources (HR)">Human Resources (HR)</option>
+                                        <option value="Commercial">Commercial</option>
+                                        <option value="Operational or Production">Operational or Production</option>
+                                        <option value="Information Technologies (IT)">Information Technologies (IT)</option>
+                                        <% for(let i=0;i < error_message[0].length;i++) { %>
+                                            <% if(error_message[0][i] == "Sector is requied." || error_message[0][i] === "Very short sector.") { %>
+                                                <div class="error_message">
+                                                    <i class="ph-fill ph-warning"></i>
+                                                    <span class="message"><%= error_message[0][i] %></span>
+                                                </div>
+                                            <% } %>
                                         <% } %>
-                                    <% } %>
-                                <% } %>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="input">
-                        <label for="employees">Employees</label>
-                        <div class="subInput">
-                            <input type="number" name="employees" id="employees" autocomplete="off" required>
-                            <% if(error_message.length > 0) { %>
-                                <% for(let i=0;i < error_message.length;i++) { %>
-                                    <% if(error_message[i] == "Employees is requied." || error_message[i] == "Very short Employees.") { %>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input">
+                                <label for="employees">Employees</label>
+                                <input type="number" name="employees" id="employees" autocomplete="off" value="<%= error_message[1].employees %>" required>
+                                <% for(let i=0;i < error_message[0].length;i++) { %>
+                                    <% if(error_message[0][i] == "Employees is requied." || error_message[0][i] == "Number of employees invalid.") { %>
                                         <div class="error_message">
                                             <i class="ph-fill ph-warning"></i>
-                                            <span class="message"><%= error_message[i] %></span>
+                                            <span class="message"><%= error_message[0][i] %></span>
                                         </div>
                                     <% } %>
                                 <% } %>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="input">
-                        <label for="location">Location</label>
-                        <div class="subInput">
-                            <input type="text" name="location" id="location" required>
-                            <% if(error_message.length > 0) { %>
-                                <% for(let i=0;i < error_message.length;i++) { %>
-                                    <% if(error_message[i] == "Location is required." || error_message[i] == "Ivalid location.") { %>
+                            </div>
+                            <div class="input">
+                                <label for="location">Location</label>
+                                <input type="text" name="location" id="location" value="<%= error_message[1].location %>" required>
+                                <% for(let i=0;i < error_message[0].length;i++) { %>
+                                    <% if(error_message[0][i] == "Location is required." || error_message[0][i] == "Invalid location.") { %>
                                         <div class="error_message">
                                             <i class="ph-fill ph-warning"></i>
-                                            <span class="message"><%= error_message[i] %></span>
+                                            <span class="message"><%= error_message[0][i] %></span>
                                         </div>
                                     <% } %>
                                 <% } %>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="input">
-                        <label for="description">Description</label>
-                        <textarea name="description" id="description" cols="30" rows="10" required></textarea>
-                        <% if(error_message.length > 0) { %>
-                            <% for(let i=0;i < error_message.length;i++) { %>
-                                <% if(error_message[i] == "Description is required.") { %>
-                                    <div class="error_message">
-                                        <i class="ph-fill ph-warning"></i>
-                                        <span class="message"><%= error_message[i] %></span>
-                                    </div>
+                            </div>
+                            <div class="input">
+                                <label for="description">Description</label>
+                                <textarea name="description" id="description" cols="30" rows="10" required><%= error_message[1].description %></textarea>
+                                <% for(let i=0;i < error_message[0].length;i++) { %>
+                                    <% if(error_message[0][i] == "Description is required.") { %>
+                                        <div class="error_message">
+                                            <i class="ph-fill ph-warning"></i>
+                                            <span class="message"><%= error_message[0][i] %></span>
+                                        </div>
+                                    <% } %>
                                 <% } %>
-                            <% } %>
-                        <% } %>
-                    </div>
-                    <button>done</button>
-                </div>
-            </form>
+                            </div>
+                            <button>done</button>
+                        </div>
+                    </form>
+                <% } else { %>
+                    <form action="/company/register/finish/<%= company.payload.id %>" method="POST">
+                        <div class="inputContainer">
+                            <div class="input">
+                                <label for="sector">Sector</label>
+                                <div class="subInput">
+                                    <select type="text" name="sector" id="sector" class="select" required>
+                                        <option selected disabled></option>
+                                        <option value="Administrative">Administrative</option>
+                                        <option value="Financial">Financial</option>
+                                        <option value="Human Resources (HR)">Human Resources (HR)</option>
+                                        <option value="Commercial">Commercial</option>
+                                        <option value="Operational or Production">Operational or Production</option>
+                                        <option value="Information Technologies (IT)">Information Technologies (IT)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input">
+                                <label for="employees">Employees</label>
+                                <input type="number" name="employees" id="employees" autocomplete="off" required>
+                            </div>
+                            <div class="input">
+                                <label for="location">Location</label>
+                                <input type="text" name="location" id="location" required>
+                            </div>
+                            <div class="input">
+                                <label for="description">Description</label>
+                                <textarea name="description" id="description" cols="30" rows="10" required></textarea>
+                            </div>
+                            <button>done</button>
+                        </div>
+                    </form>
+                <% } %>
             <% } %>
         </div>
     </main>

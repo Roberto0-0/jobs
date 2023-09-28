@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="/css/footer/style.css">
     <link rel="stylesheet" href="/css/rootColors/style.css">
     <link rel="stylesheet" href="/css/themeChange/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
     <title>Jobs</title>
 </head>
 <body>
   <header>
     <div class="container">
       <a href="/" class="logo">
-        <span><i class="ph-light ph-briefcase"></i></span>
+        <span><i class="ph-fill ph-briefcase"></i></span>
         <h2>Jobs</h2>
       </a>
       <div class="nav-area">
@@ -44,6 +45,9 @@
     </div>
   </header>
   <main>
+    <% if(success_message.length > 0) { %>
+      <div class="notification"><span class="message"><%= success_message %></span></div>
+    <% } %>
     <div class="container">
       <% if(user) { %>
         <div class="moreInfo">
@@ -91,5 +95,6 @@
   </footer>
   <script src="/js/menu/main.js"></script>
   <script src="/js/themeChange/main.js"></script>
+  <script src="/js/notification/main.js"></script>
 </body>
 </html>
