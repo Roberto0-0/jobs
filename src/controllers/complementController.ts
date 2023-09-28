@@ -44,8 +44,10 @@ export class ComplementController {
                 const err = complementCreateSchemaResult.error.errors
 
                 err.map((values) => { errorStorage.push(values.message) })
+
+                const { ...data } = req.body
                 
-                req.flash("error_message", errorStorage)
+                req.flash("error_message", [errorStorage, data])
                 res.redirect("/company/register/finish")
                 errorStorage = []
             }

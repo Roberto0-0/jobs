@@ -19,7 +19,7 @@ export class AddressController {
             }
 
             req.flash("success_message", "Successfully registered address.")
-            return res.redirect("/address/register")
+            return res.redirect("/profile")
         } catch (error) {
             console.error(error)
             return res.status(500).json({ message: "Internal server error." })

@@ -20,7 +20,7 @@
     <header>
         <div class="container">
             <a href="/" class="logo">
-                <span><i class="ph-light ph-briefcase"></i></span>
+                <span><i class="ph-fill ph-briefcase"></i></span>
                 <h2>Jobs</h2>
             </a>
             <div class="nav-area">
@@ -30,6 +30,10 @@
                 <nav class="nav">
                     <ul>
                         <% if(user) { %>
+                            <li>
+                                <i class="ph-fill ph-briefcase"></i>
+                                <a href="/jobs">jobs</a>
+                            </li>
                             <li>
                                 <i class="ph-fill ph-key-return"></i>
                                 <a href="/profile">back</a>

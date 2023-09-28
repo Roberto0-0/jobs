@@ -118,7 +118,7 @@ header .container nav ul {
 }
 
 header .container nav ul li {
-    padding: 7px 15px;
+    padding: 7px 10px;
 
     width: auto;
     height: auto;
@@ -183,6 +183,8 @@ header .container .menu {
       display: block;
       
       width: 60vw;
+
+      border-radius: 10px 0px 0px 10px;
   
       transition: 0.4s;
       visibility: visible;
@@ -229,7 +231,7 @@ header .container .menu {
       width: 100%;
       
       font-size: 1.2em;
-      font-weight: bold;
+      font-weight: 300;
       color: var(--light-text);
     }
 }
