@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/company/settings/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <link rel="stylesheet" href="/css/themeChange/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
+    <title>Jobs</title>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" class="logo">
+        <span><i class="ph-fill ph-briefcase"></i></span>
+        <h2>Jobs</h2>
+      </a>
+      <div class="nav-area">
+          <div class="change-color" id="moon">
+              <i style="display: none;" class="ph ph-moon"></i>
+          </div>
+          <nav class="nav">
+              <ul>
+                <% if(company) { %>
+                  <li>
+                    <i class="ph-fill ph-key-return"></i>
+                    <a href="/company/dashboard">back</a>
+                  </li>
+                <% } else { %>
+                <li>
+                  <i class="ph-fill ph-key-return"></i>
+                  <a href="/">back</a>
+                </li>
+                <% } %>
+              </ul>
+          </nav>
+      </div>
+      <div class="menu"><i class="ph-bold ph-list"></i></div>
+    </div>
+  </header>
+  <main>
+    <% if(success_message.length > 0) { %>
+      <div class="notification"><span class="message"><%= success_message %></span></div>
+    <% } %>
+    <div class="container">
+      <% if(company) { %>
+        <div class="moreInfo">
+          <a href="/company/settings/details">
+            <div class="accountInfo">
+              <i class="ph-light ph-user-circle-plus"></i>
+              <p>Company details</p>
+            </div>
+            <i class="ph ph-caret-right"></i>
+          </a>
+          <a href="">
+            <div class="changePassword">
+              <i class="ph-light ph-keyhole"></i>
+              <p>Change your password</p>
+            </div>
+            <i class="ph ph-caret-right"></i>
+          </a>
+        </div>
+      <% } %>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>
+        &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+      </p>
+    </div>
+  </footer>
+  <script src="/js/menu/main.js"></script>
+  <script src="/js/themeChange/main.js"></script>
+  <script src="/js/notification/main.js"></script>
+</body>
+</html>

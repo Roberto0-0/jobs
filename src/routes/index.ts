@@ -54,10 +54,11 @@ export class AppRoutes {
     this.router.get("/company/registration", new CompanyController().createIndex)
     this.router.post("/company/registration", new CompanyController().create)
     this.router.get("/company/showAll", isCompanyAuthenticated, isCompanyAuthorized, new CompanyController().readAll)
-    this.router.get("/company/pushs/:company_id", isCompanyAuthenticated, isCompanyAuthorized, new CompanyController().showAllCompanyPush)
     this.router.get("/company/dashboard", isCompanyAuthenticated, isCompanyAuthorized, new CompanyController().dashboard)
     this.router.put("/company/update/:id", isCompanyAuthenticated, isCompanyAuthorized, new CompanyController().update)
     this.router.delete("/company/delete/:id", new CompanyController().delete)
+    this.router.get("/company/settings", isCompanyAuthenticated, isCompanyAuthorized, new CompanyController().settings)
+    this.router.get("/company/settings/details", isCompanyAuthenticated, isCompanyAuthorized, new CompanyController().details)
     this.router.get("/company/login", new CompanyController().loginIndex)
     this.router.post("/company/login", new CompanyController().login)
   }
@@ -100,5 +101,6 @@ export class AppRoutes {
     this.router.get("/pushed/:user_id/:post_id/:company_id", isUserAuthenticated, isUserAuthorized, new PushController().pushed)
     this.router.get("/pushed/readAll/:company_id", isUserAuthenticated, isUserAuthorized, new PushController().read)
     this.router.get("/company/pushes/:company_id", isCompanyAuthenticated, isCompanyAuthorized, new PushController().read)
+    this.router.get("/company/pushs/:company_id", isCompanyAuthenticated, isCompanyAuthorized, new PushController().getAllCompanyPush)
   }
 }

@@ -53,4 +53,24 @@ export class PushController {
       return res.status(500).send({ message: "Internal server error." })
     }
   }
+
+  async getAllCompanyPush(req: Request, res: Response) {
+    const { company_id } = req.params
+  
+    try {
+      const service = new PushRead()
+      const result = await service.execute(company_id)
+
+      if (result instanceof Error) {
+        return res.status(400).json({ message: result.message })
+      }
+
+      return res.render("company/likes/index.ejs", {
+         data: result
+      })
+    } catch (error) {
+      console.error(error)
+      return res.status(500).json({ message: "Internal server error." })
+    }
+  }
 }
