@@ -35,20 +35,16 @@
                         <i class="ph-fill ph-note"></i>
                         <a href="/post/create/<%= company.payload.id %>">new post</a>
                       </li>
-                      <li>
-                        <i class="ph-fill ph-gear"></i>
-                        <a href="">settings</a>
-                      </li>
                     <% } else { %>
                       <li>
                         <i class="ph-fill ph-note"></i>
                         <a href="/company/register/finish">new post</a>
                       </li>
-                      <li>
-                        <i class="ph-fill ph-gear"></i>
-                        <a href="">settings</a>
-                      </li>
                     <% } %>
+                    <li>
+                      <i class="ph-fill ph-gear"></i>
+                      <a href="/company/settings"">settings</a>
+                    </li>
                 </ul>
               </nav>
           </div>

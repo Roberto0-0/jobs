@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/company/settings/details/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <link rel="stylesheet" href="/css/themeChange/style.css">
+    <title>Jobs</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">
+                <span><i class="ph-fill ph-briefcase"></i></span>
+                <h2>Jobs</h2>
+            </a>
+            <div class="nav-area">
+                <div class="change-color" id="moon">
+                    <i style="display: none;" class="ph ph-moon"></i>
+                </div>
+                <nav class="nav">
+                    <ul>
+                      <% if(company) { %>
+                         <li>
+                              <i class="ph-fill ph-key-return"></i>
+                              <a href="/company/settings">back</a>
+                         </li>
+                      <% } else { %>
+                         <li>
+                              <i class="ph-fill ph-key-return"></i>
+                              <a href="/">back</a>
+                         </li>
+                      <% } %>
+                    </ul>
+                </nav>
+            </div>
+            <div class="menu">
+                <i class="ph-bold ph-list"></i>
+            </div>
+          </div>
+    </header>
+    <main>
+        <div class="container">
+            <% if(company) { %>
+                <ul class="accountMenu">
+                    <div class="subContainer">
+                        <div class="firstBlock">
+                            <li>
+                                <label for="company">Company</label>
+                                <div class="subContainer">
+                                    <i class="ph ph-buildings"></i>
+                                    <span class="username"><%= company.payload.company %></span>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="creationdate">Creation date</label>
+                                <div class="subContainer">
+                                    <i class="ph ph-calendar"></i>
+                                    <span class="date"><%= company.payload.created_at %></span>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="email">Email</label>
+                                <div class="subContainer">
+                                    <i class="ph ph-envelope-simple"></i>
+                                    <span class="username"><%= company.payload.email %></span>
+                                </div>
+                            </li>
+                        </div>
+                        <% if(company.payload.complement) { %>
+                            <div class="secondBlock">
+                                <li>
+                                    <label for="company">Sector</label>
+                                    <div class="subContainer">
+                                        <i class="ph ph-folder"></i>
+                                        <span class="username"><%= company.payload.complement.sector %></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <label for="creationdate">Employees</label>
+                                    <div class="subContainer">
+                                        <i class="ph ph-users-four"></i>
+                                        <span class="employees"><%= company.payload.complement.employees %></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <label for="email">Location</label>
+                                    <div class="subContainer">
+                                        <i class="ph ph-map-pin"></i>
+                                        <span class="username"><%= company.payload.complement.location %></span>
+                                    </div>
+                                </li>
+                            </div>
+                        <% } %>
+                    </div>
+                    <li>
+                        <label for="description">Description</label>
+                        <div class="subContainer">
+                            <span class="description"><%= company.payload.complement.description %></span>
+                        </div>  
+                    </li>
+                </ul>
+            <% } %>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>
+              &copy; 2022 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+            </p>
+          </div>
+    </footer>
+    <script src="/js/menu/main.js"></script>
+    <script src="/js/company/settings/details/main.js"></script>
+    <script src="/js/themeChange/main.js"></script>
+</body>
+</html>
