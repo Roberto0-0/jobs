@@ -212,6 +212,11 @@ body.active main .container .resumes-list li .option .reject {
     background: #af4e4e;
 }
 
+body.active main .container .more-post-button {
+    background-color: var(--dark-header-footer);
+    border-color: var(--light-border);
+}
+
 body.active footer {
     background: var(--dark-header-footer);
 }
