@@ -51,31 +51,33 @@
           <div class="notification"><span class="message"><%= success_message %></span></div>
       <% } %>
       <div class="container">
-         <ul class="jobs-menu">
-            <% if(company) { %>
-               <% company.payload.post.forEach((value) => { %>
-                  <li class="li">
-                     <div class="postInfo">
-                        <a href="/company/post/<%= value.id %>/<%= company.payload.id %>">
-                           <h1><%= value.vacancy %></h1>
-                           <h2 class="company-name">
-                              <%= value.company_name %>
-                              <i class="ph-fill ph-seal-check"></i>
-                           </h2>
-                        </a>
-                     </div>
-                     <div class="settings">
-                        <a href="/post/update/<%= value.id %>/<%= company.payload.id %>" class="update">
-                           <i class="ph-fill ph-wrench"></i>
-                        </a>
-                        <a href="/post/delete/<%= value.id %>/<%= company.payload.id %>" class="delete">
-                           <i class="ph-fill ph-trash-simple"></i>
-                        </a>
-                     </div>
-                  </li>
-               <% }) %>
-            <% } %>
+         <% if(company) { %>
+            <ul class="jobs-menu">
+                  <% company.payload.post.forEach((value) => { %>
+                     <li class="li">
+                        <div class="postInfo">
+                           <a href="/company/post/<%= value.id %>/<%= company.payload.id %>">
+                              <h1><%= value.vacancy %></h1>
+                              <h2 class="company-name">
+                                 <%= value.company_name %>
+                                 <i class="ph-fill ph-seal-check"></i>
+                              </h2>
+                           </a>
+                        </div>
+                        <div class="settings">
+                           <a href="/post/update/<%= value.id %>/<%= company.payload.id %>" class="update">
+                              <i class="ph-fill ph-wrench"></i>
+                           </a>
+                           <a href="/post/delete/<%= value.id %>/<%= company.payload.id %>" class="delete">
+                              <i class="ph-fill ph-trash-simple"></i>
+                           </a>
+                        </div>
+                     </li>
+                  <% }) %>
+               
             </ul>
+            <a href="/post/create/<%= company.payload.id %>" class="more-post-button" ><i class="ph-light ph-plus-circle"></i></a>
+         <% } %>
       </div>
    </main>
     <footer>
