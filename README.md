@@ -1,4 +1,6 @@
-![layout](src/public/assets/layout.png)
+<div align="center">
+    <img src="src/public/assets/layout.png" alt="layout image">
+</div>
 
 ## sobre
 
